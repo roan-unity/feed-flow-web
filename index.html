@@ -321,39 +321,40 @@ html[data-theme="dark"] .mission .quote .grad { background: linear-gradient(120d
 .privacy-card h3 { font-size: 21px; font-weight: 700; }
 .privacy-card p { font-size: 16px; color: var(--ink-2); line-height: 1.55; margin-top: 8px; }
 
-/* ---------- Affiliate ---------- */
-.affiliate { padding: 80px 0; background: var(--bg-soft); }
-.affiliate-inner { max-width: 860px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: start; }
-.affiliate-left h2 { font-size: clamp(26px, 3.8vw, 42px); font-weight: 700; margin-top: 14px; line-height: 1.1; }
-.affiliate-left p { font-size: 16px; color: var(--ink-2); line-height: 1.6; margin-top: 16px; }
-.commission-pills { display: flex; flex-direction: column; gap: 12px; margin-top: 28px; }
-.commission-pill { display: flex; gap: 14px; align-items: center; background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 14px 18px; }
-.commission-pill .cp-num { font-family: var(--baloo); font-weight: 800; font-size: 26px; color: var(--accent); line-height: 1; min-width: 52px; }
-.commission-pill .cp-text h4 { font-size: 15px; font-weight: 700; margin: 0 0 2px; }
-.commission-pill .cp-text p { font-size: 13.5px; color: var(--ink-2); margin: 0; }
-.affiliate-fine { font-size: 13px; color: var(--ink-3); margin-top: 14px; line-height: 1.5; }
+/* ---------- Mission ethics ---------- */
+.mission-ethics { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin-top: 34px; }
+.eth-pill { display: inline-flex; align-items: center; gap: 8px; padding: 9px 16px; border-radius: 999px;
+  background: var(--surface); border: 1px solid var(--border); font-size: 14.5px; font-weight: 600; color: var(--ink-2); }
 
-.affiliate-form { background: var(--surface); border: 1px solid var(--border); border-radius: var(--r-lg); padding: 32px; box-shadow: var(--shadow-sm); }
-.affiliate-form h3 { font-size: 20px; font-weight: 700; margin-bottom: 22px; }
-.form-field { margin-bottom: 14px; }
-.form-field label { display: block; font-size: 13px; font-weight: 600; color: var(--ink-2); margin-bottom: 6px; letter-spacing: 0.02em; }
-.form-field input,
-.form-field select,
-.form-field textarea {
-  width: 100%; font-family: var(--sf); font-size: 15px; padding: 11px 14px;
-  border-radius: 10px; border: 1px solid var(--border); background: var(--bg);
-  color: var(--ink); outline: none; transition: border-color 0.2s;
-  -webkit-appearance: none; appearance: none;
-}
-.form-field select { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23888' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
-  background-repeat: no-repeat; background-position: right 12px center; padding-right: 32px; }
-.form-field textarea { resize: vertical; min-height: 80px; }
-.form-field input:focus,
-.form-field select:focus,
-.form-field textarea:focus { border-color: var(--accent); }
-.form-field input::placeholder,
-.form-field textarea::placeholder { color: var(--ink-3); }
-.affiliate-form .btn { width: 100%; margin-top: 6px; }
+/* ---------- Impact ---------- */
+.impact { padding: 0 0 80px; }
+.impact-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.impact-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--r-md); padding: 32px 28px; text-align: center; transition: transform 0.25s, box-shadow 0.25s; }
+.impact-card:hover { transform: translateY(-4px); box-shadow: var(--shadow); }
+.impact-ico { font-size: 30px; margin-bottom: 14px; line-height: 1; }
+.impact-num { font-family: var(--baloo); font-weight: 800; font-size: 38px; color: var(--accent); line-height: 1.1; }
+.impact-card h3 { font-size: 17px; font-weight: 700; margin: 10px 0 10px; }
+.impact-card p { font-size: 14.5px; color: var(--ink-2); line-height: 1.55; }
+
+/* ---------- Affiliate hook ---------- */
+.aff-hook { padding: 80px 0; background: var(--bg-soft); }
+.aff-hook-card { max-width: 900px; margin: 0 auto; background: var(--grad); border-radius: var(--r-lg);
+  color: var(--on-grad); padding: 52px 56px; display: grid; grid-template-columns: 1fr auto; gap: 44px;
+  align-items: center; box-shadow: var(--shadow); overflow: hidden; position: relative; }
+.aff-hook-card::before { content: ""; position: absolute; inset: 0; background:
+  radial-gradient(50% 120% at 115% 0%, rgba(255,255,255,0.16), transparent 60%); pointer-events: none; }
+.aff-hook-card .kicker { color: rgba(255,255,255,0.72); }
+.aff-hook-card h2 { font-size: clamp(24px, 3.2vw, 38px); font-weight: 700; margin: 12px 0 0; }
+.aff-hook-left p { font-size: 16px; color: rgba(255,255,255,0.8); line-height: 1.55; margin-top: 14px; max-width: 44ch; }
+.aff-hook-right { position: relative; z-index: 1; display: flex; flex-direction: column; align-items: center; gap: 18px; flex-shrink: 0; min-width: 180px; }
+.aff-tiers { display: flex; align-items: center; gap: 14px; }
+.aff-tier { text-align: center; }
+.aff-tier-num { font-family: var(--baloo); font-weight: 800; font-size: 40px; color: #fff; line-height: 1; }
+.aff-tier-lbl { font-size: 11.5px; font-weight: 700; letter-spacing: 0.09em; text-transform: uppercase; color: rgba(255,255,255,0.68); margin-top: 3px; }
+.aff-tiers .sep { font-size: 22px; font-weight: 700; color: rgba(255,255,255,0.5); padding-bottom: 16px; }
+.aff-hook-right .btn { background: rgba(255,255,255,0.18); border: 1.5px solid rgba(255,255,255,0.36); color: #fff; white-space: nowrap; }
+.aff-hook-right .btn:hover { background: rgba(255,255,255,0.28); }
+.aff-hook-right .fine { font-size: 12.5px; color: rgba(255,255,255,0.55); text-align: center; }
 
 /* ---------- CTA ---------- */
 .cta { padding: 96px 0 100px; text-align: center; }
@@ -408,7 +409,9 @@ footer.ft { border-top: 1px solid var(--border-2); padding: 50px 0 60px; }
   .tl-card, .tl-row:nth-child(even) .tl-card { grid-column: 2; }
   .tl-art, .tl-row:nth-child(even) .tl-art { grid-column: 2; margin-top: 16px; }
   .privacy-card { flex-direction: column; text-align: center; align-items: center; }
-  .affiliate-inner { grid-template-columns: 1fr; }
+  .impact-grid { grid-template-columns: 1fr; }
+  .aff-hook-card { grid-template-columns: 1fr; padding: 36px 28px; }
+  .aff-hook-right { align-items: flex-start; }
   .ft-inner { flex-direction: column; }
   .ft-cols { gap: 48px; }
 }
@@ -434,7 +437,7 @@ footer.ft { border-top: 1px solid var(--border-2); padding: 50px 0 60px; }
     <nav class="nav-links">
       <a href="#journey">Journey</a>
       <a href="#features">Features</a>
-      <a href="#affiliate">Affiliates</a>
+      <a href="affiliate.html">Affiliates</a>
       <a href="#privacy">Privacy</a>
       <a href="#support">Support</a>
     </nav>
@@ -498,6 +501,12 @@ footer.ft { border-top: 1px solid var(--border-2); padding: 50px 0 60px; }
     <div class="kicker reveal">Our mission</div>
     <p class="quote reveal d1">To create the <span class="grad">best baby feeding app</span> in the world.</p>
     <p class="note reveal d2">Built by parents who were tired of guessing — and tired of apps that turned feeding into a spreadsheet. Feed Flow! does the thinking, so you can be present.</p>
+    <div class="mission-ethics reveal d3">
+      <span class="eth-pill">🌱 Reduces formula waste</span>
+      <span class="eth-pill">🔒 Private by design — your iCloud, not our servers</span>
+      <span class="eth-pill">🌍 Helping families worldwide</span>
+      <span class="eth-pill">🧠 Opt-out anonymous patterns improve predictions for all</span>
+    </div>
   </div>
 </section>
 
@@ -627,6 +636,36 @@ footer.ft { border-top: 1px solid var(--border-2); padding: 50px 0 60px; }
   </div>
 </section>
 
+<!-- ============ IMPACT ============ -->
+<section class="impact">
+  <div class="wrap">
+    <div class="sec-head" style="margin-bottom:40px;">
+      <div class="kicker reveal">Good for the planet</div>
+      <h2 class="reveal d1">Smarter feeding. Less waste. Better science.</h2>
+    </div>
+    <div class="impact-grid">
+      <div class="impact-card reveal">
+        <div class="impact-ico">💰</div>
+        <div class="impact-num">€300</div>
+        <h3>Saved per family, per year</h3>
+        <p>By logging amounts and predicting the next feed, you prepare only what's needed — and stop pouring money down the drain.</p>
+      </div>
+      <div class="impact-card reveal d1">
+        <div class="impact-ico">🌱</div>
+        <div class="impact-num">~12 L</div>
+        <h3>Less formula wasted</h3>
+        <p>Parents discard on average 8–15 litres of prepared formula per year. Smarter logging means fewer tins, less packaging, and a smaller footprint.</p>
+      </div>
+      <div class="impact-card reveal d2">
+        <div class="impact-ico">🌍</div>
+        <div class="impact-num">+Better</div>
+        <h3>Predictions for every family</h3>
+        <p>If you opt in, anonymous mathematical patterns from your feeds help improve predictions for all parents. No names. No personal details. Just collective wisdom.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ============ EASE ============ -->
 <section class="ease">
   <div class="wrap">
@@ -670,86 +709,23 @@ footer.ft { border-top: 1px solid var(--border-2); padding: 50px 0 60px; }
   </div>
 </section>
 
-<!-- ============ AFFILIATE ============ -->
-<section class="affiliate" id="affiliate">
+<!-- ============ AFFILIATE HOOK ============ -->
+<section class="aff-hook" id="affiliate">
   <div class="wrap">
-    <div class="affiliate-inner">
-      <div class="affiliate-left reveal">
+    <div class="aff-hook-card reveal">
+      <div class="aff-hook-left">
         <div class="kicker">Affiliate program</div>
-        <h2>Share it. Earn from it.</h2>
-        <p>If you love Feed Flow! and have an audience of parents, our affiliate program lets you earn a commission on every sale you drive — with a bonus on anyone you bring into the program.</p>
-        <div class="commission-pills">
-          <div class="commission-pill">
-            <div class="cp-num">25%</div>
-            <div class="cp-text"><h4>Direct commission</h4><p>On every sale from your personal offer code</p></div>
-          </div>
-          <div class="commission-pill">
-            <div class="cp-num">5%</div>
-            <div class="cp-text"><h4>Recruitment override</h4><p>On every sale made by affiliates you bring in</p></div>
-          </div>
-        </div>
-        <p class="affiliate-fine">Free to join. No minimum audience size. Payouts via invoice once the app launches. We'll be in touch to confirm eligibility and onboard you personally.</p>
+        <h2>Earn while spreading the mission.</h2>
+        <p>Share Feed Flow! with your audience and earn commission on every sale. Not just a side income — a way to help families reduce waste, spend less, and stress less about feeding. Good money. Good cause.</p>
       </div>
-      <div class="affiliate-form reveal d1">
-        <h3>Express your interest</h3>
-        <form id="affiliateForm" novalidate>
-          <div class="form-field">
-            <label for="aff-name">Your name</label>
-            <input type="text" id="aff-name" placeholder="e.g. Emma Andersson" required>
-          </div>
-          <div class="form-field">
-            <label for="aff-email">Email address</label>
-            <input type="email" id="aff-email" placeholder="your@email.com" required>
-          </div>
-          <div class="form-field">
-            <label for="aff-country">Country</label>
-            <select id="aff-country" required>
-              <option value="" disabled selected>Select your country</option>
-              <option>Norway</option>
-              <option>Sweden</option>
-              <option>Denmark</option>
-              <option>Finland</option>
-              <option>United Kingdom</option>
-              <option>United States</option>
-              <option>Canada</option>
-              <option>Australia</option>
-              <option>Germany</option>
-              <option>Netherlands</option>
-              <option>France</option>
-              <option>Other EU country</option>
-              <option>Other</option>
-            </select>
-          </div>
-          <div class="form-field">
-            <label for="aff-platform">Your platform</label>
-            <select id="aff-platform">
-              <option value="" disabled selected>Where is your audience?</option>
-              <option>Instagram</option>
-              <option>TikTok</option>
-              <option>YouTube</option>
-              <option>Blog / newsletter</option>
-              <option>Facebook group</option>
-              <option>Podcast</option>
-              <option>Multiple</option>
-              <option>Other</option>
-            </select>
-          </div>
-          <div class="form-field">
-            <label for="aff-size">Approximate audience size</label>
-            <select id="aff-size">
-              <option value="" disabled selected>Select a range</option>
-              <option>Under 1,000</option>
-              <option>1,000 – 10,000</option>
-              <option>10,000 – 50,000</option>
-              <option>50,000+</option>
-            </select>
-          </div>
-          <div class="form-field">
-            <label for="aff-note">Anything else? (optional)</label>
-            <textarea id="aff-note" placeholder="Tell us about your audience, content style, or why you'd be a great fit…"></textarea>
-          </div>
-          <button type="submit" class="btn btn-primary">Send my application</button>
-        </form>
+      <div class="aff-hook-right">
+        <div class="aff-tiers">
+          <div class="aff-tier"><div class="aff-tier-num">25%</div><div class="aff-tier-lbl">Direct</div></div>
+          <div class="sep">+</div>
+          <div class="aff-tier"><div class="aff-tier-num">5%</div><div class="aff-tier-lbl">Override</div></div>
+        </div>
+        <a href="affiliate.html" class="btn">Apply to join →</a>
+        <p class="fine">Free to join · No minimum audience</p>
       </div>
     </div>
   </div>
@@ -804,7 +780,7 @@ footer.ft { border-top: 1px solid var(--border-2); padding: 50px 0 60px; }
         <div class="ft-col">
           <h5>Company</h5>
           <a href="privacy.html">Privacy policy</a>
-          <a href="#affiliate">Affiliates</a>
+          <a href="affiliate.html">Affiliates</a>
           <a href="mailto:support@tryfeedflow.app">Support</a>
         </div>
       </div>
@@ -931,19 +907,6 @@ footer.ft { border-top: 1px solid var(--border-2); padding: 50px 0 60px; }
     // TODO: wire to email service (Loops.so or Mailchimp)
   });
 
-  /* ---- Affiliate form ---- */
-  document.getElementById('affiliateForm').addEventListener('submit', function (e) {
-    e.preventDefault();
-    var name = document.getElementById('aff-name').value.trim();
-    var email = document.getElementById('aff-email').value.trim();
-    var country = document.getElementById('aff-country').value;
-    if (!name || !email || !country) return;
-    var btn = this.querySelector('button');
-    btn.textContent = '✓ Application received!';
-    btn.style.background = 'linear-gradient(132deg, #5FAE73, #2C7A4B)';
-    btn.disabled = true;
-    // TODO: wire to backend (send to support@tryfeedflow.app or Supabase)
-  });
 })();
 </script>
 </body>
