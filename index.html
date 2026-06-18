@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Feed Flow! — Smart formula tracking for new parents</title>
+  <meta name="description" content="Feed Flow! tracks every bottle, every feed, and shows you exactly how much formula you're saving. Built for sleep-deprived parents who need answers fast." />
+  <meta property="og:title" content="Feed Flow! — Smart formula tracking for new parents" />
+  <meta property="og:description" content="Know every drop. Save on every can." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://tryfeedflow.app" />
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🍼</text></svg>" />
+  <style>
+    :root {
+      --ocean-0: #0a0e27;
+      --ocean-1: #0d2060;
+      --ocean-2: #1a4a8a;
+      --ocean-3: #2176c7;
+      --accent:  #38bdf8;
+      --accent2: #7dd3fc;
+      --check:   #34d399;
+      --warm:    #fbbf24;
+      --glass:   rgba(255,255,255,0.07);
+      --border:  rgba(255,255,255,0.13);
+      --text:    #f0f6ff;
+      --muted:   rgba(240,246,255,0.55);
+      --radius:  20px;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", sans-serif;
+      background: linear-gradient(160deg, var(--ocean-0) 0%, var(--ocean-1) 40%, var(--ocean-2) 75%, var(--ocean-3) 100%);
+      min-height: 100vh;
+      color: var(--text);
+    }
+
+    /* ── Nav ── */
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 32px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(10,14,39,0.7);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-logo {
+      font-size: 18px;
+      font-weight: 800;
+      letter-spacing: -0.01em;
+      background: linear-gradient(135deg, #fff 30%, var(--accent2));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .nav-links { display: flex; gap: 28px; align-items: center; }
+    .nav-links a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--text); }
+    .btn-download {
+      background: var(--accent);
+      color: #0a0e27 !important;
+      font-weight: 700 !important;
+      padding: 9px 20px;
+      border-radius: 999px;
+      transition: opacity 0.2s !important;
+    }
+    .btn-download:hover { opacity: 0.85; color: #0a0e27 !important; }
+
+    /* ── Hero ── */
+    .hero {
+      text-align: center;
+      padding: 96px 24px 80px;
+      max-width: 780px;
+      margin: 0 auto;
+    }
+    .hero-eyebrow {
+      display: inline-block;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--accent);
+      background: rgba(56,189,248,0.12);
+      border: 1px solid rgba(56,189,248,0.25);
+      padding: 5px 14px;
+      border-radius: 999px;
+      margin-bottom: 28px;
+    }
+    .hero h1 {
+      font-size: clamp(36px, 7vw, 64px);
+      font-weight: 800;
+      line-height: 1.05;
+      letter-spacing: -0.03em;
+      margin-bottom: 22px;
+      background: linear-gradient(135deg, #fff 40%, var(--accent2) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .hero p {
+      font-size: clamp(17px, 2.5vw, 21px);
+      color: var(--muted);
+      line-height: 1.6;
+      max-width: 540px;
+      margin: 0 auto 40px;
+    }
+    .hero-actions { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: #fff;
+      color: #0a0e27;
+      font-weight: 700;
+      font-size: 16px;
+      padding: 14px 28px;
+      border-radius: 999px;
+      text-decoration: none;
+      transition: opacity 0.2s, transform 0.2s;
+    }
+    .btn-primary:hover { opacity: 0.9; transform: translateY(-1px); }
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      background: var(--glass);
+      border: 1px solid var(--border);
+      color: var(--text);
+      font-weight: 600;
+      font-size: 16px;
+      padding: 14px 28px;
+      border-radius: 999px;
+      text-decoration: none;
+      backdrop-filter: blur(12px);
+      transition: background 0.2s;
+    }
+    .btn-secondary:hover { background: rgba(255,255,255,0.12); }
+    .coming-soon {
+      font-size: 12px;
+      color: var(--muted);
+      margin-top: 14px;
+    }
+
+    /* ── App preview ── */
+    .app-preview {
+      display: flex;
+      justify-content: center;
+      padding: 0 24px 80px;
+    }
+    .phone-mock {
+      width: min(280px, 72vw);
+      aspect-ratio: 9/19.5;
+      background: var(--glass);
+      border: 1px solid var(--border);
+      border-radius: 44px;
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      box-shadow: 0 32px 80px rgba(0,0,0,0.4), 0 0 0 1px rgba(255,255,255,0.08) inset;
+    }
+    .phone-mock .app-icon {
+      font-size: 56px;
+      filter: drop-shadow(0 8px 24px rgba(56,189,248,0.4));
+    }
+    .phone-mock .app-name {
+      font-size: 18px;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+    }
+    .phone-mock .screenshot-note {
+      font-size: 12px;
+      color: var(--muted);
+      text-align: center;
+      padding: 0 32px;
+      line-height: 1.5;
+    }
+
+    /* ── Savings banner ── */
+    .savings-banner {
+      max-width: 680px;
+      margin: 0 auto 80px;
+      padding: 0 24px;
+    }
+    .savings-card {
+      background: linear-gradient(135deg, rgba(52,211,153,0.12), rgba(56,189,248,0.08));
+      border: 1px solid rgba(52,211,153,0.25);
+      border-radius: var(--radius);
+      padding: 32px;
+      text-align: center;
+      backdrop-filter: blur(20px);
+    }
+    .savings-num {
+      font-size: clamp(40px, 8vw, 64px);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      color: var(--check);
+      line-height: 1;
+      margin-bottom: 10px;
+    }
+    .savings-label {
+      font-size: 18px;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+    .savings-label strong { color: var(--text); }
+
+    /* ── Features ── */
+    section { padding: 0 24px 80px; }
+    .section-label {
+      text-align: center;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 40px;
+    }
+    .features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 16px;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    .feature-card {
+      background: var(--glass);
+      border: 1px solid var(--border);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-radius: var(--radius);
+      padding: 28px;
+      transition: box-shadow 0.2s;
+    }
+    .feature-card:hover { box-shadow: 0 8px 32px rgba(56,189,248,0.1); }
+    .feature-icon {
+      font-size: 32px;
+      margin-bottom: 14px;
+      display: block;
+    }
+    .feature-title {
+      font-size: 17px;
+      font-weight: 700;
+      margin-bottom: 8px;
+      letter-spacing: -0.01em;
+    }
+    .feature-body {
+      font-size: 14px;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    /* ── Privacy promise ── */
+    .privacy-strip {
+      max-width: 680px;
+      margin: 0 auto 80px;
+      padding: 0 24px;
+    }
+    .privacy-card {
+      background: var(--glass);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 28px 32px;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      backdrop-filter: blur(20px);
+    }
+    .privacy-icon { font-size: 36px; flex-shrink: 0; }
+    .privacy-text h3 { font-size: 16px; font-weight: 700; margin-bottom: 6px; }
+    .privacy-text p { font-size: 14px; color: var(--muted); line-height: 1.55; }
+
+    /* ── CTA ── */
+    .cta {
+      text-align: center;
+      padding: 80px 24px 100px;
+      max-width: 560px;
+      margin: 0 auto;
+    }
+    .cta h2 {
+      font-size: clamp(28px, 5vw, 44px);
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      margin-bottom: 16px;
+      background: linear-gradient(135deg, #fff 40%, var(--accent2));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .cta p { color: var(--muted); font-size: 17px; line-height: 1.6; margin-bottom: 32px; }
+
+    /* ── Footer ── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 32px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    .footer-logo { font-size: 15px; font-weight: 700; color: var(--muted); }
+    .footer-links { display: flex; gap: 24px; flex-wrap: wrap; }
+    .footer-links a {
+      font-size: 13px;
+      color: var(--muted);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .footer-links a:hover { color: var(--text); }
+    .footer-copy { font-size: 12px; color: rgba(240,246,255,0.3); width: 100%; text-align: center; padding-top: 8px; }
+
+    @media (max-width: 600px) {
+      nav { padding: 16px 20px; }
+      .nav-links a:not(.btn-download) { display: none; }
+      footer { flex-direction: column; text-align: center; }
+      .footer-links { justify-content: center; }
+      .privacy-card { flex-direction: column; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">Feed Flow!</div>
+  <div class="nav-links">
+    <a href="#features">Features</a>
+    <a href="privacy.html">Privacy</a>
+    <a href="mailto:support@tryfeedflow.app">Support</a>
+    <a href="#download" class="btn-download">Download</a>
+  </div>
+</nav>
+
+<div class="hero">
+  <div class="hero-eyebrow">Now available on iPhone</div>
+  <h1>Know every drop.<br>Save on every can.</h1>
+  <p>Feed Flow! tracks every bottle, every feed, and shows you exactly how much formula you're saving — so you can stop guessing and start sleeping.</p>
+  <div class="hero-actions">
+    <a href="#download" class="btn-primary" id="download">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+      Download on App Store
+    </a>
+    <a href="#features" class="btn-secondary">See how it works</a>
+  </div>
+  <p class="coming-soon">Free to try · Available on iPhone · iOS 16+</p>
+</div>
+
+<div class="app-preview">
+  <div class="phone-mock">
+    <span class="app-icon">🍼</span>
+    <span class="app-name">Feed Flow!</span>
+    <span class="screenshot-note">Screenshots coming soon</span>
+  </div>
+</div>
+
+<div class="savings-banner">
+  <div class="savings-card">
+    <div class="savings-num">2.3 cans</div>
+    <div class="savings-label">saved in the first month — <strong>on average, per family</strong>.<br>That's real money back in your pocket.</div>
+  </div>
+</div>
+
+<section id="features">
+  <p class="section-label">Everything you need</p>
+  <div class="features">
+    <div class="feature-card">
+      <span class="feature-icon">📊</span>
+      <div class="feature-title">Smart savings counter</div>
+      <div class="feature-body">Feed Flow! measures exactly how much formula you prepare vs. consume. It shows you the savings in real time — in cans, in money, in something tangible.</div>
+    </div>
+    <div class="feature-card">
+      <span class="feature-icon">⚡</span>
+      <div class="feature-title">One-handed logging</div>
+      <div class="feature-body">Designed for exhausted parents holding a baby. Log a feed in under two seconds, any time of day or night, without needing two hands or a clear head.</div>
+    </div>
+    <div class="feature-card">
+      <span class="feature-icon">🔮</span>
+      <div class="feature-title">Predicts the next feed</div>
+      <div class="feature-body">After a week of logging, Feed Flow! learns your baby's rhythm and tells you when they'll likely be hungry next. Less guessing, more sleep.</div>
+    </div>
+    <div class="feature-card">
+      <span class="feature-icon">👨‍👩‍👧</span>
+      <div class="feature-title">Share with caregivers</div>
+      <div class="feature-body">Partner, grandparent, nanny — invite up to 5 people to see and log feeds in real time. Free for everyone. No one is left guessing "when did they last eat?"</div>
+    </div>
+    <div class="feature-card">
+      <span class="feature-icon">🥣</span>
+      <div class="feature-title">Tracks everything</div>
+      <div class="feature-body">Formula, breastfeeding, pumped milk, water, and solid foods as your baby grows. One app, the whole feeding journey.</div>
+    </div>
+    <div class="feature-card">
+      <span class="feature-icon">📈</span>
+      <div class="feature-title">Analytics that matter</div>
+      <div class="feature-body">Daily totals, weekly trends, growth charts vs. WHO percentiles. The kind of data your pediatrician actually asks about — ready to share as a PDF report.</div>
+    </div>
+  </div>
+</section>
+
+<div class="privacy-strip">
+  <div class="privacy-card">
+    <span class="privacy-icon">🔒</span>
+    <div class="privacy-text">
+      <h3>Your baby's data stays yours</h3>
+      <p>Feed Flow! stores everything on your device and syncs privately via your own iCloud account. We never see your data, never sell it, and have no backend servers holding your family's information.</p>
+    </div>
+  </div>
+</div>
+
+<div class="cta">
+  <h2>Ready to stop wasting formula?</h2>
+  <p>Join thousands of families tracking smarter. Free to try, no subscription required.</p>
+  <a href="#download" class="btn-primary">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+    Download Free on App Store
+  </a>
+</div>
+
+<footer>
+  <div class="footer-logo">Feed Flow!</div>
+  <div class="footer-links">
+    <a href="privacy.html">Privacy Policy</a>
+    <a href="mailto:support@tryfeedflow.app">Support</a>
+  </div>
+  <div class="footer-copy">© 2026 Feed Flow! · Made with ❤️ for new parents</div>
+</footer>
+
+</body>
+</html>
