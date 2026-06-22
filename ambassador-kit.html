@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Ambassador Kit Generator — Feed Flow! Admin</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --teal: #58A9B3; --blue: #1C5E6B; --mid: #2F7886; --coral: #FF8C6A;
+  --grad: linear-gradient(132deg, #58A9B3 0%, #2F7886 48%, #1C5E6B 100%);
+  --sf: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Segoe UI", system-ui, sans-serif;
+  --baloo: "Baloo 2", var(--sf);
+  --maxw: 1200px; --r-lg: 28px; --r-md: 20px;
+}
+html[data-theme="light"] {
+  --bg: #FBFDFE; --bg-soft: #EFF7F8; --surface: #FFFFFF;
+  --ink: #0F2B35; --ink-2: rgba(15,43,53,0.64); --ink-3: rgba(15,43,53,0.42);
+  --accent: #0E6D80; --border: rgba(15,43,53,0.09); --border-2: rgba(15,43,53,0.06);
+  --shadow-sm: 0 10px 30px -16px rgba(15,43,53,0.28);
+  --chip-bg: rgba(14,109,128,0.08); --nav-bg: rgba(251,253,254,0.72);
+}
+html[data-theme="dark"] {
+  --bg: #06101C; --bg-soft: #0A1828; --surface: rgba(255,255,255,0.045);
+  --ink: #EDF6F8; --ink-2: rgba(237,246,248,0.66); --ink-3: rgba(237,246,248,0.42);
+  --accent: #79D2E2; --border: rgba(255,255,255,0.11); --border-2: rgba(255,255,255,0.07);
+  --shadow-sm: 0 12px 34px -18px rgba(0,0,0,0.65);
+  --chip-bg: rgba(121,210,226,0.12); --nav-bg: rgba(8,18,30,0.66);
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { margin: 0; font-family: var(--sf); color: var(--ink); background: var(--bg); -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+h1, h2, h3 { margin: 0; letter-spacing: -0.025em; line-height: 1.1; }
+p { margin: 0; }
+a { color: inherit; text-decoration: none; }
+
+.wrap { width: 100%; max-width: var(--maxw); margin: 0 auto; padding: 0 28px; }
+
+.wordmark { font-family: var(--baloo); font-weight: 800; line-height: 1; letter-spacing: -0.02em;
+  display: inline-flex; align-items: center; gap: 0.07em; white-space: nowrap; }
+.wordmark .feed { color: var(--ink); }
+.wordmark .flow { background: linear-gradient(120deg, var(--teal), var(--blue));
+  -webkit-background-clip: text; background-clip: text; color: transparent; }
+html[data-theme="dark"] .wordmark .flow { background: linear-gradient(120deg, #74C6D2, #3E9DAE);
+  -webkit-background-clip: text; background-clip: text; color: transparent; }
+
+header.nav { position: sticky; top: 0; z-index: 100; background: var(--nav-bg);
+  backdrop-filter: saturate(160%) blur(18px); -webkit-backdrop-filter: saturate(160%) blur(18px);
+  border-bottom: 1px solid var(--border-2); }
+.nav-inner { display: flex; align-items: center; justify-content: space-between; height: 60px; }
+.admin-chip { font-size: 11.5px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
+  background: rgba(255,193,7,0.14); color: #a07800; border: 1px solid rgba(255,193,7,0.28);
+  padding: 4px 12px; border-radius: 999px; }
+html[data-theme="dark"] .admin-chip { background: rgba(255,193,7,0.1); color: #f0c040; border-color: rgba(255,193,7,0.2); }
+.theme-toggle { width: 36px; height: 36px; border-radius: 50%; border: 1px solid var(--border);
+  background: var(--surface); color: var(--ink); cursor: pointer; display: grid; place-items: center;
+  transition: transform 0.2s; margin-left: 10px; }
+.theme-toggle:hover { transform: rotate(-12deg); }
+.theme-toggle svg { width: 17px; height: 17px; }
+.theme-toggle .moon { display: none; }
+html[data-theme="dark"] .theme-toggle .sun { display: none; }
+html[data-theme="dark"] .theme-toggle .moon { display: block; }
+.nav-right { display: flex; align-items: center; gap: 0; }
+
+.admin-banner { background: rgba(255,193,7,0.07); border-bottom: 1px solid rgba(255,193,7,0.18);
+  padding: 9px 0; text-align: center; font-size: 13px; font-weight: 600; color: #8a6400; }
+html[data-theme="dark"] .admin-banner { background: rgba(255,193,7,0.06); color: #f0c040; border-color: rgba(255,193,7,0.15); }
+
+.kit-layout { display: grid; grid-template-columns: 420px 1fr; gap: 36px; padding: 44px 0 80px; align-items: start; }
+
+/* FORM PANEL */
+.form-panel { background: var(--surface); border: 1px solid var(--border); border-radius: var(--r-lg); padding: 34px; box-shadow: var(--shadow-sm); }
+.panel-title { font-size: 20px; font-weight: 700; margin-bottom: 6px; }
+.panel-sub { font-size: 14px; color: var(--ink-2); line-height: 1.55; margin-bottom: 26px; }
+
+.form-field { margin-bottom: 16px; }
+.form-field label { display: block; font-size: 12.5px; font-weight: 600; color: var(--ink-2); margin-bottom: 6px; letter-spacing: 0.02em; text-transform: uppercase; }
+.form-field input[type="text"],
+.form-field input[type="email"],
+.form-field input[type="number"],
+.form-field select {
+  width: 100%; font-family: var(--sf); font-size: 15px; padding: 11px 13px;
+  border-radius: 10px; border: 1px solid var(--border); background: var(--bg);
+  color: var(--ink); outline: none; transition: border-color 0.2s;
+  -webkit-appearance: none; appearance: none;
+}
+.form-field select { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23888' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat; background-position: right 12px center; padding-right: 32px; }
+.form-field input:focus, .form-field select:focus { border-color: var(--accent); box-shadow: 0 0 0 3px var(--chip-bg); }
+.form-field input::placeholder { color: var(--ink-3); }
+
+.field-row { display: grid; grid-template-columns: 1fr 110px; gap: 12px; }
+.field-hint { font-size: 12px; color: var(--ink-3); margin-top: 5px; }
+
+.pill-group { display: flex; flex-wrap: wrap; gap: 7px; }
+.pill-option { position: relative; }
+.pill-option input[type="checkbox"] { position: absolute; opacity: 0; width: 0; height: 0; }
+.pill-option label { display: inline-flex; align-items: center; gap: 5px; padding: 6px 13px; border-radius: 999px;
+  border: 1.5px solid var(--border); background: var(--bg-soft); font-size: 13px; font-weight: 600;
+  color: var(--ink-2); cursor: pointer; transition: border-color 0.15s, background 0.15s, color 0.15s; user-select: none; }
+.pill-option label:hover { border-color: var(--accent); color: var(--accent); }
+.pill-option input:checked + label { border-color: var(--accent); background: var(--chip-bg); color: var(--accent); }
+
+.tier-options { display: flex; gap: 10px; }
+.tier-opt { flex: 1; }
+.tier-opt input[type="radio"] { display: none; }
+.tier-opt label { display: flex; align-items: center; justify-content: center; gap: 7px; padding: 10px 8px;
+  border-radius: 12px; border: 1.5px solid var(--border); background: var(--bg-soft);
+  font-size: 14px; font-weight: 600; color: var(--ink-2); cursor: pointer; transition: all 0.15s; }
+.tier-opt input:checked + label { border-color: var(--accent); background: var(--chip-bg); color: var(--accent); }
+
+#recruitedByField { display: none; }
+
+.form-divider { border: none; border-top: 1px solid var(--border); margin: 20px 0; }
+
+.btn-generate { width: 100%; margin-top: 6px; font-family: var(--sf); font-size: 16px; font-weight: 700;
+  background: var(--grad); color: #fff; border: none; border-radius: 14px; padding: 15px;
+  cursor: pointer; transition: transform 0.15s, box-shadow 0.2s; box-shadow: 0 10px 28px -12px rgba(28,94,107,0.55); }
+.btn-generate:hover { transform: translateY(-1px); box-shadow: 0 14px 34px -12px rgba(28,94,107,0.7); }
+.btn-generate:active { transform: scale(0.98); }
+
+/* OUTPUT PANEL */
+.output-panel { display: flex; flex-direction: column; gap: 20px; }
+
+.output-empty { text-align: center; padding: 64px 40px; background: var(--surface);
+  border: 1.5px dashed var(--border); border-radius: var(--r-lg); }
+.output-empty .ico { font-size: 40px; margin-bottom: 18px; }
+.output-empty h3 { font-size: 19px; font-weight: 700; margin-bottom: 8px; }
+.output-empty p { font-size: 15px; color: var(--ink-2); }
+
+.output-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--r-md); padding: 26px 28px; box-shadow: var(--shadow-sm); }
+.output-card h3 { font-size: 15px; font-weight: 700; margin-bottom: 18px; display: flex; align-items: center; gap: 8px; }
+.card-badge { font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase;
+  background: var(--chip-bg); color: var(--accent); padding: 3px 9px; border-radius: 999px; }
+
+.qr-wrap { display: flex; align-items: flex-start; gap: 22px; }
+#qrCanvas { border-radius: 10px; border: 1px solid var(--border); flex-shrink: 0; width: 140px !important; height: 140px !important; }
+.qr-meta { flex: 1; }
+.qr-url { font-size: 12px; color: var(--ink-3); word-break: break-all; margin-bottom: 14px; font-family: 'SF Mono', 'Menlo', monospace; line-height: 1.5; }
+
+.btn-row { display: flex; gap: 9px; flex-wrap: wrap; }
+.btn-action { display: inline-flex; align-items: center; gap: 6px; font-family: var(--sf);
+  font-size: 13.5px; font-weight: 600; padding: 9px 17px; border-radius: 10px;
+  border: 1.5px solid var(--border); background: var(--bg-soft); color: var(--ink-2);
+  cursor: pointer; transition: all 0.15s; white-space: nowrap; }
+.btn-action:hover { border-color: var(--accent); color: var(--accent); background: var(--chip-bg); }
+.btn-action:active { transform: scale(0.97); }
+.btn-action.primary { background: var(--grad); border-color: transparent; color: #fff; box-shadow: 0 6px 18px -8px rgba(28,94,107,0.5); }
+.btn-action.primary:hover { box-shadow: 0 10px 26px -8px rgba(28,94,107,0.65); transform: translateY(-1px); }
+.btn-action.success { background: linear-gradient(132deg, #5FAE73, #2C7A4B) !important; border-color: transparent !important; color: #fff !important; }
+
+.email-subject-line { font-size: 13px; color: var(--ink-2); margin-bottom: 12px; }
+.email-subject-line strong { color: var(--ink); }
+#emailBody { background: var(--bg-soft); border: 1px solid var(--border); border-radius: 10px;
+  padding: 16px 18px; font-size: 12.5px; line-height: 1.7; color: var(--ink-2);
+  font-family: 'SF Mono', 'Menlo', monospace; white-space: pre-wrap; word-wrap: break-word;
+  max-height: 300px; overflow-y: auto; margin: 0; display: block; }
+
+.sheet-row-wrap { background: var(--bg-soft); border: 1px solid var(--border); border-radius: 10px; padding: 14px 16px; margin-bottom: 14px; }
+#sheetRow { font-family: 'SF Mono', 'Menlo', monospace; font-size: 12px; color: var(--accent);
+  word-break: break-all; display: block; line-height: 1.5; }
+.sheet-headers { font-family: 'SF Mono', 'Menlo', monospace; font-size: 11px; color: var(--ink-3);
+  margin-bottom: 6px; display: block; }
+
+@media (max-width: 960px) {
+  .kit-layout { grid-template-columns: 1fr; }
+  .qr-wrap { flex-direction: column; align-items: flex-start; }
+}
+@media (max-width: 520px) {
+  .wrap { padding: 0 16px; }
+  .field-row { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="wrap nav-inner">
+    <div style="display:flex;align-items:center;gap:12px;">
+      <a href="/" class="wordmark" style="font-size:20px;"><span class="feed">Feed</span><span class="flow">Flow</span></a>
+      <span class="admin-chip">🔒 Admin</span>
+    </div>
+    <div class="nav-right">
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+        <svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+        <svg class="moon" viewBox="0 0 24 24" fill="currentColor"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div class="admin-banner">🔒 Private admin tool — not publicly linked or indexed. Bookmark this page.</div>
+
+<main>
+<div class="wrap">
+<div class="kit-layout">
+
+  <!-- FORM -->
+  <div class="form-panel">
+    <div class="panel-title">Ambassador Kit Generator</div>
+    <p class="panel-sub">Fill in the details after creating the offer code in App Store Connect. Hit Generate to get the QR code, welcome email, and spreadsheet row.</p>
+
+    <form id="kitForm" novalidate>
+
+      <div class="form-field">
+        <label for="k-name">Full name</label>
+        <input type="text" id="k-name" placeholder="e.g. Emma Andersson" required autocomplete="off">
+      </div>
+
+      <div class="form-field">
+        <label for="k-email">Email address</label>
+        <input type="email" id="k-email" placeholder="emma@example.com" required autocomplete="off">
+      </div>
+
+      <hr class="form-divider">
+
+      <div class="form-field">
+        <div class="field-row">
+          <div>
+            <label for="k-code">Promo code</label>
+            <input type="text" id="k-code" placeholder="e.g. EMMA15" required autocomplete="off"
+              style="text-transform:uppercase;" oninput="this.value=this.value.toUpperCase()">
+            <p class="field-hint">Create this in App Store Connect → Offer Codes first.</p>
+          </div>
+          <div>
+            <label for="k-discount">Discount %</label>
+            <input type="number" id="k-discount" placeholder="15" min="5" max="50" value="15">
+          </div>
+        </div>
+      </div>
+
+      <div class="form-field">
+        <label>Country / region</label>
+        <select id="k-country" required>
+          <option value="" disabled selected>Select country</option>
+          <optgroup label="Scandinavia">
+            <option value="NO">Norway 🇳🇴</option>
+            <option value="SE">Sweden 🇸🇪</option>
+            <option value="DK">Denmark 🇩🇰</option>
+            <option value="FI">Finland 🇫🇮</option>
+          </optgroup>
+          <optgroup label="Europe">
+            <option value="EU">Other EU country</option>
+            <option value="UK">United Kingdom 🇬🇧</option>
+          </optgroup>
+          <optgroup label="Rest of world">
+            <option value="US">United States 🇺🇸</option>
+            <option value="CA">Canada 🇨🇦</option>
+            <option value="AU">Australia 🇦🇺</option>
+            <option value="OTHER">Other</option>
+          </optgroup>
+        </select>
+      </div>
+
+      <hr class="form-divider">
+
+      <div class="form-field">
+        <label>Platform(s)</label>
+        <div class="pill-group">
+          <div class="pill-option"><input type="checkbox" id="p-ig" name="platform" value="Instagram"><label for="p-ig">📷 Instagram</label></div>
+          <div class="pill-option"><input type="checkbox" id="p-tt" name="platform" value="TikTok"><label for="p-tt">🎵 TikTok</label></div>
+          <div class="pill-option"><input type="checkbox" id="p-yt" name="platform" value="YouTube"><label for="p-yt">▶️ YouTube</label></div>
+          <div class="pill-option"><input type="checkbox" id="p-fb" name="platform" value="Facebook"><label for="p-fb">👥 Facebook</label></div>
+          <div class="pill-option"><input type="checkbox" id="p-bl" name="platform" value="Blog"><label for="p-bl">✍️ Blog</label></div>
+          <div class="pill-option"><input type="checkbox" id="p-nl" name="platform" value="Newsletter"><label for="p-nl">📧 Newsletter</label></div>
+          <div class="pill-option"><input type="checkbox" id="p-pod" name="platform" value="Podcast"><label for="p-pod">🎙 Podcast</label></div>
+        </div>
+      </div>
+
+      <div class="form-field">
+        <label>Tier</label>
+        <div class="tier-options">
+          <div class="tier-opt">
+            <input type="radio" name="tier" id="tier1" value="1" checked>
+            <label for="tier1">⭐ Tier 1 — Direct</label>
+          </div>
+          <div class="tier-opt">
+            <input type="radio" name="tier" id="tier2" value="2">
+            <label for="tier2">🔗 Tier 2 — Recruited</label>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-field" id="recruitedByField">
+        <label for="k-recruiter">Recruited by</label>
+        <input type="text" id="k-recruiter" placeholder="e.g. AMB-001 / Sara Nilsson" autocomplete="off">
+      </div>
+
+      <button type="submit" class="btn-generate">Generate ambassador kit →</button>
+    </form>
+  </div>
+
+  <!-- OUTPUT -->
+  <div class="output-panel" id="outputPanel">
+    <div class="output-empty" id="emptyState">
+      <div class="ico">🎁</div>
+      <h3>Kit appears here</h3>
+      <p>Fill in the form and hit Generate to get the QR code, welcome email, and spreadsheet row.</p>
+    </div>
+  </div>
+
+</div>
+</div>
+</main>
+
+<script src="https://cdn.jsdelivr.net/npm/qrcode/build/qrcode.min.js"></script>
+<script>
+(function () {
+
+/* ── Theme ── */
+var KEY = 'ff-web-theme';
+var root = document.documentElement;
+function autoTheme() {
+  var h = new Date().getHours();
+  if (h >= 21 || h < 6) return 'dark';
+  if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) return 'dark';
+  return 'light';
+}
+try {
+  var saved = localStorage.getItem(KEY);
+  root.setAttribute('data-theme', (saved === 'light' || saved === 'dark') ? saved : autoTheme());
+} catch(e) { root.setAttribute('data-theme', autoTheme()); }
+document.getElementById('themeToggle').addEventListener('click', function () {
+  var next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+  root.setAttribute('data-theme', next);
+  try { localStorage.setItem(KEY, next); } catch(e) {}
+});
+
+/* ── Tier toggle ── */
+document.querySelectorAll('input[name="tier"]').forEach(function(r) {
+  r.addEventListener('change', function() {
+    document.getElementById('recruitedByField').style.display = r.value === '2' ? 'block' : 'none';
+  });
+});
+
+/* ── Ambassador ID counter (localStorage) ── */
+function nextAmbId() {
+  var n = parseInt(localStorage.getItem('ff-amb-counter') || '0', 10) + 1;
+  localStorage.setItem('ff-amb-counter', n);
+  return 'AMB-' + String(n).padStart(3, '0');
+}
+
+/* ── Payout copy based on country ── */
+function payoutText(country) {
+  if (country === 'NO') {
+    return 'We pay via Vipps or Norwegian bank transfer (IBAN/BIC).\nSend your invoice to support@tryfeedflow.app by the 5th — include your bank details.';
+  }
+  if (country === 'SE' || country === 'DK' || country === 'FI') {
+    return 'We pay via bank transfer (IBAN/BIC).\nSend your invoice to support@tryfeedflow.app by the 5th — include your bank details.';
+  }
+  return 'We pay via PayPal or Wise.\nSend your invoice to support@tryfeedflow.app by the 5th — include your PayPal email or Wise account details.';
+}
+
+/* ── Disclosure copy based on country ── */
+function disclosureText(country) {
+  if (country === 'NO') return 'Norwegian marketing rules (Markedsføringsloven) require you to clearly mark affiliate content.\nUse #ad or #samarbeid on every post where you use the code.';
+  if (country === 'SE') return 'Swedish marketing rules (Marknadsföringslagen) require clear disclosure.\nUse #ad or #reklam on every post where you use the code.';
+  if (country === 'DK') return 'Danish marketing rules require clear disclosure.\nUse #ad or #reklame on every post where you use the code.';
+  if (country === 'FI') return 'Finnish marketing rules require clear disclosure.\nUse #ad or #mainos on every post where you use the code.';
+  if (country === 'UK') return 'ASA rules require clear disclosure. Use #ad on every post where you use the code.';
+  if (country === 'EU') return 'EU marketing rules require clear disclosure. Use #ad or the equivalent in your country on every post.';
+  return 'FTC / ASA rules require clear disclosure. Use #ad on every post where you use your code.';
+}
+
+/* ── Build email body ── */
+function buildEmail(data) {
+  var firstName = data.name.split(' ')[0];
+  var redeemUrl = 'https://apps.apple.com/redeem?code=' + data.code;
+  var shareUrl = 'https://tryfeedflow.app/?via=' + data.code;
+
+  return [
+    'Hi ' + firstName + ',',
+    '',
+    "You're in! Here's everything you need to get started.",
+    '',
+    'YOUR PROMO CODE: ' + data.code,
+    'Your followers get ' + data.discount + '% off when they use this code at checkout.',
+    '',
+    'HOW THEY USE IT:',
+    '• In the App Store → search “Feed Flow!” → tap price → enter ' + data.code,
+    '• Direct redemption link: ' + redeemUrl,
+    '',
+    'YOUR QR CODE:',
+    '[Attached — perfect for Instagram Stories, Reels, and TikTok]',
+    '',
+    'YOUR SHARE LINK (for bio / blog / newsletter / podcast notes):',
+    shareUrl,
+    '',
+    'YOUR EARNINGS:',
+    '• 25% of net revenue on every sale you drive directly',
+    '• 5% on sales from anyone you recruit into the ambassador program',
+    '',
+    'PAYOUTS:',
+    'Sales reports go out on the 1st of each month.',
+    payoutText(data.country),
+    '',
+    'DISCLOSURE:',
+    disclosureText(data.country),
+    '',
+    data.tier === '2' && data.recruiter ? ('You were referred by: ' + data.recruiter + '\nThey earn a 5% override on your sales — a thank you for bringing you in.\n') : '',
+    "Questions? Just reply to this email — I read everything.",
+    '',
+    'Robin',
+    'Feed Flow!',
+    'support@tryfeedflow.app'
+  ].filter(function(l) { return l !== undefined; }).join('\n');
+}
+
+/* ── Copy helper ── */
+function copyText(text, btn, label) {
+  var orig = btn.innerHTML;
+  navigator.clipboard.writeText(text).then(function() {
+    btn.classList.add('success');
+    btn.innerHTML = '✓ Copied!';
+    setTimeout(function() {
+      btn.classList.remove('success');
+      btn.innerHTML = orig;
+    }, 2200);
+  }).catch(function() {
+    var ta = document.createElement('textarea');
+    ta.value = text;
+    ta.style.position = 'fixed';
+    ta.style.opacity = '0';
+    document.body.appendChild(ta);
+    ta.select();
+    document.execCommand('copy');
+    document.body.removeChild(ta);
+    btn.classList.add('success');
+    btn.innerHTML = '✓ Copied!';
+    setTimeout(function() { btn.classList.remove('success'); btn.innerHTML = orig; }, 2200);
+  });
+}
+
+/* ── Build QR download URL from canvas ── */
+function downloadQR(canvas, code) {
+  var link = document.createElement('a');
+  link.download = 'feedflow-qr-' + code.toLowerCase() + '.png';
+  link.href = canvas.toDataURL('image/png');
+  link.click();
+}
+
+/* ── Main: render output ── */
+function renderKit(data, ambId) {
+  var panel = document.getElementById('outputPanel');
+  var redeemUrl = 'https://apps.apple.com/redeem?code=' + data.code;
+  var shareUrl = 'https://tryfeedflow.app/?via=' + data.code;
+  var emailSubject = 'Welcome to the Feed Flow! ambassador program, ' + data.name.split(' ')[0] + ' 🎉';
+  var emailBody = buildEmail(data);
+
+  // Build date for sheet
+  var now = new Date();
+  var dateStr = now.getFullYear() + '-' + String(now.getMonth()+1).padStart(2,'0') + '-' + String(now.getDate()).padStart(2,'0');
+  var platforms = data.platforms.join(', ') || '—';
+  var recruiterCell = data.tier === '2' && data.recruiter ? data.recruiter : '—';
+  var sheetRow = [ambId, data.name, data.email, data.code, data.discount + '%', 'Tier ' + data.tier, recruiterCell, dateStr, 'active'].join(' | ');
+
+  panel.innerHTML = [
+    // ── QR card
+    '<div class="output-card">',
+    '  <h3>QR code <span class="card-badge">download &amp; attach</span></h3>',
+    '  <div class="qr-wrap">',
+    '    <canvas id="qrCanvas"></canvas>',
+    '    <div class="qr-meta">',
+    '      <p class="qr-url">Encodes: ' + redeemUrl + '</p>',
+    '      <div class="btn-row">',
+    '        <button class="btn-action primary" id="dlQr">&#8595; Download PNG</button>',
+    '      </div>',
+    '      <p style="font-size:12px;color:var(--ink-3);margin-top:12px;line-height:1.5;">400 × 400 px. Attach to the welcome email below. Also works in Stories, Reels, and print.</p>',
+    '    </div>',
+    '  </div>',
+    '</div>',
+
+    // ── Email card
+    '<div class="output-card">',
+    '  <h3>Welcome email <span class="card-badge">copy &amp; send</span></h3>',
+    '  <p class="email-subject-line">Subject: <strong>' + emailSubject + '</strong></p>',
+    '  <pre id="emailBody"></pre>',
+    '  <div class="btn-row" style="margin-top:14px;">',
+    '    <button class="btn-action primary" id="copyEmail">Copy email text</button>',
+    '    <button class="btn-action" id="openMail">Open in mail app</button>',
+    '  </div>',
+    '  <p style="font-size:12px;color:var(--ink-3);margin-top:12px;line-height:1.5;">Attach the QR code PNG before sending. BCC yourself for your records.</p>',
+    '</div>',
+
+    // ── Sheet card
+    '<div class="output-card">',
+    '  <h3>Spreadsheet row <span class="card-badge">paste into tracking sheet</span></h3>',
+    '  <p style="font-size:12px;color:var(--ink-3);margin-bottom:10px;">Columns: id | name | email | code | discount | tier | recruited_by | added | status</p>',
+    '  <div class="sheet-row-wrap"><span id="sheetRow"></span></div>',
+    '  <div class="btn-row">',
+    '    <button class="btn-action" id="copyRow">Copy row</button>',
+    '  </div>',
+    '  <p style="font-size:12px;color:var(--ink-3);margin-top:12px;line-height:1.5;">Ambassador ID <strong>' + ambId + '</strong> auto-incremented. Add remaining columns (sales_mtd, earn_pending, etc.) in the sheet.</p>',
+    '</div>'
+  ].join('\n');
+
+  // Set email body text (safely)
+  document.getElementById('emailBody').textContent = emailBody;
+  document.getElementById('sheetRow').textContent = sheetRow;
+
+  // Generate QR
+  var canvas = document.getElementById('qrCanvas');
+  QRCode.toCanvas(canvas, redeemUrl, {
+    width: 400,
+    margin: 2,
+    color: { dark: '#2F7886', light: '#FFFFFF' }
+  }, function(err) {
+    if (err) { canvas.parentNode.insertAdjacentHTML('beforeend', '<p style="color:red;font-size:13px;">QR error: ' + err + '</p>'); }
+    // Scale display
+    canvas.style.width = '140px';
+    canvas.style.height = '140px';
+  });
+
+  // Download QR
+  document.getElementById('dlQr').addEventListener('click', function() {
+    downloadQR(canvas, data.code);
+  });
+
+  // Copy email
+  document.getElementById('copyEmail').addEventListener('click', function() {
+    copyText(emailBody, this);
+  });
+
+  // Open in mail app
+  document.getElementById('openMail').addEventListener('click', function() {
+    window.location.href = 'mailto:' + encodeURIComponent(data.email)
+      + '?subject=' + encodeURIComponent(emailSubject)
+      + '&body=' + encodeURIComponent(emailBody);
+  });
+
+  // Copy sheet row
+  document.getElementById('copyRow').addEventListener('click', function() {
+    copyText(sheetRow, this);
+  });
+
+  // Scroll output into view on mobile
+  if (window.innerWidth < 960) {
+    panel.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+}
+
+/* ── Form submit ── */
+document.getElementById('kitForm').addEventListener('submit', function(e) {
+  e.preventDefault();
+
+  var name = document.getElementById('k-name').value.trim();
+  var email = document.getElementById('k-email').value.trim();
+  var code = document.getElementById('k-code').value.trim().toUpperCase();
+  var discount = document.getElementById('k-discount').value || '15';
+  var country = document.getElementById('k-country').value;
+  var tier = document.querySelector('input[name="tier"]:checked').value;
+  var recruiter = document.getElementById('k-recruiter').value.trim();
+  var platforms = Array.prototype.slice.call(document.querySelectorAll('input[name="platform"]:checked'))
+    .map(function(cb) { return cb.value; });
+
+  // Validate
+  if (!name) { document.getElementById('k-name').focus(); return; }
+  if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { document.getElementById('k-email').focus(); return; }
+  if (!code) { document.getElementById('k-code').focus(); return; }
+  if (!country) { document.getElementById('k-country').focus(); return; }
+
+  var ambId = nextAmbId();
+  renderKit({ name: name, email: email, code: code, discount: discount, country: country, tier: tier, recruiter: recruiter, platforms: platforms }, ambId);
+});
+
+})();
+</script>
+</body>
+</html>
