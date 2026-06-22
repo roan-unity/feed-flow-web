@@ -219,17 +219,48 @@ footer.ft { border-top: 1px solid var(--border-2); padding: 50px 0 60px; }
 .reveal.d2.in { animation-delay: 0.14s; }
 @media (prefers-reduced-motion: reduce) { .reveal, .reveal.in { animation: none !important; opacity: 1; transform: none; } }
 
+/* Section headers */
+.section-h { font-size: clamp(26px, 3.5vw, 42px); font-weight: 700; margin-top: 14px; }
+.section-sub { font-size: clamp(16px, 2vw, 18px); color: var(--ink-2); line-height: 1.6; margin-top: 14px; max-width: 56ch; }
+
+/* Ambassador kit */
+.kit { padding: 80px 0; background: var(--bg-soft); }
+.kit-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; margin-top: 48px; }
+.kit-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--r-md); padding: 28px 24px; }
+.kit-ico { font-size: 28px; margin-bottom: 14px; }
+.kit-card h3 { font-size: 17px; font-weight: 700; margin-bottom: 10px; }
+.kit-card p { font-size: 14.5px; color: var(--ink-2); line-height: 1.55; }
+.kit-card code { font-family: 'SF Mono', 'Menlo', monospace; background: var(--chip-bg); color: var(--accent); padding: 2px 7px; border-radius: 6px; font-size: 13.5px; font-weight: 600; }
+.launch-note { display: flex; align-items: flex-start; gap: 20px; margin-top: 44px; padding: 24px 28px; background: var(--surface); border: 1px solid var(--border); border-radius: var(--r-md); }
+.launch-badge { flex-shrink: 0; background: var(--chip-bg); color: var(--accent); font-size: 12px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; padding: 5px 12px; border-radius: 999px; white-space: nowrap; margin-top: 2px; }
+.launch-note p { font-size: 15px; color: var(--ink-2); line-height: 1.6; margin: 0; }
+.launch-note p strong { color: var(--ink); }
+
+/* Content angles */
+.angles { padding: 80px 0; }
+.angles-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 48px; }
+.angle-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--r-md); padding: 28px 24px; }
+.angle-tag { display: inline-block; font-size: 11.5px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent); background: var(--chip-bg); padding: 4px 10px; border-radius: 999px; margin-bottom: 12px; }
+.angle-header { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; }
+.angle-ico { font-size: 24px; }
+.angle-card h3 { font-size: 17px; font-weight: 700; }
+.angle-card p { font-size: 14.5px; color: var(--ink-2); line-height: 1.6; }
+
 /* Responsive */
 @media (max-width: 860px) {
   .ms-grid, .how-steps { grid-template-columns: 1fr; }
   .commission-card { grid-template-columns: 1fr; padding: 36px 28px; }
   .apply-inner { grid-template-columns: 1fr; }
+  .kit-grid { grid-template-columns: repeat(2, 1fr); }
+  .angles-grid { grid-template-columns: 1fr; }
   .ft-inner { flex-direction: column; }
   .ft-cols { gap: 48px; }
 }
 @media (max-width: 520px) {
   .wrap { padding: 0 20px; }
   .aff-hero h1 { font-size: 34px; }
+  .kit-grid { grid-template-columns: 1fr; }
+  .launch-note { flex-direction: column; gap: 12px; }
 }
 </style>
 </head>
@@ -319,6 +350,41 @@ footer.ft { border-top: 1px solid var(--border-2); padding: 50px 0 60px; }
   </div>
 </section>
 
+<!-- AMBASSADOR KIT -->
+<section class="kit">
+  <div class="wrap">
+    <div class="kicker reveal">What you get</div>
+    <h2 class="section-h reveal d1">Everything in your kit, ready on day one.</h2>
+    <p class="section-sub reveal d1">Founding ambassadors receive a complete toolkit the moment the app goes live — no chasing, no waiting.</p>
+    <div class="kit-grid">
+      <div class="kit-card reveal">
+        <div class="kit-ico">🏷️</div>
+        <h3>Your promo code</h3>
+        <p>A personal code (e.g. <code>EMMA15</code>) gives your audience a discount at checkout and ties every sale automatically to you.</p>
+      </div>
+      <div class="kit-card reveal d1">
+        <div class="kit-ico">📲</div>
+        <h3>A scannable QR code</h3>
+        <p>Ready-made for Stories, posts, and Reels. One scan goes straight to the discounted App Store listing — no typing, no friction.</p>
+      </div>
+      <div class="kit-card reveal d1">
+        <div class="kit-ico">🔗</div>
+        <h3>Your share link</h3>
+        <p>Drop it anywhere — bio, newsletter, podcast notes, blog post. Every click that converts is credited to you, automatically.</p>
+      </div>
+      <div class="kit-card reveal d2">
+        <div class="kit-ico">📊</div>
+        <h3>A personal dashboard</h3>
+        <p>A private link showing your sales, total earnings, and recruits in real time — so you always know exactly where you stand.</p>
+      </div>
+    </div>
+    <div class="launch-note reveal">
+      <div class="launch-badge">Pre-launch</div>
+      <p>Feed Flow! is in final development and going through App Store submission. Ambassador kits — promo codes, QR codes, and dashboard access — are issued at launch. <strong>Apply now to join the founding cohort and receive yours on day one.</strong></p>
+    </div>
+  </div>
+</section>
+
 <!-- COMMISSION -->
 <section class="commission">
   <div class="wrap">
@@ -344,6 +410,41 @@ footer.ft { border-top: 1px solid var(--border-2); padding: 50px 0 60px; }
             <p>When you refer another affiliate and they make a sale, you earn 5% of that too — a bonus for growing the community.</p>
           </div>
         </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTENT ANGLES -->
+<section class="angles">
+  <div class="wrap">
+    <div class="kicker reveal">What to post</div>
+    <h2 class="section-h reveal d1">The story practically writes itself.</h2>
+    <p class="section-sub reveal d1">These are moments parents share anyway — Feed Flow! gives them a better tool to capture them.</p>
+    <div class="angles-grid">
+      <div class="angle-card reveal">
+        <div class="angle-tag">Milestone journey</div>
+        <div class="angle-header">
+          <span class="angle-ico">📸</span>
+          <h3>Share a real moment</h3>
+        </div>
+        <p>First smile. First steps. First solid food. Feed Flow! lets parents log every milestone with a date, note, and soon a photo — building a keepsake journey right inside the feeding app. Share the moment with your audience and mention how you captured it. The emotional hook is already there; your promo code lives in the caption or bio link.</p>
+      </div>
+      <div class="angle-card reveal d1">
+        <div class="angle-tag">Savings angle</div>
+        <div class="angle-header">
+          <span class="angle-ico">💸</span>
+          <h3>Show what formula actually costs</h3>
+        </div>
+        <p>The savings counter shows exactly how much a family spends on formula — and how much they're saving by not over-preparing bottles. That number is shareable, relatable, and usually surprising. "I saved 340 kr last month" is a caption that writes itself, and it makes the app sell itself.</p>
+      </div>
+      <div class="angle-card reveal d2">
+        <div class="angle-tag">Family sharing</div>
+        <div class="angle-header">
+          <span class="angle-ico">👨‍👩‍👧</span>
+          <h3>Coordinate without the chaos</h3>
+        </div>
+        <p>Up to 5 caregivers share one live feed log — partner, grandparents, childminder, all in sync. No double-logging, no "did she eat?" texts at 3am. A painpoint every family with a baby knows. And it's completely free — a genuinely useful thing to tell your audience about.</p>
       </div>
     </div>
   </div>
@@ -518,13 +619,25 @@ footer.ft { border-top: 1px solid var(--border-2); padding: 50px 0 60px; }
       return;
     }
     var platforms = Array.prototype.slice.call(document.querySelectorAll('input[name="platform"]:checked'))
-      .map(function(cb) { return cb.value; }).join(', ');
+      .map(function(cb) { return cb.value; }).join(', ') || 'not specified';
+    var size = document.getElementById('aff-size').value || 'not specified';
+    var handle = document.getElementById('aff-handle').value.trim() || 'not provided';
+    var note = document.getElementById('aff-note').value.trim() || '';
+    var subject = encodeURIComponent('Ambassador application — ' + name);
+    var body = encodeURIComponent(
+      'Name: ' + name + '\n' +
+      'Email: ' + email + '\n' +
+      'Country: ' + country + '\n' +
+      'Platforms: ' + platforms + '\n' +
+      'Audience size: ' + size + '\n' +
+      'Profile/handle: ' + handle + '\n\n' +
+      'About their audience:\n' + note
+    );
     var btn = this.querySelector('button[type="submit"]');
-    btn.textContent = '✓ Application received — thank you!';
+    btn.textContent = '✓ Opening your mail app — hit send!';
     btn.style.background = 'linear-gradient(132deg, #5FAE73, #2C7A4B)';
     btn.disabled = true;
-    // TODO: send to support@tryfeedflow.app or form backend (e.g. Formspree / Loops)
-    console.log({ name: name, email: email, country: country, platforms: platforms });
+    window.location.href = 'mailto:support@tryfeedflow.app?subject=' + subject + '&body=' + body;
   });
 })();
 </script>
