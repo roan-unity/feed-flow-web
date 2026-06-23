@@ -46,20 +46,119 @@
       "operatingSystem": "iOS 16+",
       "applicationCategory": "HealthApplication",
       "applicationSubCategory": "Baby & Parenting",
+      "inLanguage": ["en","nb"],
       "description": "Baby feeding tracker for iPhone. Log formula, breastfeeding, pumped milk, solid foods and water with smart next-feed predictions, free family sharing for up to 5 people, and a formula savings counter. Tracks the full journey from newborn through toddler. iCloud sync. No servers — your data stays in your iCloud.",
       "url": "https://tryfeedflow.app/",
-      "featureList": ["Formula feeding tracker","Breastfeeding tracker","Pumped milk log","Solid food tracker","Smart next-feed predictions","Free family sharing (up to 5 people)","Formula savings calculator","WHO growth charts","PDF feeding reports","iCloud sync","Multiple children"],
-      "offers": {
-        "@type": "Offer",
-        "price": "0",
-        "priceCurrency": "USD",
-        "availability": "https://schema.org/PreOrder"
-      },
+      "featureList": ["Formula feeding tracker","Breastfeeding tracker","Pumped milk log","Solid food tracker","Smart next-feed predictions","Free family sharing (up to 5 people)","Formula savings calculator","WHO growth charts","PDF feeding reports","iCloud sync","Multiple children","Developmental milestone tracker","Day-ahead feeding planner"],
+      "offers": [
+        {
+          "@type": "Offer",
+          "name": "Free",
+          "price": "0",
+          "priceCurrency": "USD",
+          "availability": "https://schema.org/PreOrder",
+          "description": "Log all feed types, real-time family sharing for up to 5 caregivers, milestone tracking"
+        },
+        {
+          "@type": "Offer",
+          "name": "Personal Monthly",
+          "price": "79",
+          "priceCurrency": "NOK",
+          "availability": "https://schema.org/PreOrder",
+          "description": "7-day forecast, growth charts, formula savings detail, PDF reports, milestone photos"
+        },
+        {
+          "@type": "Offer",
+          "name": "Personal Annual",
+          "price": "399",
+          "priceCurrency": "NOK",
+          "availability": "https://schema.org/PreOrder",
+          "description": "All premium features, 14-day free trial"
+        },
+        {
+          "@type": "Offer",
+          "name": "Lifetime",
+          "price": "799",
+          "priceCurrency": "NOK",
+          "availability": "https://schema.org/PreOrder",
+          "description": "All premium features, one-time purchase, family shareable"
+        }
+      ],
       "author": {
         "@type": "Person",
         "name": "Robin Andersson",
         "email": "support@tryfeedflow.app"
       }
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://tryfeedflow.app/#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Is Feed Flow! free?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. Logging all feed types, real-time family sharing for up to 5 caregivers, and milestone tracking are completely free. The premium Personal plan unlocks 7-day forecasts, growth charts, formula savings detail, and PDF feeding reports."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I track both breastfeeding and formula in the same app?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. Feed Flow! tracks every feed type in one place — formula bottles, breastfeeding (left side, right side, or both), pumped milk, solid foods, and water. The formula savings tracker applies specifically to formula feeds."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How does family sharing work in Feed Flow!?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Up to 5 caregivers — partners, grandparents, childminders — share one live feed log via iCloud. Everyone can log feeds and see updates in real time. No double-logging, no extra accounts, no subscription required for sharing."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does the app predict when my baby will be hungry?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. Feed Flow!'s prediction engine learns your baby's unique feeding rhythm after a few days of logs. It shows a countdown and confidence estimate for the next likely feed, and a Day Ahead planner builds a daily feeding schedule based on recent history."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is my baby's feeding data private and secure?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. Feed Flow! uses Apple iCloud as the data store. Your feeding data is encrypted and stored in your own iCloud account — it never passes through Feed Flow!'s servers. The developer cannot see your data."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can Feed Flow! generate a feeding report for my doctor or paediatrician?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. Premium users can export a PDF feeding report in one tap. It includes daily averages, feed-type breakdown, volume trends, and a time-of-day heatmap — the information paediatric nurses and GPs typically ask for at check-ups."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I track more than one child in Feed Flow!?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. Multi-child support is available on the premium plan. You can switch between children with a single tap."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the best baby feeding tracker app for iPhone?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Feed Flow! is a top-rated baby feeding tracker for iPhone that combines formula, breastfeeding, pumped milk, and solid food logging with smart next-feed predictions, free family sharing for up to 5 caregivers, formula cost tracking, and one-tap PDF reports for paediatric appointments. It is privacy-first — all data stays in your own iCloud."
+          }
+        }
+      ]
     },
     {
       "@type": "Organization",
