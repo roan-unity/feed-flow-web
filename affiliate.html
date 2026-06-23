@@ -465,6 +465,10 @@ footer.ft { border-top: 1px solid var(--border-2); padding: 50px 0 60px; }
       </div>
 
       <div class="form-card reveal">
+        <div id="refBanner" hidden style="display:flex;align-items:center;gap:10px;background:var(--chip-bg);border:1.5px solid rgba(14,109,128,.18);border-radius:12px;padding:11px 16px;margin-bottom:20px;font-size:14px;color:var(--accent);font-weight:600;">
+          <span style="font-size:18px;">🤝</span>
+          <span>Referred by <span id="refCode"></span></span>
+        </div>
         <h3>Apply to join</h3>
         <form id="affiliateForm" novalidate>
           <div class="form-field">
@@ -606,6 +610,20 @@ footer.ft { border-top: 1px solid var(--border-2); padding: 50px 0 60px; }
   requestAnimationFrame(check);
   setTimeout(check, 200);
 
+  /* Referral tracking — read ?ref=CODE from URL, persist in sessionStorage */
+  var refCode = '';
+  try {
+    var urlRef = new URLSearchParams(window.location.search).get('ref');
+    if (urlRef) { sessionStorage.setItem('ff-ref', urlRef.toUpperCase()); }
+    refCode = sessionStorage.getItem('ff-ref') || '';
+  } catch(e) {}
+  if (refCode) {
+    var banner = document.getElementById('refBanner');
+    document.getElementById('refCode').textContent = refCode;
+    banner.hidden = false;
+    banner.style.display = 'flex';
+  }
+
   /* Form */
   document.getElementById('affiliateForm').addEventListener('submit', function (e) {
     e.preventDefault();
@@ -630,7 +648,8 @@ footer.ft { border-top: 1px solid var(--border-2); padding: 50px 0 60px; }
       'Country: ' + country + '\n' +
       'Platforms: ' + platforms + '\n' +
       'Audience size: ' + size + '\n' +
-      'Profile/handle: ' + handle + '\n\n' +
+      'Profile/handle: ' + handle + '\n' +
+      (refCode ? 'Referred by: ' + refCode + '\n' : '') + '\n' +
       'About their audience:\n' + note
     );
     var btn = this.querySelector('button[type="submit"]');
