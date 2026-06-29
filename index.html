@@ -383,6 +383,12 @@ html[data-theme="dark"] .phone { background: linear-gradient(160deg, rgba(255,25
 .phone .screen .img-slot { border: none; background: linear-gradient(160deg, #0d2a3a, #1a4a6a); }
 .phone .screen .img-slot .slot-icon { opacity: 0.6; }
 .phone .screen .img-slot .slot-label { color: rgba(255,255,255,0.5); }
+/* Real product screenshots (staged). Hero phone = full-bleed screen; gallery
+   frames (4/3) float the portrait screen on an ocean wash. */
+.phone .screen .shot { width: 100%; height: 100%; object-fit: cover; display: block; }
+.shot-float { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center;
+  background: linear-gradient(160deg, #2F7886, #0d2a3a); }
+.shot-float img { height: 94%; border-radius: 18px; box-shadow: 0 18px 44px -16px rgba(0,0,0,0.55); }
 
 /* ---------- Section scaffolding ---------- */
 section { position: relative; }
@@ -666,11 +672,8 @@ footer.ft { border-top: 1px solid var(--border-2); padding: 50px 0 60px; }
     <div class="phone">
       <div class="screen">
         <div class="notch"></div>
-        <!-- SCREENSHOT: Main home screen — ocean gradient, feed timeline, "Next feed" prediction card, last feed chip. Best taken after a few logged feeds so the timeline shows real data. -->
-        <div class="img-slot">
-          <span class="slot-icon">📱</span>
-          <span class="slot-label">Main screen<br>Add app screenshot here</span>
-        </div>
+        <img class="shot" src="screens/home.png" alt="Feed Flow! home screen — feed timeline with next-feed prediction and one-tap logging" loading="eager">
+        <!-- staged real screenshot (build 44, showcase seed). Re-shoot final after the live-card wrap fix. -->
       </div>
     </div>
   </div>
@@ -720,8 +723,7 @@ footer.ft { border-top: 1px solid var(--border-2); padding: 50px 0 60px; }
         <div class="tl-node"></div>
         <div class="tl-art">
           <div class="tl-art-frame">
-            <!-- SCREENSHOT: Active bottle logging — the slider at ~150ml, the large round feed button, live session running. Shows the core interaction. -->
-            <div class="img-slot"><span class="slot-icon">🍼</span><span class="slot-label">Bottle logging screen</span></div>
+            <div class="shot-float"><img src="screens/live-logging.png" alt="Active bottle logging — the safe-window timer ring, the amount slider and the one-tap log button"></div>
           </div>
         </div>
       </div>
@@ -743,8 +745,7 @@ footer.ft { border-top: 1px solid var(--border-2); padding: 50px 0 60px; }
         <div class="tl-node"></div>
         <div class="tl-art">
           <div class="tl-art-frame">
-            <!-- SCREENSHOT: Feed timeline showing a mixed day — formula entries + a "Dinner · Banana" solids entry. The green dot + bowl emoji on the timeline row. -->
-            <div class="img-slot"><span class="slot-icon">🥣</span><span class="slot-label">Mixed feeds timeline</span></div>
+            <div class="shot-float"><img src="screens/forecast.png" alt="The day ahead — next feed in ~59 minutes and a calm plan for the day built from your baby's rhythm"></div>
           </div>
         </div>
       </div>
@@ -766,8 +767,7 @@ footer.ft { border-top: 1px solid var(--border-2); padding: 50px 0 60px; }
         <div class="tl-node"></div>
         <div class="tl-art">
           <div class="tl-art-frame">
-            <!-- SCREENSHOT: Analytics tab — the growth chart with WHO percentile curves, or the Baby Report PDF cover. Shows the data depth parents get as the baby grows. -->
-            <div class="img-slot"><span class="slot-icon">📈</span><span class="slot-label">Analytics / growth chart</span></div>
+            <div class="shot-float"><img src="screens/savings.png" alt="Bottle efficiency — see how much formula you used to waste, how much you save now, and the money back"></div>
           </div>
         </div>
       </div>
