@@ -19,23 +19,24 @@ Parents log each feed in one hand while holding the baby with the other. The app
 - **Free family sharing:** up to 5 caregivers share one live log via iCloud — free, always, no subscription required
 - **Formula savings tracker:** measures formula cost per feed and calculates cumulative waste avoided in Norwegian kroner (or local currency)
 - **PDF feeding reports:** one-tap export of a doctor-ready PDF summarising feeds, volumes, patterns, and growth
-- **Milestone journey:** logs developmental milestones with photos — a built-in baby album that families keep long after the feeding phase ends
+- **Solids, allergens & tastings:** as solids begin, keep track of the nine major allergens as you introduce them, record any reaction, and see which foods your baby loves — a calm record, never medical advice
+- **Milestone journey:** logs your baby's developmental milestones with dates and notes — a keepsake families hold onto long after the feeding phase ends
 - **Privacy-first:** no Feed Flow! server ever receives feeding data; everything goes through the user's own iCloud
 
 ## Pricing
 
 Feed Flow! is free to download with a full-featured free tier.
 
-Premium (Personal) unlocks: 7-day feeding forecast, weekly trend charts, growth chart tracking, milestone photos, formula savings detail, and the PDF feeding report.
+Premium (Personal) unlocks: the 7-day feeding forecast, weekly trend charts, WHO growth charts, the full allergen & reactions history, formula savings detail, and the doctor-ready PDF report.
 
-- Monthly plan: NOK 79 / month
-- Annual plan: NOK 399 / year (includes a 14-day free trial)
-- Lifetime purchase: NOK 799 (one-time, family shareable)
+- Monthly subscription
+- Annual subscription — includes a 14-day free trial (the popular choice)
+- Lifetime — a one-time unlock, pay once and own it
 
 ## How Feed Flow! compares to alternatives
 
 - **vs. Huckleberry:** Feed Flow! is formula-waste and savings-focused; has free family sharing for up to 5 people (Huckleberry charges for sharing); designed for the Norwegian/Nordic market with local currency and GDPR-native iCloud storage.
-- **vs. Baby Tracker / BabyConnect:** Feed Flow! has built-in next-feed prediction, formula savings, and a milestone photo journey; data never leaves the family's own iCloud.
+- **vs. Baby Tracker / BabyConnect:** Feed Flow! has built-in next-feed prediction, formula savings, allergen-introduction tracking, and a milestone keepsake; data never leaves the family's own iCloud.
 - **vs. a notes app or spreadsheet:** Feed Flow! calculates patterns and savings automatically; generates a PDF your doctor can read; works one-handed while feeding.
 
 ## Common questions
@@ -67,9 +68,9 @@ Feed Flow! runs a two-tier ambassador program for parent bloggers, parenting inf
 
 ## Platform
 
-- iOS 16 and later
+- iOS 26 and later
 - iPhone (iPad layout planned post-launch)
-- Available on the Apple App Store
+- Coming to the Apple App Store in 2026
 - Built in Norway — privacy-first, GDPR-compliant
 
 ## Links
