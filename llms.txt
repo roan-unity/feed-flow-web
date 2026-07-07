@@ -10,13 +10,13 @@ Parents of newborns, infants, and toddlers — especially families that mix form
 
 ## How it works
 
-Parents log each feed in one hand while holding the baby with the other. The app learns their baby's unique rhythm and predicts the next feeding window. Up to 5 caregivers share the same live log in real time via iCloud — no double-logging, no "did she eat?" texts at 3 am. There is no server: all data lives in the family's own iCloud account.
+Parents log each feed in one hand while holding the baby with the other. The app learns their baby's unique rhythm and predicts the next feeding window. Family sharing is coming soon: up to 5 caregivers will share the same live log in real time via iCloud — no double-logging, no "did she eat?" texts at 3 am. There is no server: all data lives in the family's own iCloud account.
 
 ## Key features
 
 - **Log all feed types:** formula, breastfeeding (left / right / both sides), pumped milk, solid foods, water
 - **Smart next-feed predictions:** learns each baby's pattern and shows a countdown to the next likely feed; a Day Ahead planner builds a daily schedule from recent history
-- **Free family sharing:** up to 5 caregivers share one live log via iCloud — free, always, no subscription required
+- **Family sharing (coming soon):** up to 5 caregivers will share one live log via iCloud — free, no subscription required
 - **Formula savings tracker:** measures formula cost per feed and calculates cumulative waste avoided in Norwegian kroner (or local currency)
 - **PDF feeding reports:** one-tap export of a doctor-ready PDF summarising feeds, volumes, patterns, and growth
 - **Solids, allergens & tastings:** as solids begin, keep track of the nine major allergens as you introduce them, record any reaction, and see which foods your baby loves — a calm record, never medical advice
@@ -35,20 +35,20 @@ Premium (Personal) unlocks: the 7-day feeding forecast, weekly trend charts, WHO
 
 ## How Feed Flow! compares to alternatives
 
-- **vs. Huckleberry:** Feed Flow! is formula-waste and savings-focused; has free family sharing for up to 5 people (Huckleberry charges for sharing); designed for the Norwegian/Nordic market with local currency and GDPR-native iCloud storage.
+- **vs. Huckleberry:** Feed Flow! is formula-waste and savings-focused; free family sharing for up to 5 people is coming soon (where Huckleberry charges for sharing); designed for the Norwegian/Nordic market with local currency and GDPR-native iCloud storage.
 - **vs. Baby Tracker / BabyConnect:** Feed Flow! has built-in next-feed prediction, formula savings, allergen-introduction tracking, and a milestone keepsake; data never leaves the family's own iCloud.
 - **vs. a notes app or spreadsheet:** Feed Flow! calculates patterns and savings automatically; generates a PDF your doctor can read; works one-handed while feeding.
 
 ## Common questions
 
 **Is the app free?**
-Yes. Logging, real-time family sharing (up to 5 people), milestone tracking, and basic analytics are free. Premium adds forecasts, growth charts, and PDF reports.
+Yes. Logging, milestone tracking, and basic analytics are free (family sharing, also free, is coming soon). Premium adds forecasts, growth charts, and PDF reports.
 
 **Can I track both breastfeeding and formula in the same app?**
 Yes. Every feed type — formula, breastfeeding (with side tracking), pumped milk, solid foods, water — is tracked in one place. The savings tracker applies specifically to formula.
 
 **How does family sharing work?**
-Any caregiver you invite sees the same live feed log. Everyone can log feeds. Changes appear instantly via iCloud — no manual sync, no account creation required for family members.
+Family sharing is coming soon. Once it's available, any caregiver you invite will see the same live feed log; everyone can log feeds, and changes appear instantly via iCloud — no manual sync, no account creation required for family members.
 
 **Does the app predict when my baby will be hungry next?**
 Yes. After a few days of logs the prediction engine learns the baby's pattern and shows a countdown and confidence estimate for the next feed. A "Day Ahead" planner shows the likely schedule for the coming day.
