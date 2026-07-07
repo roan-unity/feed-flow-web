@@ -38,10 +38,10 @@
       "@type": "SoftwareApplication",
       "@id": "https://tryfeedflow.app/#app",
       "name": "Feed Flow!",
-      "operatingSystem": "iOS 16+",
+      "operatingSystem": "iOS 26+",
       "applicationCategory": "HealthApplication",
       "applicationSubCategory": "Baby & Parenting",
-      "inLanguage": ["en","nb"],
+      "inLanguage": ["en"],
       "description": "The calm, capable baby feeding tracker for iPhone. Log formula, breastfeeding, pumped milk, solids and water; FlowCast learns your baby's rhythm and predicts the next feed; safe-window timers tell you whether a prepared bottle is still good; plus analytics, growth tracking, doctor-ready reports and a formula-savings counter. From newborn through toddler. iCloud sync — your data stays in your iCloud.",
       "url": "https://tryfeedflow.app/",
       "featureList": ["Formula feeding tracker","Breastfeeding tracker","Pumped milk log","Solid food tracker","Allergen introduction tracker","Food tastings and variety journal","FlowCast next-feed predictions","Safe-window bottle timers","Formula savings calculator","Feeding analytics and normal ranges","WHO growth charts","PDF feeding reports","iCloud sync","Multiple children","Developmental milestone tracker","Day-ahead feeding planner"],
@@ -92,8 +92,8 @@ html[data-theme="light"] {
   --bg-soft:  #EFF7F8;
   --surface:  #FFFFFF;
   --ink:      #0F2B35;
-  --ink-2:    rgba(15,43,53,0.64);
-  --ink-3:    rgba(15,43,53,0.42);
+  --ink-2:    rgba(15,43,53,0.66);
+  --ink-3:    rgba(15,43,53,0.56);
   --accent:   #0E6D80;
   --border:   rgba(15,43,53,0.09);
   --border-2: rgba(15,43,53,0.06);
@@ -113,8 +113,8 @@ html[data-theme="dark"] {
   --bg-soft:  #0A1828;
   --surface:  rgba(255,255,255,0.045);
   --ink:      #EDF6F8;
-  --ink-2:    rgba(237,246,248,0.66);
-  --ink-3:    rgba(237,246,248,0.42);
+  --ink-2:    rgba(237,246,248,0.68);
+  --ink-3:    rgba(237,246,248,0.56);
   --accent:   #79D2E2;
   --border:   rgba(255,255,255,0.11);
   --border-2: rgba(255,255,255,0.07);
@@ -527,7 +527,7 @@ footer.ft { border-top: 1px solid var(--border-2); padding: 54px 0 60px; }
   <div class="wrap">
     <div class="eyebrow reveal"><span class="dot"></span> Baby feeding tracker · coming soon to iPhone</div>
     <h1 class="reveal d1">Everything you need to feed your baby, <span class="grad">calmly.</span></h1>
-    <p class="sub reveal d2">Feed Flow! is the simple, quietly powerful app that handles it all — when the next feed's due, how much to prepare, whether a bottle's still good, how your baby is growing — so you can stop second-guessing and just be with them.</p>
+    <p class="sub reveal d2">Feed Flow! is the simple, quietly powerful app that handles it all — when the next feed's due, how much to prepare, whether a bottle's still good, how much formula you're not wasting, how your baby is growing — so you can stop second-guessing and just be with them.</p>
     <div class="hero-cta reveal d2">
       <a href="beta.html" class="btn btn-primary">
         <svg class="apple" viewBox="0 0 24 24" fill="currentColor"><path d="M16.4 12.6c0-2.3 1.9-3.4 2-3.5-1.1-1.6-2.8-1.8-3.4-1.8-1.4-.1-2.8.8-3.5.8-.7 0-1.9-.8-3.1-.8-1.6 0-3 .9-3.8 2.4-1.6 2.8-.4 7 1.2 9.3.8 1.1 1.7 2.4 2.9 2.3 1.2-.05 1.6-.75 3-.75s1.8.75 3 .73c1.2-.02 2-1.1 2.8-2.3.5-.7.9-1.5 1.2-2.3-2.6-1-2.4-3.5-2.4-3.6zM14.2 5.6c.6-.8 1.1-1.9 1-3-.9.04-2 .6-2.7 1.4-.6.7-1.1 1.8-1 2.8 1 .1 2.1-.5 2.7-1.2z"/></svg>
@@ -653,6 +653,62 @@ footer.ft { border-top: 1px solid var(--border-2); padding: 54px 0 60px; }
   </div>
 </section>
 
+<!-- ============ FOOD STORY (solids · allergens · tastings) ============ -->
+<style>
+.foodstory { background: var(--bg-soft); }
+.food-grid { display:grid; grid-template-columns: 1.02fr 1fr; gap:52px; align-items:center; }
+@media (max-width: 860px){ .food-grid{ grid-template-columns:1fr; gap:34px; } }
+.food-card { background:var(--surface); border:1px solid var(--border); border-radius:var(--r-lg); padding:28px 28px 24px; box-shadow:var(--shadow-sm); }
+.food-card h4 { font-size:12px; font-weight:800; letter-spacing:0.5px; text-transform:uppercase; color:var(--ink-2); margin:0 0 3px; }
+.food-card .fc-sub { font-size:13px; color:var(--ink-3); margin-bottom:16px; }
+.allergen-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:9px; }
+.al-tile { display:flex; flex-direction:column; align-items:center; gap:4px; padding:12px 6px; border-radius:14px; background:var(--bg-soft); border:1px solid var(--border-2); position:relative; }
+.al-tile.done { background:rgba(95,174,115,0.13); border-color:rgba(95,174,115,0.38); }
+.al-tile .em { font-size:23px; line-height:1; }
+.al-tile.pending .em { opacity:0.38; }
+.al-tile .nm { font-size:11px; font-weight:700; color:var(--ink-2); }
+.al-tile.pending .nm { color:var(--ink-3); }
+.al-tile .rx { position:absolute; top:7px; right:7px; width:8px; height:8px; border-radius:50%; background:var(--feed-pumped); }
+.fc-count { font-size:12.5px; font-weight:800; color:var(--feed-solid); margin:14px 0 22px; }
+.taste-row { display:flex; flex-wrap:wrap; gap:7px; }
+.taste-chip { font-size:12px; font-weight:600; color:var(--ink-2); background:var(--bg-soft); border:1px solid var(--border-2); border-radius:999px; padding:6px 11px; }
+</style>
+<section class="foodstory" id="food">
+  <div class="wrap">
+    <div class="food-grid">
+      <div>
+        <div class="kicker reveal">Solids · introduce foods with confidence</div>
+        <h2 class="reveal d1">When food gets real, stay calm.</h2>
+        <p class="lede reveal d2">As weaning begins, Feed Flow! grows right alongside you. Log meals food by food, keep track of the nine major allergens as you introduce them, and note any reaction the moment it happens. See the tastes your baby loves — and what's new this week. A calm record you'll want to keep — never medical advice.</p>
+        <div class="beat-tags reveal d3" style="margin-top:20px;">
+          <span class="beat-tag"><span class="fd" style="background:var(--feed-solid)"></span>Allergens, tracked as you go</span>
+          <span class="beat-tag"><span class="fd" style="background:var(--feed-breast)"></span>Loved · liked · meh · refused</span>
+        </div>
+      </div>
+      <div class="food-card reveal d1" aria-hidden="true">
+        <h4>Allergen progress</h4>
+        <div class="fc-sub">The nine majors, as you introduce them</div>
+        <div class="allergen-grid">
+          <div class="al-tile done"><span class="em">🥚</span><span class="nm">Egg</span></div>
+          <div class="al-tile done"><span class="em">🥜</span><span class="nm">Peanut</span></div>
+          <div class="al-tile done"><span class="em">🌾</span><span class="nm">Wheat</span></div>
+          <div class="al-tile done"><span class="em">🥛</span><span class="nm">Milk</span><span class="rx"></span></div>
+          <div class="al-tile pending"><span class="em">🐟</span><span class="nm">Fish</span></div>
+          <div class="al-tile pending"><span class="em">🫘</span><span class="nm">Soy</span></div>
+        </div>
+        <div class="fc-count">4 of 9 introduced · 1 gentle reaction noted</div>
+        <h4>Tastings &amp; variety</h4>
+        <div class="taste-row">
+          <span class="taste-chip">😍 Loved · Avocado</span>
+          <span class="taste-chip">🙂 Liked · Oats</span>
+          <span class="taste-chip">🙅 Refused · Broccoli</span>
+          <span class="taste-chip">✨ New this week · Mango</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ============ FEATURES ============ -->
 <section class="features" id="features">
   <div class="wrap">
@@ -698,8 +754,8 @@ footer.ft { border-top: 1px solid var(--border-2); padding: 54px 0 60px; }
       </div>
       <div class="feat-card reveal d1">
         <div class="feat-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-6.5-4.3-6.5-9.2A6.5 6.5 0 0 1 12 5.5a6.5 6.5 0 0 1 6.5 6.3C18.5 16.7 12 21 12 21z"/><path d="M9 11.6l2 2 4-4"/></svg></div>
-        <h3>Introduce foods with confidence</h3>
-        <p>As solids begin, keep track of the nine major allergens as you introduce them, note any reaction, and see the foods your baby loves. A calm record — never medical advice.</p>
+        <h3>Reassurance in the early days</h3>
+        <p>In those first weeks, Feed Flow! gently keeps an eye on early weight change against typical newborn patterns — calm reassurance when you need it most. Always free, never a diagnosis.</p>
       </div>
     </div>
   </div>

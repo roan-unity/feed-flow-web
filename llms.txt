@@ -10,7 +10,7 @@ Parents of newborns, infants, and toddlers — especially families that mix form
 
 ## How it works
 
-Parents log each feed in one hand while holding the baby with the other. The app learns their baby's unique rhythm and predicts the next feeding window. Family sharing is coming soon: up to 5 caregivers will share the same live log in real time via iCloud — no double-logging, no "did she eat?" texts at 3 am. There is no server: all data lives in the family's own iCloud account.
+Parents log each feed in one hand while holding the baby with the other. The app learns their baby's unique rhythm and predicts the next feeding window. There is no server: all data lives in the family's own iCloud account. (Family sharing for up to 5 caregivers is coming soon.)
 
 ## Key features
 
@@ -27,7 +27,7 @@ Parents log each feed in one hand while holding the baby with the other. The app
 
 Feed Flow! is free to download with a full-featured free tier.
 
-Premium (Personal) unlocks: the 7-day feeding forecast, weekly trend charts, WHO growth charts, the full allergen & reactions history, formula savings detail, and the doctor-ready PDF report.
+Premium (Personal) unlocks: the 7-day feeding forecast, weekly trend charts, WHO growth charts, formula savings detail, and the doctor-ready PDF report.
 
 - Monthly subscription
 - Annual subscription — includes a 14-day free trial (the popular choice)
@@ -35,7 +35,7 @@ Premium (Personal) unlocks: the 7-day feeding forecast, weekly trend charts, WHO
 
 ## How Feed Flow! compares to alternatives
 
-- **vs. Huckleberry:** Feed Flow! is formula-waste and savings-focused; free family sharing for up to 5 people is coming soon (where Huckleberry charges for sharing); designed for the Norwegian/Nordic market with local currency and GDPR-native iCloud storage.
+- **vs. Huckleberry:** Feed Flow! is formula-waste and savings-focused, with allergen-introduction tracking and a doctor-ready PDF; designed for the Norwegian/Nordic market with local currency and GDPR-native iCloud storage (data stays in the user's own iCloud).
 - **vs. Baby Tracker / BabyConnect:** Feed Flow! has built-in next-feed prediction, formula savings, allergen-introduction tracking, and a milestone keepsake; data never leaves the family's own iCloud.
 - **vs. a notes app or spreadsheet:** Feed Flow! calculates patterns and savings automatically; generates a PDF your doctor can read; works one-handed while feeding.
 
