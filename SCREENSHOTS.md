@@ -4,6 +4,23 @@
 > actual app on a Mac/simulator — they can't be produced from the web repo. Drop each file into
 > `screens/` at the path below; the HTML already references them.
 
+## App Store order & best practice (research-backed, 2026)
+
+The **first 3 screenshots drive ~60–70% of installs** and the first 2 show in search results — so
+order matters more than count. **Upload 6 (not fewer)** — 6–8 outperforms the minimum. Lead with the
+benefit/outcome, not UI. Keep captions short + benefit-led + readable at thumbnail size (squint test).
+
+**Canonical order (matches the website gallery `index.html#screens`):**
+1. **Savings** — hero (the money hook + our ASO lead). "See the formula you're not wasting."
+2. **Calm logging** — the heart. "One slider. One smart button."
+3. **Food story** — the differentiator. "Introduce foods with confidence."
+4. **FlowCast** — "Never miss a feed."
+5. **Report** — "Doctor-ready in one tap."
+6. **Themes** — personalization (users want to see it). "Calm, in your colour."
+
+Sources: first-3 = ~60–70% of conversion, benefit heroes +45%, 6–8 shots +35% engagement, show
+dark-mode/themes — apptweak / Screenhance / AppScreenshotStudio 2026.
+
 ## Capture specs (apply to all)
 - **Device:** iPhone 17 simulator (matches current frames), portrait.
 - **Content:** a realistic but tidy state — a baby named e.g. "Mila", a few days of data, no debug/placeholder text. Match the calm tone (no alarming numbers).
