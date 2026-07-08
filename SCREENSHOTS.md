@@ -34,6 +34,23 @@
 > tastings), not a screenshot — so it looks complete today without any capture. `solids.jpg` /
 > `allergens.jpg` are only needed if you later want to convert it (or add) a device-frame beat.
 
+## Design targets → real captures (match these)
+
+The polished frames in `marketing/mockups/` are the **visual target** for the gallery section
+(`index.html#screens`) and the App Store. They're representative mockups; the App Store should also
+carry **real captures matched to each**. Map:
+
+| Mockup (target) | Real capture to take | The one detail to match |
+|---|---|---|
+| `mockups/savings.png` | Savings/efficiency screen | money-saved hero + efficiency bars |
+| `mockups/flowcast.png` | Today → Looking ahead | next-feed ring + day-ahead rows |
+| `mockups/logging.png` | Home / Today | milk-today + live timeline + slider & button |
+| `mockups/food-story.png` | Solids journal | smoothie meal + "X of 9" allergens + tastings |
+| `mockups/report.png` | Growth + report | weight on WHO bands + Create Report |
+
+When the real captures exist, swap the `<img src="marketing/mockups/…">` in the gallery for the real
+files (or keep mockups as the polished App-Store set and use real ones in the device-frame beats).
+
 ## Not to capture / don't market (per POSITIONING decisions)
 - **Family sharing** — postponed; site says "coming soon". No sharing screenshot.
 - **Milestone photos** — not shipped; no photo screenshots.
