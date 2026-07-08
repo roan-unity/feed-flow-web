@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<!-- Gift OG card source (1200×630). Rendered to /og-gift.png via headless Chrome:
+     chrome --headless --screenshot --window-size=1200,630 og-src/gift-card.html
+     No 30-day / offer claim — honest with today's reality (the app + sharing are free). -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@700;800&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { width: 1200px; height: 630px; overflow: hidden; }
+  .card {
+    width: 1200px; height: 630px; position: relative;
+    background: linear-gradient(132deg, #58A9B3 0%, #2F7886 48%, #1C5E6B 100%);
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    font-family: "Baloo 2", system-ui, -apple-system, sans-serif;
+    color: #fff; text-align: center;
+  }
+  .card::after {
+    content: ""; position: absolute; inset: 0;
+    background: linear-gradient(180deg, rgba(0,0,0,0.06), rgba(0,0,0,0.22));
+  }
+  .inner { position: relative; z-index: 1; display: flex; flex-direction: column; align-items: center; }
+  .eyebrow {
+    font-size: 30px; font-weight: 700; letter-spacing: 0.04em;
+    background: rgba(255,255,255,0.16); border: 1px solid rgba(255,255,255,0.25);
+    padding: 10px 22px; border-radius: 999px; margin-bottom: 30px;
+  }
+  .mark { width: 132px; height: 132px; margin-bottom: 26px; filter: drop-shadow(0 12px 30px rgba(0,0,0,0.25)); }
+  .wordmark { font-size: 86px; font-weight: 800; letter-spacing: -0.02em; line-height: 1; }
+  .wordmark .bang { color: #FF8C6A; }
+  .tagline { font-size: 31px; font-weight: 700; opacity: 0.82; margin-top: 18px; }
+  .url { position: absolute; bottom: 34px; z-index: 1; font-size: 24px; font-weight: 700; opacity: 0.7; letter-spacing: 0.02em; }
+  .wave { position: absolute; left: 0; right: 0; bottom: 0; z-index: 0; }
+</style>
+</head>
+<body>
+<div class="card">
+  <div class="inner">
+    <div class="eyebrow">🎁&nbsp;&nbsp;A gift from a friend</div>
+    <svg class="mark" viewBox="0 0 96 96" xmlns="http://www.w3.org/2000/svg">
+      <rect width="96" height="96" rx="22" fill="#2F7886"/>
+      <rect x="20" y="28" width="56" height="62" rx="26" fill="#fff"/>
+      <path d="M8 73 Q36 58 48 73 Q60 58 96 73 L96 96 H8 Z" fill="#FF8C6A"/>
+      <ellipse cx="48" cy="12" rx="10" ry="10" fill="#fff"/>
+    </svg>
+    <div class="wordmark">Feed Flow<span class="bang">!</span></div>
+    <div class="tagline">Free to log every feed — and share with family.</div>
+  </div>
+  <svg class="wave" viewBox="0 0 1200 120" preserveAspectRatio="none" width="1200" height="120">
+    <path d="M0 70 C 200 20, 400 20, 600 60 C 800 100, 1000 100, 1200 56 L1200 120 L0 120 Z" fill="#FF8C6A" opacity="0.12"/>
+  </svg>
+  <div class="url">tryfeedflow.app</div>
+</div>
+</body>
+</html>
