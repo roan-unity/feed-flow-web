@@ -4,6 +4,14 @@
 > actual app on a Mac/simulator — they can't be produced from the web repo. Drop each file into
 > `screens/` at the path below; the HTML already references them.
 
+## Roadmap (parked — do at launch)
+
+- **US / imperial localized screenshot set.** The base set is metric + currency-neutral (universal,
+  covers most markets). For the US App Store *localization*, produce an imperial variant of the **2
+  frames that show units** — `02-logging` (ml → oz) and `05-report` (kg/cm → lb/in). The other four
+  are identical. Upload as a US-English localized set in App Store Connect. Parked until launch
+  (Robin, 2026-07-08).
+
 ## App Store order & best practice (research-backed, 2026)
 
 The **first 3 screenshots drive ~60–70% of installs** and the first 2 show in search results — so
