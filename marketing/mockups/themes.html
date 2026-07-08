@@ -1,59 +1,72 @@
 <!DOCTYPE html><html><head><meta charset="UTF-8"><link rel="stylesheet" href="base.css">
 <style>
-.themes-row{position:absolute;top:1050px;left:0;right:0;display:flex;justify-content:center;align-items:center;}
-.mini{width:356px;height:770px;border-radius:60px;background:#0B1C26;padding:15px;
-  box-shadow:0 40px 90px rgba(28,94,107,0.28);position:relative;}
-.mini.l{transform:rotate(-7deg) translate(64px,26px) scale(0.93);z-index:1;}
-.mini.c{z-index:3;}
-.mini.r{transform:rotate(7deg) translate(-64px,26px) scale(0.93);z-index:1;}
-.ms{width:100%;height:100%;border-radius:47px;overflow:hidden;position:relative;padding:52px 24px 26px;display:flex;flex-direction:column;}
-.mnotch{position:absolute;top:18px;left:50%;transform:translateX(-50%);width:110px;height:28px;background:#0B1C26;border-radius:15px;z-index:2;}
-.mhd{display:flex;align-items:center;gap:10px;color:#fff;font-size:25px;font-weight:800;margin-bottom:18px;}
-.mav{width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:19px;font-weight:800;color:#fff;}
-.mcard{background:rgba(255,255,255,0.12);border:1px solid rgba(255,255,255,0.18);border-radius:26px;padding:20px 22px;margin-bottom:15px;}
-.mlabel{color:rgba(255,255,255,0.62);font-size:19px;font-weight:700;}
-.mbig{color:#fff;font-size:54px;font-weight:800;letter-spacing:-1px;margin:3px 0 14px;}
-.mbig .u{font-size:24px;opacity:0.6;}
-.mtrack{height:15px;border-radius:8px;background:rgba(255,255,255,0.13);overflow:hidden;}
+.themes-row{position:absolute;top:920px;left:0;right:0;height:900px;}
+.mini{position:absolute;top:0;left:50%;margin-left:-162px;width:324px;height:700px;border-radius:56px;
+  background:#0B1C26;padding:14px;box-shadow:0 38px 84px rgba(28,94,107,0.30);}
+.mini.a{transform:translateX(-400px) translateY(58px) rotate(-13deg) scale(0.84);z-index:1;}
+.mini.b{transform:translateX(-142px) translateY(4px) rotate(-5deg) scale(0.99);z-index:4;}
+.mini.c{transform:translateX(142px) translateY(4px) rotate(5deg) scale(0.96);z-index:3;}
+.mini.d{transform:translateX(400px) translateY(58px) rotate(13deg) scale(0.84);z-index:2;}
+.ms{width:100%;height:100%;border-radius:44px;overflow:hidden;position:relative;padding:48px 22px 22px;display:flex;flex-direction:column;}
+.mnotch{position:absolute;top:16px;left:50%;transform:translateX(-50%);width:100px;height:26px;background:#0B1C26;border-radius:14px;z-index:2;}
+.mhd{display:flex;align-items:center;gap:10px;color:#fff;font-size:24px;font-weight:800;margin-bottom:16px;}
+.mav{width:38px;height:38px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:18px;font-weight:800;color:#fff;}
+.mcard{background:rgba(255,255,255,0.12);border:1px solid rgba(255,255,255,0.18);border-radius:24px;padding:18px 20px;margin-bottom:14px;}
+.mlabel{color:rgba(255,255,255,0.62);font-size:18px;font-weight:700;}
+.mbig{color:#fff;font-size:50px;font-weight:800;letter-spacing:-1px;margin:2px 0 13px;}
+.mbig .u{font-size:22px;opacity:0.6;}
+.mtrack{height:14px;border-radius:8px;background:rgba(255,255,255,0.13);overflow:hidden;}
 .mfill{height:100%;border-radius:8px;width:64%;}
-.mrow{display:flex;align-items:center;gap:12px;padding:9px 0;}
-.mico{width:44px;height:44px;border-radius:13px;background:rgba(255,255,255,0.14);display:flex;align-items:center;justify-content:center;font-size:22px;}
-.mname{color:#fff;font-size:22px;font-weight:800;}
-.mamt{margin-left:auto;color:#fff;font-size:24px;font-weight:800;}
-.mbtn{margin:auto auto 0;width:98px;height:98px;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 10px 26px rgba(0,0,0,0.28);}
-.mtheme{text-align:center;color:rgba(255,255,255,0.9);font-size:18px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;margin-top:16px;}
-.mhomebar{position:absolute;bottom:12px;left:50%;transform:translateX(-50%);width:130px;height:7px;border-radius:5px;background:rgba(255,255,255,0.5);}
+.mrow{display:flex;align-items:center;gap:11px;padding:8px 0;}
+.mico{width:42px;height:42px;border-radius:12px;background:rgba(255,255,255,0.14);display:flex;align-items:center;justify-content:center;font-size:21px;}
+.mname{color:#fff;font-size:21px;font-weight:800;}
+.mamt{margin-left:auto;color:#fff;font-size:22px;font-weight:800;}
+.mbtn{margin:auto auto 0;width:90px;height:90px;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 9px 22px rgba(0,0,0,0.3);}
+.mtheme{text-align:center;color:rgba(255,255,255,0.92);font-size:17px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;margin-top:14px;}
+.mhomebar{position:absolute;bottom:11px;left:50%;transform:translateX(-50%);width:120px;height:6px;border-radius:4px;background:rgba(255,255,255,0.5);}
 </style></head><body>
 <div class="frame">
   <div class="cap">
     <div class="kick"><span class="dot"></span> Make it yours</div>
     <h1>Calm, in <span class="g">your colour.</span></h1>
-    <p>A space you'll actually enjoy opening at 3am — pick the theme that feels like you.</p>
+    <p>Four calm themes — pick the one you'll actually enjoy opening at 3am.</p>
   </div>
   <div class="themes-row">
-    <div class="mini l"><div class="ms" style="background:linear-gradient(rgba(0,0,0,0.13),rgba(0,0,0,0.13)),linear-gradient(165deg,#A488DD,#46357F);">
+    <!-- Lavender -->
+    <div class="mini a"><div class="ms" style="background:linear-gradient(rgba(0,0,0,0.13),rgba(0,0,0,0.13)),linear-gradient(165deg,#A488DD,#46357F);">
       <div class="mnotch"></div>
       <div class="mhd"><span class="mav" style="background:rgba(255,255,255,0.22);">M</span> Mila</div>
       <div class="mcard"><div class="mlabel">Milk today</div><div class="mbig">273<span class="u"> ml</span></div><div class="mtrack"><div class="mfill" style="background:#BFA9F5;"></div></div></div>
-      <div class="mcard" style="padding:5px 22px;"><div class="mrow"><div class="mico">🍼</div><div class="mname">Pumped</div><div class="mamt">124</div></div></div>
-      <div class="mbtn" style="background:#BFA9F5;"><svg width="42" height="42" viewBox="0 0 24 24" fill="#46357F"><path d="M13 2L4.5 13.5H11l-1 8.5 8.5-11.5H12z"/></svg></div>
+      <div class="mcard" style="padding:4px 20px;"><div class="mrow"><div class="mico">🍼</div><div class="mname">Pumped</div><div class="mamt">124</div></div></div>
+      <div class="mbtn" style="background:#BFA9F5;"><svg width="38" height="38" viewBox="0 0 24 24" fill="#46357F"><path d="M13 2L4.5 13.5H11l-1 8.5 8.5-11.5H12z"/></svg></div>
       <div class="mtheme">Lavender</div><div class="mhomebar"></div>
     </div></div>
-    <div class="mini c"><div class="ms" style="background:linear-gradient(170deg,#528E95,#2C5E67 50%,#143139);">
+    <!-- Ocean -->
+    <div class="mini b"><div class="ms" style="background:linear-gradient(170deg,#528E95,#2C5E67 50%,#143139);">
       <div class="mnotch"></div>
       <div class="mhd"><span class="mav" style="background:rgba(90,200,218,0.32);">M</span> Mila</div>
       <div class="mcard"><div class="mlabel">Milk today</div><div class="mbig">273<span class="u"> ml</span></div><div class="mtrack"><div class="mfill" style="background:#5AC8DA;"></div></div></div>
-      <div class="mcard" style="padding:5px 22px;"><div class="mrow"><div class="mico">🥣</div><div class="mname">Lunch</div><div class="mamt" style="font-size:21px;color:#9BE6B0;">Loved</div></div></div>
-      <div class="mbtn" style="background:#5AC8DA;"><svg width="42" height="42" viewBox="0 0 24 24" fill="#143139"><path d="M13 2L4.5 13.5H11l-1 8.5 8.5-11.5H12z"/></svg></div>
+      <div class="mcard" style="padding:4px 20px;"><div class="mrow"><div class="mico">🥣</div><div class="mname">Lunch</div><div class="mamt" style="font-size:20px;color:#9BE6B0;">Loved</div></div></div>
+      <div class="mbtn" style="background:#5AC8DA;"><svg width="38" height="38" viewBox="0 0 24 24" fill="#143139"><path d="M13 2L4.5 13.5H11l-1 8.5 8.5-11.5H12z"/></svg></div>
       <div class="mtheme">Ocean</div><div class="mhomebar"></div>
     </div></div>
-    <div class="mini r"><div class="ms" style="background:linear-gradient(rgba(0,0,0,0.13),rgba(0,0,0,0.13)),linear-gradient(165deg,#7BC08A,#1F5235);">
+    <!-- Forest -->
+    <div class="mini c"><div class="ms" style="background:linear-gradient(rgba(0,0,0,0.13),rgba(0,0,0,0.13)),linear-gradient(165deg,#7BC08A,#1F5235);">
       <div class="mnotch"></div>
       <div class="mhd"><span class="mav" style="background:rgba(255,255,255,0.22);">M</span> Mila</div>
       <div class="mcard"><div class="mlabel">Milk today</div><div class="mbig">273<span class="u"> ml</span></div><div class="mtrack"><div class="mfill" style="background:#B7EAC0;"></div></div></div>
-      <div class="mcard" style="padding:5px 22px;"><div class="mrow"><div class="mico">🤱</div><div class="mname">Breast</div><div class="mamt">15<span style="font-size:17px;opacity:0.6;">m</span></div></div></div>
-      <div class="mbtn" style="background:#76D596;"><svg width="42" height="42" viewBox="0 0 24 24" fill="#1F5235"><path d="M13 2L4.5 13.5H11l-1 8.5 8.5-11.5H12z"/></svg></div>
+      <div class="mcard" style="padding:4px 20px;"><div class="mrow"><div class="mico">🤱</div><div class="mname">Breast</div><div class="mamt">15<span style="font-size:16px;opacity:0.6;">m</span></div></div></div>
+      <div class="mbtn" style="background:#76D596;"><svg width="38" height="38" viewBox="0 0 24 24" fill="#1F5235"><path d="M13 2L4.5 13.5H11l-1 8.5 8.5-11.5H12z"/></svg></div>
       <div class="mtheme">Forest</div><div class="mhomebar"></div>
+    </div></div>
+    <!-- Midnight -->
+    <div class="mini d"><div class="ms" style="background:linear-gradient(165deg,#2A5A7A,#0B1B2E 55%,#070E1A);">
+      <div class="mnotch"></div>
+      <div class="mhd"><span class="mav" style="background:rgba(121,210,226,0.28);">M</span> Mila</div>
+      <div class="mcard"><div class="mlabel">Milk today</div><div class="mbig">273<span class="u"> ml</span></div><div class="mtrack"><div class="mfill" style="background:#79D2E2;"></div></div></div>
+      <div class="mcard" style="padding:4px 20px;"><div class="mrow"><div class="mico">💧</div><div class="mname">Water</div><div class="mamt">60</div></div></div>
+      <div class="mbtn" style="background:#79D2E2;"><svg width="38" height="38" viewBox="0 0 24 24" fill="#070E1A"><path d="M13 2L4.5 13.5H11l-1 8.5 8.5-11.5H12z"/></svg></div>
+      <div class="mtheme">Midnight</div><div class="mhomebar"></div>
     </div></div>
   </div>
 </div>
