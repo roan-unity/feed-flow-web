@@ -1,0 +1,5 @@
+# Netlify rewrites. A 200 (rewrite) keeps the URL as /gift while serving gift.html —
+# so the permanent gift link is clean AND its Open Graph card unfurls from the same URL.
+# NOT a 301/302: link scrapers follow redirects and would lose the unfurl artwork.
+/gift   /gift.html   200
+/faq    /faq.html    200
