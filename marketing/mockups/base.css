@@ -1,0 +1,52 @@
+*{margin:0;padding:0;box-sizing:border-box;}
+html,body{width:1206px;height:2622px;
+  font-family:"SF Pro Display",-apple-system,BlinkMacSystemFont,"Segoe UI",system-ui,sans-serif;}
+.frame{width:1206px;height:2622px;position:relative;overflow:hidden;
+  background:linear-gradient(160deg,#EAF4F6 0%,#D6EBEF 100%);}
+.cap{position:absolute;top:132px;left:0;right:0;text-align:center;padding:0 90px;}
+.cap .kick{display:inline-flex;align-items:center;gap:12px;font-size:26px;font-weight:800;
+  letter-spacing:0.5px;text-transform:uppercase;color:#2F7886;
+  background:#fff;border:1px solid #CFE3E7;border-radius:999px;padding:12px 26px;margin-bottom:34px;box-shadow:0 6px 20px rgba(28,94,107,0.08);}
+.cap .kick .dot{width:12px;height:12px;border-radius:50%;background:#5FAE73;}
+.cap h1{font-size:82px;font-weight:800;line-height:1.06;color:#0F2B35;letter-spacing:-1.5px;}
+.cap h1 .g{color:#2F7886;}
+.cap p{font-size:33px;font-weight:500;color:rgba(15,43,53,0.6);margin-top:26px;line-height:1.35;padding:0 40px;}
+.phone{position:absolute;top:672px;left:50%;transform:translateX(-50%);
+  width:664px;height:1720px;border-radius:82px;background:#0B1C26;
+  box-shadow:0 50px 120px rgba(28,94,107,0.30), 0 10px 30px rgba(0,0,0,0.2);padding:20px;}
+.screen{width:100%;height:100%;border-radius:62px;overflow:hidden;position:relative;
+  background:linear-gradient(170deg,#528E95 0%,#2C5E67 50%,#143139 100%);}
+.notch{position:absolute;top:22px;left:50%;transform:translateX(-50%);width:150px;height:36px;background:#0B1C26;border-radius:20px;z-index:5;}
+.status{position:absolute;top:20px;left:0;right:0;display:flex;justify-content:space-between;padding:0 44px;color:#fff;font-size:23px;font-weight:600;z-index:4;}
+.status .r{display:flex;gap:9px;align-items:center;}
+.screen-in{position:absolute;top:82px;left:0;right:0;bottom:0;padding:26px 30px;}
+.hd{display:flex;align-items:center;justify-content:space-between;margin-bottom:24px;}
+.hd .baby{display:flex;align-items:center;gap:12px;color:#fff;font-size:30px;font-weight:800;}
+.hd .baby .av{width:44px;height:44px;border-radius:50%;background:rgba(95,174,115,0.28);display:flex;align-items:center;justify-content:center;font-size:22px;font-weight:800;color:#fff;}
+.hd .tab{color:rgba(255,255,255,0.55);font-size:22px;font-weight:700;}
+.card{background:rgba(255,255,255,0.10);border:1px solid rgba(255,255,255,0.16);border-radius:34px;padding:26px;margin-bottom:22px;}
+.ctitle{color:#fff;font-size:26px;font-weight:800;margin-bottom:4px;}
+.csub{color:rgba(255,255,255,0.5);font-size:20px;font-weight:600;}
+.chips{display:flex;flex-wrap:wrap;gap:11px;}
+.chip{display:inline-flex;align-items:center;gap:9px;background:rgba(255,255,255,0.09);border:1px solid rgba(255,255,255,0.14);border-radius:999px;padding:11px 19px;color:#fff;font-size:23px;font-weight:600;}
+.chip .e{font-size:26px;}
+.hs-num{color:#fff;font-size:104px;font-weight:800;letter-spacing:-2px;line-height:1;}
+.hs-num .u{font-size:48px;opacity:0.7;font-weight:700;}
+.hs-label{color:rgba(255,255,255,0.6);font-size:24px;font-weight:700;margin-top:6px;}
+.bar-row{margin-top:20px;}
+.bar-top{display:flex;justify-content:space-between;color:#fff;font-size:22px;font-weight:700;margin-bottom:9px;}
+.bar-track{height:14px;border-radius:8px;background:rgba(255,255,255,0.10);overflow:hidden;}
+.bar-fill{height:100%;border-radius:8px;}
+.btn{display:flex;align-items:center;justify-content:center;gap:12px;background:#fff;color:#123E48;border-radius:24px;height:74px;font-size:27px;font-weight:800;}
+.tl-row{display:flex;align-items:center;gap:16px;padding:16px 0;border-bottom:1px solid rgba(255,255,255,0.08);}
+.tl-row:last-child{border-bottom:none;}
+.tl-ico{width:56px;height:56px;border-radius:16px;display:flex;align-items:center;justify-content:center;font-size:28px;}
+.tl-name{color:#fff;font-size:26px;font-weight:800;}
+.tl-sub{color:rgba(255,255,255,0.5);font-size:20px;font-weight:600;margin-top:2px;}
+.tl-amt{margin-left:auto;color:#fff;font-size:30px;font-weight:800;}
+.tl-amt .u{font-size:20px;opacity:0.6;}
+.tabbar{position:absolute;bottom:58px;left:0;right:0;display:flex;justify-content:space-around;align-items:flex-end;padding:0 40px;z-index:3;}
+.ti{display:flex;flex-direction:column;align-items:center;gap:8px;color:rgba(255,255,255,0.4);font-size:17px;font-weight:600;}
+.ti.on{color:#fff;}
+.ti svg{width:32px;height:32px;}
+.homebar{position:absolute;bottom:18px;left:50%;transform:translateX(-50%);width:200px;height:9px;border-radius:6px;background:rgba(255,255,255,0.5);}
