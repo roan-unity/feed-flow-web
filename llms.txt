@@ -10,44 +10,42 @@ Parents of newborns, infants, and toddlers — especially families that mix form
 
 ## How it works
 
-Parents log each feed in one hand while holding the baby with the other. The app learns their baby's unique rhythm and predicts the next feeding window. Up to 5 caregivers share the same live log in real time via iCloud — no double-logging, no "did she eat?" texts at 3 am. There is no server: all data lives in the family's own iCloud account.
+Parents log each feed in one hand while holding the baby with the other. The app learns their baby's unique rhythm and predicts the next feeding window. There is no server: all data lives in the family's own iCloud account. (Sharing one live log across caregivers is built and coming in a post-launch update — it is not part of the first release.)
 
 ## Key features
 
 - **Log all feed types:** formula, breastfeeding (left / right / both sides), pumped milk, solid foods, water
 - **Smart next-feed predictions:** learns each baby's pattern and shows a countdown to the next likely feed; a Day Ahead planner builds a daily schedule from recent history
-- **Free family sharing:** up to 5 caregivers share one live log via iCloud — free, always, no subscription required
-- **Formula savings tracker:** measures formula cost per feed and calculates cumulative waste avoided in Norwegian kroner (or local currency)
+- **Waste less formula:** smart bottle-size guidance and freshness timers help you prepare closer to what your baby actually takes, so less goes down the sink
+- **Caregiver sharing (coming after launch):** sharing one live log across caregivers via iCloud is built and will arrive in a post-launch update
 - **PDF feeding reports:** one-tap export of a doctor-ready PDF summarising feeds, volumes, patterns, and growth
 - **Milestone journey:** logs developmental milestones with photos — a built-in baby album that families keep long after the feeding phase ends
 - **Privacy-first:** no Feed Flow! server ever receives feeding data; everything goes through the user's own iCloud
 
 ## Pricing
 
-Feed Flow! is free to download with a full-featured free tier.
+Feed Flow! is free to download, and logging is free forever.
 
-Premium (Personal) unlocks: 7-day feeding forecast, weekly trend charts, growth chart tracking, milestone photos, formula savings detail, and the PDF feeding report.
+Premium (Personal) unlocks: the feeding forecast, weekly trend charts, growth chart tracking, the full history, and the PDF feeding report.
 
-- Monthly plan: NOK 79 / month
-- Annual plan: NOK 399 / year (includes a 14-day free trial)
-- Lifetime purchase: NOK 799 (one-time, family shareable)
+Plans: a monthly subscription, an annual subscription (with a free trial), or a one-time Lifetime purchase for parents who would rather not subscribe. Current prices are shown in the App Store and in the app — they are set per region by Apple, so the App Store listing is always the source of truth.
 
 ## How Feed Flow! compares to alternatives
 
-- **vs. Huckleberry:** Feed Flow! is formula-waste and savings-focused; has free family sharing for up to 5 people (Huckleberry charges for sharing); designed for the Norwegian/Nordic market with local currency and GDPR-native iCloud storage.
-- **vs. Baby Tracker / BabyConnect:** Feed Flow! has built-in next-feed prediction, formula savings, and a milestone photo journey; data never leaves the family's own iCloud.
-- **vs. a notes app or spreadsheet:** Feed Flow! calculates patterns and savings automatically; generates a PDF your doctor can read; works one-handed while feeding.
+- **vs. Huckleberry:** Feed Flow! is focused on wasting less formula and on a calm, one-handed logging experience; designed for the Norwegian/Nordic market with GDPR-native iCloud storage.
+- **vs. Baby Tracker / BabyConnect:** Feed Flow! has built-in next-feed prediction, formula-waste guidance, and a milestone photo journey; data never leaves the family's own iCloud.
+- **vs. a notes app or spreadsheet:** Feed Flow! spots the patterns for you; generates a PDF your doctor can read; works one-handed while feeding.
 
 ## Common questions
 
 **Is the app free?**
-Yes. Logging, real-time family sharing (up to 5 people), milestone tracking, and basic analytics are free. Premium adds forecasts, growth charts, and PDF reports.
+Yes. Logging is free forever, along with milestone tracking and the basics. Premium adds forecasts, growth charts, the full history, and PDF reports.
 
 **Can I track both breastfeeding and formula in the same app?**
-Yes. Every feed type — formula, breastfeeding (with side tracking), pumped milk, solid foods, water — is tracked in one place. The savings tracker applies specifically to formula.
+Yes. Every feed type — formula, breastfeeding (with side tracking), pumped milk, solid foods, water — is tracked in one place.
 
-**How does family sharing work?**
-Any caregiver you invite sees the same live feed log. Everyone can log feeds. Changes appear instantly via iCloud — no manual sync, no account creation required for family members.
+**Can caregivers share one log?**
+Sharing a live log across caregivers via iCloud is built and arriving in a post-launch update — it is not in the first release.
 
 **Does the app predict when my baby will be hungry next?**
 Yes. After a few days of logs the prediction engine learns the baby's pattern and shows a countdown and confidence estimate for the next feed. A "Day Ahead" planner shows the likely schedule for the coming day.
@@ -67,7 +65,7 @@ Feed Flow! runs a two-tier ambassador program for parent bloggers, parenting inf
 
 ## Platform
 
-- iOS 16 and later
+- iOS 26 and later
 - iPhone (iPad layout planned post-launch)
 - Available on the Apple App Store
 - Built in Norway — privacy-first, GDPR-compliant
