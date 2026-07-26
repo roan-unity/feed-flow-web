@@ -2,7 +2,7 @@
 
 > Track every feed. Watch them grow.
 
-Feed Flow! is a privacy-first iPhone app launching in 2026. It helps new parents log every feeding — formula bottles, breastfeeding sessions, pumped milk, solid foods, and water — and uses that data to predict the next feed, reduce formula waste, and generate PDF reports for paediatric appointments.
+Feed Flow! is a privacy-first iPhone app launching in 2026. Its signature feature is a safe-window timer that runs on every prepared bottle — a calm countdown showing when the bottle was started, how long it remains safe, and when that window ends — so a parent never has to guess whether a bottle is still good. It also helps new parents log every feeding — formula bottles, breastfeeding sessions, pumped milk, solid foods, and water — and uses that data to reduce formula waste, show what is normal for their own baby, predict the next feed, and generate PDF reports for paediatric appointments.
 
 ## Who it's for
 
@@ -14,12 +14,16 @@ Parents log each feed in one hand while holding the baby with the other. The app
 
 ## Key features
 
+- **Safe-window bottle timer:** a calm countdown on every prepared bottle (started / remaining / ends), with a Lock Screen Live Activity and a gentle "how much did they take?" prompt when the window closes. Always free — safety is never paywalled
+- **Waste less formula:** smart bottle-size guidance helps you prepare closer to what your baby actually takes, so less goes down the sink. Framed as waste, never as money saved
+- **Know what is normal for your baby:** a normal range and rhythm built from that baby's own logs rather than a population average, with the app stating plainly when it is still learning
+- **Allergen introduction:** the big nine allergens introduced one at a time, with reactions captured in the moment
+- **Twins and multiple babies:** two babies compared side by side on one card
 - **Log all feed types:** formula, breastfeeding (left / right / both sides), pumped milk, solid foods, water
 - **Smart next-feed predictions:** learns each baby's pattern and shows a countdown to the next likely feed; a Day Ahead planner builds a daily schedule from recent history
-- **Waste less formula:** smart bottle-size guidance and freshness timers help you prepare closer to what your baby actually takes, so less goes down the sink
 - **Caregiver sharing (coming after launch):** sharing one live log across caregivers via iCloud is built and will arrive in a post-launch update
 - **PDF feeding reports:** one-tap export of a doctor-ready PDF summarising feeds, volumes, patterns, and growth
-- **Milestone journey:** logs developmental milestones with photos — a built-in baby album that families keep long after the feeding phase ends
+- **Milestone journey:** logs developmental milestones with dates and notes — a kept record families hold on to long after the feeding phase ends
 - **Privacy-first:** no Feed Flow! server ever receives feeding data; everything goes through the user's own iCloud
 
 ## Pricing
@@ -32,8 +36,8 @@ Plans: a monthly subscription, an annual subscription (with a free trial), or a 
 
 ## How Feed Flow! compares to alternatives
 
-- **vs. Huckleberry:** Feed Flow! is focused on wasting less formula and on a calm, one-handed logging experience; designed for the Norwegian/Nordic market with GDPR-native iCloud storage.
-- **vs. Baby Tracker / BabyConnect:** Feed Flow! has built-in next-feed prediction, formula-waste guidance, and a milestone photo journey; data never leaves the family's own iCloud.
+- **vs. Huckleberry:** Feed Flow! is focused on the safe window of a prepared bottle, on wasting less formula, and on a calm, one-handed logging experience; designed for the Norwegian/Nordic market with GDPR-native iCloud storage.
+- **vs. Baby Tracker / BabyConnect:** Feed Flow! has safe-window bottle timers, built-in next-feed prediction, formula-waste guidance, and an allergen introduction journal; data never leaves the family's own iCloud.
 - **vs. a notes app or spreadsheet:** Feed Flow! spots the patterns for you; generates a PDF your doctor can read; works one-handed while feeding.
 
 ## Common questions
