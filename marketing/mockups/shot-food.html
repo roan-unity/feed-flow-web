@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<style>
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html,body{width:1206px;height:2622px;background:#EAF4F6;
+    font-family:"SF Pro Display",-apple-system,BlinkMacSystemFont,"Segoe UI",system-ui,sans-serif;}
+  .frame{width:1206px;height:2622px;position:relative;overflow:hidden;
+    background:linear-gradient(160deg,#EAF4F6 0%,#D6EBEF 100%);}
+  /* marketing caption */
+  .cap{position:absolute;top:132px;left:0;right:0;text-align:center;padding:0 90px;}
+  .cap .kick{display:inline-flex;align-items:center;gap:12px;font-size:26px;font-weight:800;
+    letter-spacing:0.5px;text-transform:uppercase;color:#2F7886;
+    background:#fff;border:1px solid #CFE3E7;border-radius:999px;padding:12px 26px;margin-bottom:34px;box-shadow:0 6px 20px rgba(28,94,107,0.08);}
+  .cap .kick .dot{width:12px;height:12px;border-radius:50%;background:#5FAE73;}
+  .cap h1{font-size:82px;font-weight:800;line-height:1.06;color:#0F2B35;letter-spacing:-1.5px;}
+  .cap h1 .g{color:#2F7886;}
+  .cap p{font-size:33px;font-weight:500;color:rgba(15,43,53,0.6);margin-top:26px;line-height:1.35;padding:0 40px;}
+  /* phone */
+  .phone{position:absolute;top:672px;left:50%;transform:translateX(-50%);
+    width:664px;height:1720px;border-radius:82px;background:#0B1C26;
+    box-shadow:0 50px 120px rgba(28,94,107,0.30), 0 10px 30px rgba(0,0,0,0.2);
+    padding:20px;}
+  .screen{width:100%;height:100%;border-radius:62px;overflow:hidden;position:relative;
+    background:linear-gradient(170deg,#528E95 0%,#2C5E67 50%,#143139 100%);}
+  .notch{position:absolute;top:22px;left:50%;transform:translateX(-50%);width:150px;height:36px;background:#0B1C26;border-radius:20px;z-index:5;}
+  .status{position:absolute;top:20px;left:0;right:0;display:flex;justify-content:space-between;
+    padding:0 44px;color:#fff;font-size:23px;font-weight:600;z-index:4;}
+  .status .r{display:flex;gap:9px;align-items:center;}
+  .screen-in{position:absolute;top:82px;left:0;right:0;bottom:0;padding:26px 30px;}
+  /* header */
+  .hd{display:flex;align-items:center;justify-content:space-between;margin-bottom:24px;}
+  .hd .baby{display:flex;align-items:center;gap:12px;color:#fff;font-size:30px;font-weight:800;}
+  .hd .baby .av{width:44px;height:44px;border-radius:50%;background:rgba(255,255,255,0.16);display:flex;align-items:center;justify-content:center;font-size:24px;}
+  .hd .tab{color:rgba(255,255,255,0.55);font-size:22px;font-weight:700;}
+  .h2{color:#fff;font-size:34px;font-weight:800;margin-bottom:20px;letter-spacing:-0.5px;}
+  /* card */
+  .card{background:rgba(255,255,255,0.10);border:1px solid rgba(255,255,255,0.16);
+    border-radius:34px;padding:26px 26px;margin-bottom:22px;backdrop-filter:blur(6px);}
+  .meal-top{display:flex;align-items:center;gap:16px;margin-bottom:20px;}
+  .meal-ico{width:66px;height:66px;border-radius:20px;background:rgba(95,174,115,0.22);
+    display:flex;align-items:center;justify-content:center;font-size:36px;}
+  .meal-name{color:#fff;font-size:30px;font-weight:800;}
+  .meal-sub{color:rgba(255,255,255,0.55);font-size:21px;font-weight:600;margin-top:3px;}
+  .meal-time{margin-left:auto;color:rgba(255,255,255,0.5);font-size:22px;font-weight:700;}
+  .chips{display:flex;flex-wrap:wrap;gap:11px;margin-bottom:20px;}
+  .chip{display:inline-flex;align-items:center;gap:9px;background:rgba(255,255,255,0.09);
+    border:1px solid rgba(255,255,255,0.14);border-radius:999px;padding:11px 19px;
+    color:#fff;font-size:23px;font-weight:600;}
+  .chip .e{font-size:26px;}
+  .badges{display:flex;gap:12px;}
+  .badge{display:inline-flex;align-items:center;gap:9px;border-radius:999px;padding:12px 20px;font-size:22px;font-weight:800;}
+  .b-loved{background:rgba(95,174,115,0.20);color:#8FE0A6;border:1px solid rgba(95,174,115,0.4);}
+  .b-recipe{background:rgba(229,154,53,0.18);color:#F5C888;border:1px solid rgba(229,154,53,0.4);}
+  /* allergen card */
+  .ac-h{display:flex;align-items:center;justify-content:space-between;margin-bottom:6px;}
+  .ac-t{color:#fff;font-size:26px;font-weight:800;}
+  .ac-c{color:#8FE0A6;font-size:23px;font-weight:800;}
+  .ac-sub{color:rgba(255,255,255,0.5);font-size:20px;font-weight:600;margin-bottom:20px;}
+  .al-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;}
+  .al{display:flex;flex-direction:column;align-items:center;gap:7px;padding:16px 4px;border-radius:20px;
+    background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.10);position:relative;}
+  .al.done{background:rgba(95,174,115,0.16);border-color:rgba(95,174,115,0.4);}
+  .al .e{font-size:34px;line-height:1;}
+  .al.pending .e{opacity:0.36;}
+  .al .n{font-size:17px;font-weight:700;color:rgba(255,255,255,0.85);}
+  .al.pending .n{color:rgba(255,255,255,0.4);}
+  .al .rx{position:absolute;top:10px;right:10px;width:14px;height:14px;border-radius:50%;background:#E59A35;border:2px solid #256B78;}
+  .newweek{margin-top:20px;color:rgba(255,255,255,0.65);font-size:22px;font-weight:600;}
+  .newweek b{color:#fff;}
+  /* tastings */
+  .taste{display:flex;gap:11px;flex-wrap:wrap;}
+  .tt{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,0.08);
+    border:1px solid rgba(255,255,255,0.13);border-radius:999px;padding:11px 19px;color:#fff;font-size:22px;font-weight:600;}
+  /* tab bar */
+  .tabbar{position:absolute;bottom:58px;left:0;right:0;display:flex;justify-content:space-around;align-items:flex-end;padding:0 40px;z-index:3;}
+  .ti{display:flex;flex-direction:column;align-items:center;gap:8px;color:rgba(255,255,255,0.4);font-size:17px;font-weight:600;}
+  .ti.on{color:#fff;}
+  .ti svg{width:32px;height:32px;}
+  /* home bar */
+  .homebar{position:absolute;bottom:18px;left:50%;transform:translateX(-50%);width:200px;height:9px;border-radius:6px;background:rgba(255,255,255,0.5);}
+</style>
+</head>
+<body>
+<div class="frame">
+  <div class="cap">
+    <div class="kick"><span class="dot"></span> Solids &amp; allergens</div>
+    <h1>Introduce foods with <span class="g">confidence.</span></h1>
+    <p>Log every meal, keep track of the 9 major allergens, and see the tastes they love.</p>
+  </div>
+
+  <div class="phone">
+    <div class="screen">
+      <div class="notch"></div>
+      <div class="status">
+        <span>9:41</span>
+        <span class="r">
+          <svg width="34" height="22" viewBox="0 0 34 22" fill="#fff"><rect x="0" y="14" width="5" height="8" rx="1.5"/><rect x="7" y="10" width="5" height="12" rx="1.5"/><rect x="14" y="6" width="5" height="16" rx="1.5"/><rect x="21" y="2" width="5" height="20" rx="1.5"/></svg>
+          <svg width="30" height="22" viewBox="0 0 30 22" fill="#fff"><path d="M15 5c4 0 7.5 1.6 10 4.2l-2.5 2.6C20.6 9.9 18 8.7 15 8.7s-5.6 1.2-7.5 3.1L5 9.2C7.5 6.6 11 5 15 5z" opacity="0.9"/><circle cx="15" cy="16" r="3"/></svg>
+          <svg width="46" height="24" viewBox="0 0 46 24" fill="none"><rect x="1" y="4" width="38" height="16" rx="5" stroke="#fff" stroke-width="2.5" opacity="0.6"/><rect x="4" y="7" width="30" height="10" rx="2.5" fill="#fff"/><rect x="41" y="9" width="3.5" height="6" rx="1.75" fill="#fff" opacity="0.6"/></svg>
+        </span>
+      </div>
+      <div class="screen-in">
+        <div class="hd">
+          <div class="baby"><span class="av" style="background:rgba(95,174,115,0.28);font-size:22px;font-weight:800;color:#fff;">M</span> Mila <span style="font-size:20px;opacity:0.6;">▾</span></div>
+          <div class="tab">Food story</div>
+        </div>
+
+        <div class="card">
+          <div class="meal-top">
+            <div class="meal-ico">🥤</div>
+            <div>
+              <div class="meal-name">Morning smoothie</div>
+              <div class="meal-sub">4 foods · breakfast</div>
+            </div>
+            <div class="meal-time">8:15</div>
+          </div>
+          <div class="chips">
+            <span class="chip"><span class="e">🍎</span> Apple</span>
+            <span class="chip"><span class="e">🍌</span> Banana</span>
+            <span class="chip"><span class="e">🥬</span> Spinach</span>
+            <span class="chip"><span class="e">🌾</span> Oats</span>
+          </div>
+          <div class="badges">
+            <span class="badge b-loved">😍 Loved it</span>
+            <span class="badge b-recipe">✨ Saved recipe</span>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="ac-h">
+            <span class="ac-t">Allergen journey</span>
+            <span class="ac-c">5 of 9 introduced</span>
+          </div>
+          <div class="ac-sub">The nine majors, tracked as you go</div>
+          <div class="al-grid">
+            <div class="al done"><span class="e">🥚</span><span class="n">Egg</span></div>
+            <div class="al done"><span class="e">🥜</span><span class="n">Peanut</span></div>
+            <div class="al done"><span class="e">🌾</span><span class="n">Wheat</span></div>
+            <div class="al done"><span class="e">🥛</span><span class="n">Milk</span><span class="rx"></span></div>
+            <div class="al done"><span class="e">🐟</span><span class="n">Fish</span></div>
+            <div class="al pending"><span class="e">🫘</span><span class="n">Soy</span></div>
+            <div class="al pending"><span class="e">🌰</span><span class="n">Nuts</span></div>
+            <div class="al pending"><span class="e">🦐</span><span class="n">Shellfish</span></div>
+            <div class="al pending"><span class="e">🌱</span><span class="n">Sesame</span></div>
+            <div class="al" style="opacity:0;"></div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="ac-t" style="margin-bottom:16px;">Tastings this week</div>
+          <div class="taste">
+            <span class="tt">😍 Avocado</span>
+            <span class="tt">🙂 Oats</span>
+            <span class="tt">🙅 Broccoli</span>
+            <span class="tt">✨ Mango</span>
+          </div>
+        </div>
+      </div>
+      <div class="tabbar">
+        <div class="ti"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="3"/><path d="M3 9h18"/></svg>Today</div>
+        <div class="ti"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V4"/><path d="M4 20h16"/><rect x="7" y="12" width="3" height="5" rx="0.5"/><rect x="12" y="8" width="3" height="9" rx="0.5"/><rect x="17" y="5" width="3" height="12" rx="0.5"/></svg>Trends</div>
+        <div class="ti on"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3v6a2 2 0 0 0 2 2h0a2 2 0 0 0 2-2V3"/><path d="M8 11v10"/><path d="M17 3c-1.6 0-3 1.8-3 5s1.4 4 3 4"/><path d="M17 3v18"/></svg>Solids</div>
+        <div class="ti"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l2.6 5.6L20.5 9l-4.3 4.1 1.1 6.1L12 16.9 6.7 19.2l1.1-6.1L3.5 9l5.9-.4z"/></svg>Journey</div>
+        <div class="ti"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9l2.1 2.1M17 17l2.1 2.1M4.9 19.1l2.1-2.1M17 7l2.1-2.1"/></svg>Settings</div>
+      </div>
+      <div class="homebar"></div>
+    </div>
+  </div>
+</div>
+</body>
+</html>
