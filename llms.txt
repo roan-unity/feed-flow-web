@@ -69,7 +69,7 @@ Feed Flow! runs a two-tier ambassador program for parent bloggers, parenting inf
 
 ## Platform
 
-- iOS 26 and later
+- iOS 26.1 and later
 - iPhone (iPad layout planned post-launch)
 - Coming to the Apple App Store in 2026
 - Built in Norway — privacy-first, GDPR-compliant
