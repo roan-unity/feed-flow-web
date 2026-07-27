@@ -3,3 +3,4 @@
 # NOT a 301/302: link scrapers follow redirects and would lose the unfurl artwork.
 /gift   /gift.html   200
 /faq    /faq.html    200
+/terms  /terms.html  200
