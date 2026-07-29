@@ -7,7 +7,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&display=swap" rel="stylesheet">
-<meta name="description" content="Feed Flow! is the calm baby feeding tracker for iPhone. A safe-window timer on every prepared bottle tells you when it's no longer safe, smart sizes help you waste less, and you learn what's normal for your baby — plus a report you can hand to the health nurse. Coming soon to iOS.">
+<meta name="description" content="Feed Flow! is the calm baby feeding app for iPhone. A safe-window timer on every prepared bottle tells you when it's no longer safe, smart sizes help you waste less, and you learn what's normal for your baby — plus a report you can hand to the health nurse. Coming soon to iOS.">
 <link rel="canonical" href="https://tryfeedflow.app/">
 <!-- Privacy-first, cookieless funnel analytics (no PII, no consent banner needed).
      Requires a Plausible account for tryfeedflow.app — see ANALYTICS.md. Until then it
@@ -43,7 +43,7 @@
       "@type": "SoftwareApplication",
       "@id": "https://tryfeedflow.app/#app",
       "name": "Feed Flow!",
-      "operatingSystem": "iOS 26.1+",
+      "operatingSystem": "iOS 18.0+",
       "applicationCategory": "HealthApplication",
       "applicationSubCategory": "Baby & Parenting",
       "inLanguage": ["en"],
@@ -530,7 +530,7 @@ footer.ft { border-top: 1px solid var(--border-2); padding: 54px 0 60px; }
 <!-- ============ HERO ============ -->
 <section class="hero">
   <div class="wrap">
-    <div class="eyebrow reveal"><span class="dot"></span> Baby feeding tracker · coming soon to iPhone</div>
+    <div class="eyebrow reveal"><span class="dot"></span> Baby feeding app · coming soon to iPhone</div>
     <h1 class="reveal d1">The bottle tells you when it's <span class="grad">no longer safe.</span></h1>
     <p class="sub reveal d2">A calm countdown runs on every prepared bottle — started, remaining, ends — right there on your Lock Screen. No sniff test, no doubt. And the rest of it, Feed Flow! quietly keeps for you: when the next feed's due, how much to prepare, how much formula you're not wasting, how your baby is growing.</p>
     <div class="hero-cta reveal d2">
@@ -550,7 +550,7 @@ footer.ft { border-top: 1px solid var(--border-2); padding: 54px 0 60px; }
   <div class="hero-stage reveal d2">
     <div class="device">
       <div class="plinth"></div>
-      <div class="bezel"><img src="screens/safe-window.jpg" alt="A prepared formula bottle in Feed Flow, with its safe window counting down: started 06:16, 23 minutes 52 seconds remaining, ends 07:16. The bottle shows 70 ml left, and the button below logs the 90 ml taken." loading="eager"></div>
+      <div class="bezel"><img src="screens/safe-window.jpg" alt="A prepared formula bottle in Feed Flow, with its safe window counting down: started 21:07, 59 minutes 53 seconds remaining, ends 22:07. The bottle shows 70 ml left and the 90 ml taken, with buttons to log and keep the bottle or log and finish." loading="eager"></div>
     </div>
   </div>
 </section>
@@ -586,15 +586,13 @@ footer.ft { border-top: 1px solid var(--border-2); padding: 54px 0 60px; }
         <span class="beat-num">Waste less of something precious</span>
         <h3>Prepare closer to what they actually take.</h3>
         <p>A little left in the bottle is normal, and often out of your hands. Feed Flow! quietly learns the sizes your baby really takes and suggests them as you log, so you pour closer to right and less goes down the sink. It shows how that's going — measured, rounded down, never a guilt trip.</p>
-        <div class="beat-tags">
-          <span class="beat-tag"><span class="fd" style="background:var(--feed-formula)"></span>Formula 85% efficient</span>
-          <span class="beat-tag"><span class="fd" style="background:var(--feed-pumped)"></span>Pumped milk 90%</span>
-        </div>
+        <!-- beat-tags removed 2026-07-29 (site audit): the 85%/90% figures belonged to a
+             retired capture; numbers without on-image proof are §11 territory. -->
       </div>
       <div class="beat-device">
         <div class="device">
           <div class="plinth"></div>
-          <div class="bezel"><img src="screens/savings.jpg" alt="Bottle efficiency screen: how much was left in the bottle at the start versus now, and efficiency by feed type" loading="lazy"></div>
+          <div class="bezel"><img src="screens/savings.jpg" alt="The logging panel with learned usual-size chips — 120, 130 and 150 ml — suggesting what the baby actually takes, above a one-tap bottle button" loading="lazy"></div>
         </div>
       </div>
     </div>
@@ -621,7 +619,7 @@ footer.ft { border-top: 1px solid var(--border-2); padding: 54px 0 60px; }
     <!-- Beat 3 — Predict (FlowCast) -->
     <div class="beat reveal">
       <div class="beat-copy">
-        <span class="beat-num">FlowCast · never miss a feed</span>
+        <span class="beat-num">FlowCast · always know when the next feed is due</span>
         <h3>A calm countdown to the next one.</h3>
         <p>After a few days FlowCast learns your baby's rhythm and shows when the next feed is likely due — plus a gentle plan for the day ahead across noon, evening and night. A nudge, never an alarm, never guilt.</p>
         <div class="beat-tags">
@@ -632,7 +630,7 @@ footer.ft { border-top: 1px solid var(--border-2); padding: 54px 0 60px; }
       <div class="beat-device">
         <div class="device">
           <div class="plinth"></div>
-          <div class="bezel"><img src="screens/forecast.jpg" alt="Looking ahead screen: next feed countdown ring and an upcoming plan for noon, evening and night" loading="lazy"></div>
+          <div class="bezel"><img src="screens/forecast.jpg" alt="Looking ahead screen: the next feed's time and window, with a calm plan of tomorrow's bottles, nursing and solids on one timeline" loading="lazy"></div>
         </div>
       </div>
     </div>
@@ -651,7 +649,7 @@ footer.ft { border-top: 1px solid var(--border-2); padding: 54px 0 60px; }
       <div class="beat-device">
         <div class="device">
           <div class="plinth"></div>
-          <div class="bezel"><img src="screens/growth.jpg" alt="Growth screen: weight-for-age plotted on WHO percentile bands with the baby at the 39th percentile, plus a feeding-to-growth link summary" loading="lazy"></div>
+          <div class="bezel"><img src="screens/growth.jpg" alt="Growth screen: weight-for-age plotted on the WHO band with the baby at the 49th percentile, the band edges labelled in words, and the last weigh-ins listed with dates" loading="lazy"></div>
         </div>
       </div>
     </div>
@@ -676,6 +674,10 @@ footer.ft { border-top: 1px solid var(--border-2); padding: 54px 0 60px; }
     </div>
     <!-- Order follows the highlight hierarchy: waste less · what's normal · report · allergens · forecast · themes.
          Owed: a safe-window frame to lead the strip (pillar 1) — no mockup exists for it yet. -->
+    <!-- GALLERY REMOVED 2026-07-29 (site audit): these six images were browser-rendered
+         mock-ups sitting two scrolls below the page's own "Real screens — no mock-ups"
+         claim (§9 no-fake-anything). Rebuild this strip from real captures — the
+         certified App Store set (FeedFlow-AppStore-Set-v3) is the source — then restore.
     <div class="gal-strip reveal d2">
       <img src="marketing/mockups/savings.png" alt="Waste-less screen: bottles not poured down the sink this month, and how much of each bottle your baby actually takes by feed type" loading="lazy">
       <img src="marketing/mockups/logging.png" alt="Calm logging screen: milk today, a live feed timeline, and the one-slider one-button logger" loading="lazy">
@@ -684,7 +686,8 @@ footer.ft { border-top: 1px solid var(--border-2); padding: 54px 0 60px; }
       <img src="marketing/mockups/flowcast.png" alt="FlowCast screen: a countdown ring to the next likely feed and a calm plan for the day ahead" loading="lazy">
       <img src="marketing/mockups/themes.png" alt="Theme picker: the same calm home screen shown in Sunset, Ocean and Meadow colour themes" loading="lazy">
     </div>
-    <div class="gal-hint reveal">← swipe to explore →</div>
+    -->
+    <div class="gal-hint reveal" style="display:none">← swipe to explore →</div>
   </div>
 </section>
 
@@ -789,8 +792,8 @@ footer.ft { border-top: 1px solid var(--border-2); padding: 54px 0 60px; }
       </div>
       <div class="feat-card reveal d1">
         <div class="feat-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-6.5-4.3-6.5-9.2A6.5 6.5 0 0 1 12 5.5a6.5 6.5 0 0 1 6.5 6.3C18.5 16.7 12 21 12 21z"/><path d="M9 11.6l2 2 4-4"/></svg></div>
-        <h3>Reassurance in the early days</h3>
-        <p>In those first weeks, Feed Flow! gently keeps an eye on early weight change against typical newborn patterns — calm reassurance when you need it most. Always free, never a diagnosis.</p>
+        <h3>Pay once if you prefer</h3>
+        <p>A one-time Lifetime option — no subscription required. And logging every feed stays free, forever.</p>
       </div>
     </div>
   </div>

@@ -25,7 +25,7 @@ benefit/outcome, not UI. Keep captions short + benefit-led + readable at thumbna
 > allergens move up to frame 2. No frame may show a savings total as its subject and no caption
 > may name a kroner figure.
 > **Owed:** a safe-window frame (none exists yet) and a re-render of
-> `marketing/appstore/01-savings.png`, whose caption still reads "Save on formula" — the website
+> `marketing/appstore/01-savings.png`, whose caption still reads "Waste less formula" — the website
 > mockup `marketing/mockups/savings.png` has been re-rendered to waste-less framing, the App
 > Store asset has not.
 
@@ -36,7 +36,7 @@ benefit/outcome, not UI. Keep captions short + benefit-led + readable at thumbna
 4. **Calm logging** — the heart. "One slider. One smart button."
 5. **Report** — the premium anchor. "A report for the health nurse."
 6. **Themes** — personalization (users want to see it). "Calm, in your colour."
-7. **FlowCast** *(if a 7th is uploaded)* — "Never miss a feed."
+7. **FlowCast** *(if a 7th is uploaded)* — "Always know when the next feed is due."
 
 Sources: first-3 = ~60–70% of conversion, benefit heroes +45%, 6–8 shots +35% engagement, show
 dark-mode/themes — apptweak / Screenhance / AppScreenshotStudio 2026.
