@@ -1,25 +1,32 @@
-# App Store screenshot sets — FINAL (in progress) · 2026-08-11
+# App Store screenshot sets — FINAL · 2026-08-11 (from b244)
 
-Captioned, App-Store-sized (1290×2796) marketing frames, produced from **b244** via
-`Scripts/store_frame.py` (caption layer) over the RailV2 captures. Two unit systems.
+Two complete 10-frame sets, captioned, App-Store-sized (1290×2796), Ocean theme,
+one baby ("Nora"). Metric = ml/kg, imperial = oz/lb. Produced via
+`Scripts/store_frame.py` (caption layer) + `Scripts/make_lockscreen.py` (frame 2)
+over the RailV2 captures, plus the hand-built family split (frame 9).
 
-## DONE — 7 of ~10 per set, metric + imperial
-safeWindow · whatsNormal · report · **flowcast (NEW — merged screen w/ braid)** ·
-allergens · **family (Everyone who helps)** · homeClean.
-Metric = ml, imperial = oz. Fresh FlowCast is the big change vs the current ASC set.
+## The 10 (both metric/ and imperial/)
+1. safe window — Is that bottle still good?
+2. **lock screen** — The countdown on your lock screen (real Live Activity)
+3. log fast — Log any feed in three seconds
+4. what's normal — What's normal, for your baby
+5. **FlowCast** — The next feed and the gaps between  *(NEW — merged screen w/ braid)*
+6. report — A feeding & growth report
+7. growth — Where they land on the curve
+8. allergens — Nine allergens, and where you are
+9. **family split** — Everyone who helps, one shared story  *(NEW — lock notification + invite view)*
+10. whole day — Your whole day, one calm screen
 
-## OWED — 3–4 frames (the tooling diverged; needs a focused finish + Robin's calls)
-- **lessWaste** (waste/efficiency), **growth**, **lockscreen** (the safe-window Live
-  Activity — build via `Scripts/make_lockscreen.py`), and **weekJournal** — the current
-  rail capture tests don't shoot these to match the `store_frame` storyboard slots.
-- **Canonical 10 is undecided.** The `store_frame` storyboard (11 slots), the rail
-  capture tests, and the set already uploaded to ASC disagree. Robin picks the final 10.
-- **Family frame — two options here:** the pipeline's plain captioned family frame
-  (`store-10-family.png`) OR Robin's requested **split composite** (lock-screen
-  notification + invite view — `store-XX-family-split-composite.png`, v1). If the split
-  wins, it needs a caption band + an imperial (oz) variant of the "120 ml" notification.
+## Decisions made (easy to change)
+- Dropped the "71% less waste" and "week journal" frames from the storyboard's 11 →
+  swapped in the cleaner "log fast" frame to reach 10 and avoid a claim-sensitive number.
+- Family frame = the split composite Robin described (not the plain family screen).
 
-## Reproduce / finish
-Metric:   base `AppStoreRailV2CaptureTests` (now `-uitestUnits metric`) → store_frame --rail
-Imperial: `AppStoreRailV2ImperialCaptureTests` → store_frame --rail
-Lock frame: `Scripts/make_lockscreen.py`. NOT uploaded to ASC (app mid-review — Robin's call).
+## Known caveats (minor)
+- **growth (frame 7) is the metric capture in BOTH sets** — recapture with
+  `-uitestUnits imperial` if the US set should show lb/in (percentile is unit-agnostic).
+- Family-split lock panel reads 9:41 (others 8:58) — cosmetic.
+- Caption ground on the family frame is ~1 shade lighter than the rail frames.
+
+## NOT uploaded to ASC — app is mid-review; screenshot swap is Robin's call (do it
+## deliberately, ideally right after approval).
