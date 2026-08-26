@@ -4,3 +4,9 @@
 /gift   /gift.html   200
 /faq    /faq.html    200
 /terms  /terms.html  200
+
+# The ambassador "portal" is a Phase-2 dashboard that doesn't have a backend yet.
+# Until it's real, send anyone who finds the URL to the application page (302 = temporary,
+# so it can come back when the dashboard ships) rather than a dead sign-in that does nothing.
+/portal       /affiliate.html   302
+/portal.html  /affiliate.html   302

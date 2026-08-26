@@ -336,7 +336,7 @@ footer.ft { border-top: 1px solid var(--border-2); padding: 50px 0 60px; }
         <div class="step-num">2</div>
         <div>
           <h3>Share with your audience</h3>
-          <p>Post, review, story, or podcast — however your community trusts you. Your promo code tracks every sale you drive, with full transparency on your dashboard.</p>
+          <p>Post, review, story, or podcast — however your community trusts you. Your promo code ties every sale back to you, and we send you your numbers personally.</p>
         </div>
       </div>
       <div class="how-step reveal d2">
@@ -370,17 +370,17 @@ footer.ft { border-top: 1px solid var(--border-2); padding: 50px 0 60px; }
       <div class="kit-card reveal d1">
         <div class="kit-ico">🔗</div>
         <h3>Your share link</h3>
-        <p>Drop it anywhere — bio, newsletter, podcast notes, blog post. Every click that converts is credited to you, automatically.</p>
+        <p>Drop it anywhere — bio, newsletter, podcast notes, blog post. Every purchase made through your code is credited to you.</p>
       </div>
       <div class="kit-card reveal d2">
         <div class="kit-ico">📊</div>
-        <h3>A personal dashboard</h3>
-        <p>A private link showing your sales, total earnings, and recruits in real time — so you always know exactly where you stand.</p>
+        <h3>Clear monthly reporting</h3>
+        <p>Once the App Store's numbers close each month, we send you a personal summary of your sales and earnings — so you always know exactly where you stand. A self-serve dashboard comes as the program grows.</p>
       </div>
     </div>
     <div class="launch-note reveal">
       <div class="launch-badge">Pre-launch</div>
-      <p>Feed Flow! is in final development and going through App Store submission. Ambassador kits — promo codes, QR codes, and dashboard access — are issued at launch. <strong>Apply now to join the founding cohort and receive yours on day one.</strong></p>
+      <p>Feed Flow! is in final development and going through App Store submission. Ambassador kits — promo codes, QR codes, and your share links — are issued at launch. <strong>Apply now to join the founding cohort and receive yours on day one.</strong></p>
     </div>
   </div>
 </section>
@@ -470,18 +470,21 @@ footer.ft { border-top: 1px solid var(--border-2); padding: 50px 0 60px; }
           <span>Referred by <span id="refCode"></span></span>
         </div>
         <h3>Apply to join</h3>
-        <form id="affiliateForm" novalidate>
+        <form id="affiliateForm" name="ambassador-application" method="POST" data-netlify="true" netlify-honeypot="bot-field" novalidate>
+          <input type="hidden" name="form-name" value="ambassador-application">
+          <input type="hidden" name="referred-by" id="aff-ref-hidden">
+          <p hidden><label>Don't fill this out if you're human: <input name="bot-field"></label></p>
           <div class="form-field">
             <label for="aff-name">Your name</label>
-            <input type="text" id="aff-name" placeholder="e.g. Emma Andersson" required autocomplete="name">
+            <input type="text" id="aff-name" name="name" placeholder="e.g. Emma Andersson" required autocomplete="name">
           </div>
           <div class="form-field">
             <label for="aff-email">Email address</label>
-            <input type="email" id="aff-email" placeholder="your@email.com" required autocomplete="email">
+            <input type="email" id="aff-email" name="email" placeholder="your@email.com" required autocomplete="email">
           </div>
           <div class="form-field">
             <label for="aff-country">Country</label>
-            <select id="aff-country" required>
+            <select id="aff-country" name="country" required>
               <option value="" disabled selected>Select your country</option>
               <option>Norway</option><option>Sweden</option><option>Denmark</option><option>Finland</option>
               <option>United Kingdom</option><option>United States</option><option>Canada</option>
@@ -506,7 +509,7 @@ footer.ft { border-top: 1px solid var(--border-2); padding: 50px 0 60px; }
 
           <div class="form-field">
             <label for="aff-size">Approximate audience size</label>
-            <select id="aff-size">
+            <select id="aff-size" name="audience-size">
               <option value="" disabled selected>Select a range</option>
               <option>Under 1,000</option>
               <option>1,000 – 10,000</option>
@@ -517,12 +520,12 @@ footer.ft { border-top: 1px solid var(--border-2); padding: 50px 0 60px; }
 
           <div class="form-field">
             <label for="aff-handle">Profile link or handle <span style="font-weight:400;color:var(--ink-3)">(optional)</span></label>
-            <input type="url" id="aff-handle" placeholder="https://instagram.com/yourhandle">
+            <input type="url" id="aff-handle" name="handle" placeholder="https://instagram.com/yourhandle">
           </div>
 
           <div class="form-field">
             <label for="aff-note">Tell us about your audience <span style="font-weight:400;color:var(--ink-3)">(optional)</span></label>
-            <textarea id="aff-note" placeholder="Who follows you, what you post about, why Feed Flow! feels like a genuine fit…"></textarea>
+            <textarea id="aff-note" name="note" placeholder="Who follows you, what you post about, why Feed Flow! feels like a genuine fit…"></textarea>
           </div>
 
           <button type="submit" class="btn btn-primary">Send my application</button>
@@ -622,6 +625,8 @@ footer.ft { border-top: 1px solid var(--border-2); padding: 50px 0 60px; }
     document.getElementById('refCode').textContent = refCode;
     banner.hidden = false;
     banner.style.display = 'flex';
+    var refHidden = document.getElementById('aff-ref-hidden');
+    if (refHidden) refHidden.value = refCode;
   }
 
   /* Form */
@@ -641,22 +646,46 @@ footer.ft { border-top: 1px solid var(--border-2); padding: 50px 0 60px; }
     var size = document.getElementById('aff-size').value || 'not specified';
     var handle = document.getElementById('aff-handle').value.trim() || 'not provided';
     var note = document.getElementById('aff-note').value.trim() || '';
-    var subject = encodeURIComponent('Ambassador application — ' + name);
-    var body = encodeURIComponent(
-      'Name: ' + name + '\n' +
-      'Email: ' + email + '\n' +
-      'Country: ' + country + '\n' +
-      'Platforms: ' + platforms + '\n' +
-      'Audience size: ' + size + '\n' +
-      'Profile/handle: ' + handle + '\n' +
-      (refCode ? 'Referred by: ' + refCode + '\n' : '') + '\n' +
-      'About their audience:\n' + note
-    );
     var btn = this.querySelector('button[type="submit"]');
-    btn.textContent = '✓ Opening your mail app — hit send!';
-    btn.style.background = 'linear-gradient(132deg, #5FAE73, #2C7A4B)';
     btn.disabled = true;
-    window.location.href = 'mailto:support@tryfeedflow.app?subject=' + subject + '&body=' + body;
+    btn.textContent = 'Sending…';
+
+    function openMail() {
+      var subject = encodeURIComponent('Ambassador application — ' + name);
+      var body = encodeURIComponent(
+        'Name: ' + name + '\n' +
+        'Email: ' + email + '\n' +
+        'Country: ' + country + '\n' +
+        'Platforms: ' + platforms + '\n' +
+        'Audience size: ' + size + '\n' +
+        'Profile/handle: ' + handle + '\n' +
+        (refCode ? 'Referred by: ' + refCode + '\n' : '') + '\n' +
+        'About their audience:\n' + note
+      );
+      btn.textContent = '✓ Almost there — hit send in your mail app';
+      btn.style.background = 'linear-gradient(132deg, #5FAE73, #2C7A4B)';
+      window.location.href = 'mailto:support@tryfeedflow.app?subject=' + subject + '&body=' + body;
+    }
+
+    var payload = {
+      'form-name': 'ambassador-application',
+      name: name, email: email, country: country,
+      platform: platforms, 'audience-size': size, handle: handle,
+      'referred-by': refCode || '', note: note
+    };
+    var encoded = Object.keys(payload).map(function (k) {
+      return encodeURIComponent(k) + '=' + encodeURIComponent(payload[k]);
+    }).join('&');
+
+    fetch('/', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: encoded
+    }).then(function (r) {
+      if (!r.ok) throw new Error('bad status ' + r.status);
+      btn.textContent = '✓ Application received — thank you!';
+      btn.style.background = 'linear-gradient(132deg, #5FAE73, #2C7A4B)';
+    }).catch(openMail);
   });
 })();
 </script>
