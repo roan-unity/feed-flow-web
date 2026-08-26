@@ -8,5 +8,7 @@
 # The ambassador "portal" is a Phase-2 dashboard that doesn't have a backend yet.
 # Until it's real, send anyone who finds the URL to the application page (302 = temporary,
 # so it can come back when the dashboard ships) rather than a dead sign-in that does nothing.
-/portal       /affiliate.html   302
-/portal.html  /affiliate.html   302
+# The trailing "!" forces the redirect to win over the existing portal.html file
+# (Netlify skips a redirect when a real file sits at the path, unless it's forced).
+/portal       /affiliate.html   302!
+/portal.html  /affiliate.html   302!
