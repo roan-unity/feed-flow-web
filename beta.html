@@ -368,23 +368,25 @@ footer.ft { border-top: 1px solid var(--border-2); padding: 50px 0 60px; }
 
       <div class="form-card reveal">
         <h3>Your early access application</h3>
-        <form id="betaForm" novalidate>
+        <form id="betaForm" name="early-access" method="POST" data-netlify="true" netlify-honeypot="bot-field" novalidate>
+          <input type="hidden" name="form-name" value="early-access">
+          <p hidden><label>Don't fill this out if you're human: <input name="bot-field"></label></p>
 
           <div class="form-row">
             <div class="form-field">
               <label for="b-name">Your name</label>
-              <input type="text" id="b-name" placeholder="Emma" required autocomplete="given-name">
+              <input type="text" id="b-name" name="name" placeholder="Emma" required autocomplete="given-name">
             </div>
             <div class="form-field">
               <label for="b-email">Email address</label>
-              <input type="email" id="b-email" placeholder="your@email.com" required autocomplete="email">
+              <input type="email" id="b-email" name="email" placeholder="your@email.com" required autocomplete="email">
             </div>
           </div>
 
           <div class="form-row">
             <div class="form-field">
               <label for="b-country">Country</label>
-              <select id="b-country" required>
+              <select id="b-country" name="country" required>
                 <option value="" disabled selected>Country</option>
                 <option>Norway</option><option>Sweden</option><option>Denmark</option><option>Finland</option>
                 <option>United Kingdom</option><option>United States</option><option>Canada</option>
@@ -394,7 +396,7 @@ footer.ft { border-top: 1px solid var(--border-2); padding: 50px 0 60px; }
             </div>
             <div class="form-field">
               <label for="b-stage">Baby's current stage</label>
-              <select id="b-stage" required>
+              <select id="b-stage" name="stage" required>
                 <option value="" disabled selected>Select a stage</option>
                 <option>We're expecting 🤰</option>
                 <option>Newborn (0–3 months) 🍼</option>
@@ -419,7 +421,7 @@ footer.ft { border-top: 1px solid var(--border-2); padding: 50px 0 60px; }
 
           <div class="form-field">
             <label for="b-wish">What would make this app a 10/10 for you? <span style="font-weight:400;color:var(--ink-3)">(optional)</span></label>
-            <textarea id="b-wish" placeholder="e.g. I want to track breastfeeding sides without waking the baby up to check my phone…"></textarea>
+            <textarea id="b-wish" name="wish" placeholder="e.g. I want to track breastfeeding sides without waking the baby up to check my phone…"></textarea>
           </div>
 
           <div class="divider"></div>
@@ -448,11 +450,11 @@ footer.ft { border-top: 1px solid var(--border-2); padding: 50px 0 60px; }
                 <div class="form-row" style="margin:0;gap:10px;">
                   <div class="form-field" style="margin:0;">
                     <label for="s-handle">Handle or profile link</label>
-                    <input type="url" id="s-handle" placeholder="https://instagram.com/…">
+                    <input type="url" id="s-handle" name="social-handle" placeholder="https://instagram.com/…">
                   </div>
                   <div class="form-field" style="margin:0;">
                     <label for="s-size">Approximate following</label>
-                    <select id="s-size">
+                    <select id="s-size" name="social-following">
                       <option value="" disabled selected>Size</option>
                       <option>Under 1,000</option>
                       <option>1,000 – 10,000</option>
@@ -586,14 +588,51 @@ footer.ft { border-top: 1px solid var(--border-2); padding: 50px 0 60px; }
       .map(function(cb) { return cb.value; }).join(', ');
     var ambassador = document.getElementById('b-ambassador').checked;
     var wish = document.getElementById('b-wish').value.trim();
+    var socialHandle = document.getElementById('s-handle').value.trim();
+    var socialSize = document.getElementById('s-size').value;
 
     var btn = this.querySelector('button[type="submit"]');
-    btn.textContent = '✓ Application received — thank you!';
-    btn.style.background = 'linear-gradient(132deg, #5FAE73, #2C7A4B)';
+    btn.textContent = 'Sending…';
     btn.disabled = true;
 
-    // TODO: send to support@tryfeedflow.app or form backend (Formspree / Loops)
-    console.log({ name, email, country, stage, feeds, socials, ambassador, wish });
+    var payload = {
+      'form-name': 'early-access',
+      name: name, email: email, country: country, stage: stage,
+      feed: feeds, wish: wish,
+      social: socials, 'social-handle': socialHandle, 'social-following': socialSize,
+      ambassador: ambassador ? 'Yes' : 'No'
+    };
+    var encoded = Object.keys(payload).map(function (k) {
+      return encodeURIComponent(k) + '=' + encodeURIComponent(payload[k]);
+    }).join('&');
+
+    fetch('/', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: encoded
+    }).then(function (r) {
+      if (!r.ok) throw new Error('bad status ' + r.status);
+      btn.textContent = '✓ Application received — thank you!';
+      btn.style.background = 'linear-gradient(132deg, #5FAE73, #2C7A4B)';
+    }).catch(function () {
+      // Safety net: never silently lose a submission — hand it to the visitor's mail app.
+      btn.textContent = '✓ Almost there — hit send in your mail app';
+      btn.style.background = 'linear-gradient(132deg, #5FAE73, #2C7A4B)';
+      var subject = encodeURIComponent('Feed Flow! early access — ' + name);
+      var body = encodeURIComponent(
+        'Name: ' + name + '\n' +
+        'Email: ' + email + '\n' +
+        'Country: ' + country + '\n' +
+        'Stage: ' + stage + '\n' +
+        'Feed types: ' + (feeds || '—') + '\n' +
+        'Open to sharing: ' + (ambassador ? 'Yes' : 'No') + '\n' +
+        (socials ? 'Social: ' + socials + '\n' : '') +
+        (socialHandle ? 'Handle: ' + socialHandle + '\n' : '') +
+        (socialSize ? 'Following: ' + socialSize + '\n' : '') +
+        '\nWhat would make it a 10/10:\n' + (wish || '—')
+      );
+      window.location.href = 'mailto:support@tryfeedflow.app?subject=' + subject + '&body=' + body;
+    });
   });
 })();
 </script>
