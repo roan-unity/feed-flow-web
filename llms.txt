@@ -2,7 +2,7 @@
 
 > Track every feed. Watch them grow.
 
-Feed Flow! is a privacy-first iPhone app launching in 2026. Its signature feature is a safe-window timer that runs on every prepared bottle — a calm countdown showing when the bottle was started, how long it remains safe, and when that window ends — so a parent never has to guess whether a bottle is still good. It also helps new parents log every feeding — formula bottles, breastfeeding sessions, pumped milk, solid foods, and water — and uses that data to reduce formula waste, show what is normal for their own baby, predict the next feed, and generate PDF reports for paediatric appointments.
+Feed Flow! is a privacy-first iPhone app, available now on the Apple App Store (https://apps.apple.com/app/id6782075454). Its signature feature is a safe-window timer that runs on every prepared bottle — a calm countdown showing when the bottle was started, how long it remains safe, and when that window ends — so a parent never has to guess whether a bottle is still good. It also helps new parents log every feeding — formula bottles, breastfeeding sessions, pumped milk, solid foods, and water — and uses that data to reduce formula waste, show what is normal for their own baby, predict the next feed, and generate PDF reports for paediatric appointments.
 
 ## Who it's for
 
@@ -69,14 +69,16 @@ Feed Flow! runs a two-tier ambassador program for parent bloggers, parenting inf
 
 ## Platform
 
-- iOS 26.1 and later
+- iOS 18.0 and later
 - iPhone (iPad layout planned post-launch)
-- Coming to the Apple App Store in 2026
+- Available now on the Apple App Store: https://apps.apple.com/app/id6782075454
 - Built in Norway — privacy-first, GDPR-compliant
 
 ## Links
 
 - Home: https://tryfeedflow.app/
+- Download (App Store): https://apps.apple.com/app/id6782075454
+- Instagram: https://www.instagram.com/feedflow_babyfeedingapp
 - Ambassador / affiliate program: https://tryfeedflow.app/affiliate.html
 - Privacy policy: https://tryfeedflow.app/privacy.html
 - Support: support@tryfeedflow.app
