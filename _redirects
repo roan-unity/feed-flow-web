@@ -12,3 +12,8 @@
 # (Netlify skips a redirect when a real file sits at the path, unless it's forced).
 /portal       /affiliate.html   302!
 /portal.html  /affiliate.html   302!
+
+# The app is live, so the pre-launch beta/early-access page is retired.
+# 301 anyone who still hits it to the homepage (where the real Download CTA lives).
+/beta       /   301
+/beta.html  /   301

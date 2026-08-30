@@ -527,9 +527,9 @@ footer.ft { border-top: 1px solid var(--border-2); padding: 54px 0 60px; }
         <svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
         <svg class="moon" viewBox="0 0 24 24" fill="currentColor"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
       </button>
-      <a href="beta.html" class="btn btn-primary btn-sm">
+      <a href="https://apps.apple.com/app/id6782075454" class="btn btn-primary btn-sm">
         <svg class="apple" viewBox="0 0 24 24" fill="currentColor"><path d="M16.4 12.6c0-2.3 1.9-3.4 2-3.5-1.1-1.6-2.8-1.8-3.4-1.8-1.4-.1-2.8.8-3.5.8-.7 0-1.9-.8-3.1-.8-1.6 0-3 .9-3.8 2.4-1.6 2.8-.4 7 1.2 9.3.8 1.1 1.7 2.4 2.9 2.3 1.2-.05 1.6-.75 3-.75s1.8.75 3 .73c1.2-.02 2-1.1 2.8-2.3.5-.7.9-1.5 1.2-2.3-2.6-1-2.4-3.5-2.4-3.6zM14.2 5.6c.6-.8 1.1-1.9 1-3-.9.04-2 .6-2.7 1.4-.6.7-1.1 1.8-1 2.8 1 .1 2.1-.5 2.7-1.2z"/></svg>
-        Get early access
+        Download
       </a>
     </div>
   </div>
@@ -898,11 +898,6 @@ footer.ft { border-top: 1px solid var(--border-2); padding: 54px 0 60px; }
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
       </a>
     </div>
-    <form class="signup reveal d3" id="signupForm" novalidate>
-      <input type="email" id="emailInput" placeholder="your@email.com" aria-label="Email address" required>
-      <button type="submit" class="btn btn-primary">Keep me posted</button>
-    </form>
-    <p class="fine reveal d3">No spam. One email, only when there's something worth it.</p>
   </div>
 </section>
 
@@ -1038,23 +1033,6 @@ footer.ft { border-top: 1px solid var(--border-2); padding: 54px 0 60px; }
     }, 1600);
   });
 
-  /* ---- Signup ---- */
-  var form = document.getElementById('signupForm');
-  var input = document.getElementById('emailInput');
-  form.addEventListener('submit', function (e) {
-    e.preventDefault();
-    var ok = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(input.value.trim());
-    if (!ok) { input.focus(); input.style.borderColor = 'var(--coral)'; return; }
-    form.classList.add('done');
-    input.value = '';
-    input.placeholder = "You're on the list ✓";
-    form.querySelector('button').textContent = 'Done';
-    setTimeout(function () {
-      form.classList.remove('done');
-      input.placeholder = 'your@email.com';
-      form.querySelector('button').textContent = 'Keep me posted';
-    }, 2600);
-  });
 })();
 </script>
 </body>
