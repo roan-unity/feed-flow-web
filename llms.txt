@@ -10,7 +10,7 @@ Parents of newborns, infants, and toddlers — especially families that mix form
 
 ## How it works
 
-Parents log each feed in one hand while holding the baby with the other. The app learns their baby's unique rhythm and predicts the next feeding window. There is no server: all data lives in the family's own iCloud account. (Sharing one live log across caregivers is built and coming in a post-launch update — it is not part of the first release.)
+Parents log each feed in one hand while holding the baby with the other. The app learns their baby's unique rhythm and predicts the next feeding window. There is no server: all data lives in the family's own iCloud account. Caregivers can share one live log through iCloud.
 
 ## Key features
 
@@ -21,7 +21,7 @@ Parents log each feed in one hand while holding the baby with the other. The app
 - **Twins and multiple babies:** two babies compared side by side on one card
 - **Log all feed types:** formula, breastfeeding (left / right / both sides), pumped milk, solid foods, water
 - **Smart next-feed predictions:** learns each baby's pattern and shows a countdown to the next likely feed; a Day Ahead planner builds a daily schedule from recent history
-- **Caregiver sharing (coming after launch):** sharing one live log across caregivers via iCloud is built and will arrive in a post-launch update
+- **Caregiver sharing:** share one live log across caregivers through iCloud
 - **PDF feeding reports:** one-tap export of a doctor-ready PDF summarising feeds, volumes, patterns, and growth
 - **Milestone journey:** logs your baby's developmental milestones with dates and notes — a keepsake families hold onto long after the feeding phase ends
 - **Privacy-first:** no Feed Flow! server ever receives feeding data; everything goes through the user's own iCloud
@@ -49,7 +49,7 @@ Yes. Logging is free forever, along with the safe-window bottle timers, mileston
 Yes. Every feed type — formula, breastfeeding (with side tracking), pumped milk, solid foods, water — is tracked in one place.
 
 **Can caregivers share one log?**
-Sharing a live log across caregivers via iCloud is built and arriving in a post-launch update — it is not in the first release.
+Yes. Invite a co-parent or caregiver from the app's Family screen and everyone logs to the same baby through iCloud. Sharing is available in the current App Store version.
 
 **Does the app predict when my baby will be hungry next?**
 Yes. After a few days of logs the prediction engine learns the baby's pattern and shows a countdown and confidence estimate for the next feed. A "Day Ahead" planner shows the likely schedule for the coming day.
