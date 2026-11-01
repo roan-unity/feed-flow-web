@@ -67,12 +67,12 @@
       ],
       "featureList": ["Bottle countdown, also on the lock screen","Likely time for the next feed","Today's feeds at a glance","One shared log for up to five caregivers","PDF report for the pediatrician","Formula feeding tracker","Breastfeeding and pumping log","Vitamin D log","Formula finder"],
       "screenshot": [
-        { "@type": "ImageObject", "contentUrl": "https://tryfeedflow.app/screens/formula/01-safe-bottle-720.webp", "caption": "The bottle countdown in Feed Flow!", "width": 720, "height": 1561 },
-        { "@type": "ImageObject", "contentUrl": "https://tryfeedflow.app/screens/formula/02-lock-screen-720.webp", "caption": "The bottle countdown on the lock screen", "width": 720, "height": 1561 },
-        { "@type": "ImageObject", "contentUrl": "https://tryfeedflow.app/screens/formula/03-next-feed-720.webp", "caption": "The likely time of the next feed", "width": 720, "height": 1561 },
-        { "@type": "ImageObject", "contentUrl": "https://tryfeedflow.app/screens/formula/04-home-720.webp", "caption": "Today's feeds at a glance", "width": 720, "height": 1561 },
-        { "@type": "ImageObject", "contentUrl": "https://tryfeedflow.app/screens/formula/07-family-720.webp", "caption": "One log for every caregiver", "width": 720, "height": 1561 },
-        { "@type": "ImageObject", "contentUrl": "https://tryfeedflow.app/screens/formula/10-feeding-report-720.webp", "caption": "The report for the pediatrician", "width": 720, "height": 1561 }
+        { "@type": "ImageObject", "contentUrl": "https://tryfeedflow.app/screens/formula/01-safe-bottle-720.webp", "caption": "The live bottle sheet with its countdown ring", "width": 720, "height": 1561 },
+        { "@type": "ImageObject", "contentUrl": "https://tryfeedflow.app/screens/formula/02-lock-screen-720.webp", "caption": "The bottle widget on a locked iPhone", "width": 720, "height": 1561 },
+        { "@type": "ImageObject", "contentUrl": "https://tryfeedflow.app/screens/formula/03-next-feed-720.webp", "caption": "FlowCast timeline with the next feed window highlighted", "width": 720, "height": 1561 },
+        { "@type": "ImageObject", "contentUrl": "https://tryfeedflow.app/screens/formula/04-home-720.webp", "caption": "The Today screen with the day's total and the feed list", "width": 720, "height": 1561 },
+        { "@type": "ImageObject", "contentUrl": "https://tryfeedflow.app/screens/formula/07-family-720.webp", "caption": "The activity feed with each caregiver's feeds", "width": 720, "height": 1561 },
+        { "@type": "ImageObject", "contentUrl": "https://tryfeedflow.app/screens/formula/10-feeding-report-720.webp", "caption": "The Baby Report cover and its six summary numbers", "width": 720, "height": 1561 }
       ],
       "offers": {
         "@type": "Offer",
@@ -204,6 +204,7 @@ html[data-theme="dark"] .theme-toggle .moon { display: block; }
 .cta .lead { font-size: clamp(28px, 4.4vw, 46px); font-weight: 700; letter-spacing: -0.025em; line-height: 1.1; text-wrap: balance; }
 .cta .tiers { font-size: 17px; color: var(--ink-2); margin: 20px auto 0; max-width: 56ch; text-wrap: pretty; }
 .cta .btn { margin-top: 30px; }
+.byline { font-size: 17px; color: var(--ink-2); margin: 22px auto 0; }
 .health { max-width: 64ch; margin: 44px auto 0; font-size: 15px; color: var(--ink-2); text-align: center; }
 .health a { text-decoration: underline; text-underline-offset: 3px; }
 
@@ -257,14 +258,14 @@ footer.ft { border-top: 1px solid var(--border-2); padding: 44px 0 52px; }
   <div class="wrap hero-grid">
     <div>
       <h1>A baby feeding tracker that counts down every bottle</h1>
-      <p class="sub">Is that bottle still good? Start a formula bottle in Feed Flow! and a one-hour clock starts with it, so you don't have to remember. It's a formula feeding tracker for iPhone, and a breastfeeding and pumping log too.</p>
+      <p class="sub">Start a formula bottle in Feed Flow! and a one-hour clock starts with it, so you don't have to remember. Slide the bottle to what's left and the app works out how much your baby drank. It's a formula feeding tracker for iPhone, and a breastfeeding and pumping log too.</p>
       <div class="hero-cta">
         <a href="https://apps.apple.com/app/apple-store/id6782075454?pt=126898045&amp;ct=website&amp;mt=8" class="btn btn-primary"><svg class="apple" aria-hidden="true"><use href="#apple"/></svg>Download on the App Store</a>
       </div>
       <p class="meta">Free to log, forever. Your baby's data stays in your own iCloud.</p>
     </div>
     <figure class="shot">
-      <img src="screens/formula/01-safe-bottle-360.webp" srcset="screens/formula/01-safe-bottle-360.webp 1x, screens/formula/01-safe-bottle-720.webp 2x" width="360" height="780" fetchpriority="high" decoding="async" alt="Is that bottle still good? The Feed Flow bottle screen with a 47:52 countdown, started 3:30 PM and ends 4:30 PM, with 2 oz left and 3.5 oz taken.">
+      <img src="screens/formula/01-safe-bottle-360.webp" srcset="screens/formula/01-safe-bottle-360.webp 1x, screens/formula/01-safe-bottle-720.webp 2x" width="360" height="780" fetchpriority="high" decoding="async" alt="The Feed Flow bottle screen: a 47:52 countdown ring marked safe, started 3:30 PM, ends 4:30 PM, with 2 oz left and 3.5 oz taken.">
     </figure>
   </div>
 </section>
@@ -273,7 +274,7 @@ footer.ft { border-top: 1px solid var(--border-2); padding: 44px 0 52px; }
   <div class="wrap feature-grid">
     <div>
       <h2>Know when the bottle's hour is up, even with your phone locked</h2>
-      <p>The countdown shows the time left and how much is left in the bottle, right on your lock screen. Change the hour for each kind of feed. When time's up, Feed Flow! asks how much your baby took.</p>
+      <p>The clock keeps running on your lock screen, so you never unlock the phone to check. Change the hour for each kind of feed. When time's up, Feed Flow! asks how much your baby took.</p>
     </div>
     <figure class="shot">
       <img src="screens/formula/02-lock-screen-360.webp" srcset="screens/formula/02-lock-screen-360.webp 1x, screens/formula/02-lock-screen-720.webp 2x" width="360" height="780" loading="lazy" decoding="async" alt="A phone lock screen showing the Feed Flow bottle countdown: 49:48 left, a 6.5 oz bottle, 4.5 oz taken and 2 oz left.">
@@ -281,26 +282,27 @@ footer.ft { border-top: 1px solid var(--border-2); padding: 44px 0 52px; }
   </div>
 </section>
 
-<section class="feature flip" id="next-feed">
+<!-- swap frame: milk-today meter, DEV355-4 -->
+<section class="feature flip" id="today">
   <div class="wrap feature-grid">
     <div>
-      <h2>See when the next feed is likely</h2>
-      <p>After about four days of feeds, Feed Flow! learns your baby's rhythm and shows a likely time for the next one. Home shows the time. Premium shows the whole day ahead. It's a guide, not a promise.</p>
+      <h2>Every feed in one total, in ml or oz</h2>
+      <p>Log a bottle, a breastfeeding session or a pump in a few taps, with one hand. The day adds up to one total, in ml or oz.</p>
     </div>
     <figure class="shot">
-      <img src="screens/formula/03-next-feed-360.webp" srcset="screens/formula/03-next-feed-360.webp 1x, screens/formula/03-next-feed-720.webp 2x" width="360" height="780" loading="lazy" decoding="async" alt="The Feed Flow forecast screen: a timeline of likely feeds, with the next window at about 5:15 PM and a later one near 7:50 PM.">
+      <img src="screens/formula/04-home-360.webp" srcset="screens/formula/04-home-360.webp 1x, screens/formula/04-home-720.webp 2x" width="360" height="780" loading="lazy" decoding="async" alt="The Feed Flow Today screen for a baby named Nora: last meal 23 minutes ago, next meal in about 90 minutes, 20 oz so far and today's four bottles.">
     </figure>
   </div>
 </section>
 
-<section class="feature soft" id="today">
+<section class="feature soft" id="next-feed">
   <div class="wrap feature-grid">
     <div>
-      <h2>Your baby's whole feeding day at a glance</h2>
-      <p>Home shows the last feed, today's total and what's next. Log a bottle feeding, a breastfeeding session or a pump in a few taps, with one hand. From the first bottle to first foods, it all lands in the same log.</p>
+      <h2>FlowCast learns your baby's feeding rhythm</h2>
+      <p>After about four days of logging, it shows a likely time for the next feed. Home shows the time. Premium shows the whole day ahead. It's a guide, not a promise.</p>
     </div>
     <figure class="shot">
-      <img src="screens/formula/04-home-360.webp" srcset="screens/formula/04-home-360.webp 1x, screens/formula/04-home-720.webp 2x" width="360" height="780" loading="lazy" decoding="async" alt="The Feed Flow Today screen for a baby named Nora: last meal 23 minutes ago, next meal in about 90 minutes, 20 oz so far and today's four bottles.">
+      <img src="screens/formula/03-next-feed-360.webp" srcset="screens/formula/03-next-feed-360.webp 1x, screens/formula/03-next-feed-720.webp 2x" width="360" height="780" loading="lazy" decoding="async" alt="The Feed Flow forecast screen: a timeline of likely feeds, with the next window at about 5:15 PM and a later one near 7:50 PM.">
     </figure>
   </div>
 </section>
@@ -309,7 +311,7 @@ footer.ft { border-top: 1px solid var(--border-2); padding: 44px 0 52px; }
   <div class="wrap feature-grid">
     <div>
       <h2>Everyone who feeds your baby, in one log</h2>
-      <p>Invite your partner, a grandparent or a sitter. Up to five people can log to the same baby, free, each on their own phone. Premium adds an activity feed that shows who fed and when. A feed can take a moment to show up.</p>
+      <p>Invite your partner, a grandparent or a sitter. Up to five people log to the same baby, free. Premium adds this activity feed, with who fed and when. A new feed can take a moment to show up.</p>
     </div>
     <figure class="shot">
       <img src="screens/formula/07-family-360.webp" srcset="screens/formula/07-family-360.webp 1x, screens/formula/07-family-720.webp 2x" width="360" height="780" loading="lazy" decoding="async" alt="The Feed Flow activity feed listing bottles logged by You, Alex and Anna, with the amount and the time of each feed.">
@@ -320,8 +322,8 @@ footer.ft { border-top: 1px solid var(--border-2); padding: 44px 0 52px; }
 <section class="feature soft" id="report">
   <div class="wrap feature-grid">
     <div>
-      <h2>Hand your pediatrician a clear report</h2>
-      <p>Share a PDF made from your own log: the feeds, the amounts and the weekly trend. Print it or send it before the visit. The report is Premium.</p>
+      <h2>A clear report for the pediatrician</h2>
+      <p>It's made from your own log, with the weekly trend. Print it or send it before the visit. The report is Premium.</p>
     </div>
     <figure class="shot">
       <img src="screens/formula/10-feeding-report-360.webp" srcset="screens/formula/10-feeding-report-360.webp 1x, screens/formula/10-feeding-report-720.webp 2x" width="360" height="780" loading="lazy" decoding="async" alt="The Feed Flow baby report: a cover showing 947 oz from 177 bottles over four weeks, and six summary numbers at a glance.">
@@ -332,7 +334,7 @@ footer.ft { border-top: 1px solid var(--border-2); padding: 44px 0 52px; }
 <section class="extras">
   <div class="wrap">
     <ul>
-      <li><strong>Vitamin D.</strong> Log the drops and see them counted with what your formula's label lists.</li>
+      <li><strong>Vitamin D and nutrition.</strong> Log the drops and see them counted with what your formula's label lists. Energy, protein, fat, vitamin D and iron from that label are added up for the day.</li>
       <li><strong>Formula finder.</strong> Compare formulas side by side, using the numbers on each label.</li>
     </ul>
   </div>
@@ -343,7 +345,8 @@ footer.ft { border-top: 1px solid var(--border-2); padding: 44px 0 52px; }
     <p class="lead">Start the next bottle with a countdown.</p>
     <p class="tiers">Free forever: logging, the bottle countdown, the next feed's time and caregiver sharing. Premium adds the day-ahead forecast, the activity feed, the vitamin D meter, the report and the full history. Pay once if you prefer.</p>
     <a href="https://apps.apple.com/app/apple-store/id6782075454?pt=126898045&amp;ct=website&amp;mt=8" class="btn btn-primary"><svg class="apple" aria-hidden="true"><use href="#apple"/></svg>Download on the App Store</a>
-    <p class="health">Feed Flow! is not a medical device. Before you act on a number, check it against the label, the pack or your health nurse: this is a record, not medical advice.</p>
+    <p class="byline">Made by parents who know what tired is.</p>
+    <p class="health">Feed Flow! is not a medical device. Before you act on a number, check it against the label, the pack or your pediatrician: this is a record, not medical advice.</p>
   </div>
 </section>
 
