@@ -68,7 +68,7 @@ Not measured (needs a browser): real Lighthouse scores, LCP time, contrast ratio
 | Share a PDF of the feeds, amounts and weekly trend | Baby Report, Feeding scope, `Share PDF` (frame 10) | Premium | Thin until a few days are logged; the copy says "made from your own log" |
 | Print it or send it before the visit | The share sheet on the PDF | Premium | |
 | Vitamin D: log the drops, counted with what your formula's label lists (the block is now "Vitamin D and nutrition") | Vitamin D card, formula label vitamin D counted from the product's label | Full card is Premium and needs "Track vitamin D" on; no dosing or "enough" claim on the page | Hidden until switched on |
-| Nutrition: energy, protein, fat, vitamin D and iron from the formula's label, added up for the day | Nutrition editor and analytics Macros card read `FormulaCatalog.json` per 100 ml (no vitamin C, no other nutrient) | Free to set; the analytics card is Premium | Needs a formula chosen |
+| Nutrition: energy, protein, fat, vitamin D from the formula's label, added up for the day | Nutrition editor and analytics Macros card read `FormulaCatalog.json` per 100 ml (no vitamin C, no other nutrient) | Free to set; the analytics card is Premium | Needs a formula chosen |
 | Formula finder: compare formulas using the numbers on each label | Compare formulas sheet (product picker) | Free | Yes |
 | Free forever: logging, the bottle countdown, the next feed's time, caregiver sharing | See the rows above | Free tier | |
 | Premium adds the day-ahead forecast, the activity feed, the vitamin D meter, the report and the full history | PREMIUM.md tier table | Premium | |
