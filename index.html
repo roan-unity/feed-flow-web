@@ -44,7 +44,11 @@
       "description": "Baby feeding tracker for iPhone: a countdown on every bottle, a breastfeeding and pumping log, and a report for the pediatrician.",
       "sameAs": [
         "https://apps.apple.com/app/id6782075454",
-        "https://www.instagram.com/feedflow_babyfeedingapp"
+        "https://www.instagram.com/feedflow_babyfeedingapp",
+        "https://www.tiktok.com/@feedflow_babyfeedingapp",
+        "https://www.youtube.com/@FeedFlow-BabyFeedingApp",
+        "https://www.facebook.com/feedflowapp",
+        "https://www.reddit.com/r/FeedFlowParents/"
       ]
     },
     {
@@ -63,7 +67,11 @@
       "downloadUrl": "https://apps.apple.com/app/id6782075454",
       "sameAs": [
         "https://apps.apple.com/app/id6782075454",
-        "https://www.instagram.com/feedflow_babyfeedingapp"
+        "https://www.instagram.com/feedflow_babyfeedingapp",
+        "https://www.tiktok.com/@feedflow_babyfeedingapp",
+        "https://www.youtube.com/@FeedFlow-BabyFeedingApp",
+        "https://www.facebook.com/feedflowapp",
+        "https://www.reddit.com/r/FeedFlowParents/"
       ],
       "featureList": ["Bottle countdown, also on the lock screen","Likely time for the next feed","Today's feeds at a glance","One shared log for up to five caregivers","PDF report for the pediatrician","Formula feeding tracker","Breastfeeding and pumping log","Vitamin D log","Formula finder"],
       "screenshot": [
@@ -92,7 +100,11 @@
       "email": "support@tryfeedflow.app",
       "sameAs": [
         "https://apps.apple.com/app/id6782075454",
-        "https://www.instagram.com/feedflow_babyfeedingapp"
+        "https://www.instagram.com/feedflow_babyfeedingapp",
+        "https://www.tiktok.com/@feedflow_babyfeedingapp",
+        "https://www.youtube.com/@FeedFlow-BabyFeedingApp",
+        "https://www.facebook.com/feedflowapp",
+        "https://www.reddit.com/r/FeedFlowParents/"
       ]
     }
   ]
@@ -196,6 +208,22 @@ html[data-theme="dark"] .theme-toggle .moon { display: block; }
   padding: 22px 24px; font-size: 17px; color: var(--ink-2); }
 .extras strong { color: var(--ink); }
 
+/* Real reviews and disclosed press */
+.proof { padding: 56px 0 12px; }
+.proof-heading { max-width: 680px; margin-bottom: 24px; }
+.kicker { color: var(--accent); font-size: 13px; font-weight: 800; letter-spacing: .09em; text-transform: uppercase; }
+.proof h2 { margin-top: 8px; font-size: clamp(26px, 3.4vw, 38px); }
+.proof-note { margin-top: 10px; color: var(--ink-2); font-size: 16px; }
+.review-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+.review { margin: 0; padding: 24px; background: var(--surface); border: 1px solid var(--border); border-radius: var(--r-md); box-shadow: var(--shadow-sm); }
+.stars { color: #D98700; letter-spacing: .08em; font-size: 17px; }
+.review blockquote { margin: 14px 0 18px; font-size: 17px; line-height: 1.55; }
+.review figcaption { color: var(--ink-2); font-size: 14px; }
+.featured { margin-top: 20px; padding: 24px; border: 1px solid var(--border); border-radius: var(--r-md); background: var(--bg-soft); }
+.featured h2 { font-size: 24px; }
+.featured p { margin-top: 10px; color: var(--ink-2); font-size: 16px; }
+.featured a { display: inline-block; margin-top: 14px; color: var(--accent); font-weight: 700; text-decoration: underline; text-underline-offset: 3px; }
+
 /* Closing call to action */
 .cta { position: relative; padding: 88px 0 56px; text-align: center; overflow: hidden; }
 .cta::before { content: ""; position: absolute; inset: 0 -10% auto -10%; height: 100%; z-index: 0; pointer-events: none;
@@ -222,7 +250,7 @@ footer.ft { border-top: 1px solid var(--border-2); padding: 44px 0 52px; }
   .hero-grid, .feature-grid { grid-template-columns: 1fr; gap: 36px; }
   .feature { padding: 52px 0; }
   .feature.flip .shot { order: 0; }
-  .extras ul { grid-template-columns: 1fr; }
+  .extras ul, .review-grid { grid-template-columns: 1fr; }
 }
 @media (max-width: 560px) {
   .wrap { padding: 0 20px; }
@@ -340,6 +368,39 @@ footer.ft { border-top: 1px solid var(--border-2); padding: 44px 0 52px; }
   </div>
 </section>
 
+<section class="proof" id="reviews" aria-labelledby="reviews-title">
+  <div class="wrap">
+    <div class="proof-heading">
+      <p class="kicker">From the App Store</p>
+      <h2 id="reviews-title">Parents are finding Feed Flow! useful</h2>
+      <p class="proof-note">9 written App Store reviews, all 5★, from parents in Norway and Sweden.</p>
+    </div>
+    <div class="review-grid">
+      <figure class="review">
+        <div class="stars" aria-label="5 out of 5 stars">★★★★★</div>
+        <blockquote>“Very useful app! It saves me both time and mental effort, while giving me a clear and easy overview. Definitely worth downloading!”</blockquote>
+        <figcaption>Irene · App Store review · Norway</figcaption>
+      </figure>
+      <figure class="review">
+        <div class="stars" aria-label="5 out of 5 stars">★★★★★</div>
+        <blockquote>“Super enkel app och har hjälpt mig att få koll på min amning. Slipper oroa mig att mitt barn går hungrig! Super ⭐️”</blockquote>
+        <figcaption>App Store review · Sweden</figcaption>
+      </figure>
+      <figure class="review">
+        <div class="stars" aria-label="5 out of 5 stars">★★★★★</div>
+        <blockquote>“Godt utviklet app og gode funksjoner når man vil ha kontroll på hvor mye babyen spiser. Kan lett gå i surr om ikke😅”</blockquote>
+        <figcaption>Birger · App Store review · Norway</figcaption>
+      </figure>
+    </div>
+    <aside class="featured" aria-labelledby="featured-title">
+      <p class="kicker">Featured in</p>
+      <h2 id="featured-title">Hop Into My Boots</h2>
+      <p>The Finnish family blog tested Feed Flow! and shared it with readers in a disclosed commercial collaboration.</p>
+      <a href="https://hopintomyboots.com/2026/11/07/feed-flow-helppo-sovellus-vauvan-syotto-ja-ruokailuseurantaan/" rel="sponsored noopener">Read the Finnish Feed Flow! feature</a>
+    </aside>
+  </div>
+</section>
+
 <section class="cta" id="download">
   <div class="wrap">
     <p class="lead">Start the next bottle with a countdown.</p>
@@ -362,8 +423,6 @@ footer.ft { border-top: 1px solid var(--border-2); padding: 44px 0 52px; }
         <p>Built by a dad in Norway who's also a developer.</p>
         <a class="ft-mail" href="mailto:support@tryfeedflow.app">support@tryfeedflow.app</a>
       </div>
-      <!-- Community links mirror CommunityConfig.isVisible in the app: Reddit + Instagram only.
-           Facebook/TikTok/YouTube stay hidden until the app shows them too. -->
       <nav class="ft-links" aria-label="Footer">
         <a href="/faq">FAQ</a>
         <a href="support.html">Support</a>
@@ -371,8 +430,11 @@ footer.ft { border-top: 1px solid var(--border-2); padding: 44px 0 52px; }
         <a href="/terms">Terms</a>
         <a href="affiliate.html">Affiliates</a>
         <a href="https://apps.apple.com/app/id6782075454?action=write-review">Leave a review</a>
-        <a href="https://www.reddit.com/r/FeedFlowParents/" rel="noopener">r/FeedFlowParents</a>
+        <a href="https://www.reddit.com/r/FeedFlowParents/" rel="noopener">Reddit</a>
         <a href="https://www.instagram.com/feedflow_babyfeedingapp" rel="noopener">Instagram</a>
+        <a href="https://www.tiktok.com/@feedflow_babyfeedingapp" rel="noopener">TikTok</a>
+        <a href="https://www.youtube.com/@FeedFlow-BabyFeedingApp" rel="noopener">YouTube</a>
+        <a href="https://www.facebook.com/feedflowapp" rel="noopener">Facebook</a>
       </nav>
     </div>
     <div class="ft-bottom">&copy; 2026 Feed Flow!</div>

@@ -36,11 +36,12 @@
     if (!a) return;
     var href = a.getAttribute("href") || "";
 
-    // Primary conversion: apply for early access (the beta page).
-    if (a.classList.contains("btn-primary") || /beta\.html/.test(href)) {
+    // Primary conversion on the retired beta page only. App Store buttons are
+    // tracked separately below and must not also fire the stale beta event.
+    if (/beta\.html/.test(href)) {
       window.plausible("Beta Apply", { props: { source: source(), campaign: campaign() } });
       // Carry the source into the beta page so a lead's origin is known on the form.
-      if (/beta\.html/.test(href)) a.setAttribute("href", withParam(href, "utm_source", source()));
+      a.setAttribute("href", withParam(href, "utm_source", source()));
     }
 
     // Affiliate interest.
