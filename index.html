@@ -209,31 +209,40 @@ html[data-theme="dark"] .theme-toggle .moon { display: block; }
 .extras strong { color: var(--ink); }
 
 /* Real reviews and disclosed press */
-.proof { padding: 56px 0 12px; }
-.proof-heading { max-width: 680px; margin-bottom: 24px; }
+.proof { padding: 44px 0 52px; background: var(--bg-soft); }
+.proof-heading { max-width: 700px; margin-bottom: 24px; }
 .kicker { color: var(--accent); font-size: 13px; font-weight: 800; letter-spacing: .09em; text-transform: uppercase; }
 .proof h2 { margin-top: 8px; font-size: clamp(26px, 3.4vw, 38px); }
 .proof-note { margin-top: 10px; color: var(--ink-2); font-size: 16px; }
-.review-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
-.review { margin: 0; padding: 24px; background: var(--surface); border: 1px solid var(--border); border-radius: var(--r-md); box-shadow: var(--shadow-sm); }
-.stars { color: #D98700; letter-spacing: .08em; font-size: 17px; }
-.review blockquote { margin: 14px 0 18px; font-size: 17px; line-height: 1.55; }
+.review-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px; }
+.review { margin: 0; padding: 20px; background: var(--surface); border: 1px solid var(--border); border-radius: var(--r-md); box-shadow: var(--shadow-sm); display: flex; flex-direction: column; min-width: 0; }
+.stars { color: #B96B00; letter-spacing: .08em; font-size: 17px; }
+html[data-theme="dark"] .stars { color: #F0B75B; }
+.review blockquote { margin: 13px 0 18px; font-size: 16px; line-height: 1.58; flex: 1; }
 .review figcaption { color: var(--ink-2); font-size: 14px; }
-.featured { margin-top: 20px; padding: 24px; border: 1px solid var(--border); border-radius: var(--r-md); background: var(--bg-soft); }
+.review-footer { margin-top: 12px; padding-top: 10px; border-top: 1px solid var(--border-2); display: flex; align-items: center; justify-content: space-between; gap: 8px; min-height: 52px; }
+.translate-note { display: none; align-items: center; gap: 6px; color: var(--ink-2); font-size: 11px; line-height: 1.25; }
+.translate-note.visible { display: flex; }
+.translate-note img { width: 20px; height: 20px; flex: 0 0 auto; }
+.review-toggle { appearance: none; border: 0; background: transparent; color: var(--accent); font: 600 12px var(--sf); cursor: pointer; min-height: 44px; padding: 8px 0 8px 8px; white-space: nowrap; }
+.review-toggle:hover { text-decoration: underline; text-underline-offset: 3px; }
+.featured { margin-top: 20px; padding: 24px; border: 1px solid var(--border); border-radius: var(--r-md); background: var(--surface); }
 .featured h2 { font-size: 24px; }
 .featured p { margin-top: 10px; color: var(--ink-2); font-size: 16px; }
 .featured a { display: inline-block; margin-top: 14px; color: var(--accent); font-weight: 700; text-decoration: underline; text-underline-offset: 3px; }
 
 /* Closing call to action */
-.cta { position: relative; padding: 88px 0 56px; text-align: center; overflow: hidden; }
+.cta { position: relative; padding: 72px 0 56px; text-align: center; overflow: hidden; }
 .cta::before { content: ""; position: absolute; inset: 0 -10% auto -10%; height: 100%; z-index: 0; pointer-events: none;
   background: radial-gradient(50% 70% at 50% 30%, var(--glow), transparent 70%); }
 .cta .wrap { position: relative; z-index: 1; }
+.cta-banner { padding: 44px 32px; border: 1px solid var(--border); border-radius: var(--r-lg); background: var(--surface); box-shadow: var(--shadow-sm); }
 .cta .lead { font-size: clamp(28px, 4.4vw, 46px); font-weight: 700; letter-spacing: -0.025em; line-height: 1.1; text-wrap: balance; }
-.cta .tiers { font-size: 17px; color: var(--ink-2); margin: 20px auto 0; max-width: 56ch; text-wrap: pretty; }
-.cta .btn { margin-top: 30px; }
+.cta .tiers { font-size: 17px; color: var(--ink-2); margin: 20px auto 0; max-width: 62ch; text-wrap: pretty; }
+.cta .btn { margin-top: 28px; min-height: 52px; }
+.cta .reassurance { margin-top: 14px; color: var(--ink-2); font-size: 14px; }
 .byline { font-size: 17px; color: var(--ink-2); margin: 22px auto 0; }
-.health { max-width: 64ch; margin: 44px auto 0; font-size: 15px; color: var(--ink-2); text-align: center; }
+.health { max-width: 64ch; margin: 32px auto 0; font-size: 15px; color: var(--ink-2); text-align: center; }
 .health a { text-decoration: underline; text-underline-offset: 3px; }
 
 /* Footer */
@@ -241,20 +250,36 @@ footer.ft { border-top: 1px solid var(--border-2); padding: 44px 0 52px; }
 .ft-inner { display: flex; justify-content: space-between; align-items: flex-start; gap: 28px; flex-wrap: wrap; }
 .ft-left p { font-size: 15px; color: var(--ink-2); margin-top: 12px; max-width: 34ch; }
 .ft-mail { display: inline-block; margin-top: 10px; font-size: 15px; font-weight: 600; color: var(--accent); }
+.social-list { display: flex; gap: 10px; margin-top: 22px; }
+.social-link { width: 44px; height: 44px; display: grid; place-items: center; border: 1px solid var(--border); border-radius: 50%; color: var(--ink-2); background: var(--surface); transition: color .18s ease, border-color .18s ease, transform .18s ease; }
+.social-link:hover { color: var(--accent); border-color: var(--accent); transform: translateY(-1px); }
+.social-link svg { width: 20px; height: 20px; }
 .ft-links { display: grid; grid-template-columns: repeat(2, auto); gap: 10px 48px; font-size: 15px; color: var(--ink-2); }
 .ft-links a:hover { color: var(--ink); }
 .ft-bottom { margin-top: 32px; padding-top: 20px; border-top: 1px solid var(--border-2); font-size: 14px; color: var(--ink-2); }
 
+@media (max-width: 960px) {
+  .review-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
 @media (max-width: 860px) {
   .hero { padding: 36px 0 24px; }
   .hero-grid, .feature-grid { grid-template-columns: 1fr; gap: 36px; }
   .feature { padding: 52px 0; }
   .feature.flip .shot { order: 0; }
-  .extras ul, .review-grid { grid-template-columns: 1fr; }
+  .extras ul { grid-template-columns: 1fr; }
 }
 @media (max-width: 560px) {
   .wrap { padding: 0 20px; }
+  .nav-inner { height: 68px; }
+  .nav-right { gap: 8px; }
+  .btn-sm { padding: 9px 14px; min-height: 44px; }
+  .theme-toggle { width: 44px; height: 44px; }
   .hero-cta .btn, .cta .btn { width: 100%; }
+  .proof { padding: 36px 0 42px; }
+  .review-grid { grid-template-columns: none; grid-auto-flow: column; grid-auto-columns: 86%; overflow-x: auto; scroll-snap-type: x mandatory; overscroll-behavior-x: contain; padding: 2px 20px 12px 2px; margin-right: -20px; scrollbar-width: thin; }
+  .review { scroll-snap-align: start; }
+  .cta { padding: 48px 0 40px; }
+  .cta-banner { padding: 32px 20px; }
 }
 </style>
 </head>
@@ -263,6 +288,11 @@ footer.ft { border-top: 1px solid var(--border-2); padding: 44px 0 52px; }
 <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
   <symbol id="apple" viewBox="0 0 24 24"><path fill="currentColor" d="M16.4 12.6c0-2.3 1.9-3.4 2-3.5-1.1-1.6-2.8-1.8-3.4-1.8-1.4-.1-2.8.8-3.5.8-.7 0-1.9-.8-3.1-.8-1.6 0-3 .9-3.8 2.4-1.6 2.8-.4 7 1.2 9.3.8 1.1 1.7 2.4 2.9 2.3 1.2-.05 1.6-.75 3-.75s1.8.75 3 .73c1.2-.02 2-1.1 2.8-2.3.5-.7.9-1.5 1.2-2.3-2.6-1-2.4-3.5-2.4-3.6zM14.2 5.6c.6-.8 1.1-1.9 1-3-.9.04-2 .6-2.7 1.4-.6.7-1.1 1.8-1 2.8 1 .1 2.1-.5 2.7-1.2z"/></symbol>
   <symbol id="bottle" viewBox="0 0 11 27"><rect x="1" y="0" width="9" height="14.5" rx="4" fill="#FF8C6A"/><rect x="2.6" y="14.5" width="5.8" height="2.2" rx="1.1" fill="#FF8C6A"/><circle cx="5.5" cy="22.4" r="3.5" fill="#FF8C6A"/></symbol>
+  <symbol id="instagram" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="17.5" cy="6.5" r="1.2" fill="currentColor"/></symbol>
+  <symbol id="tiktok" viewBox="0 0 24 24"><path d="M14 3v11.2a4.3 4.3 0 1 1-3.1-4.1v3a1.5 1.5 0 1 0 1.1 1.4V3h2zm0 0c.5 2.8 2.3 4.4 5 4.7v3c-2.1-.1-3.8-.9-5-2.1" fill="currentColor"/></symbol>
+  <symbol id="youtube" viewBox="0 0 24 24"><rect x="2.5" y="5" width="19" height="14" rx="4" fill="currentColor"/><path d="M10 9l6 3-6 3z" fill="var(--surface)"/></symbol>
+  <symbol id="facebook" viewBox="0 0 24 24"><path d="M14 21v-8h3l.5-3H14V8.2c0-1 .3-1.7 1.8-1.7H18V3.8c-.4-.1-1.5-.2-2.6-.2-2.7 0-4.4 1.6-4.4 4.5V10H8v3h3v8h3z" fill="currentColor"/></symbol>
+  <symbol id="reddit" viewBox="0 0 24 24"><path d="M12 5l1.5-3 4 1M12 5v3M5 12c-3 0-3 4 0 4m14-4c3 0 3 4 0 4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><ellipse cx="12" cy="14" rx="8" ry="6" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="9" cy="13" r="1" fill="currentColor"/><circle cx="15" cy="13" r="1" fill="currentColor"/><path d="M9 16c1.7 1.3 4.3 1.3 6 0" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></symbol>
 </svg>
 
 <header class="nav">
@@ -275,7 +305,7 @@ footer.ft { border-top: 1px solid var(--border-2); padding: 44px 0 52px; }
         <svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
         <svg class="moon" viewBox="0 0 24 24" fill="currentColor"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
       </button>
-      <a href="https://apps.apple.com/app/apple-store/id6782075454?pt=126898045&amp;ct=website&amp;mt=8" class="btn btn-primary btn-sm">Download</a>
+      <a href="https://apps.apple.com/app/apple-store/id6782075454?pt=126898045&amp;ct=website&amp;mt=8" class="btn btn-primary btn-sm"><svg class="apple" aria-hidden="true"><use href="#apple"/></svg>Download</a>
     </div>
   </div>
 </header>
@@ -295,6 +325,54 @@ footer.ft { border-top: 1px solid var(--border-2); padding: 44px 0 52px; }
     <figure class="shot">
       <img src="screens/formula/01-safe-bottle-360.webp" srcset="screens/formula/01-safe-bottle-360.webp 1x, screens/formula/01-safe-bottle-720.webp 2x" width="360" height="780" fetchpriority="high" decoding="async" alt="The Feed Flow bottle screen: a 47:52 countdown ring marked safe, started 3:30 PM, ends 4:30 PM, with 2 oz left and 3.5 oz taken.">
     </figure>
+  </div>
+</section>
+
+<section class="proof" id="reviews" aria-labelledby="reviews-title">
+  <div class="wrap">
+    <div class="proof-heading">
+      <p class="kicker">From the App Store</p>
+      <h2 id="reviews-title">Less mental load. More confidence at feeding time.</h2>
+      <p class="proof-note">9 written App Store reviews, all 5★, from parents in Norway and Sweden. Translated reviews are labeled, and the original is always available.</p>
+    </div>
+    <div class="review-grid" role="region" aria-label="App Store reviews" tabindex="0">
+      <figure class="review" data-review-index="0">
+        <div class="stars" aria-label="5 out of 5 stars">★★★★★</div>
+        <blockquote>Very useful app! It saves me both time and mental effort, while giving me a clear and easy overview. Definitely worth downloading!</blockquote>
+        <figcaption>Irene · App Store review · Norway</figcaption>
+        <div class="review-footer">
+          <span class="translate-note"><img src="assets/google-translate.png" width="20" height="20" alt="">Translated by Google Translate</span>
+          <button class="review-toggle" type="button" hidden>View original</button>
+        </div>
+      </figure>
+      <figure class="review" data-review-index="1">
+        <div class="stars" aria-label="5 out of 5 stars">★★★★★</div>
+        <blockquote>Really enjoy this, startet using it just a few days ago. It really helps structuring and mapping feeding, so we’re always in fair control</blockquote>
+        <figcaption>Alec · App Store review · Norway</figcaption>
+        <div class="review-footer">
+          <span class="translate-note"><img src="assets/google-translate.png" width="20" height="20" alt="">Translated by Google Translate</span>
+          <button class="review-toggle" type="button" hidden>View original</button>
+        </div>
+      </figure>
+      <figure class="review" data-review-index="2">
+        <div class="stars" aria-label="5 out of 5 stars">★★★★★</div>
+        <blockquote>Super simple app—it’s helped me keep track of my breastfeeding. I don’t have to worry about my baby going hungry! Great! ⭐️</blockquote>
+        <figcaption>App Store review · Sweden</figcaption>
+        <div class="review-footer">
+          <span class="translate-note visible"><img src="assets/google-translate.png" width="20" height="20" alt="">Translated by Google Translate</span>
+          <button class="review-toggle" type="button">View original</button>
+        </div>
+      </figure>
+      <figure class="review" data-review-index="3">
+        <div class="stars" aria-label="5 out of 5 stars">★★★★★</div>
+        <blockquote>Love it! Super easy to use, and the FlowCast function actually helps saving formula.</blockquote>
+        <figcaption>Lokal-bruker · App Store review · Norway</figcaption>
+        <div class="review-footer">
+          <span class="translate-note"><img src="assets/google-translate.png" width="20" height="20" alt="">Translated by Google Translate</span>
+          <button class="review-toggle" type="button" hidden>View original</button>
+        </div>
+      </figure>
+    </div>
   </div>
 </section>
 
@@ -368,30 +446,8 @@ footer.ft { border-top: 1px solid var(--border-2); padding: 44px 0 52px; }
   </div>
 </section>
 
-<section class="proof" id="reviews" aria-labelledby="reviews-title">
+<section class="proof" aria-label="Press coverage">
   <div class="wrap">
-    <div class="proof-heading">
-      <p class="kicker">From the App Store</p>
-      <h2 id="reviews-title">Parents are finding Feed Flow! useful</h2>
-      <p class="proof-note">9 written App Store reviews, all 5★, from parents in Norway and Sweden.</p>
-    </div>
-    <div class="review-grid">
-      <figure class="review">
-        <div class="stars" aria-label="5 out of 5 stars">★★★★★</div>
-        <blockquote>“Very useful app! It saves me both time and mental effort, while giving me a clear and easy overview. Definitely worth downloading!”</blockquote>
-        <figcaption>Irene · App Store review · Norway</figcaption>
-      </figure>
-      <figure class="review">
-        <div class="stars" aria-label="5 out of 5 stars">★★★★★</div>
-        <blockquote>“Super enkel app och har hjälpt mig att få koll på min amning. Slipper oroa mig att mitt barn går hungrig! Super ⭐️”</blockquote>
-        <figcaption>App Store review · Sweden</figcaption>
-      </figure>
-      <figure class="review">
-        <div class="stars" aria-label="5 out of 5 stars">★★★★★</div>
-        <blockquote>“Godt utviklet app og gode funksjoner når man vil ha kontroll på hvor mye babyen spiser. Kan lett gå i surr om ikke😅”</blockquote>
-        <figcaption>Birger · App Store review · Norway</figcaption>
-      </figure>
-    </div>
     <aside class="featured" aria-labelledby="featured-title">
       <p class="kicker">Featured in</p>
       <h2 id="featured-title">Hop Into My Boots</h2>
@@ -403,10 +459,13 @@ footer.ft { border-top: 1px solid var(--border-2); padding: 44px 0 52px; }
 
 <section class="cta" id="download">
   <div class="wrap">
-    <p class="lead">Start the next bottle with a countdown.</p>
-    <p class="tiers">Free forever: logging, the bottle countdown, the next feed's time and caregiver sharing. Premium adds the day-ahead forecast, the activity feed, the vitamin D meter, the report and the full history. Pay once if you prefer.</p>
-    <a href="https://apps.apple.com/app/apple-store/id6782075454?pt=126898045&amp;ct=website&amp;mt=8" class="btn btn-primary"><svg class="apple" aria-hidden="true"><use href="#apple"/></svg>Download on the App Store</a>
-    <p class="byline">Made by parents who know what tired is.</p>
+    <div class="cta-banner">
+      <p class="lead">One less thing to remember at the next feed.</p>
+      <p class="tiers">Start with free logging, the bottle countdown, the next feed's time and caregiver sharing. Premium adds the day-ahead forecast, activity feed, vitamin D meter, report and full history. Pay once if you prefer.</p>
+      <a href="https://apps.apple.com/app/apple-store/id6782075454?pt=126898045&amp;ct=website&amp;mt=8" class="btn btn-primary"><svg class="apple" aria-hidden="true"><use href="#apple"/></svg>Download on the App Store</a>
+      <p class="reassurance">Free to log, forever · Your baby's data stays in your own iCloud</p>
+      <p class="byline">Made by parents who know what tired is.</p>
+    </div>
     <p class="health">Feed Flow! is not a medical device. Before you act on a number, check it against the label, the pack or your pediatrician: this is a record, not medical advice.</p>
   </div>
 </section>
@@ -422,6 +481,13 @@ footer.ft { border-top: 1px solid var(--border-2); padding: 44px 0 52px; }
         </a>
         <p>Built by a dad in Norway who's also a developer.</p>
         <a class="ft-mail" href="mailto:support@tryfeedflow.app">support@tryfeedflow.app</a>
+        <nav class="social-list" aria-label="Feed Flow on social media">
+          <a class="social-link" href="https://www.instagram.com/feedflow_babyfeedingapp" target="_blank" rel="noopener noreferrer" aria-label="Feed Flow on Instagram" title="Instagram"><svg aria-hidden="true"><use href="#instagram"/></svg></a>
+          <a class="social-link" href="https://www.tiktok.com/@feedflow_babyfeedingapp" target="_blank" rel="noopener noreferrer" aria-label="Feed Flow on TikTok" title="TikTok"><svg aria-hidden="true"><use href="#tiktok"/></svg></a>
+          <a class="social-link" href="https://www.youtube.com/@FeedFlow-BabyFeedingApp" target="_blank" rel="noopener noreferrer" aria-label="Feed Flow on YouTube" title="YouTube"><svg aria-hidden="true"><use href="#youtube"/></svg></a>
+          <a class="social-link" href="https://www.facebook.com/feedflowapp" target="_blank" rel="noopener noreferrer" aria-label="Feed Flow on Facebook" title="Facebook"><svg aria-hidden="true"><use href="#facebook"/></svg></a>
+          <a class="social-link" href="https://www.reddit.com/r/FeedFlowParents/" target="_blank" rel="noopener noreferrer" aria-label="Feed Flow Parents on Reddit" title="Reddit"><svg aria-hidden="true"><use href="#reddit"/></svg></a>
+        </nav>
       </div>
       <nav class="ft-links" aria-label="Footer">
         <a href="/faq">FAQ</a>
@@ -441,6 +507,7 @@ footer.ft { border-top: 1px solid var(--border-2); padding: 44px 0 52px; }
   </div>
 </footer>
 
+<script src="reviews.js"></script>
 <script>
 (function () {
   var KEY = 'ff-web-theme';
@@ -453,6 +520,51 @@ footer.ft { border-top: 1px solid var(--border-2); padding: 44px 0 52px; }
     var next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
     root.setAttribute('data-theme', next);
     try { localStorage.setItem(KEY, next); } catch (e) {}
+  });
+})();
+
+(function () {
+  var data = window.FF_REVIEWS;
+  if (!data) return;
+  var supported = Object.keys(data.translations);
+  var preferred = navigator.languages && navigator.languages.length ? navigator.languages : [navigator.language || 'en'];
+  var language = 'en';
+  preferred.some(function (tag) {
+    var code = String(tag).toLowerCase().split('-')[0];
+    if (code === 'no' || code === 'nn') code = 'nb';
+    if (supported.indexOf(code) !== -1) {
+      language = code;
+      return true;
+    }
+    return false;
+  });
+
+  document.querySelectorAll('.review[data-review-index]').forEach(function (card) {
+    var index = Number(card.getAttribute('data-review-index'));
+    var original = data.originals[index];
+    var translated = data.translations[language] && data.translations[language][index];
+    var hasTranslation = Boolean(translated);
+    var quote = card.querySelector('blockquote');
+    var note = card.querySelector('.translate-note');
+    var button = card.querySelector('.review-toggle');
+    var showingOriginal = false;
+
+    function render() {
+      var useOriginal = showingOriginal || !hasTranslation;
+      quote.textContent = useOriginal ? original.text : translated;
+      quote.setAttribute('lang', useOriginal ? original.language : language);
+      note.classList.toggle('visible', !useOriginal && hasTranslation);
+      button.hidden = !hasTranslation;
+      button.textContent = showingOriginal ? 'View translation' : 'View original';
+      button.setAttribute('aria-pressed', showingOriginal ? 'true' : 'false');
+      button.setAttribute('aria-label', (showingOriginal ? 'View translation of' : 'View original') + ' review ' + (index + 1));
+    }
+
+    button.addEventListener('click', function () {
+      showingOriginal = !showingOriginal;
+      render();
+    });
+    render();
   });
 })();
 </script>
