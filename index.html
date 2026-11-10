@@ -248,6 +248,20 @@ html[data-theme="dark"] .stars { color: #F0B75B; }
 .health { max-width: 64ch; margin: 32px auto 0; font-size: 15px; color: var(--ink-2); text-align: center; }
 .health a { text-decoration: underline; text-underline-offset: 3px; }
 
+/* LinkedIn bottom banner */
+.linkedin-bottom { padding: 0 0 44px; }
+.linkedin-bottom-inner { display: flex; align-items: center; justify-content: space-between; gap: 28px; padding: 28px 32px; border-radius: var(--r-lg); background: #1C5E6B; color: #FFFFFF; box-shadow: var(--shadow-sm); }
+.linkedin-bottom-copy { display: flex; align-items: center; gap: 18px; min-width: 0; }
+.linkedin-mark { width: 52px; height: 52px; flex: 0 0 auto; display: grid; place-items: center; border-radius: 16px; background: #FFFFFF; color: #1C5E6B; }
+.linkedin-mark svg { width: 26px; height: 26px; }
+.linkedin-bottom h2 { font-size: clamp(22px, 2.8vw, 30px); }
+.linkedin-bottom p { margin-top: 8px; color: #DDF4F5; font-size: 16px; max-width: 52ch; text-wrap: pretty; }
+.linkedin-bottom-actions { display: flex; align-items: center; gap: 16px; flex: 0 0 auto; }
+.linkedin-follow { min-height: 48px; background: #FFFFFF; color: #1C5E6B; white-space: nowrap; }
+.linkedin-follow:hover { transform: translateY(-1px); box-shadow: 0 12px 28px -14px rgba(0,0,0,0.55); }
+.linkedin-follow svg { width: 18px; height: 18px; }
+.linkedin-latest { min-height: 44px; display: inline-flex; align-items: center; color: #FFFFFF; font-weight: 600; text-decoration: underline; text-underline-offset: 4px; white-space: nowrap; }
+
 /* Footer */
 footer.ft { border-top: 1px solid var(--border-2); padding: 44px 0 52px; }
 .ft-inner { display: flex; justify-content: space-between; align-items: flex-start; gap: 28px; flex-wrap: wrap; }
@@ -270,6 +284,7 @@ footer.ft { border-top: 1px solid var(--border-2); padding: 44px 0 52px; }
   .feature { padding: 52px 0; }
   .feature.flip .shot { order: 0; }
   .extras ul { grid-template-columns: 1fr; }
+  .linkedin-bottom-inner { align-items: flex-start; flex-direction: column; }
 }
 @media (max-width: 560px) {
   .wrap { padding: 0 20px; }
@@ -283,6 +298,14 @@ footer.ft { border-top: 1px solid var(--border-2); padding: 44px 0 52px; }
   .review { scroll-snap-align: start; }
   .cta { padding: 48px 0 40px; }
   .cta-banner { padding: 32px 20px; }
+  .linkedin-bottom { padding-bottom: 32px; }
+  .linkedin-bottom-inner { padding: 24px 20px; }
+  .linkedin-bottom-copy { align-items: flex-start; }
+  .linkedin-mark { width: 44px; height: 44px; border-radius: 14px; }
+  .linkedin-mark svg { width: 22px; height: 22px; }
+  .linkedin-bottom-actions { width: 100%; flex-direction: column; align-items: stretch; }
+  .linkedin-follow { width: 100%; }
+  .linkedin-latest { min-height: 44px; display: grid; place-items: center; }
 }
 </style>
 </head>
@@ -475,6 +498,24 @@ footer.ft { border-top: 1px solid var(--border-2); padding: 44px 0 52px; }
 </section>
 
 </main>
+
+<aside class="linkedin-bottom" id="linkedin-updates" aria-labelledby="linkedin-bottom-title">
+  <div class="wrap">
+    <div class="linkedin-bottom-inner">
+      <div class="linkedin-bottom-copy">
+        <span class="linkedin-mark" aria-hidden="true"><svg><use href="#linkedin"/></svg></span>
+        <div>
+          <h2 id="linkedin-bottom-title">Follow Feed Flow on LinkedIn</h2>
+          <p>Product updates, notes from Robin, and practical baby-feeding insights for parents and partners.</p>
+        </div>
+      </div>
+      <div class="linkedin-bottom-actions">
+        <a class="btn linkedin-follow" href="https://www.linkedin.com/company/feedflow-babyfeedingapp/" target="_blank" rel="noopener noreferrer" data-placement="bottom-banner" aria-label="Follow Feed Flow on LinkedIn"><svg aria-hidden="true"><use href="#linkedin"/></svg>Follow on LinkedIn</a>
+        <a class="linkedin-latest" href="https://www.linkedin.com/feed/update/urn:li:share:7525964425246281728?actorCompanyId=146962201" target="_blank" rel="noopener noreferrer" data-placement="bottom-banner-latest">Read our latest post</a>
+      </div>
+    </div>
+  </div>
+</aside>
 
 <footer class="ft" id="support">
   <div class="wrap">

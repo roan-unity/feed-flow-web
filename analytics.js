@@ -49,6 +49,11 @@
       window.plausible("Affiliate Click", { props: { source: source() } });
     }
 
+    // LinkedIn outbound clicks, with placement but no personal data.
+    if (/linkedin\.com/.test(href)) {
+      window.plausible("LinkedIn Click", { props: { source: source(), campaign: campaign(), placement: a.getAttribute("data-placement") || "footer" } });
+    }
+
     // App Store (fires once launched + the link exists). Attribution of the actual
     // install is done with an App Store Connect campaign link — see ANALYTICS.md.
     if (/apps\.apple\.com/.test(href)) {
