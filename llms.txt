@@ -2,6 +2,8 @@
 
 > A baby feeding tracker with a countdown on every bottle, a breastfeeding and pumping log, and a report for the pediatrician.
 
+Feed Flow! was founded by Robin Andersson in Norway under Zeolite Andersson.
+
 Feed Flow! is an iPhone app, available now on the App Store (https://apps.apple.com/app/id6782075454). Start a formula bottle and a one-hour countdown starts with it. The time left shows on the lock screen too. The app also logs breastfeeding, pumping, solids and water, shows a likely time for the next feed, and makes a PDF report to share with a pediatrician. Your baby's data stays in your own iCloud. Feed Flow! runs no server that holds it.
 
 ## What it does
