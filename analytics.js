@@ -44,9 +44,9 @@
       a.setAttribute("href", withParam(href, "utm_source", source()));
     }
 
-    // Affiliate interest.
-    if (/affiliate\.html/.test(href)) {
-      window.plausible("Affiliate Click", { props: { source: source() } });
+    // Ambassador program interest.
+    if (/(^\/ambassador(?:[?#]|$)|affiliate\.html)/.test(href)) {
+      window.plausible("Ambassador Click", { props: { source: source(), campaign: campaign() } });
     }
 
     // LinkedIn outbound clicks, with placement but no personal data.

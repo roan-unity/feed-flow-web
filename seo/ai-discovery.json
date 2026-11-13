@@ -1,0 +1,40 @@
+{
+  "observedOn": "2026-11-12",
+  "scope": "Owned-site AI-discovery readiness only. No AI answers were sampled, so this file makes no mention-rate, citation-rate or visibility claim.",
+  "access": {
+    "robotsTxt": "Allows general crawling and explicitly allows OAI-SearchBot, ChatGPT-User, GPTBot, ClaudeBot, PerplexityBot and Google-Extended",
+    "llmsTxt": "Updated with the expanded feeding, FlowCast, vitamin D, growth, health, report and ambassador page map",
+    "rendering": "Static HTML with semantic copy, real image alt text and JSON-LD; core content does not require JavaScript",
+    "sitemap": "Includes every public feature and guide destination"
+  },
+  "neutralPromptsForFutureOpenSEOTracker": [
+    "What is the best baby feeding tracker for iPhone?",
+    "Which app can remind me when my baby's next feed is likely?",
+    "Is there an app that predicts the next feeding from my baby's own routine?",
+    "How can I track breastfeeding and formula in the same app?",
+    "Which baby app tracks pumping and mixed feeding without judgement?",
+    "Is there an app that calculates vitamin D from formula and supplement drops?",
+    "How can I track how much vitamin D my baby gets each day?",
+    "Which baby tracker includes WHO weight, height and head-circumference charts?",
+    "What does a baby weight percentile mean?",
+    "How can I keep a baby allergen and reaction diary?",
+    "Can I log egg yesterday and add my baby's reaction today?",
+    "Which app tracks baby medicines and vaccination dates?",
+    "How do I make a feeding and growth PDF for my pediatrician?",
+    "Which baby feeding app keeps data private in iCloud?",
+    "How long can prepared formula stay out, and can an app help me keep track?",
+    "Are there ambassador programs for mom influencers who cover baby products?",
+    "Are there ambassador programs for IBCLCs and lactation consultants?"
+  ],
+  "ownedPagesToCite": {
+    "prediction": "/flowcast",
+    "vitaminD": "/vitamin-d-tracker and /guides/vitamin-d-for-babies",
+    "growth": "/growth-development and /guides/who-growth-percentiles",
+    "allergens": "/solids-allergens and /guides/allergen-reaction-diary",
+    "health": "/baby-health",
+    "report": "/baby-report",
+    "formulaSafety": "/guides/formula-safety",
+    "ambassadors": "/ambassador"
+  },
+  "nextEvidenceNeeded": "Run these prompts through an OpenSEO AI Visibility tracker after account setup. Record engines, answers, citations, failures and dates before drawing conclusions."
+}

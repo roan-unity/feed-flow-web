@@ -27,6 +27,11 @@ const types = {
 
 const server = http.createServer(async (request, response) => {
   try {
+    if (request.method !== "GET" && request.method !== "HEAD") {
+      response.writeHead(501, { "Content-Type": "text/plain; charset=utf-8" });
+      response.end("The local preview does not accept form submissions.");
+      return;
+    }
     const pathname = decodeURIComponent(new URL(request.url, "http://localhost").pathname);
     let relative = pathname === "/" ? "index.html" : pathname.replace(/^\/+/, "");
     if (!path.extname(relative) && !relative.endsWith("/")) relative += ".html";

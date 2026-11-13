@@ -1,68 +1,76 @@
-# Feed Flow!: Baby Feeding Tracker for iPhone
+# Feed Flow!: Baby Feeding, Growth & Health Tracker for iPhone
 
-> A baby feeding tracker with a countdown on every bottle, a breastfeeding and pumping log, and a report for the pediatrician.
+> One calm app for breastfeeding, formula, pumping and solids, WHO growth references, allergens, reactions, medicines, vaccines and vitamin D.
 
-Feed Flow! was founded by Robin Andersson in Norway under Zeolite Andersson.
+Feed Flow! is built in Norway by Zeolite and is available on the App Store: https://apps.apple.com/app/id6782075454
 
-Feed Flow! is an iPhone app, available now on the App Store (https://apps.apple.com/app/id6782075454). Start a formula bottle and a one-hour countdown starts with it. The time left shows on the lock screen too. The app also logs breastfeeding, pumping, solids and water, shows a likely time for the next feed, and makes a PDF report to share with a pediatrician. Your baby's data stays in your own iCloud. Feed Flow! runs no server that holds it.
+Feed Flow! keeps feeding, growth and baby health records in one place. A prepared-bottle countdown can remain visible on the lock screen. FlowCast uses the baby's own feeding history to suggest a likely next-feed window; it is a planning guide, not a schedule or medical prediction. The baby's data stays in the parent's own iCloud.
 
-## What it does
+## Feeding
 
-- **Bottle countdown:** a formula bottle gets a one-hour countdown by default (started, time left, ends). You can change the hour for each kind of feed. The countdown also shows on the lock screen, with the time left and how much is left in the bottle. When time is up, the app asks how much the baby took. The countdown is free.
-- **Next feed:** after about four days of feeds, the app learns the baby's rhythm and shows a likely time for the next feed on Home. It is a guide, not a promise. The full day-ahead forecast is Premium.
-- **Today at a glance:** Home shows the last feed, today's total and what is next. Bottles, breastfeeding, pumping, solids and water go in the same log, in a few taps.
-- **One log for the family:** a partner, a grandparent or a sitter can log to the same baby on their own phone, through iCloud. Up to five people, free. The activity feed that shows who fed and when is Premium.
-- **Report for the pediatrician:** a PDF made from the parent's own log, with the feeds, the amounts and the weekly trend. Premium.
-- **Vitamin D:** log the drops and see them counted with the vitamin D listed on the formula's label.
-- **Formula finder:** compare formulas side by side, using the numbers printed on each label.
+- **Breastfeeding and pumping:** log nursing, pumping, expressed milk and formula together without judgement.
+- **Bottle countdown:** a formula bottle gets a one-hour countdown by default after feeding starts. The countdown also shows on the lock screen. It is a memory aid, not a safety sensor.
+- **Today at a glance:** bottles, breastfeeding, pumping, solids and water appear in one timeline, with bottle totals in ml or oz.
+- **Formula brands:** retain product details and compare label-listed energy, protein, fat, carbohydrates and vitamin D. Feed Flow does not rank or recommend brands.
+- **FlowCast and meal planning:** after about four days of feeds, the app can show a likely next-feed time. Premium adds a day-ahead view. Usual feed sizes can help families prepare closer to what is needed and reduce waste.
+- **Caregiver sharing:** up to five people can log to the same baby through iCloud. Premium adds the detailed activity feed.
 
-## Pricing
+## Growth and development
 
-Free to download. Logging is free forever, along with the bottle countdown, the next feed's time on Home and caregiver sharing. Premium adds the day-ahead forecast, the activity feed, the vitamin D meter, the report and the full history. Plans are monthly, annual (with a 14-day free trial), or a one-time Lifetime purchase. Prices are set per region by Apple and shown in the App Store.
+- Track weight, height and head circumference against WHO growth references.
+- See percentile context and follow the baby's own measurements over time.
+- Record developmental milestones with dates, notes and photos.
+- Premium includes full growth curves and longer analytics.
+- WHO reference source: https://www.who.int/tools/child-growth-standards/standards
 
-## Common questions
+## Baby health
 
-**Is the app free?**
-Yes. Logging is free forever, with the bottle countdown. Premium adds the forecast, the activity feed, the vitamin D meter, the report and the full history.
+- Track nine major allergen groups, food attempts and later reaction notes.
+- Log medicines and vaccination dates without dosage or schedule advice.
+- Log vitamin D drops and vitamin D listed on the formula label.
+- Keep health notes beside feeding and growth for conversations with a pediatrician, health nurse or lactation professional.
+- Feed Flow does not diagnose allergies, assess causation, calculate medicine doses or replace professional care.
 
-**Can I track breastfeeding and formula in the same app?**
-Yes. Formula, breastfeeding, pumping, solids and water go in one log.
+## Reports and pricing
 
-**Can caregivers share one log?**
-Yes. Invite up to five people from the Family screen. They log on their own phones, through iCloud. A feed can take a moment to show up on the other phone.
+Everyday logging is free. Premium adds deeper planning, the activity feed, the vitamin D meter, full history, growth curves and Baby Reports. A separate Reports Pass is also available. Current regional prices and purchase options are shown in the App Store.
 
-**Is my data private?**
-Yes. It lives on the phone and in the parent's own iCloud. There are no ads and no tracking. Robin Andersson, who makes the app, cannot see it.
+## Feature and guide pages
 
-**Is it medical advice?**
-No. Feed Flow! is not a medical device. Before you act on a number, check it against the label, the pack or your health nurse: this is a record, not medical advice.
+- Formula feeding and brands: https://tryfeedflow.app/formula-feeding
+- Breastfeeding, pumping and mixed feeding: https://tryfeedflow.app/breastfeeding-pumping
+- Solid foods and allergens: https://tryfeedflow.app/solids-allergens
+- WHO growth and development: https://tryfeedflow.app/growth-development
+- Medicines, vaccines and health: https://tryfeedflow.app/baby-health
+- FlowCast next-feed predictions and optional notifications: https://tryfeedflow.app/flowcast
+- Vitamin D drops and formula calculations: https://tryfeedflow.app/vitamin-d-tracker
+- Baby feeding and growth PDF reports: https://tryfeedflow.app/baby-report
+- Resource hub: https://tryfeedflow.app/resources
+- Formula safety: https://tryfeedflow.app/guides/formula-safety
+- WHO growth percentiles: https://tryfeedflow.app/guides/who-growth-percentiles
+- Allergen reaction diary: https://tryfeedflow.app/guides/allergen-reaction-diary
+- Vitamin D tracking: https://tryfeedflow.app/guides/vitamin-d-for-babies
 
-## Ambassador / affiliate program
+## Ambassador program
 
-Feed Flow! runs a two-tier ambassador program for parent bloggers, parenting influencers, midwife accounts, and family content creators. Ambassadors earn 25% commission on every direct sale they drive and 5% override on sales generated by ambassadors they recruit. Free to join, no minimum audience. Apply at https://tryfeedflow.app/affiliate.html
+Eligible parent creators, mom influencers, IBCLCs, lactation consultants and feeding professionals can apply for a single-level ambassador program. Accepted ambassadors earn 35–50% commission on net profit from eligible app sales directly attributed to their own link or code. The exact rate, net-profit definition, products, attribution, reporting and payout terms are confirmed in an agreement before participation. There are no recruitment commissions or downlines. Earnings and acceptance are not guaranteed.
 
-## Platform
+Apply or share: https://tryfeedflow.app/ambassador
 
-- iOS 18.0 and later, iPhone
-- Available now on the App Store: https://apps.apple.com/app/id6782075454
-- Made in Norway, available in English and 11 other languages
+## Privacy and medical boundary
 
-## Reviews and coverage
-
-- As of 2026-11-08, Feed Flow! has 9 written App Store reviews, all rated 5 stars, from Norway and Sweden.
-- Hop Into My Boots, a Finnish family blog, tested Feed Flow! and published a disclosed commercial feature on 2026-11-07: https://hopintomyboots.com/2026/11/07/feed-flow-helppo-sovellus-vauvan-syotto-ja-ruokailuseurantaan/
+Feed Flow! is a record-keeping app, not a medical device. It does not diagnose conditions, recommend medicine doses or replace a pediatrician, pharmacist, midwife, health nurse or lactation professional. Baby data lives on the phone and in the parent's own iCloud. Website analytics are separate from baby records.
 
 ## Links
 
 - Home: https://tryfeedflow.app/
-- Download (App Store): https://apps.apple.com/app/id6782075454
+- Download: https://apps.apple.com/app/id6782075454
 - FAQ: https://tryfeedflow.app/faq
+- Privacy: https://tryfeedflow.app/privacy.html
+- Support: https://tryfeedflow.app/support
 - LinkedIn: https://www.linkedin.com/company/feedflow-babyfeedingapp/
 - Instagram: https://www.instagram.com/feedflow_babyfeedingapp
 - TikTok: https://www.tiktok.com/@feedflow_babyfeedingapp
 - YouTube: https://www.youtube.com/@FeedFlow-BabyFeedingApp
 - Facebook: https://www.facebook.com/feedflowapp
-- Reddit community: https://www.reddit.com/r/FeedFlowParents/
-- Ambassador / affiliate program: https://tryfeedflow.app/affiliate.html
-- Privacy policy: https://tryfeedflow.app/privacy.html
-- Support: support@tryfeedflow.app
+- Reddit: https://www.reddit.com/r/FeedFlowParents/

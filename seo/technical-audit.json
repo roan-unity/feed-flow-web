@@ -1,0 +1,130 @@
+{
+  "workflow": "OpenSEO seo-audit local technical checks",
+  "liveKeywordData": "Not connected; no volume, ranking or traffic claims are included",
+  "sitemapUrls": 20,
+  "pagesChecked": 20,
+  "errors": [],
+  "warnings": [],
+  "checked": [
+    {
+      "url": "https://tryfeedflow.app/",
+      "file": "index.html",
+      "titleLength": 57,
+      "descriptionLength": 158
+    },
+    {
+      "url": "https://tryfeedflow.app/formula-feeding",
+      "file": "formula-feeding.html",
+      "titleLength": 58,
+      "descriptionLength": 162
+    },
+    {
+      "url": "https://tryfeedflow.app/breastfeeding-pumping",
+      "file": "breastfeeding-pumping.html",
+      "titleLength": 50,
+      "descriptionLength": 159
+    },
+    {
+      "url": "https://tryfeedflow.app/solids-allergens",
+      "file": "solids-allergens.html",
+      "titleLength": 49,
+      "descriptionLength": 158
+    },
+    {
+      "url": "https://tryfeedflow.app/growth-development",
+      "file": "growth-development.html",
+      "titleLength": 47,
+      "descriptionLength": 157
+    },
+    {
+      "url": "https://tryfeedflow.app/baby-health",
+      "file": "baby-health.html",
+      "titleLength": 56,
+      "descriptionLength": 155
+    },
+    {
+      "url": "https://tryfeedflow.app/flowcast",
+      "file": "flowcast.html",
+      "titleLength": 61,
+      "descriptionLength": 164
+    },
+    {
+      "url": "https://tryfeedflow.app/vitamin-d-tracker",
+      "file": "vitamin-d-tracker.html",
+      "titleLength": 53,
+      "descriptionLength": 151
+    },
+    {
+      "url": "https://tryfeedflow.app/baby-report",
+      "file": "baby-report.html",
+      "titleLength": 48,
+      "descriptionLength": 173
+    },
+    {
+      "url": "https://tryfeedflow.app/resources",
+      "file": "resources.html",
+      "titleLength": 52,
+      "descriptionLength": 145
+    },
+    {
+      "url": "https://tryfeedflow.app/guides/formula-safety",
+      "file": "guides/formula-safety.html",
+      "titleLength": 56,
+      "descriptionLength": 157
+    },
+    {
+      "url": "https://tryfeedflow.app/guides/who-growth-percentiles",
+      "file": "guides/who-growth-percentiles.html",
+      "titleLength": 54,
+      "descriptionLength": 162
+    },
+    {
+      "url": "https://tryfeedflow.app/guides/allergen-reaction-diary",
+      "file": "guides/allergen-reaction-diary.html",
+      "titleLength": 50,
+      "descriptionLength": 148
+    },
+    {
+      "url": "https://tryfeedflow.app/guides/vitamin-d-for-babies",
+      "file": "guides/vitamin-d-for-babies.html",
+      "titleLength": 54,
+      "descriptionLength": 159
+    },
+    {
+      "url": "https://tryfeedflow.app/ambassador",
+      "file": "ambassador.html",
+      "titleLength": 57,
+      "descriptionLength": 152
+    },
+    {
+      "url": "https://tryfeedflow.app/faq",
+      "file": "faq.html",
+      "titleLength": 33,
+      "descriptionLength": 155
+    },
+    {
+      "url": "https://tryfeedflow.app/support",
+      "file": "support.html",
+      "titleLength": 37,
+      "descriptionLength": 169
+    },
+    {
+      "url": "https://tryfeedflow.app/gift",
+      "file": "gift.html",
+      "titleLength": 33,
+      "descriptionLength": 159
+    },
+    {
+      "url": "https://tryfeedflow.app/privacy.html",
+      "file": "privacy.html",
+      "titleLength": 44,
+      "descriptionLength": 172
+    },
+    {
+      "url": "https://tryfeedflow.app/terms",
+      "file": "terms.html",
+      "titleLength": 42,
+      "descriptionLength": 164
+    }
+  ]
+}

@@ -1,0 +1,38 @@
+{
+  "observedOn": "2026-11-12",
+  "method": "OpenSEO keyword-research and competitor-analysis workflows applied to public search results. These are page-level observations, not provider rankings, traffic estimates or keyword-volume measurements.",
+  "queries": [
+    "best baby feeding tracker app formula breastfeeding pumping growth tracker 2026",
+    "baby vitamin D tracker app formula vitamin D remaining supplement",
+    "baby feeding app with WHO growth charts allergen tracking medicine vaccine tracker",
+    "baby feeding tracker keyword formula tracker breastfeeding app pumping app WHO growth percentile tracker parents search",
+    "mom influencer affiliate program baby app IBCLC ambassador",
+    "site:tryfeedflow.app Feed Flow baby feeding"
+  ],
+  "sourcesRead": [
+    "https://sito.kids/blog/best-baby-feeding-tracker-apps",
+    "https://www.robinbaby.com/blog/best-baby-tracker-apps/",
+    "https://parentlove.me/",
+    "https://www.cdc.gov/infant-toddler-nutrition/vitamins-minerals/vitamin-d.html",
+    "https://www.who.int/tools/child-growth-standards/standards",
+    "https://www.cdc.gov/infant-toddler-nutrition/formula-feeding/preparation-and-storage.html",
+    "https://www.niaid.nih.gov/diseases-conditions/guidelines-clinicians-and-patients-food-allergy",
+    "https://tryfeedflow.app/"
+  ],
+  "observations": [
+    "The category-results pages compete through broad all-in-one positioning, free-tier explanations, prediction features and doctor-ready reports.",
+    "Formula-by-name, vitamin tracking, allergen records, WHO growth and pediatrician reports are distinct product stories in competitor content, supporting dedicated page intents rather than one generic app page.",
+    "The existing public Feed Flow result was still the older feeding-only page at research time, so the new local build substantially expands owned-page coverage; it has not been deployed in this task.",
+    "Competitor superlatives and unverified clinical or market-leadership claims should not be copied. Feed Flow can differentiate with real screens, a lock-screen countdown, FlowCast notifications, exact vitamin D arithmetic and private iCloud reports."
+  ],
+  "actionsImplemented": [
+    "Added /flowcast for next-feed prediction and notification intent",
+    "Added /vitamin-d-tracker for vitamin D app and formula-calculation intent",
+    "Added /baby-report for feeding-and-growth PDF report intent",
+    "Broadened homepage metadata to the baby tracker category",
+    "Added primary-query clusters and related internal links to content-map.json",
+    "Added official citations, FAQs, breadcrumbs and a resource ItemList to structured data",
+    "Created a four-screen Open Graph card for social and messaging shares"
+  ],
+  "unknownWithoutOpenSEOConnection": ["search volume", "keyword difficulty", "CPC", "current organic position", "competitor traffic", "backlink counts", "AI-answer mention or citation rates"]
+}

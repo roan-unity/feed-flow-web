@@ -1,19 +1,30 @@
-# Netlify rewrites. A 200 (rewrite) keeps the URL as /gift while serving gift.html —
-# so the permanent gift link is clean AND its Open Graph card unfurls from the same URL.
-# NOT a 301/302: link scrapers follow redirects and would lose the unfurl artwork.
-/gift   /gift.html   200
-/faq    /faq.html    200
-/terms  /terms.html  200
+# Clean URLs retain their Open Graph cards through 200 rewrites.
+/gift /gift.html 200
+/faq /faq.html 200
+/terms /terms.html 200
+/support /support.html 200
+/ambassador /ambassador.html 200
+/formula-feeding /formula-feeding.html 200
+/breastfeeding-pumping /breastfeeding-pumping.html 200
+/solids-allergens /solids-allergens.html 200
+/growth-development /growth-development.html 200
+/baby-health /baby-health.html 200
+/flowcast /flowcast.html 200
+/vitamin-d-tracker /vitamin-d-tracker.html 200
+/baby-report /baby-report.html 200
+/resources /resources.html 200
+/guides/formula-safety /guides/formula-safety.html 200
+/guides/who-growth-percentiles /guides/who-growth-percentiles.html 200
+/guides/allergen-reaction-diary /guides/allergen-reaction-diary.html 200
+/guides/vitamin-d-for-babies /guides/vitamin-d-for-babies.html 200
 
-# The ambassador "portal" is a Phase-2 dashboard that doesn't have a backend yet.
-# Until it's real, send anyone who finds the URL to the application page (302 = temporary,
-# so it can come back when the dashboard ships) rather than a dead sign-in that does nothing.
-# The trailing "!" forces the redirect to win over the existing portal.html file
-# (Netlify skips a redirect when a real file sits at the path, unless it's forced).
-/portal       /affiliate.html   302!
-/portal.html  /affiliate.html   302!
+# Retired affiliate and portal surfaces now lead to the single-level program.
+/affiliate /ambassador 301
+/affiliate.html /ambassador 301!
+/portal /ambassador 301!
+/portal.html /ambassador 301!
+/ambassador-kit.html /ambassador 301!
 
-# The app is live, so the pre-launch beta/early-access page is retired.
-# 301 anyone who still hits it to the homepage (where the real Download CTA lives).
-/beta       /   301
-/beta.html  /   301
+# The app is live, so the pre-launch beta page is retired.
+/beta / 301
+/beta.html / 301

@@ -1,0 +1,32 @@
+{
+  "tool": {
+    "name": "OpenSEO",
+    "repository": "https://github.com/every-app/open-seo",
+    "localCheckout": "../open-seo",
+    "pinnedRevision": "4fa42c879fd26657aec3472dcf44f08226816df3",
+    "workflowsUsed": ["seo-audit", "keyword-research", "keyword-clustering", "competitor-analysis", "ai-visibility-audit"],
+    "execution": {
+      "seo-audit": "Local technical audit across every sitemap page, plus browser verification",
+      "keyword-research": "Public search-result evidence only; no provider volume, CPC, KD or ranking metrics",
+      "keyword-clustering": "Intent-to-page map with primary queries and related internal links",
+      "competitor-analysis": "Public page and SERP pattern analysis only; no competitor traffic estimates",
+      "ai-visibility-audit": "AI crawler access, llms.txt, owned-page coverage and a proposed neutral prompt set; no observed AI-answer sample"
+    }
+  },
+  "domain": "tryfeedflow.app",
+  "businessOverview": "Feed Flow is an iPhone baby tracker for feeding, WHO growth references and baby health records. It supports breastfeeding, formula, pumping, solids, allergens, reactions, medicines, vaccines and vitamin D. Differentiators include lock-screen bottle countdowns, FlowCast next-feed predictions and optional notifications, automatic vitamin D arithmetic from drops and formula labels, and feeding-and-growth PDF reports. Built in Norway by Zeolite. Everyday logging is free, with optional premium planning and reporting.",
+  "audiences": ["Breastfeeding, formula-feeding, mixed-feeding and pumping parents", "Parents introducing solid foods and allergens", "Parents tracking WHO weight, height and head-circumference growth", "Parents recording medicines, vaccines, reactions and vitamin D", "Parents looking for next-feed predictions or a feeding-and-growth report", "IBCLCs, lactation consultants and feeding professionals", "Eligible parent creators and family-community ambassadors"],
+  "currentGoal": "Increase qualified non-branded organic and AI-assisted discovery of the app and its ambassador program with unique, useful pages rather than keyword stuffing. Measure search impressions, clicks, AI citations and App Store outbound clicks after Search Console and OpenSEO are connected.",
+  "positioning": "Calm, comprehensive and non-judgemental. Record-keeping only: no diagnosis, personalized dosing instructions, brand ranking or fabricated clinical endorsement. Real app screenshots and real reviews lead; baby data stays in the parent's own iCloud. No invented search-volume or market-leadership claims.",
+  "competitorsForFutureLiveAnalysis": [
+    {"domain": "sito.kids", "notes": "Formula-by-name, vitamins, first foods and doctor-report positioning observed in public results"},
+    {"domain": "robinbaby.com", "notes": "Broad all-in-one baby tracker and free-tier comparison content observed in public results"},
+    {"domain": "parentlove.me", "notes": "Breastfeeding, pumping, WHO growth and pediatrician-report positioning observed in public results"},
+    {"domain": "huckleberrycare.com", "notes": "Established prediction-led tracker category competitor for future live comparison"}
+  ],
+  "dataStatus": "OpenSEO/DataForSEO and Search Console are not connected in this workspace. The content map contains intent hypotheses, not measured search volumes, rankings or competitor traffic. Public search observations are recorded separately from provider metrics.",
+  "keyPagesFile": "content-map.json",
+  "searchEvidenceFile": "search-evidence.json",
+  "aiDiscoveryFile": "ai-discovery.json",
+  "technicalAuditFile": "technical-audit.json"
+}

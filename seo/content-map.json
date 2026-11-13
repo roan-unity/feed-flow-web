@@ -1,0 +1,224 @@
+{
+  "source": "OpenSEO keyword-research and keyword-clustering workflows, using public search evidence without live provider metrics",
+  "domain": "tryfeedflow.app",
+  "note": "Query clusters are editorial hypotheses until validated with OpenSEO/DataForSEO or Search Console. No search-volume, keyword-difficulty or ranking claims are made.",
+  "pages": [
+    {
+      "url": "https://tryfeedflow.app/formula-feeding",
+      "title": "Formula Feeding Tracker, Bottle Timer & Formula Brands",
+      "intent": "Formula & bottle feeding",
+      "role": "hub",
+      "primaryQueries": [
+        "formula feeding tracker",
+        "baby bottle timer app",
+        "formula brand comparison",
+        "formula nutrition tracker"
+      ],
+      "relatedLinks": [
+        "/guides/formula-safety",
+        "/guides/vitamin-d-for-babies",
+        "/breastfeeding-pumping"
+      ]
+    },
+    {
+      "url": "https://tryfeedflow.app/breastfeeding-pumping",
+      "title": "Breastfeeding, Pumping & Mixed Feeding Tracker",
+      "intent": "Breastfeeding, pumping & mixed feeding",
+      "role": "hub",
+      "primaryQueries": [
+        "breastfeeding tracker app",
+        "pumping log app",
+        "mixed feeding tracker",
+        "breast and formula feeding app"
+      ],
+      "relatedLinks": [
+        "/formula-feeding",
+        "/growth-development",
+        "/ambassador"
+      ]
+    },
+    {
+      "url": "https://tryfeedflow.app/solids-allergens",
+      "title": "Solid Foods, Allergen & Baby Reaction Tracker",
+      "intent": "Solid foods & allergens",
+      "role": "hub",
+      "primaryQueries": [
+        "baby allergen tracker",
+        "solid food tracker for babies",
+        "baby food reaction diary",
+        "egg allergy food log"
+      ],
+      "relatedLinks": [
+        "/guides/allergen-reaction-diary",
+        "/baby-health",
+        "/growth-development"
+      ]
+    },
+    {
+      "url": "https://tryfeedflow.app/growth-development",
+      "title": "Baby Growth Tracker with WHO Weight Percentiles",
+      "intent": "Growth & development",
+      "role": "hub",
+      "primaryQueries": [
+        "baby growth tracker",
+        "WHO growth chart app",
+        "baby weight percentile tracker",
+        "height and head circumference app"
+      ],
+      "relatedLinks": [
+        "/guides/who-growth-percentiles",
+        "/baby-health",
+        "/solids-allergens"
+      ]
+    },
+    {
+      "url": "https://tryfeedflow.app/baby-health",
+      "title": "Baby Health Tracker: Medicines, Vaccines & Reactions",
+      "intent": "Baby health records",
+      "role": "hub",
+      "primaryQueries": [
+        "baby medicine tracker",
+        "baby vaccine record app",
+        "baby health tracker",
+        "baby reaction and symptom log"
+      ],
+      "relatedLinks": [
+        "/guides/vitamin-d-for-babies",
+        "/guides/allergen-reaction-diary",
+        "/growth-development"
+      ]
+    },
+    {
+      "url": "https://tryfeedflow.app/flowcast",
+      "title": "FlowCast Next-Feed Prediction & Meal Planning | Feed Flow",
+      "intent": "FlowCast predictions",
+      "role": "hub",
+      "primaryQueries": [
+        "next feed prediction app",
+        "next feed notification",
+        "baby feeding schedule app",
+        "smart baby meal planning"
+      ],
+      "relatedLinks": [
+        "/formula-feeding",
+        "/breastfeeding-pumping",
+        "/baby-report"
+      ]
+    },
+    {
+      "url": "https://tryfeedflow.app/vitamin-d-tracker",
+      "title": "Vitamin D Tracker for Drops & Formula | Feed Flow",
+      "intent": "Vitamin D tracker",
+      "role": "hub",
+      "primaryQueries": [
+        "baby vitamin D tracker",
+        "vitamin D formula calculator",
+        "infant vitamin D app",
+        "vitamin D drops and formula tracker"
+      ],
+      "relatedLinks": [
+        "/guides/vitamin-d-for-babies",
+        "/formula-feeding",
+        "/baby-health"
+      ]
+    },
+    {
+      "url": "https://tryfeedflow.app/baby-report",
+      "title": "Baby Feeding & Growth Report PDF | Feed Flow",
+      "intent": "Baby Reports",
+      "role": "hub",
+      "primaryQueries": [
+        "baby feeding report PDF",
+        "feeding and growth report app",
+        "pediatrician baby report",
+        "WHO growth report for babies"
+      ],
+      "relatedLinks": [
+        "/growth-development",
+        "/baby-health",
+        "/flowcast"
+      ]
+    },
+    {
+      "url": "https://tryfeedflow.app/resources",
+      "title": "Baby Feeding, Growth & Health Guides | Feed Flow",
+      "intent": "Feed Flow resource hub",
+      "role": "hub",
+      "primaryQueries": [
+        "baby feeding guides",
+        "baby health resources",
+        "infant feeding app resources",
+        "baby growth tracking guides"
+      ],
+      "relatedLinks": [
+        "/baby-health",
+        "/faq",
+        "/support"
+      ]
+    },
+    {
+      "url": "https://tryfeedflow.app/guides/formula-safety",
+      "title": "Formula Safety: Preparation, Storage & Bottle Timers",
+      "intent": "Formula safety guide",
+      "role": "guide",
+      "primaryQueries": [
+        "how long can formula stay out",
+        "prepared formula storage guidelines",
+        "baby bottle safety timer"
+      ],
+      "relatedLinks": [
+        "/formula-feeding",
+        "/guides/vitamin-d-for-babies",
+        "/resources"
+      ]
+    },
+    {
+      "url": "https://tryfeedflow.app/guides/who-growth-percentiles",
+      "title": "WHO Baby Growth Percentiles: Weight, Height & Head",
+      "intent": "WHO growth guide",
+      "role": "guide",
+      "primaryQueries": [
+        "what does baby weight percentile mean",
+        "WHO baby growth percentiles",
+        "head circumference percentile explained"
+      ],
+      "relatedLinks": [
+        "/growth-development",
+        "/baby-health",
+        "/resources"
+      ]
+    },
+    {
+      "url": "https://tryfeedflow.app/guides/allergen-reaction-diary",
+      "title": "Baby Allergen & Reaction Diary: What to Record",
+      "intent": "Allergen & reaction guide",
+      "role": "guide",
+      "primaryQueries": [
+        "baby allergen reaction diary",
+        "baby reaction after egg next day",
+        "what to record after baby food reaction"
+      ],
+      "relatedLinks": [
+        "/solids-allergens",
+        "/baby-health",
+        "/resources"
+      ]
+    },
+    {
+      "url": "https://tryfeedflow.app/guides/vitamin-d-for-babies",
+      "title": "Vitamin D for Babies: Track Drops & Formula Intake",
+      "intent": "Vitamin D tracking guide",
+      "role": "guide",
+      "primaryQueries": [
+        "vitamin D for babies",
+        "baby vitamin D drops and formula",
+        "infant vitamin D supplement guide"
+      ],
+      "relatedLinks": [
+        "/baby-health",
+        "/formula-feeding",
+        "/resources"
+      ]
+    }
+  ]
+}
