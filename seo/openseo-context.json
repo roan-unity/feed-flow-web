@@ -24,7 +24,17 @@
     {"domain": "parentlove.me", "notes": "Breastfeeding, pumping, WHO growth and pediatrician-report positioning observed in public results"},
     {"domain": "huckleberrycare.com", "notes": "Established prediction-led tracker category competitor for future live comparison"}
   ],
-  "dataStatus": "OpenSEO/DataForSEO and Search Console are not connected in this workspace. The content map contains intent hypotheses, not measured search volumes, rankings or competitor traffic. Public search observations are recorded separately from provider metrics.",
+  "hostedProject": {
+    "projectId": "8ddc5083-4d1a-4a4f-a731-9f0d690fdad3",
+    "url": "https://app.openseo.so/p/8ddc5083-4d1a-4a4f-a731-9f0d690fdad3",
+    "created": true,
+    "domain": "tryfeedflow.app",
+    "defaultMarket": "United States / English",
+    "siteAudit": {"pagesChecked": 21, "orphanPageWarnings": 2, "thinContentWarnings": 1, "longDescriptionNotices": 6},
+    "searchConsoleConnected": false,
+    "searchConsoleBlocker": "The browser extension disconnected during Google OAuth; the two earlier attempts returned state_mismatch. Reopen the browser with the extension enabled and continue from the project's Connect button."
+  },
+  "dataStatus": "The hosted OpenSEO project is created and its first crawl is complete. Search Console is not connected, and no Search Console or live keyword metrics have been read. Public search observations are recorded separately from provider metrics.",
   "keyPagesFile": "content-map.json",
   "searchEvidenceFile": "search-evidence.json",
   "aiDiscoveryFile": "ai-discovery.json",
