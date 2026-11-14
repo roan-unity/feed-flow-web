@@ -9,16 +9,16 @@ Feed Flow! keeps feeding, growth and baby health records in one place. A prepare
 ## Feeding
 
 - **Breastfeeding and pumping:** log nursing, pumping, expressed milk and formula together without judgement.
-- **Bottle countdown:** a formula bottle gets a one-hour countdown by default after feeding starts. The countdown also shows on the lock screen. It is a memory aid, not a safety sensor.
-- **Today at a glance:** bottles, breastfeeding, pumping, solids and water appear in one timeline, with bottle totals in ml or oz.
-- **Formula brands:** retain product details and compare label-listed energy, protein, fat, carbohydrates and vitamin D. Feed Flow does not rank or recommend brands.
-- **FlowCast and meal planning:** after about four days of feeds, the app can show a likely next-feed time. Premium adds a day-ahead view. Usual feed sizes can help families prepare closer to what is needed and reduce waste.
-- **Caregiver sharing:** up to five people can log to the same baby through iCloud. Premium adds the detailed activity feed.
+- **Bottle countdown:** the countdown runs from when you make the bottle. The default is one hour for formula and two hours for pumped milk, and you can change it in Settings. It also shows on the lock screen. It is a memory aid, not a safety sensor.
+- **Today at a glance:** nursing, bottles, pumping, water and solids all appear in the day's timeline. The milk total counts formula, pumped milk and nursing (nursing as an estimate). Solids and water are shown separately.
+- **Formula brands:** compare formulas side by side by milk base, protein, the tummy worry they address, stage and vitamin D, using the values on the label. You can enter your own product. Feed Flow does not rank or recommend brands.
+- **FlowCast and meal planning:** with Premium, after about four days of logged feeds FlowCast shows a likely window for the next feed and the day ahead. After a few bottles, the amounts you usually pour appear as one-tap buttons, which can help families prepare closer to what is needed and reduce waste.
+- **Caregiver sharing:** invite everyone who looks after your baby. They log through their own iCloud, and Premium adds a detailed activity feed.
 
 ## Growth and development
 
 - Track weight, height and head circumference against WHO growth references.
-- See percentile context and follow the baby's own measurements over time.
+- Weight, height and head circumference can be logged for free. Premium shows them against the WHO band with the percentile named.
 - Record developmental milestones with dates, notes and photos.
 - Premium includes full growth curves and longer analytics.
 - WHO reference source: https://www.who.int/tools/child-growth-standards/standards
@@ -33,7 +33,7 @@ Feed Flow! keeps feeding, growth and baby health records in one place. A prepare
 
 ## Reports and pricing
 
-Everyday logging is free. Premium adds deeper planning, the activity feed, the vitamin D meter, full history, growth curves and Baby Reports. A separate Reports Pass is also available. Current regional prices and purchase options are shown in the App Store.
+Everyday logging is free. Premium adds the next-feed time, the day-ahead view, the activity feed, the vitamin D meter, full history, growth curves and Baby Reports. A separate Reports Pass is also available. Current regional prices and purchase options are shown in the App Store.
 
 ## Feature and guide pages
 
