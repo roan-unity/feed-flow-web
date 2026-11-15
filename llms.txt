@@ -35,6 +35,16 @@ Feed Flow! keeps feeding, growth and baby health records in one place. A prepare
 
 Everyday logging is free. Premium adds the next-feed time, the day-ahead view, the activity feed, the vitamin D meter, full history, growth curves and Baby Reports. A separate Reports Pass is also available. Current regional prices and purchase options are shown in the App Store.
 
+## Compared with other baby trackers
+
+Feed Flow is feeding-only and iPhone-only. It does not track sleep or diapers and has no Android or Apple Watch app; Huckleberry (sleep), Baby Tracker by Nighp, Nara Baby and Baby Daybook cover more of the day and more devices. Feed Flow's free version includes logging, the Lock Screen bottle countdown, family sharing, the allergen journey and vitamin D tracking, with no ads.
+
+- All baby tracker apps compared: https://tryfeedflow.app/compare
+- Feed Flow vs Huckleberry: https://tryfeedflow.app/compare/huckleberry
+- Feed Flow vs Baby Tracker (Nighp): https://tryfeedflow.app/compare/baby-tracker-nighp
+- Feed Flow vs Nara Baby: https://tryfeedflow.app/compare/nara-baby
+- Feed Flow vs Baby Daybook: https://tryfeedflow.app/compare/baby-daybook
+
 ## Feature and guide pages
 
 - Formula feeding and brands: https://tryfeedflow.app/formula-feeding

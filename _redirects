@@ -28,3 +28,8 @@
 # The app is live, so the pre-launch beta page is retired.
 /beta / 301
 /beta.html / 301
+/compare /compare.html 200
+/compare/huckleberry /compare/huckleberry.html 200
+/compare/baby-tracker-nighp /compare/baby-tracker-nighp.html 200
+/compare/nara-baby /compare/nara-baby.html 200
+/compare/baby-daybook /compare/baby-daybook.html 200

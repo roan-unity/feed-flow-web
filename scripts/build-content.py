@@ -306,7 +306,7 @@ def header(active):
 def footer():
     social = [("linkedin", "https://www.linkedin.com/company/feedflow-babyfeedingapp/", "LinkedIn"), ("instagram", "https://www.instagram.com/feedflow_babyfeedingapp", "Instagram"), ("tiktok", "https://www.tiktok.com/@feedflow_babyfeedingapp", "TikTok"), ("youtube", "https://www.youtube.com/@FeedFlow-BabyFeedingApp", "YouTube"), ("facebook", "https://www.facebook.com/feedflowapp", "Facebook"), ("reddit", "https://www.reddit.com/r/FeedFlowParents/", "Reddit")]
     icons = "".join(f'<a class="social-link" href="{url}" target="_blank" rel="noopener noreferrer" aria-label="Feed Flow on {name}" title="{name}">{icon(key)}</a>' for key, url, name in social)
-    links = [("/formula-feeding", "Formula feeding"), ("/breastfeeding-pumping", "Breast & pumping"), ("/solids-allergens", "Solids & allergens"), ("/growth-development", "Growth & development"), ("/baby-health", "Baby health"), ("/flowcast", "FlowCast"), ("/vitamin-d-tracker", "Vitamin D tracker"), ("/baby-report", "Baby Reports"), ("/resources", "Guides"), ("/faq", "FAQ"), ("/support", "Support"), ("/ambassador", "Ambassadors"), ("/privacy.html", "Privacy"), ("/terms", "Terms")]
+    links = [("/formula-feeding", "Formula feeding"), ("/breastfeeding-pumping", "Breast & pumping"), ("/solids-allergens", "Solids & allergens"), ("/growth-development", "Growth & development"), ("/baby-health", "Baby health"), ("/flowcast", "FlowCast"), ("/vitamin-d-tracker", "Vitamin D tracker"), ("/baby-report", "Baby Reports"), ("/resources", "Guides"), ("/compare", "Compare apps"), ("/faq", "FAQ"), ("/support", "Support"), ("/ambassador", "Ambassadors"), ("/privacy.html", "Privacy"), ("/terms", "Terms")]
     links_html = "".join(f'<a href="{url}">{label}</a>' for url, label in links)
     return f'''<footer class="ft"><div class="wrap"><div class="ft-inner"><div class="ft-left">{wordmark()}<p>Feed Flow! is built in Norway by Zeolite. Feeding, growth and baby health in one calm, privacy-first app.</p><a class="ft-mail" href="mailto:support@tryfeedflow.app">support@tryfeedflow.app</a><nav class="social-list" aria-label="Feed Flow on social media">{icons}</nav></div><nav class="ft-links" aria-label="Footer">{links_html}</nav></div><div class="ft-bottom">&copy; 2026 Feed Flow!</div></div></footer>'''
 
@@ -343,7 +343,7 @@ def render(page):
         faqs = f'<section id="faq"><h2>Common questions</h2><div class="faq-list">{details}</div></section>'
     related = "".join(f'<a class="resource-card" href="{link}"><span class="tag">Explore</span><h3>{escape(label)}</h3>{icon("arrow")}</a>' for link, label in page["related"])
     aside_links = "".join(f'<a href="{link}">{escape(label)} →</a>' for link, label in page["related"])
-    guide_crumb = '<a href="/resources">Guides</a><span>/</span>' if page.get("guide") else ''
+    guide_crumb = '<a href="/resources">Guides</a><span>/</span>' if page.get("guide") else ('<a href="/compare">Compare apps</a><span>/</span>' if page.get("compare") and page["slug"] != "compare" else '')
     return f'''<!DOCTYPE html>
 <html lang="en" data-theme="light"><head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="apple-itunes-app" content="app-id=6782075454">
@@ -358,6 +358,11 @@ def render(page):
 <section class="related-section"><div class="wrap"><h2>Continue exploring</h2><div class="resource-grid">{related}</div></div></section>
 <section class="cta"><div class="wrap"><div class="cta-banner"><p class="lead">One calm record for feeding, growth and health.</p><p class="tiers">Download Feed Flow and start logging today. Logging is free, forever.</p><a class="btn btn-primary" href="{APP_STORE.replace('website_content','website_closing')}">{icon('apple','apple')}Download on the App Store</a></div></div></section></main>{footer()}<script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{{"token":"066ad3912fc4436c8f31f2f912b89230"}}'></script></body></html>'''
 
+
+import sys as _sys
+_sys.path.insert(0, str(Path(__file__).resolve().parent))
+from compare_pages import COMPARE, COMPARE_QUERIES
+PAGES += COMPARE
 
 for item in PAGES:
     target = ROOT / item["file"]
@@ -378,6 +383,7 @@ query_map = {
     "guides/formula-safety": ["how long can formula stay out", "prepared formula storage guidelines", "baby bottle safety timer"],
     "guides/who-growth-percentiles": ["what does baby weight percentile mean", "WHO baby growth percentiles", "head circumference percentile explained"],
     "guides/allergen-reaction-diary": ["baby allergen reaction diary", "baby reaction after egg next day", "what to record after baby food reaction"],
+    **COMPARE_QUERIES,
     "guides/vitamin-d-for-babies": ["vitamin D for babies", "baby vitamin D drops and formula", "infant vitamin D supplement guide"]
 }
 (ROOT / "seo").mkdir(exist_ok=True)

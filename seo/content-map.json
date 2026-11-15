@@ -219,6 +219,84 @@
         "/formula-feeding",
         "/resources"
       ]
+    },
+    {
+      "url": "https://tryfeedflow.app/compare",
+      "title": "Best Baby Feeding Tracker Apps Compared (2026)",
+      "intent": "Compare baby tracker apps",
+      "role": "hub",
+      "primaryQueries": [
+        "best baby feeding tracker app",
+        "best baby tracker app 2026",
+        "baby tracker app comparison",
+        "combo feeding app"
+      ],
+      "relatedLinks": [
+        "/compare/huckleberry",
+        "/compare/baby-tracker-nighp",
+        "/formula-feeding"
+      ]
+    },
+    {
+      "url": "https://tryfeedflow.app/compare/huckleberry",
+      "title": "Feed Flow vs Huckleberry: Which Baby Tracker Fits You?",
+      "intent": "Feed Flow vs Huckleberry",
+      "role": "hub",
+      "primaryQueries": [
+        "Huckleberry alternative",
+        "Feed Flow vs Huckleberry",
+        "Huckleberry vs baby tracker"
+      ],
+      "relatedLinks": [
+        "/compare",
+        "/formula-feeding",
+        "/breastfeeding-pumping"
+      ]
+    },
+    {
+      "url": "https://tryfeedflow.app/compare/baby-tracker-nighp",
+      "title": "Feed Flow vs Baby Tracker (Nighp): Which Baby Tracker Fits You?",
+      "intent": "Feed Flow vs Baby Tracker (Nighp)",
+      "role": "hub",
+      "primaryQueries": [
+        "Baby Tracker Nighp alternative",
+        "baby tracker app without ads"
+      ],
+      "relatedLinks": [
+        "/compare",
+        "/formula-feeding",
+        "/breastfeeding-pumping"
+      ]
+    },
+    {
+      "url": "https://tryfeedflow.app/compare/nara-baby",
+      "title": "Feed Flow vs Nara Baby: Which Baby Tracker Fits You?",
+      "intent": "Feed Flow vs Nara Baby",
+      "role": "hub",
+      "primaryQueries": [
+        "Nara Baby alternative",
+        "Nara vs Feed Flow"
+      ],
+      "relatedLinks": [
+        "/compare",
+        "/formula-feeding",
+        "/breastfeeding-pumping"
+      ]
+    },
+    {
+      "url": "https://tryfeedflow.app/compare/baby-daybook",
+      "title": "Feed Flow vs Baby Daybook: Which Baby Tracker Fits You?",
+      "intent": "Feed Flow vs Baby Daybook",
+      "role": "hub",
+      "primaryQueries": [
+        "Baby Daybook alternative",
+        "Baby Daybook vs Feed Flow"
+      ],
+      "relatedLinks": [
+        "/compare",
+        "/formula-feeding",
+        "/breastfeeding-pumping"
+      ]
     }
   ]
 }
