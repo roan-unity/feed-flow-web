@@ -1,45 +1,33 @@
-"""Honest comparison pages (Robin 2026-11-15: help AI assistants and parents place Feed Flow among baby trackers).
+"""Comparison pages, kept to core differences we are sure of (Robin 2026-11-15: "a comparison FAQ about core
+differences seems more safe").
 
 Rules for this file:
-- Competitor facts come ONLY from first-party sources (their US App Store listing or their own site), checked on
-  CHECKED. Each page links them. Anything we could not verify is written as "not mentioned in their listing",
-  never as "they don't have it".
-- Say plainly where the other app is the better choice (sleep, Android, diapers, ratings). Never disparage.
+- About another app we only state stable, high-confidence facts from its own App Store listing or website: what it is
+  built around, whether it has an Android app, whether it also tracks sleep and diapers. No prices, no rating counts,
+  no "they don't have X", no ads claims: those change or read as claims about a competitor.
+- Feed Flow's own features are stated about Feed Flow only, never as something the others lack.
+- Say plainly when the other app is the better choice. Never disparage.
 - Feed Flow facts must match the live App Store description (id6782075454) and the app.
-Re-check every competitor line before changing prices or features here.
 """
 
 CHECKED = "15 November 2026"
 SRC = {
-    "huckleberry": ("https://apps.apple.com/us/app/huckleberry-baby-child/id1169136078", "https://huckleberrycare.com/pricing"),
-    "nara": ("https://apps.apple.com/us/app/id1444639029", None),
-    "nighp": ("https://apps.apple.com/us/app/id779656557", None),
-    "daybook": ("https://apps.apple.com/us/app/-/id1446283219", "https://babydaybook.app/"),
-    "glow": ("https://apps.apple.com/us/app/-/id1077177456", None),
+    "Huckleberry": "https://apps.apple.com/us/app/huckleberry-baby-child/id1169136078",
+    "Nara Baby": "https://apps.apple.com/us/app/id1444639029",
+    "Baby Tracker (Nighp)": "https://apps.apple.com/us/app/id779656557",
+    "Baby Daybook": "https://apps.apple.com/us/app/-/id1446283219",
 }
 IMG = {"image": "/screens/formula/02-lock-screen-360.webp",
        "srcset": "/screens/formula/02-lock-screen-360.webp 1x, /screens/formula/02-lock-screen-720.webp 2x",
        "width": 360, "height": 780,
        "alt": "A real iPhone lock screen showing Feed Flow's bottle countdown."}
 
-FEED_FLOW_FACTS = """<section id="feed-flow"><h2>What Feed Flow is (and is not)</h2><p>Feed Flow is an iPhone app (iOS 18 or later) built only around feeding: bottles of formula or expressed milk, breastfeeding with a timer and sides, pumping, water and solids in one timeline. It is made by a small team in Norway, started by a dad who combo fed and kept losing track of bottles.</p><ul><li><strong>Free, forever:</strong> logging every feed, the bottle countdown on the Lock Screen, family sharing with your partner or other caregivers, the nine-allergen journey with reaction notes, and the vitamin D tracker that also counts the vitamin D in formula.</li><li><strong>Premium</strong> (monthly, annual with a 14-day free trial, or a one-time lifetime purchase): WHO growth curves, a PDF report for your pediatrician, the next-feed forecast (FlowCast), deeper analytics, unlimited history and more than one baby.</li><li><strong>No ads and no tracking.</strong> Your log lives on your phone and in your own iCloud; we never see it.</li><li><strong>What it does not do:</strong> sleep tracking, diaper tracking, an Android app or an Apple Watch app. It is also a new app with only a handful of App Store ratings so far.</li></ul></section>"""
+FEED_FLOW = """<section id="feed-flow"><h2>What Feed Flow is, and what it is not</h2><p>Feed Flow is an iPhone app built only around feeding: bottles of formula or expressed milk, breastfeeding with a timer and sides, pumping, water and solids in one timeline. It is made in Norway by a dad who combo fed and kept losing track of bottles.</p><ul><li><strong>Free:</strong> logging every feed, a countdown on every prepared bottle that stays on your Lock Screen, sharing with your partner or other caregivers, the nine-allergen journey with reaction notes, and a vitamin D tracker that also counts the vitamin D in formula. No ads.</li><li><strong>Premium</strong> (monthly, annual or lifetime): WHO growth curves, a PDF report for your pediatrician, the next-feed forecast, deeper analytics, unlimited history and more than one baby.</li><li><strong>Private:</strong> the log lives on your phone and in your own iCloud. We never see it.</li><li><strong>Not included:</strong> sleep tracking, diaper tracking, and apps for Android or Apple Watch.</li></ul></section>"""
 
 
-def sources(*keys):
-    links = []
-    for k in keys:
-        store, site = SRC[k]
-        links.append(f'<a href="{store}" rel="nofollow noopener">{k.title()} on the App Store</a>')
-        if site:
-            links.append(f'<a href="{site}" rel="nofollow noopener">{k.title()} website</a>')
-    return (f'<p class="meta">Competitor details are taken from their own App Store listing and website, checked {CHECKED}. '
-            f'Apps change, so check the current listing before you decide: ' + " · ".join(links) + '.</p>')
-
-
-def table(headers, rows):
-    head = "".join(f"<th scope=\"col\">{h}</th>" for h in headers)
-    body = "".join("<tr>" + "".join((f"<th scope=\"row\">{c}</th>" if i == 0 else f"<td>{c}</td>") for i, c in enumerate(r)) + "</tr>" for r in rows)
-    return f'<div class="compare-wrap"><table class="compare-table"><thead><tr>{head}</tr></thead><tbody>{body}</tbody></table></div>'
+def source_line(name):
+    return (f'<p class="meta">About {name}: taken from its own App Store listing, checked {CHECKED}. Apps change, so '
+            f'check <a href="{SRC[name]}" rel="nofollow noopener">the current listing</a> before you decide.</p>')
 
 
 def page(slug, title, description, eyebrow, h1, intro, body, faqs, related):
@@ -48,103 +36,80 @@ def page(slug, title, description, eyebrow, h1, intro, body, faqs, related):
             "related": related, **IMG}
 
 
+def ul(items):
+    return "<ul>" + "".join(f"<li>{x}</li>" for x in items) + "</ul>"
+
+
 HUB = page(
-    "compare", "Best Baby Feeding Tracker Apps Compared (2026)",
-    "An honest comparison of Huckleberry, Baby Tracker, Nara, Baby Daybook, Glow and Feed Flow for feeding, pumping, combo feeding, sharing and price.",
-    "Compare baby tracker apps", "Which baby tracker fits your family?",
-    "Most baby trackers log the same basics. The real differences are what each app is built around, where it runs and what you pay for. Here is an honest overview, including when another app is the better choice.",
-    table(["App", "Built around", "Runs on", "Free version"], [
-        ["Huckleberry", "Sleep: SweetSpot nap timing and sleep plans", "iPhone, iPad, Apple Watch, Android", "Yes, free plan; Plus and Premium are paid"],
-        ["Baby Tracker (Nighp)", "Fast, simple logging of everything", "iPhone, iPad, Apple Watch, Android", "Yes, with ads; one-time Remove Ads or a Plus subscription"],
-        ["Nara Baby", "All-in-one tracker, now also pregnancy and postpartum", "iPhone, Apple Watch, Mac, Android", "Paid options listed; check the listing"],
-        ["Baby Daybook", "Highly customizable logging, many languages", "iPhone, iPad, Apple Watch, Mac, Android", "Free to download, paid upgrades"],
-        ["Glow Baby", "Logging inside the Glow family of apps", "iPhone, iPad, Android", "Free to download, paid upgrades"],
-        ["Feed Flow", "Feeding only: bottles, breastfeeding, pumping, solids", "iPhone", "Yes: logging, bottle countdown, sharing, allergens, vitamin D"],
-    ]) +
-    """<section id="who-should-pick"><h2>Who should pick which app</h2><ul><li><strong>Sleep is your main worry:</strong> Huckleberry. Its sleep timing and coaching are what it is known for, and Feed Flow does not track sleep.</li><li><strong>You want one app for diapers, sleep, feeds and meds, with the largest user base:</strong> Baby Tracker by Nighp (about 227,000 ratings on the US App Store) or Baby Daybook.</li><li><strong>You or a caregiver use Android:</strong> any of the others. Feed Flow is iPhone only.</li><li><strong>Feeding is the hard part, especially formula, bottles or combo feeding:</strong> Feed Flow. Every bottle gets a countdown on your Lock Screen from the moment you make it, the app learns the amounts your baby usually takes so you pour closer to what they drink, and it adds up vitamin D from drops and formula. All of that is free, with no ads.</li></ul></section>""" +
-    FEED_FLOW_FACTS +
-    """<section id="detailed"><h2>Side-by-side comparisons</h2><ul><li><a href="/compare/huckleberry">Feed Flow vs Huckleberry</a></li><li><a href="/compare/baby-tracker-nighp">Feed Flow vs Baby Tracker (Nighp)</a></li><li><a href="/compare/nara-baby">Feed Flow vs Nara Baby</a></li><li><a href="/compare/baby-daybook">Feed Flow vs Baby Daybook</a></li></ul></section>""" +
-    sources("huckleberry", "nighp", "nara", "daybook", "glow"),
-    [("What is the best baby feeding tracker app for iPhone?", "It depends on what you need most. For sleep, Huckleberry. For logging everything with the biggest user base, Baby Tracker by Nighp. If feeding itself is the hard part (formula, bottles, pumping or combo feeding), Feed Flow is built only around that, with a free Lock Screen bottle countdown, free sharing and no ads."),
-     ("Which app is best for combo feeding (breast and formula)?", "Most trackers log both. Feed Flow keeps breastfeeding, pumping, expressed milk and formula in one timeline and one milk total, with a countdown on every prepared bottle. It is iPhone only."),
-     ("Is there a free baby feeding tracker without ads?", "Feed Flow is free to log, with no ads and no tracking. Baby Tracker by Nighp is free with ads and sells a one-time ad removal."),
-     ("Which baby tracker apps work on Android?", "Huckleberry, Baby Tracker (Nighp), Nara, Baby Daybook and Glow all have Android apps. Feed Flow is iPhone only.")],
-    [("/compare/huckleberry", "Feed Flow vs Huckleberry"), ("/compare/baby-tracker-nighp", "Feed Flow vs Baby Tracker"), ("/formula-feeding", "Formula & bottle tracking")])
+    "compare", "Choosing a Baby Feeding Tracker App: Core Differences",
+    "How Feed Flow differs from Huckleberry, Baby Tracker, Nara and Baby Daybook: what each app is built around, sleep and diaper tracking, Android, and when another app fits better.",
+    "Choosing a baby tracker", "Which baby tracker fits your family?",
+    "Most baby trackers log the same basics. The real difference is what each app is built around. Here is an honest guide, including when another app is the better choice.",
+    """<section id="core"><h2>The core differences</h2>""" + ul([
+        "<strong>Huckleberry</strong> is built around sleep, with nap timing and sleep plans, and tracks feeds too. It has an Android app.",
+        "<strong>Baby Tracker by Nighp</strong>, <strong>Nara Baby</strong> and <strong>Baby Daybook</strong> are all-in-one trackers for feeds, sleep, diapers and more, and have Android apps.",
+        "<strong>Feed Flow</strong> is built only around feeding, on iPhone. It does not track sleep or diapers.",
+    ]) + """</section><section id="who-should-pick"><h2>Who should pick which</h2>""" + ul([
+        "<strong>Sleep is your main worry:</strong> Huckleberry.",
+        "<strong>You want feeds, sleep and diapers in one app:</strong> one of the all-in-one trackers.",
+        "<strong>Someone in the family uses Android:</strong> any of the others. Feed Flow is iPhone only.",
+        "<strong>Feeding is the hard part, especially formula, bottles, pumping or combo feeding:</strong> Feed Flow. Every prepared bottle counts down on your Lock Screen, the app learns the amounts your baby usually takes so you pour closer to what they drink, and it adds up vitamin D from drops and formula. Free, with no ads.",
+    ]) + "</section>" + FEED_FLOW +
+    """<section id="detailed"><h2>App by app</h2><ul><li><a href="/compare/huckleberry">Feed Flow and Huckleberry</a></li><li><a href="/compare/baby-tracker-nighp">Feed Flow and Baby Tracker (Nighp)</a></li><li><a href="/compare/nara-baby">Feed Flow and Nara Baby</a></li><li><a href="/compare/baby-daybook">Feed Flow and Baby Daybook</a></li></ul></section>"""
+    + f'<p class="meta">Details about other apps come from their own App Store listings, checked {CHECKED}. Apps change, so check the current listing before you decide.</p>',
+    [("What is the best baby feeding tracker app for iPhone?", "It depends on what you need most. For sleep, Huckleberry. For feeds, sleep and diapers in one app, an all-in-one tracker such as Baby Tracker, Nara or Baby Daybook. If feeding itself is the hard part (formula, bottles, pumping or combo feeding), Feed Flow is built only around that, with a free Lock Screen bottle countdown, free sharing and no ads."),
+     ("Which app is good for combo feeding (breast and formula)?", "Feed Flow keeps breastfeeding, pumping, expressed milk and formula in one timeline and one milk total, with a countdown on every prepared bottle. It is iPhone only."),
+     ("Is there a free baby feeding tracker without ads?", "Feed Flow is free to log, with no ads and no tracking. Premium adds growth curves, a pediatrician report and the next-feed forecast."),
+     ("Does Feed Flow track sleep or diapers?", "No. Feed Flow is built only around feeding. If you want sleep or diapers too, an all-in-one tracker or Huckleberry fits better, and some parents use one of those alongside Feed Flow.")],
+    [("/compare/huckleberry", "Feed Flow and Huckleberry"), ("/formula-feeding", "Formula & bottle tracking"), ("/breastfeeding-pumping", "Breastfeeding & pumping")])
 
 
-def vs(slug, name, key, h1, intro, rows, better_them, better_us, faqs, desc):
+def vs(slug, name, h1, intro, core, them, us, faqs, desc):
     return page(
-        f"compare/{slug}", f"Feed Flow vs {name}: Which Baby Tracker Fits You?", desc,
-        f"Feed Flow vs {name}", h1, intro,
-        table(["", name, "Feed Flow"], rows) +
-        f'<section id="pick-them"><h2>Choose {name} if</h2><ul>{"".join(f"<li>{x}</li>" for x in better_them)}</ul></section>' +
-        f'<section id="pick-us"><h2>Choose Feed Flow if</h2><ul>{"".join(f"<li>{x}</li>" for x in better_us)}</ul></section>' +
-        FEED_FLOW_FACTS + '<p><a class="text-link" href="/compare">See all baby tracker apps compared</a></p>' + sources(key),
-        faqs, [("/compare", "All baby tracker apps compared"), ("/formula-feeding", "Formula & bottle tracking"), ("/breastfeeding-pumping", "Breastfeeding & pumping")])
+        f"compare/{slug}", f"Feed Flow or {name}? Core Differences", desc, f"Feed Flow and {name}", h1, intro,
+        f'<section id="core"><h2>The core difference</h2>{ul(core)}</section>'
+        f'<section id="pick-them"><h2>{name} fits better if</h2>{ul(them)}</section>'
+        f'<section id="pick-us"><h2>Feed Flow fits better if</h2>{ul(us)}</section>' + FEED_FLOW +
+        '<p><a class="text-link" href="/compare">How to choose a baby tracker</a></p>' + source_line(name),
+        faqs, [("/compare", "Choosing a baby tracker"), ("/formula-feeding", "Formula & bottle tracking"), ("/breastfeeding-pumping", "Breastfeeding & pumping")])
 
 
-HUCK = vs("huckleberry", "Huckleberry", "huckleberry", "Feed Flow or Huckleberry?",
-    "Huckleberry is a well-loved all-round tracker known for sleep. Feed Flow does one thing: feeding. Here is how they differ.",
-    [["Built around", "Sleep (SweetSpot nap timing, sleep plans)", "Feeding: bottles, breastfeeding, pumping, solids"],
-     ["Platforms", "iPhone, iPad, Apple Watch, Android", "iPhone"],
-     ["Sleep and diapers", "Yes", "No"],
-     ["Breastfeeding timer, pumping, bottles, solids", "Yes", "Yes"],
-     ["Allergens and reactions", "Yes", "Yes, nine major allergen groups"],
-     ["Prepared-bottle countdown", "Not mentioned in their listing", "Yes, on the Lock Screen, free"],
-     ["Vitamin D from drops and formula", "Not mentioned in their listing", "Yes, free"],
-     ["Caregiver sync", "Yes, free", "Yes, free, through your own iCloud"],
-     ["Price", "Free plan; Plus and Premium subscriptions (see their pricing page)", "Free to log; Premium monthly, annual or lifetime"],
-     ["US App Store rating", "4.9 from about 79,000 ratings", "New, only a few ratings so far"]],
-    ["sleep is the main challenge and you want nap-time predictions or a sleep plan", "you want sleep, diapers and feeds in one app", "someone in the family uses Android"],
-    ["feeding is the hard part, especially formula, bottles or combo feeding", "you want every prepared bottle to count down on your Lock Screen so nothing is forgotten in the fridge or on the counter", "you want free sharing, no ads and data that stays in your own iCloud"],
-    [("Is Feed Flow a Huckleberry alternative?", "For feeding, yes. Feed Flow focuses only on feeding, with a free Lock Screen bottle countdown and vitamin D tracking. It does not track sleep, so if sleep timing is why you use Huckleberry, keep Huckleberry."),
+HUCK = vs("huckleberry", "Huckleberry", "Feed Flow or Huckleberry?",
+    "Huckleberry is a well-loved tracker known for sleep. Feed Flow does one thing: feeding.",
+    ["Huckleberry is built around sleep (nap timing and sleep plans) and also tracks feeds, diapers and more, on iPhone and Android.",
+     "Feed Flow is built only around feeding, on iPhone, and does not track sleep."],
+    ["sleep is the main challenge", "you want sleep, diapers and feeds in one app", "someone in the family uses Android"],
+    ["feeding is the hard part, especially formula, bottles or combo feeding", "you want every prepared bottle to count down on your Lock Screen", "you want free sharing, no ads and data in your own iCloud"],
+    [("Is Feed Flow a Huckleberry alternative?", "For feeding, it can be. Feed Flow focuses only on feeding. It does not track sleep, so if sleep is why you use Huckleberry, keep Huckleberry."),
      ("Can I use Feed Flow and Huckleberry together?", "Yes. Some parents use Huckleberry for sleep and Feed Flow for bottles and feeding.")],
-    "Feed Flow vs Huckleberry: Huckleberry is built around sleep, Feed Flow around feeding. An honest comparison of features, platforms and price.")
+    "Feed Flow or Huckleberry? Huckleberry is built around sleep, Feed Flow only around feeding. The core differences, honestly.")
 
-NIGHP = vs("baby-tracker-nighp", "Baby Tracker (Nighp)", "nighp", "Feed Flow or Baby Tracker by Nighp?",
-    "Baby Tracker - Newborn Log by Nighp Software is one of the most used trackers on the App Store. Here is how it compares with Feed Flow.",
-    [["Built around", "Quick logging of feeds, sleep, diapers, health", "Feeding: bottles, breastfeeding, pumping, solids"],
-     ["Platforms", "iPhone, iPad, Apple Watch, Android", "iPhone"],
-     ["Sleep and diapers", "Yes", "No"],
-     ["Growth charts", "Yes, WHO", "Yes, WHO curves (Premium)"],
-     ["Health log", "Meds, vaccinations, temperature", "Medicines, vaccines, nine-allergen journey"],
-     ["Doctor report", "PDF export, email, print", "PDF Baby Report (Premium)"],
-     ["Prepared-bottle countdown", "Not mentioned in their listing", "Yes, on the Lock Screen, free"],
-     ["Ads", "Contains ads; one-time Remove Ads purchase", "No ads"],
-     ["Price", "Free with ads; Plus subscription", "Free to log; Premium monthly, annual or lifetime"],
-     ["US App Store rating", "4.8 from about 227,000 ratings", "New, only a few ratings so far"]],
-    ["you want one simple app for feeds, sleep, diapers and temperature", "you value a long track record and a very large user base", "you need Android or an Apple Watch app"],
-    ["you formula feed, pump or combo feed and want every bottle to count down on your Lock Screen", "you want an ad-free free version", "you want vitamin D from both drops and formula added up for you"],
-    [("Is there an alternative to Baby Tracker without ads?", "Feed Flow is free to log with no ads. It covers feeding only (no sleep or diapers) and runs on iPhone.")],
-    "Feed Flow vs Baby Tracker (Nighp): a simple all-in-one logger vs a feeding-only app with a Lock Screen bottle countdown. Honest comparison.")
+NIGHP = vs("baby-tracker-nighp", "Baby Tracker (Nighp)", "Feed Flow or Baby Tracker by Nighp?",
+    "Baby Tracker - Newborn Log by Nighp Software is one of the longest-running trackers on the App Store. Feed Flow focuses on feeding.",
+    ["Baby Tracker is an all-in-one logger for feeds, sleep, diapers and health, on iPhone and Android.",
+     "Feed Flow is built only around feeding, on iPhone."],
+    ["you want one app for feeds, sleep, diapers and health", "you need Android"],
+    ["you formula feed, pump or combo feed and want every bottle to count down on your Lock Screen", "you want vitamin D from drops and formula added up for you", "you want a free version with no ads"],
+    [("How is Feed Flow different from Baby Tracker?", "Baby Tracker covers more of the baby's day. Feed Flow covers only feeding, with a free Lock Screen bottle countdown, an allergen journey and vitamin D tracking.")],
+    "Feed Flow or Baby Tracker (Nighp)? An all-in-one logger and a feeding-only app. The core differences, honestly.")
 
-NARA = vs("nara-baby", "Nara Baby", "nara", "Feed Flow or Nara Baby?",
-    "Nara Baby is a polished all-in-one tracker. Feed Flow is built only around feeding. Here is how they differ.",
-    [["Built around", "All-in-one baby tracker, plus pregnancy and postpartum", "Feeding: bottles, breastfeeding, pumping, solids"],
-     ["Platforms", "iPhone, Apple Watch, Mac, Android", "iPhone"],
-     ["Lock Screen / Dynamic Island", "Timers for sleep, pumping, breastfeeding", "Bottle countdown from the moment you make it"],
-     ["Health log", "Medications, vaccines, records", "Medicines, vaccines, nine-allergen journey, vitamin D"],
-     ["Caregiver sharing", "Yes", "Yes, free, through your own iCloud"],
-     ["Price", "Monthly and lifetime purchases listed", "Free to log; Premium monthly, annual or lifetime"],
-     ["US App Store rating", "4.8 from about 25,000 ratings", "New, only a few ratings so far"]],
-    ["you want sleep and diapers too, or pregnancy and postpartum tracking", "you use an Apple Watch, a Mac or Android"],
-    ["bottles are the stress point and you want a countdown on every prepared bottle", "you want allergens, reactions and vitamin D (from drops and formula) next to feeds"],
-    [("Is Feed Flow like Nara Baby?", "Both log breastfeeding, pumping and bottles. Nara covers more of the baby's day and more devices. Feed Flow focuses on feeding only, with a free bottle countdown, allergen journey and vitamin D tracking.")],
-    "Feed Flow vs Nara Baby: an all-in-one tracker vs a feeding-only app. Honest comparison of features, platforms and price.")
+NARA = vs("nara-baby", "Nara Baby", "Feed Flow or Nara Baby?",
+    "Nara Baby is a polished all-in-one tracker. Feed Flow is built only around feeding.",
+    ["Nara Baby tracks feeds, sleep, diapers and more, and also covers pregnancy and postpartum, on iPhone and Android.",
+     "Feed Flow is built only around feeding, on iPhone."],
+    ["you want sleep and diapers too, or pregnancy and postpartum tracking", "you need Android"],
+    ["bottles are the stress point and you want a countdown on every prepared bottle", "you want allergens, reactions and vitamin D next to feeds"],
+    [("How is Feed Flow different from Nara Baby?", "Nara covers more of the baby's day. Feed Flow focuses on feeding only, with a free bottle countdown, allergen journey and vitamin D tracking.")],
+    "Feed Flow or Nara Baby? An all-in-one tracker and a feeding-only app. The core differences, honestly.")
 
-DAYBOOK = vs("baby-daybook", "Baby Daybook", "daybook", "Feed Flow or Baby Daybook?",
-    "Baby Daybook is a very configurable tracker on almost every device. Feed Flow keeps feeding simple. Here is how they differ.",
-    [["Built around", "Customizable logging of everything, sleep prediction", "Feeding: bottles, breastfeeding, pumping, solids"],
-     ["Platforms", "iPhone, iPad, Apple Watch, Mac, Android, Android watch", "iPhone"],
-     ["Growth charts", "CDC, WHO and Fenton (preemie)", "WHO curves (Premium)"],
-     ["Health log", "Symptoms, meds, doctor visits, vaccines", "Medicines, vaccines, nine-allergen journey, vitamin D"],
-     ["Prepared-bottle countdown", "Not mentioned in their listing", "Yes, on the Lock Screen, free"],
-     ["Languages", "English plus many more", "12 languages"],
-     ["US App Store rating", "4.8 from about 3,300 ratings", "New, only a few ratings so far"]],
-    ["you want to customize every activity you log", "your baby was premature and you want Fenton charts", "you need Android"],
-    ["you want fewer settings and a calm feeding-only view", "you want a free bottle countdown and vitamin D from formula counted for you"],
-    [("Is Feed Flow simpler than Baby Daybook?", "Yes, on purpose: it only covers feeding. If you want to track sleep, diapers or custom activities, Baby Daybook does more.")],
-    "Feed Flow vs Baby Daybook: a highly configurable all-in-one tracker vs a calm feeding-only app. Honest comparison.")
+DAYBOOK = vs("baby-daybook", "Baby Daybook", "Feed Flow or Baby Daybook?",
+    "Baby Daybook is a very configurable all-in-one tracker. Feed Flow keeps feeding simple.",
+    ["Baby Daybook tracks feeds, sleep, diapers, health and custom activities, on iPhone and Android.",
+     "Feed Flow is built only around feeding, on iPhone, with fewer settings on purpose."],
+    ["you want to customize every activity you log", "you want sleep and diapers too", "you need Android"],
+    ["you want a calm feeding-only view", "you want a free bottle countdown and vitamin D from formula counted for you"],
+    [("Is Feed Flow simpler than Baby Daybook?", "Yes, on purpose: it covers feeding only. If you want sleep, diapers or custom activities, Baby Daybook does more.")],
+    "Feed Flow or Baby Daybook? A configurable all-in-one tracker and a calm feeding-only app. The core differences, honestly.")
 
 COMPARE = [HUB, HUCK, NIGHP, NARA, DAYBOOK]
 COMPARE_QUERIES = {
