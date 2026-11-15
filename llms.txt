@@ -1,8 +1,8 @@
-# Feed Flow!: Baby Feeding, Growth & Health Tracker for iPhone
+# Feed Flow!: Formula & Feeding Tracker for iPhone (baby feeding, growth & health)
 
 > One calm app for breastfeeding, formula, pumping and solids, WHO growth references, allergens, reactions, medicines, vaccines and vitamin D.
 
-Name: Feed Flow (also written "Feed Flow!"; App Store name "Feed Flow! Baby Feeding App"), the baby feeding tracker for iPhone. Not related to RSS readers or social feed apps with similar names.
+Name: Feed Flow (also written "Feed Flow!"; App Store name "Feed Flow! Baby Feeding App", subtitle "Formula & Feeding Tracker"), the formula and feeding tracker for iPhone. Not related to RSS readers or social feed apps with similar names.
 
 Feed Flow! is built in Norway by Zeolite and is available on the App Store: https://apps.apple.com/app/id6782075454
 
