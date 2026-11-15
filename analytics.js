@@ -18,8 +18,33 @@
     if (c) sessionStorage.setItem("ff_camp", c);
   } catch (e) { /* private mode / no storage — degrade quietly */ }
 
+  // No tag? Name the referring site (search engine, AI assistant, social app) so website downloads can be
+  // split by origin in App Store Connect (2026-11-15). Host name only, nothing personal.
+  var REFERRERS = [
+    [/(^|\.)chatgpt\.com$|(^|\.)openai\.com$/, "chatgpt"], [/perplexity\.ai$/, "perplexity"], [/(^|\.)claude\.ai$/, "claude"],
+    [/gemini\.google\.com$/, "gemini"], [/copilot\.microsoft\.com$/, "copilot"], [/(^|\.)google\./, "google"],
+    [/(^|\.)bing\.com$/, "bing"], [/duckduckgo\.com$/, "duckduckgo"], [/instagram\.com$/, "instagram"],
+    [/facebook\.com$|fb\.me$/, "facebook"], [/tiktok\.com$/, "tiktok"], [/youtube\.com$|youtu\.be$/, "youtube"],
+    [/reddit\.com$/, "reddit"], [/linkedin\.com$|lnkd\.in$/, "linkedin"], [/^t\.co$|(^|\.)x\.com$/, "x"],
+    [/pinterest\./, "pinterest"], [/linktr\.ee$/, "linktree"]
+  ];
+  try {
+    if (!sessionStorage.getItem("ff_src") && document.referrer) {
+      var host = new URL(document.referrer).hostname.replace(/^www\./, "");
+      if (host && host !== location.hostname.replace(/^www\./, "")) {
+        var hit = REFERRERS.filter(function (r) { return r[0].test(host); })[0];
+        sessionStorage.setItem("ff_src", hit ? hit[1] : "ref-" + host.split(".").slice(-2, -1)[0]);
+      }
+    }
+  } catch (e) { /* no storage or bad referrer: stay "direct" */ }
+
   function source() {
     try { return sessionStorage.getItem("ff_src") || "direct"; } catch (e) { return "direct"; }
+  }
+
+  // App Store campaign token: "web-<source>" (Apple allows up to 40 characters).
+  function storeToken() {
+    return ("web-" + source()).toLowerCase().replace(/[^a-z0-9_-]/g, "").slice(0, 40);
   }
   function campaign() {
     try { return sessionStorage.getItem("ff_camp") || ""; } catch (e) { return ""; }
@@ -58,6 +83,10 @@
     // install is done with an App Store Connect campaign link — see ANALYTICS.md.
     if (/apps\.apple\.com/.test(href)) {
       window.plausible("AppStore Click", { props: { source: source(), campaign: campaign() } });
+      // Downloads (not reviews) carry the visitor's origin into App Store Connect's campaign report.
+      if (/[?&]ct=/.test(href) && !/write-review/.test(href)) {
+        a.setAttribute("href", href.replace(/([?&]ct=)[^&]*/, "$1" + storeToken()));
+      }
     }
   }, true);
 })();
