@@ -57,7 +57,7 @@
       'Disclosure and honest-opinion agreement: ' + data.get('disclosure-agreement')
     ].join('\n');
     var href = 'mailto:support@tryfeedflow.app?subject=' + encodeURIComponent('Ambassador application — ' + data.get('name')) + '&body=' + encodeURIComponent(body);
-    showStatus('error', 'Automatic submission was unavailable. Your email app should open with the application ready; press Send there to complete it.');
+    showStatus('success', 'Your email app should open with the application ready to send to support@tryfeedflow.app. Press Send there to complete it.');
     window.location.href = href;
   }
 
@@ -71,25 +71,7 @@
       showStatus('error', 'Please complete the required fields and accept the honest-disclosure statement.');
       return;
     }
-    var data = new FormData(form);
-    submit.disabled = true;
-    submit.textContent = 'Sending…';
-    var encoded = new URLSearchParams();
-    data.forEach(function (value, key) { if (typeof value === 'string') encoded.append(key, value); });
-
-    fetch('/', { method: 'POST', headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, body: encoded.toString() })
-      .then(function (response) {
-        if (!response.ok) throw new Error('Submission unavailable');
-        showStatus('success', 'Thank you. Your application has been received. We will review the fit and contact you using the email you provided.');
-        form.reset();
-        submit.textContent = 'Send another application';
-        submit.disabled = false;
-        status.focus();
-      })
-      .catch(function () {
-        submit.disabled = false;
-        submit.textContent = 'Send my application';
-        emailFallback(data);
-      });
+    // Hosted on Cloudflare Pages (2026-11-16): no form backend, so the application opens ready in the visitor's email app.
+    emailFallback(new FormData(form));
   });
 })();

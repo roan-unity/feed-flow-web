@@ -1,35 +1,10 @@
-# Clean URLs retain their Open Graph cards through 200 rewrites.
-/gift /gift.html 200
-/faq /faq.html 200
-/terms /terms.html 200
-/support /support.html 200
-/ambassador /ambassador.html 200
-/formula-feeding /formula-feeding.html 200
-/breastfeeding-pumping /breastfeeding-pumping.html 200
-/solids-allergens /solids-allergens.html 200
-/growth-development /growth-development.html 200
-/baby-health /baby-health.html 200
-/flowcast /flowcast.html 200
-/vitamin-d-tracker /vitamin-d-tracker.html 200
-/baby-report /baby-report.html 200
-/resources /resources.html 200
-/guides/formula-safety /guides/formula-safety.html 200
-/guides/who-growth-percentiles /guides/who-growth-percentiles.html 200
-/guides/allergen-reaction-diary /guides/allergen-reaction-diary.html 200
-/guides/vitamin-d-for-babies /guides/vitamin-d-for-babies.html 200
-
 # Retired affiliate and portal surfaces now lead to the single-level program.
 /affiliate /ambassador 301
-/affiliate.html /ambassador 301!
-/portal /ambassador 301!
-/portal.html /ambassador 301!
-/ambassador-kit.html /ambassador 301!
+/affiliate.html /ambassador 301
+/portal /ambassador 301
+/portal.html /ambassador 301
+/ambassador-kit.html /ambassador 301
 
 # The app is live, so the pre-launch beta page is retired.
 /beta / 301
 /beta.html / 301
-/compare /compare.html 200
-/compare/huckleberry /compare/huckleberry.html 200
-/compare/baby-tracker-nighp /compare/baby-tracker-nighp.html 200
-/compare/nara-baby /compare/nara-baby.html 200
-/compare/baby-daybook /compare/baby-daybook.html 200
