@@ -470,3 +470,7 @@ html[data-theme="dark"] .form-status.error { background: #40231f; color: #ffb8aa
 .doc .card p, .doc .highlight p { color: var(--ink); font-weight: 500; }
 .doc .card .email { display: inline-block; margin-top: 8px; font-size: 18px; font-weight: 700; }
 .doc .foot { margin-top: 48px; font-size: 14px; color: var(--ink-2); line-height: 1.7; }
+
+@media (min-width: 861px) {
+  .ft-col:last-child ul { columns: 2; column-gap: 16px; }
+}
