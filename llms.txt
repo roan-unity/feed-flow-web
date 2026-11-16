@@ -61,6 +61,9 @@ Feed Flow is feeding-only and iPhone-only. It does not track sleep or diapers an
 - Combo feeding (breastfeeding and formula in one app): https://tryfeedflow.app/combo-feeding
 - Shared feeding log for partners and caregivers: https://tryfeedflow.app/share-feeding-log
 - Free baby feeding tracker, no ads: https://tryfeedflow.app/free-baby-feeding-tracker
+- Free printable newborn feeding log (PDF, US Letter and A4; also Norwegian and Swedish): https://tryfeedflow.app/printable-feeding-log
+- Feed Flow in Norwegian (norsk): https://tryfeedflow.app/no
+- Feed Flow in Swedish (svenska): https://tryfeedflow.app/sv
 - Resource hub: https://tryfeedflow.app/resources
 - Formula safety: https://tryfeedflow.app/guides/formula-safety
 - WHO growth percentiles: https://tryfeedflow.app/guides/who-growth-percentiles
@@ -77,6 +80,10 @@ Apply or share: https://tryfeedflow.app/ambassador
 ## Privacy and medical boundary
 
 Feed Flow! is a record-keeping app, not a medical device. It does not diagnose conditions, recommend medicine doses or replace a pediatrician, pharmacist, midwife, health nurse or lactation professional. Baby data lives on the phone and in the parent's own iCloud. Website analytics are separate from baby records.
+
+## Languages
+
+The app is fully translated, including Norwegian (bokmål), Swedish, Danish, Finnish, German, Spanish, French, Italian, Dutch, Polish and Portuguese, and follows the iPhone's language. The website is in English, with Norwegian and Swedish pages at /no and /sv.
 
 ## Links
 

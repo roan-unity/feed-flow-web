@@ -382,6 +382,62 @@
         "/compare",
         "/faq"
       ]
+    },
+    {
+      "url": "https://tryfeedflow.app/printable-feeding-log",
+      "title": "Free Printable Newborn Feeding Log (PDF, A4 and US Letter) | Feed Flow",
+      "intent": "Printable feeding log",
+      "role": "hub",
+      "primaryQueries": [
+        "printable newborn feeding log",
+        "free printable baby feeding chart",
+        "newborn feeding chart pdf",
+        "breastfeeding log printable",
+        "baby feeding and diaper log printable"
+      ],
+      "relatedLinks": [
+        "/combo-feeding",
+        "/bottle-countdown",
+        "/share-feeding-log"
+      ]
+    },
+    {
+      "url": "https://tryfeedflow.app/no",
+      "title": "Feed Flow: Babyapp for amming, flaske og MME på norsk | iPhone",
+      "intent": "Babyapp på norsk",
+      "role": "hub",
+      "primaryQueries": [
+        "app for amming",
+        "matingslogg baby",
+        "babyapp norsk",
+        "app for flaskemating og MME",
+        "ammeapp iPhone",
+        "matingslogg til utskrift"
+      ],
+      "relatedLinks": [
+        "/printables/feeding-log-nb-a4.pdf",
+        "/sv",
+        "/"
+      ]
+    },
+    {
+      "url": "https://tryfeedflow.app/sv",
+      "title": "Feed Flow: Bebisapp för amning, flaska och ersättning | iPhone",
+      "intent": "Bebisapp på svenska",
+      "role": "hub",
+      "primaryQueries": [
+        "amningsapp",
+        "bebisapp svenska",
+        "matningslogg bebis",
+        "app för flaskmatning och ersättning",
+        "amning app iPhone",
+        "matningsschema att skriva ut"
+      ],
+      "relatedLinks": [
+        "/printables/feeding-log-sv-a4.pdf",
+        "/no",
+        "/"
+      ]
     }
   ]
 }

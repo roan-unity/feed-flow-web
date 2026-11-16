@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://tryfeedflow.app/</loc><lastmod>2026-11-12</lastmod><changefreq>weekly</changefreq><priority>1.0</priority></url>
+  <url><loc>https://tryfeedflow.app/</loc><lastmod>2026-11-16</lastmod><changefreq>weekly</changefreq><priority>1.0</priority></url>
   <url><loc>https://tryfeedflow.app/formula-feeding</loc><lastmod>2026-11-12</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
   <url><loc>https://tryfeedflow.app/breastfeeding-pumping</loc><lastmod>2026-11-12</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
   <url><loc>https://tryfeedflow.app/solids-allergens</loc><lastmod>2026-11-12</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
@@ -30,4 +30,7 @@
   <url><loc>https://tryfeedflow.app/combo-feeding</loc><lastmod>2026-11-16</lastmod></url>
   <url><loc>https://tryfeedflow.app/share-feeding-log</loc><lastmod>2026-11-16</lastmod></url>
   <url><loc>https://tryfeedflow.app/free-baby-feeding-tracker</loc><lastmod>2026-11-16</lastmod></url>
+  <url><loc>https://tryfeedflow.app/printable-feeding-log</loc><lastmod>2026-11-16</lastmod></url>
+  <url><loc>https://tryfeedflow.app/no</loc><lastmod>2026-11-16</lastmod></url>
+  <url><loc>https://tryfeedflow.app/sv</loc><lastmod>2026-11-16</lastmod></url>
 </urlset>

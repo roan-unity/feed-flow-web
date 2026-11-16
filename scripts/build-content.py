@@ -314,34 +314,55 @@ PAGES = [
 ]
 
 
+L = {
+    "en": {"skip": "Skip to content", "download": "Download on the App Store", "download_sm": "Download", "meta": "Free to log · iPhone · Your baby’s data stays in your own iCloud", "faq": "Common questions", "explore": "Explore", "aside1": "Keep the whole picture", "aside1p": "Feeding, growth and health records stay together in Feed Flow.", "aside2": "A record, not medical advice", "aside2p": "Feed Flow does not diagnose conditions, recommend medicine doses or replace your pediatrician, midwife, health nurse or lactation professional.", "more": "Continue exploring", "lead": "One calm record for feeding, growth and health.", "tiers": "Download Feed Flow and start logging today. Logging is free, forever.", "locale": "en_US", "menu": "Open menu", "home": "Feed Flow home"},
+    "nb": {"skip": "Gå til innholdet", "download": "Last ned i App Store", "download_sm": "Last ned", "meta": "Gratis å logge · iPhone · Dataene ligger i din egen iCloud", "faq": "Vanlige spørsmål", "explore": "Se mer", "aside1": "Alt på ett sted", "aside1p": "Mating, vekst og helse samlet i én rolig app, helt på norsk.", "aside2": "En logg, ikke medisinske råd", "aside2p": "Feed Flow stiller ingen diagnoser, anbefaler ikke doser og erstatter ikke helsestasjonen, jordmor eller legen.", "more": "Les mer", "lead": "Én rolig logg for mating, vekst og helse.", "tiers": "Last ned Feed Flow og begynn å logge i dag. Det er gratis å logge.", "locale": "nb_NO", "menu": "Åpne meny", "home": "Feed Flow forsiden"},
+    "sv": {"skip": "Till innehållet", "download": "Hämta i App Store", "download_sm": "Hämta", "meta": "Gratis att logga · iPhone · Datan ligger i ditt eget iCloud", "faq": "Vanliga frågor", "explore": "Läs mer", "aside1": "Allt på ett ställe", "aside1p": "Matning, tillväxt och hälsa samlat i en lugn app, helt på svenska.", "aside2": "En logg, inte medicinska råd", "aside2p": "Feed Flow ställer inga diagnoser, rekommenderar inga doser och ersätter inte BVC, barnmorskan eller läkaren.", "more": "Läs vidare", "lead": "En lugn logg för matning, tillväxt och hälsa.", "tiers": "Hämta Feed Flow och börja logga i dag. Det är gratis att logga.", "locale": "sv_SE", "menu": "Öppna menyn", "home": "Feed Flow startsida"},
+}
+NAV = {
+    "nb": [("feeding", "/no#mating", "Mating"), ("countdown", "/no#nedtelling", "Nedtelling"), ("print", "/no#utskrift", "Utskrift"), ("faq", "/no#faq", "Spørsmål"), ("sv", "/sv", "Svenska"), ("en", "/", "English")],
+    "sv": [("feeding", "/sv#matning", "Matning"), ("countdown", "/sv#nedrakning", "Nedräkning"), ("print", "/sv#utskrift", "Utskrift"), ("faq", "/sv#faq", "Frågor"), ("nb", "/no", "Norsk"), ("en", "/", "English")],
+}
+
+
 def icon(name, cls="icon"):
     return f'<svg class="{cls}" aria-hidden="true"><use href="/assets/icons.svg#{name}"/></svg>'
 
 
 def wordmark():
-    return f'<a href="/" class="wordmark" aria-label="Feed Flow home"><span>Feed</span><span class="flow">Flow</span><span class="bottle" aria-hidden="true"><svg><use href="/assets/icons.svg#bottle"/></svg></span></a>'
+    return f'<a href="/" class="wordmark" aria-label="Feed Flow"><span>Feed</span><span class="flow">Flow</span><span class="bottle" aria-hidden="true"><svg><use href="/assets/icons.svg#bottle"/></svg></span></a>'
 
 
-def header(active):
-    items = [("feeding", "/#feeding", "Feeding"), ("growth", "/#growth", "Growth"), ("health", "/#health", "Health"), ("resources", "/resources", "Guides"), ("ambassador", "/ambassador", "Ambassadors")]
+def header(active, lang="en"):
+    t = L[lang]
+    store = APP_STORE if lang == "en" else APP_STORE.replace("ct=website_content", f"ct=website_{lang}")
+    items = NAV[lang] if lang in NAV else [("feeding", "/#feeding", "Feeding"), ("growth", "/#growth", "Growth"), ("health", "/#health", "Health"), ("resources", "/resources", "Guides"), ("ambassador", "/ambassador", "Ambassadors")]
     desktop = "".join(f'<a href="{url}"{(" aria-current=\"page\"" if key == active else "")}>{label}</a>' for key, url, label in items)
     mobile = "".join(f'<a href="{url}">{label}<span aria-hidden="true">→</span></a>' for _, url, label in items)
-    return f'''<header class="nav"><div class="wrap nav-inner">{wordmark()}<nav class="desktop-nav" aria-label="Primary navigation">{desktop}</nav><div class="nav-right"><button class="theme-toggle" id="themeToggle" type="button" aria-label="Use dark theme">{icon('sun','sun')}{icon('moon','moon')}</button><a href="{APP_STORE.replace('website_content','website_header')}" class="btn btn-primary btn-sm nav-download">{icon('apple','apple')}Download</a><button class="menu-toggle" id="menuToggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mobileNav">{icon('menu')}</button></div></div><nav class="mobile-nav" id="mobileNav" aria-label="Mobile navigation" hidden>{mobile}<a href="{APP_STORE.replace('website_content','website_mobile_menu')}">Download on the App Store<span aria-hidden="true">→</span></a></nav></header>'''
+    return f'''<header class="nav"><div class="wrap nav-inner">{wordmark()}<nav class="desktop-nav" aria-label="Primary navigation">{desktop}</nav><div class="nav-right"><button class="theme-toggle" id="themeToggle" type="button" aria-label="Use dark theme">{icon('sun','sun')}{icon('moon','moon')}</button><a href="{store.replace('website_content','website_header')}" class="btn btn-primary btn-sm nav-download">{icon('apple','apple')}{t['download_sm']}</a><button class="menu-toggle" id="menuToggle" type="button" aria-label="{t['menu']}" aria-expanded="false" aria-controls="mobileNav">{icon('menu')}</button></div></div><nav class="mobile-nav" id="mobileNav" aria-label="Mobile navigation" hidden>{mobile}<a href="{store.replace('website_content','website_mobile_menu')}">{t['download']}<span aria-hidden="true">→</span></a></nav></header>'''
 
 
-def footer():
+def footer(lang="en"):
     social = [("linkedin", "https://www.linkedin.com/company/feedflow-babyfeedingapp/", "LinkedIn"), ("instagram", "https://www.instagram.com/feedflow_babyfeedingapp", "Instagram"), ("tiktok", "https://www.tiktok.com/@feedflow_babyfeedingapp", "TikTok"), ("youtube", "https://www.youtube.com/@FeedFlow-BabyFeedingApp", "YouTube"), ("facebook", "https://www.facebook.com/feedflowapp", "Facebook"), ("reddit", "https://www.reddit.com/r/FeedFlowParents/", "Reddit")]
     icons = "".join(f'<a class="social-link" href="{url}" target="_blank" rel="noopener noreferrer" aria-label="Feed Flow on {name}" title="{name}">{icon(key)}</a>' for key, url, name in social)
-    links = [("/formula-feeding", "Formula feeding"), ("/breastfeeding-pumping", "Breast & pumping"), ("/solids-allergens", "Solids & allergens"), ("/growth-development", "Growth & development"), ("/baby-health", "Baby health"), ("/flowcast", "FlowCast"), ("/vitamin-d-tracker", "Vitamin D tracker"), ("/baby-report", "Baby Reports"), ("/bottle-countdown", "Bottle countdown"), ("/combo-feeding", "Combo feeding"), ("/share-feeding-log", "Shared feeding log"), ("/free-baby-feeding-tracker", "Free tracker"), ("/resources", "Guides"), ("/compare", "Compare apps"), ("/faq", "FAQ"), ("/support", "Support"), ("/ambassador", "Ambassadors"), ("/privacy", "Privacy"), ("/terms", "Terms")]
+    links = [("/formula-feeding", "Formula feeding"), ("/breastfeeding-pumping", "Breast & pumping"), ("/solids-allergens", "Solids & allergens"), ("/growth-development", "Growth & development"), ("/baby-health", "Baby health"), ("/flowcast", "FlowCast"), ("/vitamin-d-tracker", "Vitamin D tracker"), ("/baby-report", "Baby Reports"), ("/bottle-countdown", "Bottle countdown"), ("/combo-feeding", "Combo feeding"), ("/share-feeding-log", "Shared feeding log"), ("/free-baby-feeding-tracker", "Free tracker"), ("/printable-feeding-log", "Printable feeding log"), ("/resources", "Guides"), ("/compare", "Compare apps"), ("/faq", "FAQ"), ("/support", "Support"), ("/ambassador", "Ambassadors"), ("/privacy", "Privacy"), ("/terms", "Terms"), ("/no", "Norsk"), ("/sv", "Svenska")]
+    blurb = "Feed Flow! is the formula &amp; feeding tracker for iPhone, built in Norway by Zeolite. Feeding, growth and baby health in one calm, privacy-first app."
+    if lang == "nb":
+        links = [("/no", "Norsk"), ("/sv", "Svenska"), ("/", "English"), ("/printables/feeding-log-nb-a4.pdf", "Matingslogg (PDF)"), ("/support", "Support"), ("/privacy", "Personvern (engelsk)"), ("/terms", "Vilkår (engelsk)")]
+        blurb = "Feed Flow! er appen for mating og MME på iPhone, laget i Norge av Zeolite. Mating, vekst og babyens helse i én rolig app med personvern først."
+    elif lang == "sv":
+        links = [("/sv", "Svenska"), ("/no", "Norsk"), ("/", "English"), ("/printables/feeding-log-sv-a4.pdf", "Matningslogg (PDF)"), ("/support", "Support"), ("/privacy", "Integritet (engelska)"), ("/terms", "Villkor (engelska)")]
+        blurb = "Feed Flow! är appen för matning och ersättning på iPhone, byggd i Norge av Zeolite. Matning, tillväxt och bebisens hälsa i en lugn app med integriteten först."
     links_html = "".join(f'<a href="{url}">{label}</a>' for url, label in links)
-    return f'''<footer class="ft"><div class="wrap"><div class="ft-inner"><div class="ft-left">{wordmark()}<p>Feed Flow! is the formula &amp; feeding tracker for iPhone, built in Norway by Zeolite. Feeding, growth and baby health in one calm, privacy-first app.</p><a class="ft-mail" href="mailto:support@tryfeedflow.app">support@tryfeedflow.app</a><nav class="social-list" aria-label="Feed Flow on social media">{icons}</nav></div><nav class="ft-links" aria-label="Footer">{links_html}</nav></div><div class="ft-bottom">&copy; 2026 Feed Flow!</div></div></footer>'''
+    return f'''<footer class="ft"><div class="wrap"><div class="ft-inner"><div class="ft-left">{wordmark()}<p>{blurb}</p><a class="ft-mail" href="mailto:support@tryfeedflow.app">support@tryfeedflow.app</a><nav class="social-list" aria-label="Feed Flow on social media">{icons}</nav></div><nav class="ft-links" aria-label="Footer">{links_html}</nav></div><div class="ft-bottom">&copy; 2026 Feed Flow!</div></div></footer>'''
 
 
 def schema(page):
     url = "https://tryfeedflow.app/" + page["slug"]
-    webpage = {"@type": "WebPage", "@id": url + "#page", "url": url, "name": page["title"], "description": page["description"], "dateModified": page.get("date", "2026-11-12"), "image": "https://tryfeedflow.app" + page["image"], "isPartOf": {"@id": "https://tryfeedflow.app/#website"}, "about": {"@id": "https://tryfeedflow.app/#app"}}
+    webpage = {"@type": "WebPage", "@id": url + "#page", "url": url, "name": page["title"], "description": page["description"], "dateModified": page.get("date", "2026-11-12"), "image": "https://tryfeedflow.app" + page["image"], "isPartOf": {"@id": "https://tryfeedflow.app/#website"}, "about": {"@id": "https://tryfeedflow.app/#app"}, "inLanguage": page.get("lang", "en")}
     citations = {
         "guides/formula-safety": ["https://www.cdc.gov/infant-toddler-nutrition/formula-feeding/preparation-and-storage.html"],
+        "printable-feeding-log": ["https://www.cdc.gov/infant-toddler-nutrition/breastfeeding/how-much-and-how-often.html"],
         "guides/who-growth-percentiles": ["https://www.who.int/tools/child-growth-standards/standards"],
         "growth-development": ["https://www.who.int/tools/child-growth-standards/standards"],
         "guides/allergen-reaction-diary": ["https://www.niaid.nih.gov/diseases-conditions/guidelines-clinicians-and-patients-food-allergy"],
@@ -363,34 +384,39 @@ def schema(page):
 
 
 def render(page):
+    lang = page.get("lang", "en")
+    t = L[lang]
+    store = APP_STORE if lang == "en" else APP_STORE.replace("ct=website_content", f"ct=website_{lang}")
     url = "https://tryfeedflow.app/" + page["slug"]
+    hreflang = "".join(f'<link rel="alternate" hreflang="{code}" href="{href}">' for code, href in page.get("hreflang", []))
     faqs = ""
     if page["faqs"]:
         details = "".join(f'<details><summary>{escape(q)}</summary><div>{escape(a)}</div></details>' for q, a in page["faqs"])
-        faqs = f'<section id="faq"><h2>Common questions</h2><div class="faq-list">{details}</div></section>'
-    related = "".join(f'<a class="resource-card" href="{link}"><span class="tag">Explore</span><h3>{escape(label)}</h3>{icon("arrow")}</a>' for link, label in page["related"])
+        faqs = f'<section id="faq"><h2>{t['faq']}</h2><div class="faq-list">{details}</div></section>'
+    related = "".join(f'<a class="resource-card" href="{link}"><span class="tag">{t['explore']}</span><h3>{escape(label)}</h3>{icon("arrow")}</a>' for link, label in page["related"])
     aside_links = "".join(f'<a href="{link}">{escape(label)} →</a>' for link, label in page["related"])
     guide_crumb = '<a href="/resources">Guides</a><span>/</span>' if page.get("guide") else ('<a href="/compare">Compare apps</a><span>/</span>' if page.get("compare") and page["slug"] != "compare" else '')
     return f'''<!DOCTYPE html>
-<html lang="en" data-theme="light"><head>
+<html lang="{lang}" data-theme="light"><head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="apple-itunes-app" content="app-id=6782075454">
 <title>{escape(page['title'])}</title><meta name="description" content="{escape(page['description'], quote=True)}"><meta name="robots" content="index, follow, max-image-preview:large"><meta name="theme-color" content="#2F7886">
-<link rel="canonical" href="{url}"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@800&amp;display=swap"><link rel="stylesheet" href="/site.css">
+<link rel="canonical" href="{url}">{hreflang}<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@800&amp;display=swap"><link rel="stylesheet" href="/site.css">
 <script defer data-domain="tryfeedflow.app" src="https://plausible.io/js/script.outbound-links.tagged-events.js"></script><script defer src="/analytics.js"></script><script defer src="/site.js"></script><script>try{{var t=localStorage.getItem('ff-web-theme');if(t!=='light'&&t!=='dark')t=matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';document.documentElement.dataset.theme=t;}}catch(e){{}}</script>
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 96 96'%3E%3Crect width='96' height='96' rx='22' fill='%232F7886'/%3E%3Crect x='27' y='28' width='7' height='40' rx='3' fill='%23fff'/%3E%3Crect x='27' y='28' width='22' height='7' rx='3' fill='%23fff'/%3E%3Ccircle cx='63.5' cy='55' r='12' fill='%23E87352'/%3E%3C/svg%3E">
-<meta property="og:type" content="website"><meta property="og:url" content="{url}"><meta property="og:title" content="{escape(page['title'], quote=True)}"><meta property="og:description" content="{escape(page['description'], quote=True)}"><meta property="og:image" content="https://tryfeedflow.app/og.png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:image:alt" content="Four real Feed Flow screens: bottle countdown, FlowCast, vitamin D tracking and a feeding and growth report"><meta property="og:site_name" content="Feed Flow!"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="{escape(page['title'], quote=True)}"><meta name="twitter:description" content="{escape(page['description'], quote=True)}"><meta name="twitter:image" content="https://tryfeedflow.app/og.png"><meta name="twitter:image:alt" content="Four real Feed Flow screens: bottle countdown, FlowCast, vitamin D tracking and a feeding and growth report">
-<script type="application/ld+json">{schema(page)}</script></head><body><a class="skip-link" href="#main">Skip to content</a>{header(page['active'])}
-<main id="main"><section class="content-hero"><div class="wrap"><nav class="breadcrumbs" aria-label="Breadcrumb"><a href="/">Feed Flow</a><span>/</span>{guide_crumb}<span>{escape(page['eyebrow'].replace(' guide',''))}</span></nav><div class="content-hero-grid"><div><p class="eyebrow">{escape(page['eyebrow'])}</p><h1>{escape(page['h1'])}</h1><p class="intro">{escape(page['intro'])}</p><div class="hero-cta"><a class="btn btn-primary" href="{APP_STORE}">{icon('apple','apple')}Download on the App Store</a></div><p class="meta">Free to log · iPhone · Your baby’s data stays in your own iCloud</p></div><figure class="shot"><img src="{page['image']}" srcset="{page['srcset']}" width="{page['width']}" height="{page['height']}" fetchpriority="high" decoding="async" alt="{escape(page['alt'], quote=True)}"></figure></div></div></section>
-<div class="wrap content-layout"><article class="article-body">{page['body']}{faqs}</article><aside class="article-aside" aria-label="Related information"><div class="aside-card"><h2>Keep the whole picture</h2><p>Feeding, growth and health records stay together in Feed Flow.</p><div class="aside-links">{aside_links}</div></div><div class="aside-card"><h2>A record, not medical advice</h2><p>Feed Flow does not diagnose conditions, recommend medicine doses or replace your pediatrician, midwife, health nurse or lactation professional.</p></div></aside></div>
-<section class="related-section"><div class="wrap"><h2>Continue exploring</h2><div class="resource-grid">{related}</div></div></section>
-<section class="cta"><div class="wrap"><div class="cta-banner"><p class="lead">One calm record for feeding, growth and health.</p><p class="tiers">Download Feed Flow and start logging today. Logging is free, forever.</p><a class="btn btn-primary" href="{APP_STORE.replace('website_content','website_closing')}">{icon('apple','apple')}Download on the App Store</a></div></div></section></main>{footer()}<script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{{"token":"066ad3912fc4436c8f31f2f912b89230"}}'></script></body></html>'''
+<meta property="og:type" content="website"><meta property="og:url" content="{url}"><meta property="og:title" content="{escape(page['title'], quote=True)}"><meta property="og:description" content="{escape(page['description'], quote=True)}"><meta property="og:image" content="https://tryfeedflow.app/og.png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:image:alt" content="Four real Feed Flow screens: bottle countdown, FlowCast, vitamin D tracking and a feeding and growth report"><meta property="og:site_name" content="Feed Flow!"><meta property="og:locale" content="{t['locale']}"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="{escape(page['title'], quote=True)}"><meta name="twitter:description" content="{escape(page['description'], quote=True)}"><meta name="twitter:image" content="https://tryfeedflow.app/og.png"><meta name="twitter:image:alt" content="Four real Feed Flow screens: bottle countdown, FlowCast, vitamin D tracking and a feeding and growth report">
+<script type="application/ld+json">{schema(page)}</script></head><body><a class="skip-link" href="#main">{t['skip']}</a>{header(page['active'], lang)}
+<main id="main"><section class="content-hero"><div class="wrap"><nav class="breadcrumbs" aria-label="Breadcrumb"><a href="/">Feed Flow</a><span>/</span>{guide_crumb}<span>{escape(page['eyebrow'].replace(' guide',''))}</span></nav><div class="content-hero-grid"><div><p class="eyebrow">{escape(page['eyebrow'])}</p><h1>{escape(page['h1'])}</h1><p class="intro">{escape(page['intro'])}</p><div class="hero-cta"><a class="btn btn-primary" href="{store}">{icon('apple','apple')}{t['download']}</a></div><p class="meta">{t['meta']}</p></div><figure class="shot"><img src="{page['image']}" srcset="{page['srcset']}" width="{page['width']}" height="{page['height']}" fetchpriority="high" decoding="async" alt="{escape(page['alt'], quote=True)}"></figure></div></div></section>
+<div class="wrap content-layout"><article class="article-body">{page['body']}{faqs}</article><aside class="article-aside" aria-label="Related information"><div class="aside-card"><h2>{t['aside1']}</h2><p>{t['aside1p']}</p><div class="aside-links">{aside_links}</div></div><div class="aside-card"><h2>{t['aside2']}</h2><p>{t['aside2p']}</p></div></aside></div>
+<section class="related-section"><div class="wrap"><h2>{t['more']}</h2><div class="resource-grid">{related}</div></div></section>
+<section class="cta"><div class="wrap"><div class="cta-banner"><p class="lead">{t['lead']}</p><p class="tiers">{t['tiers']}</p><a class="btn btn-primary" href="{store.replace('website_content','website_closing')}">{icon('apple','apple')}{t['download']}</a></div></div></section></main>{footer(lang)}<script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{{"token":"066ad3912fc4436c8f31f2f912b89230"}}'></script></body></html>'''
 
 
 import sys as _sys
 _sys.path.insert(0, str(Path(__file__).resolve().parent))
 from compare_pages import COMPARE, COMPARE_QUERIES
 from question_pages import QUESTION, QUESTION_QUERIES
-PAGES += COMPARE + QUESTION
+from nordic_pages import NORDIC, NORDIC_QUERIES
+PAGES += COMPARE + QUESTION + NORDIC
 
 for item in PAGES:
     target = ROOT / item["file"]
@@ -414,6 +440,7 @@ query_map = {
     "guides/allergen-reaction-diary": ["baby allergen reaction diary", "baby reaction after egg next day", "what to record after baby food reaction"],
     **COMPARE_QUERIES,
     **QUESTION_QUERIES,
+    **NORDIC_QUERIES,
     "guides/vitamin-d-for-babies": ["vitamin D for babies", "baby vitamin D drops and formula", "infant vitamin D supplement guide"]
 }
 (ROOT / "seo").mkdir(exist_ok=True)
