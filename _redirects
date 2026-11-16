@@ -8,3 +8,5 @@
 # The app is live, so the pre-launch beta page is retired.
 /beta / 301
 /beta.html / 301
+/founding /founding-families 301
+/founders /founding-families 301
