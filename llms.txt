@@ -78,7 +78,7 @@ Feed Flow! is a record-keeping app, not a medical device. It does not diagnose c
 - Home: https://tryfeedflow.app/
 - Download: https://apps.apple.com/app/id6782075454
 - FAQ: https://tryfeedflow.app/faq
-- Privacy: https://tryfeedflow.app/privacy.html
+- Privacy: https://tryfeedflow.app/privacy
 - Support: https://tryfeedflow.app/support
 - LinkedIn: https://www.linkedin.com/company/feedflow-babyfeedingapp/
 - Instagram: https://www.instagram.com/feedflow_babyfeedingapp
