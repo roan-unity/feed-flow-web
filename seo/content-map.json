@@ -221,6 +221,23 @@
       ]
     },
     {
+      "url": "https://tryfeedflow.app/guides/should-you-use-a-feeding-tracker",
+      "title": "Should You Use a Baby Feeding Tracker? An Honest Answer",
+      "intent": "Should you track feeds?",
+      "role": "guide",
+      "primaryQueries": [
+        "should I use a baby feeding tracker",
+        "do I need a baby tracker app",
+        "feeding tracker anxiety",
+        "is tracking baby feeds necessary"
+      ],
+      "relatedLinks": [
+        "/breastfeeding-pumping",
+        "/guides/formula-safety",
+        "/flowcast"
+      ]
+    },
+    {
       "url": "https://tryfeedflow.app/compare",
       "title": "Choosing a Baby Feeding Tracker App: Core Differences",
       "intent": "Choosing a baby tracker",
