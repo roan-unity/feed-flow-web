@@ -65,7 +65,7 @@ save(store_screen("04-home"), "finish")
 save(report_scroll(), "report-scroll", quality=74)
 
 
-def background_strip(image: Image.Image, name: str) -> None:
+def background_strip(image: Image.Image, name: str, left_cols=(0.008, 0.03), right_cols=(0.97, 0.992)) -> None:
     """The plain phone background for a screen: the left edge of the capture (where nothing is drawn),
     median-filtered down its height. Shown behind pieces that have not landed yet, so an unrevealed area
     is the phone's own background and a landing piece has no box around it."""
@@ -82,7 +82,7 @@ def background_strip(image: Image.Image, name: str) -> None:
         return np.stack([np.median(padded[i:i + window], axis=0) for i in range(height)])
 
     # The screens carry a diagonal gradient, so take both edges and blend across the width.
-    left, right = edge(0.008, 0.03), edge(0.97, 0.992)
+    left, right = edge(*left_cols), edge(*right_cols)
     mix = np.linspace(0, 1, 64).reshape(1, 64, 1)
     field = left[:, None, :] * (1 - mix) + right[:, None, :] * mix
     strip = Image.fromarray(field.round().astype("uint8")).filter(ImageFilter.GaussianBlur(2))
@@ -96,3 +96,23 @@ background_strip(START, "start")
 background_strip(store_screen("01-safe-bottle"), "log")
 background_strip(store_screen("04-home"), "finish")
 background_strip(Image.open(ROOT / "screens" / "flowcast-720.webp"), "flowcast")
+
+
+# Cards added in round 3. Each is a real capture; nothing is drawn or retouched.
+# - family: the phone screen cropped out of the 07-family store frame (the shared Activity Feed).
+# - growth / health: the existing screens/report-detail and screens/health-allergens webps are used as
+#   they are. Their strips are taken from INSIDE the white chart card / the allergen panel, because the
+#   animation holds back only the plot and the allergen rows, so the gap shows that card's own colour.
+# - themes: one capture of the same bottle screen in each of the four app themes, from the 2026-11-15
+#   fill-stage run (ff-167 scratch/fill/r2/frames). Skipped when that folder is missing; the committed
+#   webps stay as they are.
+save(store_screen("07-family"), "family")
+background_strip(store_screen("07-family"), "family")
+background_strip(Image.open(ROOT / "screens" / "report-detail-720.webp"), "growth", (0.048, 0.07), (0.93, 0.952))
+background_strip(Image.open(ROOT / "screens" / "health-allergens-720.webp"), "health", (0.052, 0.066), (0.935, 0.952))
+
+THEME_FRAMES = Path.home() / "Developer/ff-167/scratch/fill/r2/frames"
+for theme in ("ocean", "forest", "lavender", "midnight"):
+    frame = THEME_FRAMES / f"fill-pinned-{theme}-en-i17.png"
+    if frame.exists():
+        save(Image.open(frame).convert("RGB"), f"theme-{theme}", quality=74)
