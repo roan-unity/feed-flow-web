@@ -100,16 +100,23 @@ background_strip(Image.open(ROOT / "screens" / "flowcast-720.webp"), "flowcast")
 
 # Cards added in round 3. Each is a real capture; nothing is drawn or retouched.
 # - family: the phone screen cropped out of the 07-family store frame (the shared Activity Feed).
-# - growth / health: the existing screens/report-detail and screens/health-allergens webps are used as
-#   they are. Their strips are taken from INSIDE the white chart card / the allergen panel, because the
-#   animation holds back only the plot and the allergen rows, so the gap shows that card's own colour.
+# - growth: the growth card ("Is Nora growing along the curve?") from the 2026-11 growth run
+#   (ff-167-growth scratch/growth/pairs8), a 1206x2622 in-app capture. Skipped when that folder is missing.
+# - health: screens/health-allergens is used as it is; only its background strip is made here.
 # - themes: one capture of the same bottle screen in each of the four app themes, from the 2026-11-15
 #   fill-stage run (ff-167 scratch/fill/r2/frames). Skipped when that folder is missing; the committed
 #   webps stay as they are.
+# The growth strip is taken just outside the plot (beside the axis labels) and the health strip from INSIDE the card / the allergen panel, because the animation
+# holds back only the plot and the allergen rows, so the gap shows that card's own colour.
 save(store_screen("07-family"), "family")
 background_strip(store_screen("07-family"), "family")
-background_strip(Image.open(ROOT / "screens" / "report-detail-720.webp"), "growth", (0.048, 0.07), (0.93, 0.952))
 background_strip(Image.open(ROOT / "screens" / "health-allergens-720.webp"), "health", (0.052, 0.066), (0.935, 0.952))
+
+GROWTH_FRAME = Path.home() / "Developer/ff-167-growth/scratch/growth/pairs8/growth-along-ocean.png"
+if GROWTH_FRAME.exists():
+    GROWTH = Image.open(GROWTH_FRAME).convert("RGB")
+    save(GROWTH, "growth")
+    background_strip(GROWTH, "growth", (0.14, 0.155), (0.875, 0.89))
 
 THEME_FRAMES = Path.home() / "Developer/ff-167/scratch/fill/r2/frames"
 for theme in ("ocean", "forest", "lavender", "midnight"):
