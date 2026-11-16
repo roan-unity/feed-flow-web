@@ -6,9 +6,10 @@
   if (window.__ffChat) return;
   window.__ffChat = true;
 
-  /* Until the AI model is connected, live stays false and the widget opens as a contact form that emails support.
-     Flip live to true and the chat runs inside the hours below (and the form takes over outside them). */
-  var CHAT = { live: false, hours: { tz: 'America/New_York', open: 9, close: 21 } };
+  /* live: the chat answers. hours: null means always open; an object { tz, open, close } limits it to those hours,
+     and the contact form takes over outside them. If the first message cannot be answered (not set up, a server
+     error, a rate limit, no network) the widget also falls back to the contact form, which emails support. */
+  var CHAT = { live: true, hours: null };
 
   var API = '/api/chat';
   var API_ESCALATE = '/api/chat/escalate';
@@ -41,8 +42,10 @@
     limited: 'Too many messages for now. Try again in a minute.',
     tooLong: 'That message is too long. Shorten it and send it again.',
     botCheck: "We couldn't check that you're a person. Reload the page and try again.",
-    cardTitle: 'Send this to the team',
-    cardLine: 'A person at Feed Flow will reply by email.',
+    cardTitleSupport: 'Send to support',
+    cardTitleFounder: 'Send to Robin, the founder',
+    cardLineSupport: 'A person at Feed Flow will reply by email.',
+    cardLineFounder: 'Robin will reply by email.',
     emailLabel: 'Your email',
     topicLabel: 'What is it about?',
     cardSend: 'Send',
@@ -171,6 +174,7 @@
   }
   function isOpenNow(nowMs, cfg) {
     if (!cfg.live) return false;
+    if (!cfg.hours) return true;
     var hour = zoneParts(nowMs, cfg.hours.tz).hour;
     return hour >= cfg.hours.open && hour < cfg.hours.close;
   }
@@ -315,10 +319,14 @@
       });
     } catch (e) { items = []; }
   }
+  /* Nora's reply shows as several bubbles; the API sees them as one assistant message. */
   function apiMessages() {
     var out = [];
     items.forEach(function (it) {
-      if (it.t === 'msg' && it.text) out.push({ role: it.role, content: it.text });
+      if (it.t !== 'msg' || !it.text) return;
+      var tail = out.length ? out[out.length - 1] : null;
+      if (tail && tail.role === 'assistant' && it.role === 'assistant') tail.content += '\n\n' + it.text;
+      else out.push({ role: it.role, content: it.text });
     });
     return out;
   }
@@ -399,8 +407,9 @@
       card.appendChild(done);
       return;
     }
-    card.appendChild(h('div', 'ffc-card-t', COPY.cardTitle));
-    card.appendChild(h('div', 'ffc-card-p', COPY.cardLine));
+    var founder = it.to === 'founder';
+    card.appendChild(h('div', 'ffc-card-t', founder ? COPY.cardTitleFounder : COPY.cardTitleSupport));
+    card.appendChild(h('div', 'ffc-card-p', founder ? COPY.cardLineFounder : COPY.cardLineSupport));
     var topic = null;
     if (it.needsTopic) {
       topic = h('textarea', 'ffc-input');
@@ -516,7 +525,7 @@
     if (i === COPY.chips.length - 1) {
       addItem({ t: 'msg', role: 'user', text: label });
       addItem({ t: 'msg', role: 'assistant', text: COPY.person });
-      addItem({ t: 'card', status: 'form', needsTopic: true, reason: 'visitor_asked', summary: '' });
+      addItem({ t: 'card', status: 'form', needsTopic: true, to: 'support', reason: 'request', summary: '' });
       persist();
       return;
     }
@@ -526,7 +535,7 @@
     if (busy) return;
     clearErrors();
     var tail = lastOf(items);
-    if (tail && tail.t === 'msg' && tail.role === 'assistant') removeItem(tail);
+    while (tail && tail.t === 'msg' && tail.role === 'assistant') { removeItem(tail); tail = lastOf(items); }
     persist();
     run();
   }
@@ -534,6 +543,7 @@
   function run() {
     if (DEMO) { demoRun(); return; }
     setBusy(true);
+    var firstMessage = !items.some(function (it) { return it.t === 'msg' && it.role === 'assistant'; });
     var reply = addItem({ t: 'msg', role: 'assistant', text: '', typing: true });
     var gotText = false;
     var pendingAction = null;
@@ -544,25 +554,63 @@
     activeRequest = token;
 
     function stuck() { return nearBottom(); }
+    /* Each paragraph of the reply (a blank line between) is its own bubble. The stream decides when they arrive. */
+    var current = reply;
+    var carry = '';
+    var breakNext = false;
+    function put(text) {
+      if (!text) return;
+      if (breakNext) {
+        if (!text.replace(/\s/g, '')) return;
+        breakNext = false;
+        current = addItem({ t: 'msg', role: 'assistant', text: '' }, true);
+        text = text.replace(/^\s+/, '');
+        if (stuck()) toBottom();
+      }
+      current.text += text;
+      if (current.typing) current.typing = false;
+      fill(current.bubble, current.text);
+      gotText = true;
+    }
     function onDelta(text) {
       if (!text) return;
       var stick = stuck();
-      reply.text += text;
-      if (reply.typing) { reply.typing = false; }
-      fill(reply.bubble, reply.text);
-      gotText = true;
+      var s = carry + text;
+      carry = '';
+      var tailBreak = /[ \t]*\n\s*$/.exec(s);
+      if (tailBreak) { carry = tailBreak[0]; s = s.slice(0, tailBreak.index); }
+      var parts = s.split(/\n[ \t]*\n\s*/);
+      parts.forEach(function (part, i) {
+        if (i > 0) breakNext = true;
+        put(part);
+      });
       if (stick) toBottom();
     }
-    function finish(errCode) {
+    function fallBackToForm() {
+      var typed = '';
+      items.forEach(function (it) { if (it.t === 'msg' && it.role === 'user') typed = it.text; });
+      items = [];
+      persist();
+      activeRequest = null;
+      setBusy(false);
+      enterClosed(newLeave({ hours: false, message: typed }));
+    }
+    function finish(errCode, status) {
       if (finished) return;
       finished = true;
       clearTimeout(timer);
       if (activeRequest === token) activeRequest = null;
-      if (!gotText) removeItem(reply); else reply.typing = false;
+      /* First message and nothing came back (not set up, a server error, a rate limit, no network): show the form instead. */
+      if (errCode && !gotText && firstMessage && (errCode === 'upstream' || errCode === 'rate_limited' || errCode === 'not_configured')) {
+        removeItem(reply);
+        fallBackToForm();
+        return;
+      }
+      if (!gotText) removeItem(reply); else { reply.typing = false; current.typing = false; }
       if (errCode) {
         addItem({ t: 'error', code: errCode });
       } else if (pendingAction && !items.some(function (it) { return it.t === 'card' && it.status !== 'sent'; })) {
-        addItem({ t: 'card', status: 'form', needsTopic: false, reason: pendingAction.reason || '', summary: pendingAction.summary || '' });
+        addItem({ t: 'card', status: 'form', needsTopic: true, to: pendingAction.to === 'founder' ? 'founder' : 'support', reason: pendingAction.reason || 'request', summary: pendingAction.summary || '', topic: pendingAction.summary || '' });
       }
       setBusy(false);
       persist();
@@ -570,7 +618,7 @@
     }
     function onEvent(name, data) {
       if (name === 'delta') onDelta(data && data.text);
-      else if (name === 'action') { if (data && data.type === 'escalate_form') pendingAction = data; }
+      else if (name === 'action') { if (data && (data.type === 'hand_over' || data.type === 'escalate_form')) pendingAction = data; }
       else if (name === 'done') finish(null);
       else if (name === 'error') finish((data && data.code) || 'upstream');
     }
@@ -585,7 +633,9 @@
     }).then(function (res) {
       if (!res.ok) {
         return res.json().then(function (j) { return j && j.code; }, function () { return null; }).then(function (code) {
-          finish(code || codeForStatus(res.status));
+          /* 503, any 5xx and 429 on a first message mean the form takes over (see finish) */
+          var c = res.status >= 500 ? 'upstream' : (code || codeForStatus(res.status));
+          finish(c === 'not_configured' ? 'upstream' : c);
         });
       }
       return readStream(res, onEvent).then(function () {
@@ -647,7 +697,7 @@
     it.status = 'sending';
     go.disabled = true;
     go.textContent = COPY.cardSending;
-    var msgs = apiMessages().slice(-30);
+    var msgs = apiMessages().slice(-8).map(function (m) { return { role: m.role, content: m.content.slice(0, MAX_CHARS) }; });
     var question = it.needsTopic ? (it.topic || '') : (it.summary || '');
     if (!question) {
       for (var i = msgs.length - 1; i >= 0; i -= 1) { if (msgs[i].role === 'user') { question = msgs[i].content; break; } }
@@ -656,7 +706,7 @@
       return fetch(API_ESCALATE, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email: it.email, question: question, transcript: msgs, page: pagePath(), turnstileToken: tok })
+        body: JSON.stringify({ email: it.email, question: question, transcript: msgs, page: pagePath(), to: it.to === 'founder' ? 'founder' : 'support', reason: it.reason || 'request', summary: it.summary || '', turnstileToken: tok })
       });
     }).then(function (res) {
       return res.json().then(function (j) { return { ok: res.ok && j && j.ok === true }; }, function () { return { ok: false }; });
@@ -1037,7 +1087,7 @@
   /* =================================================================
      Pinned demo states. ?chatdemo=<state> renders a fixed state with no
      network at all and no storage, for photographing the design.
-     States: closed greeting open typing answered long escalate escalated
+     States: closed greeting open typing answered long escalate escalated bubbles handsupport handfounder
              error ratelimited escalate-error  (these force the open chat, whatever CHAT says)
      Closed-mode states (the contact form): closedform closedhours closedinvalid closedsending
              closedsent closedmailto closederror closedpill
@@ -1070,7 +1120,28 @@
         msg('user', 'Where is the guide for that? https://tryfeedflow.app/guides/how-to-keep-track-of-feeds-across-two-parents-and-a-grandparent-with-family-sharing-and-icloud-sync-2026'),
         msg('assistant', DEMO_TEXT.url)
       ],
-      escalate: [msg('user', 'My subscription shows twice on my card.'), msg('assistant', DEMO_TEXT.unsure), { t: 'card', status: 'form', needsTopic: false, reason: 'billing', summary: 'Subscription charged twice' }],
+      escalate: [msg('user', 'My subscription shows twice on my card.'), msg('assistant', DEMO_TEXT.unsure), { t: 'card', status: 'form', needsTopic: true, to: 'support', reason: 'billing', summary: 'Subscription charged twice', topic: 'Subscription charged twice' }],
+      handsupport: [
+        msg('user', 'All my feeds disappeared after I changed phone'),
+        msg('assistant', 'Ah, that sounds stressful.'),
+        msg('assistant', 'Feeds live in your iCloud, so they should come back once you sign in with the same Apple ID.'),
+        msg('assistant', 'If they do not, leave your email in the form below and support will write back.'),
+        { t: 'card', status: 'form', needsTopic: true, to: 'support', reason: 'bug', summary: 'Feeds are missing after switching to a new phone. Visitor signed in on the new phone.', topic: 'Feeds are missing after switching to a new phone. Visitor signed in on the new phone.' }
+      ],
+      handfounder: [
+        msg('user', "I'm a journalist writing about baby apps, who can I talk to?"),
+        msg('assistant', 'Nice, thanks for asking.'),
+        msg('assistant', 'I can pass this on to Robin, who built Feed Flow. Want me to?'),
+        msg('user', 'Yes please'),
+        msg('assistant', 'Done. Leave your email in the form below and he will reply by email.'),
+        { t: 'card', status: 'form', needsTopic: true, to: 'founder', reason: 'important', summary: 'A journalist writing about baby apps wants to talk to someone at Feed Flow.', topic: 'A journalist writing about baby apps wants to talk to someone at Feed Flow.' }
+      ],
+      bubbles: [
+        msg('user', 'What does Feed Flow do?'),
+        msg('assistant', 'Good one to start with.'),
+        msg('assistant', 'It keeps your baby\u2019s feeds, growth and health records in one place on your iPhone.'),
+        msg('assistant', 'Logging takes a few taps, and your data stays in your own iCloud.')
+      ],
       escalated: [msg('user', 'My subscription shows twice on my card.'), msg('assistant', DEMO_TEXT.unsure), { t: 'card', status: 'sent', email: 'sam@example.com', needsTopic: false }],
       'escalate-error': [msg('user', 'My subscription shows twice on my card.'), msg('assistant', DEMO_TEXT.unsure), { t: 'card', status: 'error', email: 'sam@example.com', needsTopic: false }],
       error: [msg('user', 'What does Feed Flow track?'), { t: 'error', code: 'upstream' }],
