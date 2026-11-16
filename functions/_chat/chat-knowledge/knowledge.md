@@ -90,3 +90,8 @@ It has no ads and no cross-app tracking.
 - Vitamin D: https://tryfeedflow.app/vitamin-d-tracker
 - PDF reports: https://tryfeedflow.app/baby-report
 - Guides: formula safety (https://tryfeedflow.app/guides/formula-safety), WHO growth percentiles (https://tryfeedflow.app/guides/who-growth-percentiles), allergen reaction diary (https://tryfeedflow.app/guides/allergen-reaction-diary), vitamin D (https://tryfeedflow.app/guides/vitamin-d-for-babies)
+
+## Settings people ask about
+- Units: millilitres or ounces. The app picks the unit from the phone's region, and it can be changed under Units in the app's Settings. Amounts are stored once and only shown differently.
+- Themes: the app has colour themes (Ocean, Forest, Lavender, Midnight) and a night mode. They are chosen under Appearance in the app's Settings.
+- More than one baby, twins: add another baby in the app's Settings. Having more than one child in the app is part of Premium.
