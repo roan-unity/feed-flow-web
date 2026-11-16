@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Creator Kit · Feed Flow!</title>
+  <meta name="description" content="Logos, app screens and the key facts about Feed Flow!, for creators and partners we work with.">
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="canonical" href="https://tryfeedflow.app/creator-kit">
+  <link rel="icon" href="/creator-kit/feedflow-app-icon-1024.png">
+  <style>
+    @font-face { font-family: "Baloo 2"; src: url("/assets/Baloo2-VF.ttf") format("truetype"); font-weight: 400 800; font-display: swap; }
+    :root {
+      --teal-0: #12404b;
+      --teal-1: #1f5a68;
+      --teal-2: #4f9aa6;
+      --coral: #f0805e;
+      --coral-deep: #e2553a;
+      --text: #f2f8f9;
+      --muted: rgba(242,248,249,0.68);
+      --border: rgba(255,255,255,0.12);
+      --glass: rgba(255,255,255,0.06);
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", sans-serif;
+      background: linear-gradient(170deg, var(--teal-1) 0%, var(--teal-0) 55%, #0c2d35 100%);
+      background-attachment: fixed;
+      color: var(--text);
+      line-height: 1.55;
+      padding-bottom: 80px;
+    }
+    a { color: #ffd2c2; }
+    nav { display: flex; justify-content: space-between; align-items: center; padding: 18px 24px; border-bottom: 1px solid var(--border); }
+    .brand { display: flex; align-items: center; gap: 10px; color: var(--text); text-decoration: none; font-family: "Baloo 2", sans-serif; font-weight: 800; font-size: 20px; }
+    .brand img { width: 30px; height: 30px; border-radius: 8px; }
+    .brand b { color: var(--coral); }
+    nav .cta { font-size: 14px; color: var(--text); text-decoration: none; border: 1px solid var(--border); border-radius: 999px; padding: 7px 14px; }
+    .wrap { max-width: 860px; margin: 0 auto; padding: 0 20px; }
+    header { padding: 56px 0 28px; }
+    .eyebrow { font-size: 13px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); margin-bottom: 10px; }
+    h1 { font-family: "Baloo 2", sans-serif; font-weight: 800; font-size: clamp(34px, 6vw, 52px); line-height: 1.05; letter-spacing: -0.01em; }
+    h1 b { color: var(--coral); }
+    .lead { font-size: 18px; color: var(--muted); max-width: 620px; margin-top: 14px; }
+    section { margin-top: 44px; }
+    h2 { font-family: "Baloo 2", sans-serif; font-weight: 700; font-size: 26px; margin-bottom: 14px; }
+    p + p { margin-top: 10px; }
+    .card { background: var(--glass); border: 1px solid var(--border); border-radius: 18px; padding: 22px; }
+    .facts { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px; }
+    .fact { background: var(--glass); border: 1px solid var(--border); border-radius: 14px; padding: 14px 16px; }
+    .fact span { display: block; font-size: 12px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); }
+    .fact strong { font-size: 16px; font-weight: 600; }
+    ul.points { list-style: none; display: grid; gap: 10px; }
+    ul.points li { padding-left: 26px; position: relative; }
+    ul.points li::before { content: ""; position: absolute; left: 4px; top: 9px; width: 10px; height: 10px; border-radius: 50%; background: var(--coral); }
+    .logos { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 14px; }
+    .asset { background: var(--glass); border: 1px solid var(--border); border-radius: 16px; overflow: hidden; display: flex; flex-direction: column; }
+    .asset .thumb { height: 190px; display: flex; align-items: center; justify-content: center; background: rgba(0,0,0,0.18); }
+    .asset .thumb img { max-width: 78%; max-height: 160px; width: auto; height: auto; border-radius: 14px; }
+    .asset .meta { padding: 12px 14px; font-size: 14px; display: flex; justify-content: space-between; gap: 8px; align-items: center; flex-wrap: wrap; }
+    .asset .meta small { color: var(--muted); }
+    .dl { font-size: 13px; text-decoration: none; color: var(--text); border: 1px solid var(--border); border-radius: 999px; padding: 4px 10px; white-space: nowrap; }
+    .screens { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 14px; }
+    .screens a { display: block; border-radius: 18px; overflow: hidden; border: 1px solid var(--border); }
+    .screens img { width: 100%; display: block; }
+    .soon { border: 1px dashed var(--border); border-radius: 16px; padding: 18px; color: var(--muted); }
+    .two { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 14px; }
+    .two h3 { font-size: 16px; margin-bottom: 8px; }
+    .ok li::before { background: #8fd9b6; }
+    .no li::before { background: var(--coral-deep); }
+    .handles { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
+    .handles a { text-decoration: none; color: var(--text); background: var(--glass); border: 1px solid var(--border); border-radius: 999px; padding: 6px 12px; font-size: 14px; }
+    footer { margin-top: 56px; color: var(--muted); font-size: 13px; }
+    @media (max-width: 520px) { nav { padding: 14px 16px; } .wrap { padding: 0 16px; } header { padding-top: 40px; } }
+  </style>
+</head>
+<body>
+  <nav>
+    <a class="brand" href="/"><img src="/creator-kit/feedflow-app-icon-1024.png" alt=""><span>Feed Flow<b>!</b></span></a>
+    <a class="cta" href="https://apps.apple.com/app/id6782075454?ct=creatorkit">App Store</a>
+  </nav>
+
+  <div class="wrap">
+    <header>
+      <div class="eyebrow">Creator kit</div>
+      <h1>Everything you need to show Feed Flow<b>!</b></h1>
+      <p class="lead">Logos, app screens and the key facts, for creators and partners we work with. Use what helps, skip the rest. Your own words always beat ours.</p>
+    </header>
+
+    <section>
+      <h2>The app in one sentence</h2>
+      <div class="card">
+        <p>Feed Flow! is a calm baby feeding app for iPhone that keeps breastfeeding, bottles, pumping, formula, water and solids in one place, with quick one-handed logging and a clear view of the day.</p>
+        <p>It was made by Robin, a dad of two in Norway, after a messy combo feeding start with our first. It took about three years to build, and every version was tested with our own kids.</p>
+      </div>
+    </section>
+
+    <section>
+      <h2>Quick facts</h2>
+      <div class="facts">
+        <div class="fact"><span>Platform</span><strong>iPhone (iOS)</strong></div>
+        <div class="fact"><span>Price</span><strong>Free to download, everyday logging free</strong></div>
+        <div class="fact"><span>Extras</span><strong>Optional upgrade for reports, forecasts and longer history</strong></div>
+        <div class="fact"><span>Website</span><strong><a href="/">tryfeedflow.app</a></strong></div>
+      </div>
+    </section>
+
+    <section>
+      <h2>What parents tend to like</h2>
+      <div class="card">
+        <ul class="points">
+          <li><strong>Everything in one timeline.</strong> Nursing, pumping, bottles, formula and solids together, so mixed feeding is easy to see.</li>
+          <li><strong>Calm, one-handed logging.</strong> Made for tired 3 am moments: a slider and one smart button, no forms.</li>
+          <li><strong>Bottle timer.</strong> A prepared-bottle countdown that can stay on the lock screen.</li>
+          <li><strong>FlowCast.</strong> A gentle guess at when the next feed may be due, based on the baby's own history.</li>
+          <li><strong>First foods and allergens.</strong> Track new foods, the common allergens and any reactions.</li>
+          <li><strong>A report to share.</strong> A PDF parents can bring to their pediatrician, health visitor or lactation consultant.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section>
+      <h2>Logos</h2>
+      <div class="logos">
+        <div class="asset">
+          <div class="thumb"><img src="/creator-kit/feedflow-app-icon-1024.png" alt="Feed Flow! app icon"></div>
+          <div class="meta"><span>App icon<br><small>PNG · 1024</small></span><a class="dl" href="/creator-kit/feedflow-app-icon-1024.png" download>Download</a></div>
+        </div>
+        <div class="asset">
+          <div class="thumb"><img src="/creator-kit/feedflow-app-icon-dark-1024.png" alt="Feed Flow! app icon, dark"></div>
+          <div class="meta"><span>App icon, dark<br><small>PNG · 1024</small></span><a class="dl" href="/creator-kit/feedflow-app-icon-dark-1024.png" download>Download</a></div>
+        </div>
+        <div class="asset">
+          <div class="thumb"><img src="/creator-kit/feedflow-logo-1080x760.png" alt="Feed Flow! logo"></div>
+          <div class="meta"><span>Logo, landscape<br><small>PNG · 1080×760</small></span><a class="dl" href="/creator-kit/feedflow-logo-1080x760.png" download>Download</a></div>
+        </div>
+        <div class="asset">
+          <div class="thumb"><img src="/creator-kit/feedflow-logo-vertical-1080x1920.png" alt="Feed Flow! vertical logo"></div>
+          <div class="meta"><span>Logo, story size<br><small>PNG · 1080×1920</small></span><a class="dl" href="/creator-kit/feedflow-logo-vertical-1080x1920.png" download>Download</a></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="screens">
+      <h2>App screens</h2>
+      <!-- SCREENS:START -->
+      <div class="soon">Fresh screens from the newest version are on their way.</div>
+      <!-- SCREENS:END -->
+    </section>
+
+    <section>
+      <h2>Screen recording</h2>
+      <div class="soon">A short screen recording of the app in use is coming soon. You're always welcome to record your own instead, that usually feels more real anyway.</div>
+    </section>
+
+    <section>
+      <h2>How we like to work together</h2>
+      <div class="two">
+        <div class="card ok">
+          <h3>Please do</h3>
+          <ul class="points">
+            <li>Try the app properly first, with real feeds.</li>
+            <li>Say what you honestly think, in your own words. There is no script.</li>
+            <li>Mark it as an ad or paid partnership when it is one, and say so when the app was a gift.</li>
+            <li>Tag us and link to the App Store or tryfeedflow.app (or your own code, if you have one).</li>
+          </ul>
+        </div>
+        <div class="card no">
+          <h3>Please don't</h3>
+          <ul class="points">
+            <li>Make medical claims. Feed Flow! keeps records, it doesn't give medical advice or diagnoses.</li>
+            <li>Shame any way of feeding. Breast, bottle, formula, combo: all welcome.</li>
+            <li>Promise money savings or results for every baby.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="handles">
+        <a href="https://www.instagram.com/feedflow_babyfeedingapp">Instagram @feedflow_babyfeedingapp</a>
+        <a href="https://www.tiktok.com/@feedflow_babyfeedingapp">TikTok @feedflow_babyfeedingapp</a>
+        <a href="https://www.facebook.com/feedflowapp">Facebook /feedflowapp</a>
+        <a href="https://www.youtube.com/@FeedFlow-BabyFeedingApp">YouTube @FeedFlow-BabyFeedingApp</a>
+      </div>
+    </section>
+
+    <section>
+      <h2>Links</h2>
+      <div class="card">
+        <p>App Store: <a href="https://apps.apple.com/app/id6782075454?ct=creatorkit">apps.apple.com/app/id6782075454</a></p>
+        <p>Website: <a href="/">tryfeedflow.app</a></p>
+        <p>Questions, or something you need that isn't here? Write to Robin at <a href="mailto:robin@tryfeedflow.app">robin@tryfeedflow.app</a>.</p>
+      </div>
+    </section>
+
+    <footer>Feed Flow! · Made in Norway · This page is for creators and partners and isn't listed in search.</footer>
+  </div>
+</body>
+</html>
