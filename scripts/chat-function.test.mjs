@@ -95,8 +95,8 @@ test('tier table: comparison wording, long text and long chats go strong; refund
 });
 
 test('default chains match the spec and contain no Anthropic, openrouter/free or Qwen', () => {
-  assert.deepEqual(DEFAULT_MODELS.fast, ['nvidia/nemotron-3.5-super-vl:free', 'google/gemini-2.5-flash-lite', 'mistralai/mistral-small-2603']);
-  assert.deepEqual(DEFAULT_MODELS.strong, ['mistralai/mistral-medium-3.1', 'google/gemini-2.5-flash-lite']);
+  assert.deepEqual(DEFAULT_MODELS.fast, ['openai/gpt-6-luna', 'google/gemini-2.5-flash-lite', 'nvidia/nemotron-3.5-super-vl:free']);
+  assert.deepEqual(DEFAULT_MODELS.strong, ['mistralai/mistral-medium-3.1', 'openai/gpt-6-luna']);
   for (const slug of [...DEFAULT_MODELS.fast, ...DEFAULT_MODELS.strong]) assert.doesNotMatch(slug, /anthropic|claude|qwen|openrouter\/free/i);
 });
 
@@ -123,7 +123,7 @@ test('tools: fast has hand_up and hand_over, strong only hand_over; hand_over is
 
 test('prompt carries Nora, the AI statement, both hand-overs and the knowledge block', () => {
   const p = buildSystemPrompt({ knowledge: 'KNOW', page: '/faq', tier: 'fast' });
-  for (const needle of ['You are Nora', 'You are an AI', '<knowledge>\nKNOW\n</knowledge>', 'hand_over', 'to "founder"', 'to "support"', 'hand_up', '60 words', 'ct=sitechat', '/faq', 'Do not quote an amount', 'Never describe a Premium feature as free', 'Want me to?']) {
+  for (const needle of ['You are Nora', 'You are an AI', '<knowledge>\nKNOW\n</knowledge>', 'hand_over', 'to "founder"', 'to "support"', 'hand_up', '60 words', 'ct=sitechat', '/faq', 'Do not quote an amount', 'Never describe a Premium feature as free', 'Never both']) {
     assert.ok(p.includes(needle), needle);
   }
   assert.ok(!buildSystemPrompt({ knowledge: 'K', tier: 'strong' }).includes('hand_up'));
