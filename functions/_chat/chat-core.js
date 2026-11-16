@@ -37,7 +37,7 @@ const ERRORS = {
 const LIMIT_REACHED_TEXT =
   'We’ve covered a lot in this chat. To keep going, leave your email below and the team will write back.';
 const HAND_OVER_FALLBACK = {
-  founder: 'I’ll pass this on to Robin. Leave your email in the form below and he’ll write back.',
+  founder: 'I’ll pass this on to Robin. Leave your email in the form below and Robin will write back.',
   support: 'I’ll pass this to support. Leave your email in the form below and they’ll write back.',
 };
 
