@@ -1,12 +1,21 @@
 /* Home page "How logging works": each phone plays once when it scrolls into view,
    steps chained (a phone starts as the one before it lands). The HTML is the final state,
    so with JS off or prefers-reduced-motion nothing moves and everything is shown.
-   ?hiwdemo=0..100 pins every sequence at that percent of its timeline (for screenshots). */
+   The cards below the steps each play on their own when they scroll into view.
+   ?hiwdemo=0..100 pins every sequence at that percent of its timeline (for screenshots);
+   add &hiwcards=0..100 to pin the cards at a different percent from the three steps. */
 (function () {
   var section = document.getElementById('how-it-works');
   if (!section) return;
-  var demoParam = new URLSearchParams(window.location.search).get('hiwdemo');
-  var demo = demoParam === null || demoParam === '' || isNaN(Number(demoParam)) ? null : Math.max(0, Math.min(100, Number(demoParam))) / 100;
+  var params = new URLSearchParams(window.location.search);
+  function percent(name) {
+    var value = params.get(name);
+    return value === null || value === '' || isNaN(Number(value)) ? null : Math.max(0, Math.min(100, Number(value))) / 100;
+  }
+  var demo = percent('hiwdemo');
+  var demoCards = percent('hiwcards');
+  if (demo === null) demo = demoCards;
+  if (demoCards === null) demoCards = demo;
   var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   if (demo === null && (reduce || !('IntersectionObserver' in window) || !window.requestAnimationFrame)) return;
 
@@ -35,26 +44,27 @@
       ring: { c: [50, 52.5], w: 25, t: [2050, 2700] }
     },
     log: {
-      duration: 4750,
+      duration: 4900,
       pieces: [
         { r: [3.5, 13.8, 96.5, 19.3], a: 'slide', t: [450, 900] },
         { r: [37.5, 19.6, 62.5, 31.2], a: 'sweep', t: [700, 1650], c: [50, 25.4] },
         { r: [12, 22, 37, 29], a: 'up', t: [800, 1100] },
         { r: [64.5, 22, 86.5, 29], a: 'up', t: [900, 1200] },
         { r: [27, 34, 74, 81.5], hole: [30.5, 57.5, 73.6, 80.5], a: 'fade', t: [1050, 1450], f: [12, 5] },
-        { r: [30.5, 57.5, 69.4, 80.5], a: 'rise', t: [1300, 2050], f: [4, 1.8, 0.01] },
-        { r: [69.4, 70, 73.6, 73.6], a: 'fade', t: [1700, 2050], f: [0.7, 0.7], ride: true },
+        { r: [30.5, 57.5, 68.9, 80.5], a: 'rise', t: [1300, 2050], f: [4, 1.8, 0.01] },
+        { r: [68.9, 70, 73.6, 73.6], a: 'fade', t: [1700, 2050], f: [0.2, 0.7, 0.7], ride: true },
         { r: [15, 68.5, 26, 75.5], a: 'fade', t: [1900, 2200] },
         { r: [74, 68.5, 85, 75.5], a: 'fade', t: [1900, 2200], f: [0.4, 1.8, 4] },
-        { r: [30, 82.5, 70, 87.2], a: 'up', t: [1850, 2200] },
+        { r: [30, 82.5, 45.1, 87.2], a: 'up', t: [1850, 2200], f: [4, 1.8, 0.01], taken: true },
+        { r: [45.1, 82.5, 70, 87.2], a: 'up', t: [1850, 2200], f: [0.01, 1.8, 4] },
         { r: [3.5, 87.4, 49.6, 93.9], a: 'up', t: [2000, 2350] },
-        { r: [50.2, 87.4, 96.5, 93.9], a: 'up', t: [2000, 2350], press: [3550, 3850], origin: [73.3, 90.6] }
+        { r: [50.2, 87.4, 96.5, 93.9], a: 'up', t: [2000, 2350], press: [3450, 3750], origin: [73.3, 90.6] }
       ],
       /* The bottle starts at 4 oz and the handle is dragged down to the screenshot's own 2 oz.
          The screenshot cannot move its own level, so a drawn milk band, two drawn handles and a
          fingertip dot play the drag on top of it; at the end they swap for the real ones. */
-      drag: { t: [2500, 3350], from: 63.8, to: 71.76, band: [31.7, 68.4, 63.8, 73.1], hx: [39.2, 71], show: [1500, 2050] },
-      sparks: { t: [3800, 4650], c: [73.3, 90.6] }
+      drag: { t: [2500, 3350], from: 63.8, to: 71.76, band: [31.35, 68.9, 63.8, 73.1], hx: [39.2, 71], show: [1500, 2050], taken: [1.5, 3.5] },
+      sparks: { t: [3660, 4890], c: [73.3, 90.6] }
     },
     finish: {
             duration: 3550,
@@ -88,9 +98,43 @@
     report: {
       duration: 11000,
       scroll: { header: 392 / 4794, travel: (4794 - 2622) / 4794, down: [900, 8400], back: [9100, 10700] }
+    },
+    /* The four cards below keep the whole screenshot in view and hold back only the rectangles in
+       `hold` (shown as the card's own plain colour) until their pieces arrive. */
+    growth: {
+      duration: 5200,
+      hold: [[14.6, 37.2, 78.2, 54]],
+      pieces: [
+        { r: [14.6, 37.2, 73.4, 54], a: 'wipe', t: [600, 3300], ease: 'inout', f: [0, 0, 0] },
+        { r: [73.4, 37.2, 78.2, 54], ellipse: [2.3, 1.05, 75.33, 42.5], a: 'drop', t: [3300, 3800], lift: 5 },
+        { r: [73.4, 37.2, 78.2, 54], a: 'fade', t: [3750, 4050], f: [0, 0, 0] }
+      ],
+      glow: { r: [5.4, 25.9, 78.4, 31.3], t: [3950, 5150] }
+    },
+    health: {
+      duration: 4700,
+      hold: [[6.2, 29, 22.4, 36.6], [6.9, 37.1, 93.1, 88.5]],
+      pieces: [0, 1, 2, 3, 4, 5, 6, 7, 8].map(function (i) {
+        var top = (581 + 90.5 * i) / 15.65, bottom = Math.min(88.5, (664 + 90.5 * i) / 15.65);
+        return { r: [6.9, top, 93.1, bottom], a: 'drop', t: [500 + i * 250, 900 + i * 250], lift: 3, f: [0, 0.2, 0] };
+      }).concat([{ r: [6.2, 29, 22.4, 36.6], a: 'sweep', t: [3150, 4350], c: [14.17, 32.84], f: [0, 0, 0] }])
+    },
+    family: {
+      duration: 3700,
+      hold: [[2.9, 17.5, 97.1, 47.3], [2.9, 51, 97.1, 95.9]],
+      pieces: [278, 397, 516, 635, 805, 924, 1043, 1162, 1281, 1400].map(function (y, i) {
+        return { r: [2.9, (y - 3) / 15.72, 97.1, (y + 107) / 15.72], a: 'slide', dx: i % 2 ? 45 : -45, t: [450 + i * 240, 1000 + i * 240], f: [0, 0, 0] };
+      })
+    },
+    themes: {
+      duration: 2600,
+      fan: { t: [500, 1500], stagger: 180 }
     }
   };
 
+  /* The live "oz taken" number is set in the system font, which only matches the screenshot's own
+     digits on Apple devices; elsewhere the screenshot's number is left as it is. */
+  var appleFont = /Mac|iPhone|iPad|iPod/.test(navigator.platform || navigator.userAgent || '');
   function clamp(k) { return k < 0 ? 0 : k > 1 ? 1 : k; }
   function inset(r) { return 'inset(' + r[1] + '% ' + (100 - r[2]) + '% ' + (100 - r[3]) + '% ' + r[0] + '%)'; }
   function holed(r, h) {
@@ -104,6 +148,12 @@
     var fx = f ? f[0] : 4, fy = f ? f[1] : 1.8, fxr = f && f.length > 2 ? f[2] : fx;
     return 'linear-gradient(to right, transparent ' + (r[0] - fx) + '%, #000 ' + r[0] + '%, #000 ' + r[2] + '%, transparent ' + (r[2] + fxr) + '%), ' +
       'linear-gradient(to bottom, transparent ' + (r[1] - fy) + '%, #000 ' + r[1] + '%, #000 ' + r[3] + '%, transparent ' + (r[3] + fy) + '%)';
+  }
+  function holes(list) {
+    var p = function (x, y) { return x + '% ' + y + '%'; };
+    var path = [p(0, 0), p(100, 0), p(100, 100), p(0, 100), p(0, 0)];
+    list.forEach(function (h) { path.push(p(h[0], h[1]), p(h[0], h[3]), p(h[2], h[3]), p(h[2], h[1]), p(h[0], h[1]), p(0, 0)); });
+    return 'polygon(evenodd, ' + path.join(', ') + ')';
   }
   function setMask(el, mask) {
     el.style.webkitMaskImage = mask;
@@ -136,7 +186,7 @@
     var tracks = [];
     var elements = [];
     function track(from, to, ease, apply) { tracks.push({ from: from, to: to, ease: EASE[ease] || EASE.out, apply: apply }); }
-    function state(el, base) { var s = { el: el, op: 1, tx: 0, ty: 0, sc: 1, base: base || '' }; elements.push(s); return s; }
+    function state(el, base) { var s = { el: el, op: 1, tx: 0, ty: 0, sc: 1, rot: 0, base: base || '' }; elements.push(s); return s; }
 
     var dev = state(device);
     track(0, 550, 'out', function (k) { dev.op = clamp(k * 1.6); dev.ty = -7 * (1 - k); });
@@ -153,6 +203,20 @@
       return { duration: spec.duration, tracks: tracks, elements: elements, cleanup: function () { header.remove(); } };
     }
 
+    if (spec.fan) {
+      /* Four phones, one per theme: they start as one stack and fan out to where the CSS puts them. */
+      Array.prototype.forEach.call(figure.querySelectorAll('.hiw-phone'), function (phone, i, all) {
+        var f = i - (all.length - 1) / 2;
+        var ps = state(phone);
+        var from = spec.fan.t[0] + i * spec.fan.stagger;
+        track(from, from + (spec.fan.t[1] - spec.fan.t[0]), 'back', function (k) {
+          ps.base = 'translateX(' + (f * 24 * k).toFixed(3) + '%) rotate(' + (f * 4.5 * k).toFixed(3) + 'deg)';
+          ps.sc = 0.94 + 0.06 * k;
+        });
+      });
+      return { duration: spec.duration, tracks: tracks, elements: elements, cleanup: function () { elements.forEach(function (s) { s.base = ''; }); } };
+    }
+
     /* Before a piece lands its area is the phone's plain background (the capture's own left edge,
        made by scripts/prepare-how-it-works.py), never a blurred copy of the hidden content. */
     figure.style.background = 'url(/screens/how/' + figure.getAttribute('data-hiw') + '-bg.png) 0 0 / 100% 100% no-repeat, var(--bg-soft)';
@@ -161,7 +225,15 @@
     var main = state(shot);
     var added = [];
 
-    if (spec.focus) {
+    if (spec.hold) {
+      shot.style.clipPath = holes(spec.hold);
+      var whole = layer(shot);
+      whole.style.zIndex = 7;
+      figure.appendChild(whole);
+      added.push(whole);
+      var ws = state(whole);
+      track(spec.duration - 320, spec.duration, 'lin', function (k) { ws.op = k; });
+    } else if (spec.focus) {
       var keep = spec.focus.keep;
       track(spec.focus.t[0], spec.focus.t[1], 'out', function (k) {
         main.op = k;
@@ -178,7 +250,8 @@
       var el = layer(shot);
       el.style.zIndex = 2;
       if (p.hole) el.style.clipPath = holed(p.r, p.hole);
-      setMask(el, feather(p.r, p.f));
+      if (p.ellipse) el.style.clipPath = 'ellipse(' + p.ellipse[0] + '% ' + p.ellipse[1] + '% at ' + p.ellipse[2] + '% ' + p.ellipse[3] + '%)';
+      else setMask(el, feather(p.r, p.f));
       figure.appendChild(el);
       added.push(el);
       var s = state(el);
@@ -190,7 +263,7 @@
       } else if (p.a === 'up') {
         track(a, b, 'out', function (k) { s.ty = 2.5 * (1 - k); s.op = k; });
       } else if (p.a === 'slide') {
-        track(a, b, 'out', function (k) { s.tx = -8 * (1 - k); s.op = k; });
+        track(a, b, 'out', function (k) { s.tx = (p.dx || -8) * (1 - k); s.op = clamp(k * 1.5); });
       } else if (p.a === 'fade') {
         track(a, b, 'out', function (k) { s.op = k; });
       } else if (p.a === 'rise') {
@@ -207,6 +280,20 @@
           var angle = (k * 360).toFixed(1);
           setMask(el, feather(p.r, p.f) + (k >= 1 ? '' : ', conic-gradient(from 0deg at ' + p.c[0] + '% ' + p.c[1] + '%, #000 ' + angle + 'deg, transparent ' + angle + 'deg)'));
         });
+      }
+      if (p.taken && spec.drag && spec.drag.taken && appleFont) {
+        /* The screenshot's own "3.5" waits until the drag ends; a live number counts up to it in the
+           app's half-ounce steps while the level drops, then hands over to the real pixels. */
+        var live = document.createElement('span');
+        live.className = 'hiw-taken';
+        live.setAttribute('aria-hidden', 'true');
+        figure.appendChild(live);
+        added.push(live);
+        var ls = state(live);
+        var amounts = spec.drag.taken, dt = spec.drag.t;
+        track(a, b, 'out', function (k) { ls.ty = 2.5 * (1 - k); ls.op = k; s.op = 0; });
+        track(dt[0], dt[1], 'inout', function (k) { live.textContent = String(Math.round((amounts[0] + (amounts[1] - amounts[0]) * k) * 2) / 2); });
+        track(dt[1] + 60, dt[1] + 300, 'lin', function (k) { ls.op *= 1 - k; s.op = k; });
       }
       if (p.ride && spec.drag) {
         /* the real right-hand handle, moved with the drag: pixel-true */
@@ -236,6 +323,18 @@
         rs.sc = 1 + 0.45 * k;
         rs.op = k <= 0 || k >= 1 ? 0 : 0.95 * (1 - k);
       });
+    }
+
+    if (spec.glow) {
+      var glow = document.createElement('span');
+      glow.className = 'hiw-glow';
+      glow.setAttribute('aria-hidden', 'true');
+      glow.style.left = spec.glow.r[0] + '%'; glow.style.top = spec.glow.r[1] + '%';
+      glow.style.width = (spec.glow.r[2] - spec.glow.r[0]) + '%'; glow.style.height = (spec.glow.r[3] - spec.glow.r[1]) + '%';
+      figure.appendChild(glow);
+      added.push(glow);
+      var gs = state(glow);
+      track(spec.glow.t[0], spec.glow.t[1], 'lin', function (k) { gs.op = k < 0.25 ? EASE.out(k / 0.25) : k > 0.6 ? 1 - EASE.inout((k - 0.6) / 0.4) : 1; if (k <= 0 || k >= 1) gs.op = 0; });
     }
 
     function drawn(cls, parent, z) {
@@ -289,22 +388,24 @@
     }
 
     if (spec.sparks) {
-      var sp = spec.sparks, hues = ['var(--coral)', 'var(--accent)', 'var(--teal)'];
-      for (var i = 0; i < 12; i++) {
+      var sp = spec.sparks, hues = ['var(--coral)', 'var(--teal)'];
+      for (var i = 0; i < 14; i++) {
         (function (i) {
           var spark = drawn('hiw-spark', device, 6);
-          var size = 9 + (i * 5) % 7;
+          var size = 8 + (i * 3) % 5;
           spark.style.left = sp.c[0] + '%'; spark.style.top = sp.c[1] + '%';
           spark.style.width = size + 'px'; spark.style.height = size + 'px';
-          spark.style.background = hues[i % 3];
-          var angle = (i / 12) * Math.PI * 2 + (i % 2 ? 0.12 : -0.1), dist = 44 + (i * 7) % 26;
+          spark.style.background = hues[i % 2];
+          var angle = (i / 14) * Math.PI * 2 + (i % 2 ? 0.12 : -0.1), dist = 42 + (i * 11) % 28;
           var ss = state(spark, 'translate(-50%, -50%)');
           ss.px = true;
           var from = sp.t[0] + i * 10;
-          track(from, from + 650, 'out', function (k) {
-            ss.tx = Math.cos(angle) * dist * k; ss.ty = Math.sin(angle) * dist * k - 10 * k;
-            ss.sc = k < 0.3 ? 0.3 + k / 0.3 * 0.9 : 1.2 - 0.9 * (k - 0.3) / 0.7;
-            ss.op = k <= 0 || k >= 1 ? 0 : k < 0.45 ? 1 : 1 - (k - 0.45) / 0.55;
+          track(from, from + 1100, 'lin', function (k) {
+            var out = EASE.quart(k);
+            ss.tx = Math.cos(angle) * dist * out; ss.ty = Math.sin(angle) * dist * out + 14 * k * k;
+            ss.rot = (i % 2 ? 1 : -1) * 70 * k;
+            ss.sc = k < 0.15 ? 0.4 + k / 0.15 * 0.6 : 1;
+            ss.op = k <= 0 || k >= 1 ? 0 : k < 0.6 ? 0.999 : 1 - (k - 0.6) / 0.4;
           });
         })(i);
       }
@@ -333,7 +434,7 @@
   }
 
   function render(seq, t) {
-    seq.elements.forEach(function (s) { s.op = 1; s.tx = 0; s.ty = 0; s.sc = 1; });
+    seq.elements.forEach(function (s) { s.op = 1; s.tx = 0; s.ty = 0; s.sc = 1; s.rot = 0; });
     seq.tracks.forEach(function (tr) {
       var k = clamp((t - tr.from) / (tr.to - tr.from));
       tr.apply(k <= 0 ? 0 : k >= 1 ? 1 : tr.ease(k));
@@ -343,6 +444,7 @@
       var transform = s.base;
       var unit = s.px ? 'px' : '%';
       if (s.tx || s.ty) transform += ' translate(' + s.tx.toFixed(3) + unit + ', ' + s.ty.toFixed(3) + unit + ')';
+      if (s.rot) transform += ' rotate(' + s.rot.toFixed(2) + 'deg)';
       if (s.sc !== 1) transform += ' scale(' + s.sc.toFixed(4) + ')';
       s.el.style.transform = transform;
     });
@@ -354,8 +456,8 @@
     seq.done = true;
   }
 
-  var figures = Array.prototype.slice.call(section.querySelectorAll('.hiw-phone[data-hiw]'));
-  if (demo !== null) figures.forEach(function (f) { var img = f.querySelector('.hiw-shot'); if (img) img.loading = 'eager'; });
+  var figures = Array.prototype.slice.call(section.querySelectorAll('[data-hiw]'));
+  if (demo !== null) figures.forEach(function (f) { Array.prototype.forEach.call(f.querySelectorAll('img'), function (img) { img.loading = 'eager'; img.decoding = 'sync'; }); });
 
   var sequences = figures.map(function (figure) {
     return { figure: figure, chained: !!figure.closest('.hiw-step'), prev: null, start: null, visible: false, ready: false, done: false };
@@ -366,7 +468,7 @@
 
   sequences.forEach(function (seq) {
     var img = seq.figure.querySelector('.hiw-shot');
-    loaded(img).then(function () {
+    Promise.all(Array.prototype.map.call(seq.figure.querySelectorAll('img'), loaded)).then(function () {
       if (!img.naturalWidth) return;
       var built = build(seq.figure);
       seq.duration = built.duration; seq.tracks = built.tracks; seq.elements = built.elements; seq.cleanup = built.cleanup;
@@ -383,8 +485,9 @@
     var starts = steps.map(function (s) { var at = offset; offset += s.duration - OVERLAP; return at; });
     var total = offset + OVERLAP;
     sequences.forEach(function (seq) {
-      var t = seq.chained ? demo * total - starts[steps.indexOf(seq)] : demo * seq.duration;
-      if (demo >= 1) finish(seq); else render(seq, t);
+      var at = seq.chained ? demo : demoCards;
+      var t = seq.chained ? demo * total - starts[steps.indexOf(seq)] : demoCards * seq.duration;
+      if (at >= 1) finish(seq); else render(seq, t);
     });
     document.documentElement.setAttribute('data-hiwdemo', 'ready');
   }
