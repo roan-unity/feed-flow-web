@@ -8,7 +8,10 @@
     "build": "python scripts/build-content.py && node scripts/seo-check.mjs",
     "content:build": "python scripts/build-content.py",
     "seo:audit": "node scripts/seo-check.mjs",
-    "test": "node scripts/verify-site.mjs"
+    "test": "node scripts/verify-site.mjs",
+    "chat:dev": "node scripts/chat-dev.mjs --port 7222",
+    "chat:knowledge": "node scripts/build-chat-knowledge.mjs",
+    "chat:test": "node --test scripts/chat-function.test.mjs scripts/chat-escalate.test.mjs"
   },
   "devDependencies": {
     "playwright": "^1.65.0"

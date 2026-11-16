@@ -342,22 +342,38 @@ def header(active, lang="en"):
     return f'''<header class="nav"><div class="wrap nav-inner">{wordmark()}<nav class="desktop-nav" aria-label="Primary navigation">{desktop}</nav><div class="nav-right"><button class="theme-toggle" id="themeToggle" type="button" aria-label="Use dark theme">{icon('sun','sun')}{icon('moon','moon')}</button><a href="{store.replace('website_content','website_header')}" class="btn btn-primary btn-sm nav-download">{icon('apple','apple')}{t['download_sm']}</a><button class="menu-toggle" id="menuToggle" type="button" aria-label="{t['menu']}" aria-expanded="false" aria-controls="mobileNav">{icon('menu')}</button></div></div><nav class="mobile-nav" id="mobileNav" aria-label="Mobile navigation" hidden>{mobile}<a href="{store.replace('website_content','website_mobile_menu')}">{t['download']}<span aria-hidden="true">→</span></a></nav></header>'''
 
 
+FT_HEADINGS = {"product": "Product", "learn": "Learn", "company": "Feed Flow", "languages": "Languages"}
+# Where a translation already existed on the old language footers it is kept; everything else stays English.
+FT_NORDIC = {
+    "nb": {"privacy": "Personvern (engelsk)", "terms": "Vilkår (engelsk)", "pdf": ("/printables/feeding-log-nb-a4.pdf", "Matingslogg (PDF)"), "blurb": "Feed Flow! er appen for mating og MME på iPhone, laget i Norge av Zeolite. Mating, vekst og babyens helse i én rolig app med personvern først."},
+    "sv": {"privacy": "Integritet (engelska)", "terms": "Villkor (engelska)", "pdf": ("/printables/feeding-log-sv-a4.pdf", "Matningslogg (PDF)"), "blurb": "Feed Flow! är appen för matning och ersättning på iPhone, byggd i Norge av Zeolite. Matning, tillväxt och bebisens hälsa i en lugn app med integriteten först."},
+}
+
+
 def footer(lang="en"):
-    social = [("linkedin", "https://www.linkedin.com/company/feedflow-babyfeedingapp/", "LinkedIn"), ("instagram", "https://www.instagram.com/feedflow_babyfeedingapp", "Instagram"), ("tiktok", "https://www.tiktok.com/@feedflow_babyfeedingapp", "TikTok"), ("youtube", "https://www.youtube.com/@FeedFlow-BabyFeedingApp", "YouTube"), ("facebook", "https://www.facebook.com/feedflowapp", "Facebook"), ("reddit", "https://www.reddit.com/r/FeedFlowParents/", "Reddit")]
-    icons = "".join(f'<a class="social-link" href="{url}" target="_blank" rel="noopener noreferrer" aria-label="Feed Flow on {name}" title="{name}">{icon(key)}</a>' for key, url, name in social)
-    links = [("/formula-feeding", "Formula feeding"), ("/breastfeeding-pumping", "Breast & pumping"), ("/solids-allergens", "Solids & allergens"), ("/growth-development", "Growth & development"), ("/baby-health", "Baby health"), ("/flowcast", "FlowCast"), ("/vitamin-d-tracker", "Vitamin D tracker"), ("/baby-report", "Baby Reports"), ("/bottle-countdown", "Bottle countdown"), ("/combo-feeding", "Combo feeding"), ("/share-feeding-log", "Shared feeding log"), ("/free-baby-feeding-tracker", "Free tracker"), ("/printable-feeding-log", "Printable feeding log"), ("/resources", "Guides"), ("/compare", "Compare apps"), ("/faq", "FAQ"), ("/support", "Support"), ("/ambassador", "Ambassadors"), ("/privacy", "Privacy"), ("/terms", "Terms")]
+    """The one footer: four labelled columns, used on every page (generated pages, index and the four legacy pages)."""
+    social = [("linkedin", "https://www.linkedin.com/company/feedflow-babyfeedingapp/", "LinkedIn", "Feed Flow on LinkedIn"), ("instagram", "https://www.instagram.com/feedflow_babyfeedingapp", "Instagram", "Feed Flow on Instagram"), ("tiktok", "https://www.tiktok.com/@feedflow_babyfeedingapp", "TikTok", "Feed Flow on TikTok"), ("youtube", "https://www.youtube.com/@FeedFlow-BabyFeedingApp", "YouTube", "Feed Flow on YouTube"), ("facebook", "https://www.facebook.com/feedflowapp", "Facebook", "Feed Flow on Facebook"), ("reddit", "https://www.reddit.com/r/FeedFlowParents/", "Reddit", "Feed Flow Parents on Reddit")]
+    icons = "".join(f'<a class="social-link" href="{url}" target="_blank" rel="noopener noreferrer" aria-label="{label}" title="{name}">{icon(key)}</a>' for key, url, name, label in social)
     blurb = "Feed Flow! is the formula &amp; feeding tracker for iPhone, built in Norway by Zeolite. Feeding, growth and baby health in one calm, privacy-first app."
-    if lang == "nb":
-        links = [("/no", "Norsk"), ("/sv", "Svenska"), ("/", "English"), ("/printables/feeding-log-nb-a4.pdf", "Matingslogg (PDF)"), ("/support", "Support"), ("/privacy", "Personvern (engelsk)"), ("/terms", "Vilkår (engelsk)")]
-        blurb = "Feed Flow! er appen for mating og MME på iPhone, laget i Norge av Zeolite. Mating, vekst og babyens helse i én rolig app med personvern først."
-    elif lang == "sv":
-        links = [("/sv", "Svenska"), ("/no", "Norsk"), ("/", "English"), ("/printables/feeding-log-sv-a4.pdf", "Matningslogg (PDF)"), ("/support", "Support"), ("/privacy", "Integritet (engelska)"), ("/terms", "Villkor (engelska)")]
-        blurb = "Feed Flow! är appen för matning och ersättning på iPhone, byggd i Norge av Zeolite. Matning, tillväxt och bebisens hälsa i en lugn app med integriteten först."
+    privacy, terms, pdf = "Privacy", "Terms", None
+    if lang in FT_NORDIC:
+        n = FT_NORDIC[lang]
+        blurb, privacy, terms, pdf = n["blurb"], n["privacy"], n["terms"], n["pdf"]
     elif "footer_links" in L.get(lang, {}):
-        links, blurb = L[lang]["footer_links"], L[lang]["blurb"]
-    lang_row = " · ".join(f'<a href="{path}" hreflang="{code}" lang="{code}">{name}</a>' for path, name, code, _ in LANGS)
-    links_html = "".join(f'<a href="{url}">{label}</a>' for url, label in links)
-    return f'''<footer class="ft"><div class="wrap"><div class="ft-inner"><div class="ft-left">{wordmark()}<p>{blurb}</p><a class="ft-mail" href="mailto:support@tryfeedflow.app">support@tryfeedflow.app</a><nav class="social-list" aria-label="Feed Flow on social media">{icons}</nav></div><nav class="ft-links" aria-label="Footer">{links_html}</nav></div><div class="ft-bottom"><nav class="ft-langs" aria-label="Languages">{lang_row}</nav><div>&copy; 2026 Feed Flow!</div></div></div></footer>'''
+        u = L[lang]
+        blurb, privacy, terms, pdf = u["blurb"], u["privacy"], u["terms"], (u["footer_links"][1][0], u["footer_links"][1][1])
+    learn = [("/resources", "Guides"), ("/vitamin-d-tracker", "Vitamin D tracker"), ("/bottle-countdown", "Bottle countdown"), ("/combo-feeding", "Combo feeding"), ("/printable-feeding-log", "Printable feeding log"), ("/compare", "Compare apps"), ("/free-baby-feeding-tracker", "Free tracker"), ("/faq", "FAQ")]
+    if pdf:
+        learn.insert(5, pdf)
+    columns = [
+        ("product", [("/formula-feeding", "Formula feeding"), ("/breastfeeding-pumping", "Breast &amp; pumping"), ("/solids-allergens", "Solids &amp; allergens"), ("/growth-development", "Growth &amp; development"), ("/baby-health", "Baby health"), ("/flowcast", "FlowCast"), ("/baby-report", "Baby Reports"), ("/share-feeding-log", "Shared feeding log")]),
+        ("learn", learn),
+        ("company", [("/support", "Support"), ("/ambassador", "Ambassadors"), ("https://apps.apple.com/app/id6782075454?action=write-review", "Leave a review"), ("/privacy", privacy), ("/terms", terms)]),
+    ]
+    cols = "".join(f'<nav class="ft-col" aria-labelledby="ft-h-{key}"><h2 class="ft-h" id="ft-h-{key}">{FT_HEADINGS[key]}</h2><ul>' + "".join(f'<li><a href="{url}">{label}</a></li>' for url, label in items) + '</ul></nav>' for key, items in columns)
+    lang_items = "".join(f'<li><a href="{path}" hreflang="{code}" lang="{code}">{name}</a></li>' for path, name, code, _ in LANGS)
+    cols += f'<nav class="ft-col" aria-labelledby="ft-h-languages"><h2 class="ft-h" id="ft-h-languages">{FT_HEADINGS["languages"]}</h2><ul>{lang_items}</ul></nav>'
+    return f'''<footer class="ft" id="support"><div class="wrap"><div class="ft-inner"><div class="ft-left">{wordmark()}<p>{blurb}</p><a class="ft-mail" href="mailto:support@tryfeedflow.app">support@tryfeedflow.app</a><nav class="social-list" aria-label="Feed Flow on social media">{icons}</nav></div><div class="ft-cols">{cols}</div></div><div class="ft-bottom">&copy; 2026 Feed Flow!</div></div></footer>'''
 
 
 def schema(page):
@@ -425,6 +441,28 @@ L.update(INTL_UI)
 NAV.update(INTL_NAV)
 PAGES += COMPARE + QUESTION + NORDIC + INTL
 
+import re as _re
+
+
+def sync_static_pages():
+    """index.html and the four legacy pages are hand-edited, but their footer (and the legacy header) come from here."""
+    block = lambda name, html: f"<!--ff:{name}-->{html}<!--/ff:{name}-->"
+    index = ROOT / "index.html"
+    text = index.read_text(encoding="utf-8")
+    if "<!--ff:footer-->" in text:
+        text = _re.sub(r"<!--ff:footer-->.*?<!--/ff:footer-->", lambda m: block("footer", footer("en")), text, flags=_re.S)
+    else:
+        text = _re.sub(r'<footer class="ft".*?</footer>', lambda m: block("footer", footer("en")), text, count=1, flags=_re.S)
+    index.write_text(text, encoding="utf-8")
+    for name in ("faq", "support", "privacy", "terms"):
+        path = ROOT / f"{name}.html"
+        text = path.read_text(encoding="utf-8")
+        for part, html in (("header", header("", "en")), ("footer", footer("en"))):
+            text = _re.sub(rf"<!--ff:{part}-->.*?<!--/ff:{part}-->", lambda m: block(part, html), text, flags=_re.S)
+        path.write_text(text, encoding="utf-8")
+        print(f"Synced {path.relative_to(ROOT)}")
+
+
 for item in PAGES:
     target = ROOT / item["file"]
     target.parent.mkdir(parents=True, exist_ok=True)
@@ -458,3 +496,4 @@ query_map = {
     "note": "Query clusters are editorial hypotheses until validated with OpenSEO/DataForSEO or Search Console. No search-volume, keyword-difficulty or ranking claims are made.",
     "pages": [{"url": "https://tryfeedflow.app/" + p["slug"], "title": p["title"], "intent": p["eyebrow"], "role": "guide" if p.get("guide") else "hub", "primaryQueries": query_map[p["slug"]], "relatedLinks": [link for link, _ in p["related"]]} for p in PAGES]
 }, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+sync_static_pages()

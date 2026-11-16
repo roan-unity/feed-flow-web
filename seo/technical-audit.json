@@ -1,16 +1,43 @@
 {
   "workflow": "OpenSEO seo-audit local technical checks",
   "liveKeywordData": "Not connected; no volume, ranking or traffic claims are included",
-  "sitemapUrls": 20,
-  "pagesChecked": 20,
+  "sitemapUrls": 42,
+  "pagesChecked": 42,
   "errors": [],
-  "warnings": [],
+  "warnings": [
+    "index.html: meta description is 183 characters",
+    "guides/should-you-use-a-feeding-tracker.html: meta description is 185 characters",
+    "compare.html: meta description is 177 characters",
+    "bottle-countdown.html: title is 70 characters",
+    "bottle-countdown.html: meta description is 190 characters",
+    "combo-feeding.html: title is 71 characters",
+    "combo-feeding.html: meta description is 183 characters",
+    "share-feeding-log.html: meta description is 179 characters",
+    "free-baby-feeding-tracker.html: meta description is 179 characters",
+    "printable-feeding-log.html: title is 70 characters",
+    "printable-feeding-log.html: meta description is 209 characters",
+    "no.html: meta description is 221 characters",
+    "sv.html: meta description is 233 characters",
+    "da.html: title is 70 characters",
+    "da.html: meta description is 227 characters",
+    "de.html: meta description is 262 characters",
+    "es.html: meta description is 257 characters",
+    "fi.html: title is 78 characters",
+    "fi.html: meta description is 229 characters",
+    "fr.html: title is 70 characters",
+    "fr.html: meta description is 301 characters",
+    "it.html: title is 69 characters",
+    "it.html: meta description is 286 characters",
+    "nl.html: meta description is 256 characters",
+    "pl.html: meta description is 272 characters",
+    "pt.html: meta description is 257 characters"
+  ],
   "checked": [
     {
       "url": "https://tryfeedflow.app/",
       "file": "index.html",
-      "titleLength": 57,
-      "descriptionLength": 158
+      "titleLength": 62,
+      "descriptionLength": 183
     },
     {
       "url": "https://tryfeedflow.app/formula-feeding",
@@ -91,10 +118,46 @@
       "descriptionLength": 159
     },
     {
+      "url": "https://tryfeedflow.app/guides/should-you-use-a-feeding-tracker",
+      "file": "guides/should-you-use-a-feeding-tracker.html",
+      "titleLength": 55,
+      "descriptionLength": 185
+    },
+    {
       "url": "https://tryfeedflow.app/ambassador",
       "file": "ambassador.html",
       "titleLength": 57,
       "descriptionLength": 152
+    },
+    {
+      "url": "https://tryfeedflow.app/compare",
+      "file": "compare.html",
+      "titleLength": 53,
+      "descriptionLength": 177
+    },
+    {
+      "url": "https://tryfeedflow.app/compare/huckleberry",
+      "file": "compare/huckleberry.html",
+      "titleLength": 42,
+      "descriptionLength": 123
+    },
+    {
+      "url": "https://tryfeedflow.app/compare/baby-tracker-nighp",
+      "file": "compare/baby-tracker-nighp.html",
+      "titleLength": 51,
+      "descriptionLength": 111
+    },
+    {
+      "url": "https://tryfeedflow.app/compare/nara-baby",
+      "file": "compare/nara-baby.html",
+      "titleLength": 40,
+      "descriptionLength": 101
+    },
+    {
+      "url": "https://tryfeedflow.app/compare/baby-daybook",
+      "file": "compare/baby-daybook.html",
+      "titleLength": 43,
+      "descriptionLength": 121
     },
     {
       "url": "https://tryfeedflow.app/faq",
@@ -115,7 +178,7 @@
       "descriptionLength": 159
     },
     {
-      "url": "https://tryfeedflow.app/privacy.html",
+      "url": "https://tryfeedflow.app/privacy",
       "file": "privacy.html",
       "titleLength": 44,
       "descriptionLength": 172
@@ -125,6 +188,102 @@
       "file": "terms.html",
       "titleLength": 42,
       "descriptionLength": 164
+    },
+    {
+      "url": "https://tryfeedflow.app/bottle-countdown",
+      "file": "bottle-countdown.html",
+      "titleLength": 70,
+      "descriptionLength": 190
+    },
+    {
+      "url": "https://tryfeedflow.app/combo-feeding",
+      "file": "combo-feeding.html",
+      "titleLength": 71,
+      "descriptionLength": 183
+    },
+    {
+      "url": "https://tryfeedflow.app/share-feeding-log",
+      "file": "share-feeding-log.html",
+      "titleLength": 61,
+      "descriptionLength": 179
+    },
+    {
+      "url": "https://tryfeedflow.app/free-baby-feeding-tracker",
+      "file": "free-baby-feeding-tracker.html",
+      "titleLength": 56,
+      "descriptionLength": 179
+    },
+    {
+      "url": "https://tryfeedflow.app/printable-feeding-log",
+      "file": "printable-feeding-log.html",
+      "titleLength": 70,
+      "descriptionLength": 209
+    },
+    {
+      "url": "https://tryfeedflow.app/no",
+      "file": "no.html",
+      "titleLength": 62,
+      "descriptionLength": 221
+    },
+    {
+      "url": "https://tryfeedflow.app/sv",
+      "file": "sv.html",
+      "titleLength": 62,
+      "descriptionLength": 233
+    },
+    {
+      "url": "https://tryfeedflow.app/da",
+      "file": "da.html",
+      "titleLength": 70,
+      "descriptionLength": 227
+    },
+    {
+      "url": "https://tryfeedflow.app/de",
+      "file": "de.html",
+      "titleLength": 58,
+      "descriptionLength": 262
+    },
+    {
+      "url": "https://tryfeedflow.app/es",
+      "file": "es.html",
+      "titleLength": 59,
+      "descriptionLength": 257
+    },
+    {
+      "url": "https://tryfeedflow.app/fi",
+      "file": "fi.html",
+      "titleLength": 78,
+      "descriptionLength": 229
+    },
+    {
+      "url": "https://tryfeedflow.app/fr",
+      "file": "fr.html",
+      "titleLength": 70,
+      "descriptionLength": 301
+    },
+    {
+      "url": "https://tryfeedflow.app/it",
+      "file": "it.html",
+      "titleLength": 69,
+      "descriptionLength": 286
+    },
+    {
+      "url": "https://tryfeedflow.app/nl",
+      "file": "nl.html",
+      "titleLength": 64,
+      "descriptionLength": 256
+    },
+    {
+      "url": "https://tryfeedflow.app/pl",
+      "file": "pl.html",
+      "titleLength": 60,
+      "descriptionLength": 272
+    },
+    {
+      "url": "https://tryfeedflow.app/pt",
+      "file": "pt.html",
+      "titleLength": 61,
+      "descriptionLength": 257
     }
   ]
 }
