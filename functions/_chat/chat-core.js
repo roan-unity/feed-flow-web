@@ -41,6 +41,52 @@ const HAND_OVER_FALLBACK = {
   support: 'I’ll pass this to support. Leave your email in the form below and they’ll write back.',
 };
 
+const FORM_STILL_OPEN = 'The form above is still open. It’s there whenever it suits.';
+const SMILEYS = /[\u{1F600}-\u{1F64F}\u{1F44D}\u{263A}]\uFE0F?/gu;
+
+// Cleans a streamed reply: no smiley in the first reply of a chat, and a model that writes its
+// answer twice in one stream (seen with the fast chain) is cut at the repeat.
+export function createReplyFilter({ firstReply = false } = {}) {
+  let sent = '';
+  let held = '';
+  let cut = false;
+  const clean = (t) => (firstReply ? t.replace(SMILEYS, '') : t);
+  const opening = () => sent.replace(/\s+/g, ' ').slice(0, 24);
+  return {
+    push(text) {
+      if (cut) return '';
+      held += text;
+      const at = held.lastIndexOf('\n\n');
+      // Text before the last paragraph break is safe unless that paragraph repeats the opening.
+      let out = '';
+      const parts = held.split(/\n\n+/);
+      const breaks = held.match(/\n\n+/g) || [];
+      held = '';
+      for (let i = 0; i < parts.length; i++) {
+        const para = parts[i];
+        const last = i === parts.length - 1;
+        const startsNew = i > 0 || /\n\n\s*$/.test(sent + out) || (sent + out) === '';
+        const isRepeat = (sent + out).length >= 24 && startsNew && para.replace(/\s+/g, ' ').trimStart().startsWith(opening().slice(0, 24)) && opening().length >= 24;
+        if (isRepeat) { cut = true; break; }
+        if (!last && para && !/[\p{L}\p{N}]/u.test(para)) continue; // a stray comma on its own line
+        if (last && startsNew && (sent + out).length >= 24 && para.replace(/\s+/g, ' ').trimStart().length < 24) { held = para; break; } // wait until it can be judged
+        out += para + (last ? '' : breaks[i]);
+      }
+      void at;
+      out = clean(out);
+      sent += out;
+      return out;
+    },
+    end() {
+      if (cut) return '';
+      const out = clean(held);
+      held = '';
+      sent += out;
+      return out;
+    },
+  };
+}
+
 const isDev = (env) => env?.ENV === 'dev';
 
 function jsonError(code, extraHeaders, status) {
@@ -276,6 +322,12 @@ async function answer({ env, messages, page, send, signal }) {
   }
   if (!result.emitted && !handOver) throw new Error('empty answer'); // the widget shows its error / form, never a blank bubble
 
+  // The form from the previous reply is still on screen: never show the hand-over line twice in a row.
+  const previous = [...messages].reverse().find((m) => m.role === 'assistant');
+  if (handOver && previous && /form (below|above)/i.test(previous.content || '')) {
+    if (!result.emitted) await send('delta', { text: FORM_STILL_OPEN });
+    handOver = null;
+  }
   if (handOver) {
     if (!result.emitted) await send('delta', { text: HAND_OVER_FALLBACK[handOver.to] || HAND_OVER_FALLBACK.support });
     await send('action', handOver);
@@ -304,6 +356,7 @@ export function buildPayload({ env, tier, page, upstreamMessages }) {
 }
 
 async function callUpstream({ env, tier, page, upstreamMessages, send, signal }) {
+  const filter = createReplyFilter({ firstReply: !upstreamMessages.some((m) => m.role === 'assistant') });
   const base = (env.AI_GATEWAY_URL || DEFAULT_BASE_URL).replace(/\/+$/, '');
   const payload = buildPayload({ env, tier, page, upstreamMessages });
   const headers = {
@@ -350,6 +403,8 @@ async function callUpstream({ env, tier, page, upstreamMessages, send, signal })
           if (!text) continue;
           started = true;
         }
+        text = filter.push(text);
+        if (!text) continue;
         emitted = true;
         await send('delta', { text });
       }
@@ -358,6 +413,11 @@ async function callUpstream({ env, tier, page, upstreamMessages, send, signal })
         if (tc.function?.name && !entry.name) entry.name = tc.function.name;
         if (tc.function?.arguments) entry.arguments += tc.function.arguments;
       }
+    }
+    const rest = filter.end();
+    if (rest.trim()) {
+      emitted = true;
+      await send('delta', { text: rest });
     }
   } finally {
     clearTimeout(timer);
