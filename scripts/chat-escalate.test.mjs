@@ -48,7 +48,7 @@ describe('escalate function', () => {
     assert.equal(sent.from, 'Feed Flow site <chat@tryfeedflow.app>');
     assert.deepEqual(sent.to, ['support@tryfeedflow.app']);
     assert.equal(sent.reply_to, 'sam@example.com');
-    assert.equal(sent.subject, 'Site message: request');
+    assert.equal(sent.subject, 'Support: request');
     assert.match(sent.text, /Visitor email: sam@example\.com/);
     assert.match(sent.text, /Page: \/support/);
     assert.match(sent.text, /My subscription shows twice\./);
@@ -59,6 +59,49 @@ describe('escalate function', () => {
     const sent = JSON.parse(calls[0].init.body);
     assert.equal(sent.from, 'Site <a@tryfeedflow.app>');
     assert.match(sent.text, /Visitor: Hi\n\nNora: Hello/);
+  });
+  test('support hand-over: subject, recipient, summary and only the last 8 messages', async () => {
+    const transcript = Array.from({ length: 12 }, (_, i) => ({ role: i % 2 ? 'assistant' : 'user', content: `line ${i}` }));
+    const res = await post({ ...valid, to: 'support', reason: 'bug', summary: 'Feeds vanished after a phone change.', transcript }, { env: { RESEND_API_KEY: 'k', FOUNDER_EMAIL: 'robin@example.com' } });
+    assert.equal(res.status, 200);
+    const sent = JSON.parse(calls[0].init.body);
+    assert.equal(sent.subject, 'Support: bug');
+    assert.deepEqual(sent.to, ['support@tryfeedflow.app']);
+    assert.match(sent.text, /Nora's summary: Feeds vanished after a phone change\./);
+    assert.doesNotMatch(sent.text, /line 3\b/);
+    assert.match(sent.text, /line 4\b/);
+    assert.match(sent.text, /line 11\b/);
+    assert.doesNotMatch(sent.text, /case|ticket|#\d/i);
+  });
+  test('founder hand-over goes to FOUNDER_EMAIL, or support when it is not set', async () => {
+    let res = await post({ ...valid, to: 'founder', reason: 'important' }, { env: { RESEND_API_KEY: 'k', FOUNDER_EMAIL: 'robin@example.com' } });
+    assert.equal(res.status, 200);
+    let sent = JSON.parse(calls[0].init.body);
+    assert.equal(sent.subject, 'For Robin: important');
+    assert.deepEqual(sent.to, ['robin@example.com']);
+    stubFetch();
+    res = await post({ ...valid, to: 'founder', reason: 'feedback' }, { env: { RESEND_API_KEY: 'k' } });
+    sent = JSON.parse(calls[0].init.body);
+    assert.equal(sent.subject, 'For Robin: feedback');
+    assert.deepEqual(sent.to, ['support@tryfeedflow.app']);
+  });
+  test('an unknown target or reason falls back to support / request; long assistant lines are trimmed', async () => {
+    const res = await post({ ...valid, to: 'ceo', reason: 'whatever', transcript: [{ role: 'assistant', content: 'a'.repeat(1500) }] });
+    assert.equal(res.status, 200);
+    const sent = JSON.parse(calls[0].init.body);
+    assert.equal(sent.subject, 'Support: request');
+    assert.deepEqual(sent.to, ['support@tryfeedflow.app']);
+  });
+  test('five form sends an hour per visitor, then 429', async () => {
+    const store = new Map();
+    globalThis.caches = { default: { match: async (r) => (store.has(r.url) ? new Response(store.get(r.url)) : undefined), put: async (r, res) => { store.set(r.url, await res.text()); } } };
+    try {
+      const results = [];
+      for (let i = 0; i < 7; i += 1) results.push((await post(valid)).status);
+      assert.deepEqual(results, [200, 200, 200, 200, 200, 429, 429]);
+    } finally {
+      delete globalThis.caches;
+    }
   });
   test('answers 503 not_configured without a key', async () => {
     const res = await post(valid, { env: {} });
@@ -110,8 +153,8 @@ describe('escalate function', () => {
     assert.equal((await post(null, { raw: '{nope' })).status, 400);
     assert.equal((await post(null, { raw: '[]' })).status, 400);
     assert.equal((await post({ ...valid, page: 'p'.repeat(201) })).status, 400);
-    assert.equal((await post({ ...valid, transcript: new Array(21).fill({ role: 'user', content: 'a' }) })).status, 400);
-    assert.equal((await post({ ...valid, transcript: [{ role: 'user', content: 'a'.repeat(1001) }] })).status, 400);
+    assert.equal((await post({ ...valid, transcript: new Array(61).fill({ role: 'user', content: 'a' }) })).status, 400);
+    assert.equal((await post({ ...valid, transcript: [{ role: 'system', content: 'a' }] })).status, 400);
   });
   test('Resend failure answers 502 upstream', async () => {
     stubFetch(500);

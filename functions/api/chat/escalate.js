@@ -1,12 +1,16 @@
-/* POST /api/chat/escalate: emails a visitor's message from the site chat to support.
-   Cloudflare Pages Function, no dependencies. Secrets: RESEND_API_KEY (required to send), ESCALATION_FROM (optional).
+/* POST /api/chat/escalate: emails a visitor's message from the site chat to support or to the founder.
+   Cloudflare Pages Function, no dependencies. Secrets: RESEND_API_KEY (required to send), ESCALATION_FROM (optional),
+   FOUNDER_EMAIL (optional, where `to: "founder"` goes; falls back to support).
    Nothing about the message or the visitor's address is ever logged. */
+
+import { FORM_PER_HOUR, withinLimit } from '../../_chat/ratelimit.js';
 
 const SUPPORT_ADDRESS = 'support@tryfeedflow.app';
 const DEFAULT_FROM = 'Feed Flow site <chat@tryfeedflow.app>';
 const EMAIL_RE = /^[^\s@<>"',;:\\()[\]]+@[^\s@<>"',;:\\()[\]]+\.[^\s@<>"',;:\\()[\]]+$/;
-const LIMITS = { BODY_BYTES: 16 * 1024, EMAIL_CHARS: 254, MESSAGE_CHARS: 1000, PAGE_CHARS: 200, TRANSCRIPT_MESSAGES: 20, MIN_FILL_MS: 2500 };
-const REASONS = ['billing', 'bug', 'medical', 'unknown', 'request'];
+const LIMITS = { BODY_BYTES: 16 * 1024, EMAIL_CHARS: 254, MESSAGE_CHARS: 1000, PAGE_CHARS: 200, TRANSCRIPT_MESSAGES: 60, MAIL_TRANSCRIPT: 8, MIN_FILL_MS: 2500 };
+const REASONS = ['billing', 'bug', 'account', 'request', 'unknown', 'feedback', 'important', 'medical'];
+const TARGETS = ['support', 'founder'];
 const ALLOWED_ORIGINS = ['https://tryfeedflow.app', 'https://www.tryfeedflow.app'];
 
 function json(status, body) {
@@ -42,6 +46,9 @@ export async function onRequestPost({ request, env }) {
   if (!originAllowed(request.headers.get('Origin'), env)) {
     return fail(403, 'forbidden', 'This request did not come from the Feed Flow site.');
   }
+  if (!(await withinLimit(request, 'form', FORM_PER_HOUR))) {
+    return fail(429, 'rate_limited', 'That is a lot of messages for now. Try again in a while, or write to ' + SUPPORT_ADDRESS + '.');
+  }
 
   const declared = Number(request.headers.get('Content-Length') || 0);
   if (declared > LIMITS.BODY_BYTES) return fail(413, 'too_long', 'That message is too long.');
@@ -74,6 +81,8 @@ export async function onRequestPost({ request, env }) {
     page = body.page;
   }
   const reason = REASONS.includes(body.reason) ? body.reason : 'request';
+  const to = TARGETS.includes(body.to) ? body.to : 'support';
+  const summary = typeof body.summary === 'string' ? body.summary.trim().slice(0, 300) : '';
 
   const transcript = [];
   if (body.transcript !== undefined && body.transcript !== null) {
@@ -81,10 +90,10 @@ export async function onRequestPost({ request, env }) {
       return fail(400, 'bad_request', 'We could not read that message.');
     }
     for (const m of body.transcript) {
-      if (!m || (m.role !== 'user' && m.role !== 'assistant') || typeof m.content !== 'string' || m.content.length > LIMITS.MESSAGE_CHARS) {
+      if (!m || (m.role !== 'user' && m.role !== 'assistant') || typeof m.content !== 'string') {
         return fail(400, 'bad_request', 'We could not read that message.');
       }
-      transcript.push({ role: m.role, content: m.content });
+      transcript.push({ role: m.role, content: m.content.slice(0, LIMITS.MESSAGE_CHARS) });
     }
   }
 
@@ -102,9 +111,12 @@ export async function onRequestPost({ request, env }) {
     return fail(503, 'not_configured', 'Sending is not set up yet. Write to ' + SUPPORT_ADDRESS + ' instead.');
   }
 
+  const recipient = to === 'founder' ? env.FOUNDER_EMAIL || SUPPORT_ADDRESS : SUPPORT_ADDRESS;
+  const subject = to === 'founder' ? `For Robin: ${reason}` : `Support: ${reason}`;
   const text =
-    `Reason: ${reason}\nVisitor email: ${email}\nPage: ${page || '(unknown)'}\n\n` +
-    `Message:\n${question}\n\nTranscript:\n${renderTranscript(transcript) || '(none)'}\n`;
+    `Visitor email: ${email}\nPage: ${page || '(unknown)'}\n` +
+    (summary ? `Nora's summary: ${summary}\n` : '') +
+    `\nMessage:\n${question}\n\nLast messages in the chat:\n${renderTranscript(transcript.slice(-LIMITS.MAIL_TRANSCRIPT)) || '(none)'}\n`;
 
   let res;
   try {
@@ -113,9 +125,9 @@ export async function onRequestPost({ request, env }) {
       headers: { Authorization: `Bearer ${env.RESEND_API_KEY}`, 'Content-Type': 'application/json' },
       body: JSON.stringify({
         from: env.ESCALATION_FROM || DEFAULT_FROM,
-        to: [SUPPORT_ADDRESS],
+        to: [recipient],
         reply_to: email,
-        subject: `Site message: ${reason}`,
+        subject,
         text,
       }),
     });
