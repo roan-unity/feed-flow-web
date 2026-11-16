@@ -22,40 +22,42 @@
      Each piece is a copy of the real screenshot clipped to that rectangle. */
   var SCRIPTS = {
     start: {
-      wash: .93,
       duration: 2900,
       pieces: [
-        { r: [11, 53.3, 32, 65.2], a: 'drop', t: [450, 850] },
-        { r: [39.5, 45.8, 60.5, 57.8], a: 'drop', t: [600, 1000] },
-        { r: [67, 52.8, 89.6, 65.2], a: 'drop', t: [750, 1150], press: [2000, 2450], origin: [78.3, 58.1] },
-        { r: [68, 68.5, 89, 80.3], a: 'drop', t: [900, 1300] },
-        { r: [39.5, 76, 60.5, 87.8], a: 'drop', t: [1050, 1450] },
-        { r: [11, 68.5, 32, 80.3], a: 'drop', t: [1200, 1600] },
-        { r: [12, 24, 88, 38.5], a: 'up', t: [1400, 1800] },
-        { r: [85.5, 15, 98, 20.8], a: 'fade', t: [1550, 1850] },
-        { r: [24, 96.4, 76, 99.8], a: 'fade', t: [1650, 1950] }
+        { r: [8, 2.4, 95, 5.4], a: 'fade', t: [350, 650] },
+        { r: [15, 31, 85, 36.2], a: 'up', t: [450, 850] },
+        { r: [40.5, 36.4, 59.5, 46], a: 'drop', t: [600, 1000] },
+        { r: [6.5, 47.2, 29, 61], a: 'drop', t: [750, 1150] },
+        { r: [36.5, 46.4, 63.5, 61], a: 'drop', t: [900, 1300], press: [1900, 2350], origin: [50, 53.5] },
+        { r: [70.5, 47.2, 93, 61], a: 'drop', t: [1050, 1450] },
+        { r: [0, 61.7, 100, 100], a: 'up', t: [1500, 1950] }
       ],
-      ring: { c: [78.3, 58.1], w: 21.5, t: [2150, 2800] }
+      ring: { c: [50, 52.5], w: 25, t: [2050, 2700] }
     },
     log: {
-      wash: .86,
-      duration: 2700,
+      duration: 4750,
       pieces: [
         { r: [3.5, 13.8, 96.5, 19.3], a: 'slide', t: [450, 900] },
         { r: [37.5, 19.6, 62.5, 31.2], a: 'sweep', t: [700, 1650], c: [50, 25.4] },
         { r: [12, 22, 37, 29], a: 'up', t: [800, 1100] },
         { r: [64.5, 22, 86.5, 29], a: 'up', t: [900, 1200] },
-        { r: [27, 34, 74, 81.5], hole: [30.5, 57.5, 72.5, 80.5], a: 'fade', t: [1050, 1450], f: [12, 5] },
-        { r: [30.5, 57.5, 72.5, 80.5], a: 'rise', t: [1300, 2050] },
+        { r: [27, 34, 74, 81.5], hole: [30.5, 57.5, 73.6, 80.5], a: 'fade', t: [1050, 1450], f: [12, 5] },
+        { r: [30.5, 57.5, 69.4, 80.5], a: 'rise', t: [1300, 2050], f: [4, 1.8, 0.01] },
+        { r: [69.4, 70, 73.6, 73.6], a: 'fade', t: [1700, 2050], f: [0.7, 0.7], ride: true },
         { r: [15, 68.5, 26, 75.5], a: 'fade', t: [1900, 2200] },
-        { r: [74, 68.5, 85, 75.5], a: 'fade', t: [1900, 2200] },
+        { r: [74, 68.5, 85, 75.5], a: 'fade', t: [1900, 2200], f: [0.4, 1.8, 4] },
         { r: [30, 82.5, 70, 87.2], a: 'up', t: [1850, 2200] },
-        { r: [4, 87.5, 96, 94], a: 'up', t: [2000, 2350] }
-      ]
+        { r: [3.5, 87.4, 49.6, 93.9], a: 'up', t: [2000, 2350] },
+        { r: [50.2, 87.4, 96.5, 93.9], a: 'up', t: [2000, 2350], press: [3550, 3850], origin: [73.3, 90.6] }
+      ],
+      /* The bottle starts at 4 oz and the handle is dragged down to the screenshot's own 2 oz.
+         The screenshot cannot move its own level, so a drawn milk band, two drawn handles and a
+         fingertip dot play the drag on top of it; at the end they swap for the real ones. */
+      drag: { t: [2500, 3350], from: 63.8, to: 71.76, band: [31.7, 68.4, 63.8, 73.1], hx: [39.2, 71], show: [1500, 2050] },
+      sparks: { t: [3800, 4650], c: [73.3, 90.6] }
     },
     finish: {
-      wash: .8,
-      duration: 3400,
+            duration: 3550,
       pieces: [
         { r: [3, 6.3, 97, 17.2], a: 'fade', t: [400, 750] },
         { r: [55, 17.3, 97, 22.8], a: 'fade', t: [550, 850] },
@@ -67,13 +69,12 @@
         { r: [4, 38.2, 97, 44], a: 'drop', t: [1350, 1700] },
         { r: [4, 34.5, 60, 37.7], a: 'fade', t: [1550, 1800] },
         { r: [4, 28.5, 97, 34.3], a: 'drop', t: [1700, 2150], lift: 9 },
-        { r: [2.5, 18.8, 56.3, 22.4], a: 'wipe', t: [2100, 3300], ease: 'quart' },
+        { r: [2.5, 18.8, 56.3, 22.4], a: 'wipe', t: [2450, 3450], ease: 'quart' },
         { r: [0, 65, 100, 100], a: 'up', t: [2300, 2700] }
       ],
-      count: { t: [2100, 3300], show: [1950, 2200] }
+      count: { t: [2450, 3450], show: [2100, 2400], add: [1850, 2150] }
     },
     flowcast: {
-      wash: .88,
       duration: 3000,
       focus: { t: [350, 1500], keep: [0, 0, 100, 61.5] },
       pieces: [
@@ -100,8 +101,8 @@
   /* Soft edges: each piece fades in over a few % outside its rectangle, so it melts into the
      blurred wash instead of showing a hard box. */
   function feather(r, f) {
-    var fx = f ? f[0] : 4, fy = f ? f[1] : 1.8;
-    return 'linear-gradient(to right, transparent ' + (r[0] - fx) + '%, #000 ' + r[0] + '%, #000 ' + r[2] + '%, transparent ' + (r[2] + fx) + '%), ' +
+    var fx = f ? f[0] : 4, fy = f ? f[1] : 1.8, fxr = f && f.length > 2 ? f[2] : fx;
+    return 'linear-gradient(to right, transparent ' + (r[0] - fx) + '%, #000 ' + r[0] + '%, #000 ' + r[2] + '%, transparent ' + (r[2] + fxr) + '%), ' +
       'linear-gradient(to bottom, transparent ' + (r[1] - fy) + '%, #000 ' + r[1] + '%, #000 ' + r[3] + '%, transparent ' + (r[3] + fy) + '%)';
   }
   function setMask(el, mask) {
@@ -152,13 +153,13 @@
       return { duration: spec.duration, tracks: tracks, elements: elements, cleanup: function () { header.remove(); } };
     }
 
-    var wash = layer(shot, 'hiw-wash');
-    if (spec.wash) wash.style.filter = 'blur(28px) brightness(' + spec.wash + ')';
-    figure.insertBefore(wash, shot);
+    /* Before a piece lands its area is the phone's plain background (the capture's own left edge,
+       made by scripts/prepare-how-it-works.py), never a blurred copy of the hidden content. */
+    figure.style.background = 'url(/screens/how/' + figure.getAttribute('data-hiw') + '-bg.png) 0 0 / 100% 100% no-repeat, var(--bg-soft)';
     shot.style.position = 'relative';
     shot.style.zIndex = 1;
     var main = state(shot);
-    var added = [wash];
+    var added = [];
 
     if (spec.focus) {
       var keep = spec.focus.keep;
@@ -207,11 +208,16 @@
           setMask(el, feather(p.r, p.f) + (k >= 1 ? '' : ', conic-gradient(from 0deg at ' + p.c[0] + '% ' + p.c[1] + '%, #000 ' + angle + 'deg, transparent ' + angle + 'deg)'));
         });
       }
+      if (p.ride && spec.drag) {
+        /* the real right-hand handle, moved with the drag: pixel-true */
+        track(spec.drag.t[0], spec.drag.t[1], 'inout', function (k) { s.ty = (spec.drag.from + (spec.drag.to - spec.drag.from) * k) - spec.drag.to; });
+      }
       if (p.press) {
         el.style.transformOrigin = p.origin[0] + '% ' + p.origin[1] + '%';
         track(p.press[0], p.press[1], 'lin', function (k) {
           s.sc = k < 0.35 ? 1 - 0.1 * EASE.out(k / 0.35) : 0.9 + 0.1 * EASE.back((k - 0.35) / 0.65);
           if (k === 0 || k === 1) s.sc = 1;
+          el.style.filter = s.sc < 1 ? 'brightness(' + (1 - (1 - s.sc) * 2.2).toFixed(3) + ')' : '';
         });
       }
     });
@@ -232,18 +238,97 @@
       });
     }
 
+    function drawn(cls, parent, z) {
+      var node = document.createElement('span');
+      node.className = cls;
+      node.setAttribute('aria-hidden', 'true');
+      node.style.zIndex = z;
+      parent.appendChild(node);
+      added.push(node);
+      return node;
+    }
+    if (spec.drag) {
+      var d = spec.drag, t0 = d.t[0], t1 = d.t[1];
+      var level = function (k) { return d.from + (d.to - d.from) * k; };
+      var fadeOut = function (s) { track(t1, t1 + 220, 'lin', function (k) { s.op *= 1 - k; }); };
+      /* The "2 oz left" marker travels with the handle in the app; here it is held back behind a patch of
+         the bottle's own interior until the drag ends, then it appears. */
+      var tip = drawn('hiw-tipcover', figure, 3);
+      var ts = state(tip);
+      track(d.show[0], d.show[1], 'out', function (k) { ts.op = k; });
+      fadeOut(ts);
+      var band = drawn('hiw-band', figure, 3);
+      band.style.left = d.band[0] + '%'; band.style.width = (d.band[1] - d.band[0]) + '%';
+      band.style.top = d.band[2] + '%'; band.style.height = (d.band[3] - d.band[2]) + '%';
+      var bs = state(band);
+      track(d.show[0], d.show[1], 'out', function (k) { bs.op = k; });
+      track(t0, t1, 'inout', function (k) {
+        band.style.clipPath = 'inset(' + ((level(k) - d.band[2]) / (d.band[3] - d.band[2]) * 100).toFixed(3) + '% 0 0 0)';
+      });
+      fadeOut(bs);
+      d.hx.slice(0, 1).forEach(function (x) {
+        var handle = drawn('hiw-handle', figure, 4);
+        handle.style.left = x + '%';
+        var hs = state(handle, 'translate(-50%, -50%)');
+        track(d.show[0] + 200, d.show[1], 'out', function (k) { hs.op = k; });
+        track(t0, t1, 'inout', function (k) { handle.style.top = level(k) + '%'; });
+        fadeOut(hs);
+      });
+      var finger = drawn('hiw-finger', figure, 5);
+      finger.style.left = d.hx[1] + '%';
+      var fs = state(finger, 'translate(-50%, -50%)');
+      track(t0 - 300, t0, 'out', function (k) { fs.op = k * 0.9; fs.sc = 1.5 - 0.5 * k; });
+      track(t0, t1, 'inout', function (k) { finger.style.top = level(k) + '%'; });
+      track(t1, t1 + 260, 'lin', function (k) { fs.op *= 1 - k; });
+      var callout = device.querySelector('.hiw-callout');
+      if (callout) {
+        var cs = state(callout);
+        var line = callout.querySelector('.hiw-callout-line');
+        track(t1 - 250, t1 + 350, 'out', function (k) { cs.op = k; if (line) line.style.transform = 'scaleX(' + k.toFixed(3) + ')'; });
+      }
+    }
+
+    if (spec.sparks) {
+      var sp = spec.sparks, hues = ['var(--coral)', 'var(--accent)', 'var(--teal)'];
+      for (var i = 0; i < 12; i++) {
+        (function (i) {
+          var spark = drawn('hiw-spark', device, 6);
+          var size = 9 + (i * 5) % 7;
+          spark.style.left = sp.c[0] + '%'; spark.style.top = sp.c[1] + '%';
+          spark.style.width = size + 'px'; spark.style.height = size + 'px';
+          spark.style.background = hues[i % 3];
+          var angle = (i / 12) * Math.PI * 2 + (i % 2 ? 0.12 : -0.1), dist = 44 + (i * 7) % 26;
+          var ss = state(spark, 'translate(-50%, -50%)');
+          ss.px = true;
+          var from = sp.t[0] + i * 10;
+          track(from, from + 650, 'out', function (k) {
+            ss.tx = Math.cos(angle) * dist * k; ss.ty = Math.sin(angle) * dist * k - 10 * k;
+            ss.sc = k < 0.3 ? 0.3 + k / 0.3 * 0.9 : 1.2 - 0.9 * (k - 0.3) / 0.7;
+            ss.op = k <= 0 || k >= 1 ? 0 : k < 0.45 ? 1 : 1 - (k - 0.45) / 0.55;
+          });
+        })(i);
+      }
+    }
+
     var meter = device.querySelector('.hiw-meter');
     var count = device.querySelector('.hiw-count');
     if (spec.count && meter && count) {
       var target = Number(count.getAttribute('data-to')) || 0;
-      var ms = state(meter, 'translateX(-50%)');
+      var origin = Number(count.getAttribute('data-from')) || 0;
+      var pill = meter.querySelector('.hiw-pill');
+      var add = meter.querySelector('.hiw-add');
+      if (add) {
+        var as = state(add);
+        track(spec.count.add[0], spec.count.add[1], 'out', function (k) { as.op = k; as.ty = 40 * (1 - k); });
+      }
+      var ms = state(pill || meter);
       track(spec.count.show[0], spec.count.show[1], 'out', function (k) { ms.op = k; ms.ty = 30 * (1 - k); });
-      track(spec.count.t[0], spec.count.t[1], 'quart', function (k) { count.textContent = String(Math.round(target * k)); });
+      track(spec.count.t[0], spec.count.t[1], 'quart', function (k) { count.textContent = String(Math.round(origin + (target - origin) * k)); });
     }
 
     return {
       duration: spec.duration, tracks: tracks, elements: elements,
-      cleanup: function () { added.forEach(function (el) { el.remove(); }); shot.style.position = ''; shot.style.zIndex = ''; shot.style.filter = ''; shot.style.clipPath = ''; }
+      cleanup: function () { added.forEach(function (el) { el.remove(); }); figure.style.background = ''; shot.style.position = ''; shot.style.zIndex = ''; shot.style.filter = ''; shot.style.clipPath = ''; }
     };
   }
 
@@ -256,7 +341,8 @@
     seq.elements.forEach(function (s) {
       s.el.style.opacity = s.op >= 1 ? '' : String(s.op);
       var transform = s.base;
-      if (s.tx || s.ty) transform += ' translate(' + s.tx.toFixed(3) + '%, ' + s.ty.toFixed(3) + '%)';
+      var unit = s.px ? 'px' : '%';
+      if (s.tx || s.ty) transform += ' translate(' + s.tx.toFixed(3) + unit + ', ' + s.ty.toFixed(3) + unit + ')';
       if (s.sc !== 1) transform += ' scale(' + s.sc.toFixed(4) + ')';
       s.el.style.transform = transform;
     });
