@@ -62,7 +62,9 @@
     .dl { font-size: 13px; text-decoration: none; color: var(--text); border: 1px solid var(--border); border-radius: 999px; padding: 4px 10px; white-space: nowrap; }
     .screens { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 14px; }
     .screens a { display: block; border-radius: 18px; overflow: hidden; border: 1px solid var(--border); }
-    .screens img { width: 100%; display: block; }
+    .screens img { width: 100%; height: auto; display: block; }
+    .screens figure { margin: 0; }
+    .screens figcaption { font-size: 13px; color: var(--muted); margin-top: 6px; text-align: center; }
     .soon { border: 1px dashed var(--border); border-radius: 16px; padding: 18px; color: var(--muted); }
     .two { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 14px; }
     .two h3 { font-size: 16px; margin-bottom: 8px; }
@@ -144,7 +146,18 @@
     <section id="screens">
       <h2>App screens</h2>
       <!-- SCREENS:START -->
-      <div class="soon">Fresh screens from the newest version are on their way.</div>
+      <p style="color:var(--muted);margin-bottom:14px">From the newest version, with a demo baby. Tap one for the full-size image.</p>
+      <div class="screens">
+        <figure><a href="/creator-kit/screens/feedflow-01-home.jpg" download><img src="/creator-kit/screens/thumb-01-home.jpg" alt="Feed Flow! Home screen" loading="lazy" width="402" height="874"></a><figcaption>Home</figcaption></figure>
+        <figure><a href="/creator-kit/screens/feedflow-02-bottle-timer.jpg" download><img src="/creator-kit/screens/thumb-02-bottle-timer.jpg" alt="Feed Flow! Bottle timer screen" loading="lazy" width="402" height="874"></a><figcaption>Bottle timer</figcaption></figure>
+        <figure><a href="/creator-kit/screens/feedflow-03-today.jpg" download><img src="/creator-kit/screens/thumb-03-today.jpg" alt="Feed Flow! Today screen" loading="lazy" width="402" height="874"></a><figcaption>Today</figcaption></figure>
+        <figure><a href="/creator-kit/screens/feedflow-04-flowcast.jpg" download><img src="/creator-kit/screens/thumb-04-flowcast.jpg" alt="Feed Flow! FlowCast screen" loading="lazy" width="402" height="874"></a><figcaption>FlowCast</figcaption></figure>
+        <figure><a href="/creator-kit/screens/feedflow-05-allergens.jpg" download><img src="/creator-kit/screens/thumb-05-allergens.jpg" alt="Feed Flow! Allergens screen" loading="lazy" width="402" height="874"></a><figcaption>Allergens</figcaption></figure>
+        <figure><a href="/creator-kit/screens/feedflow-06-report.jpg" download><img src="/creator-kit/screens/thumb-06-report.jpg" alt="Feed Flow! Report screen" loading="lazy" width="402" height="874"></a><figcaption>Report</figcaption></figure>
+        <figure><a href="/creator-kit/screens/feedflow-07-analytics.jpg" download><img src="/creator-kit/screens/thumb-07-analytics.jpg" alt="Feed Flow! Analytics screen" loading="lazy" width="402" height="874"></a><figcaption>Analytics</figcaption></figure>
+        <figure><a href="/creator-kit/screens/feedflow-08-nursing.jpg" download><img src="/creator-kit/screens/thumb-08-nursing.jpg" alt="Feed Flow! Nursing screen" loading="lazy" width="402" height="874"></a><figcaption>Nursing</figcaption></figure>
+      </div>
+      <p style="margin-top:16px"><a class="dl" href="/creator-kit/feedflow-creator-kit.zip" download>Download everything (logos + screens, ZIP)</a></p>
       <!-- SCREENS:END -->
     </section>
 
