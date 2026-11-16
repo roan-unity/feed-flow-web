@@ -54,6 +54,7 @@ async function ask(model, tier, question) {
   const body = {
     model,
     max_tokens: 350,
+    reasoning: { enabled: false },
     messages: [{ role: 'system', content: buildSystemPrompt({ knowledge: KNOWLEDGE, tier }) }, { role: 'user', content: question }],
     tools: toolsFor(tier),
   };
@@ -165,11 +166,11 @@ async function chain() {
     server.close();
   }
 
-  // The fallback array: the first slug does not exist, so OpenRouter must move on to the next and say which answered.
-  const forced = createRunner({ OPENROUTER_API_KEY: KEY, CHAT_MODELS_FAST: 'no-such-vendor/no-such-model,google/gemini-2.5-flash-lite,mistralai/mistral-small-2603' });
+  // The fallback array: the first model has no tool support, so OpenRouter must move on to the next and say which answered.
+  const forced = createRunner({ OPENROUTER_API_KEY: KEY, CHAT_MODELS_FAST: 'nex-agi/nex-n2.5-mini,google/gemini-2.5-flash-lite,mistralai/mistral-small-2603' });
   await new Promise((r) => forced.listen(0, '127.0.0.1', r));
   try {
-    show('5. Fallback array with a deliberately dead first slug: "Hur fungerar familjedelningen?"', await turn(forced.address().port, [u('Hur fungerar familjedelningen?')]));
+    show('5. Fallback array with a first model that cannot use tools (nex-agi/nex-n2.5-mini): "Hur fungerar familjedelningen?"', await turn(forced.address().port, [u('Hur fungerar familjedelningen?')]));
   } finally {
     forced.close();
   }

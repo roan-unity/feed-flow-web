@@ -269,10 +269,30 @@ test('hand_up before any text reruns once on the strong chain; it never loops', 
   assert.deepEqual(calls[0].body.models, DEFAULT_MODELS.fast);
   assert.deepEqual(calls[1].body.models, DEFAULT_MODELS.strong);
   assert.equal(answerText(events), 'Careful answer.');
+  silence();
   calls = stubFetch(() => upstreamSSE([toolChunk('hand_up', '{}')]));
   events = await readSSE(await call(chatRequest({ messages: [u('How do I log a feed?')] }), env()));
   assert.equal(calls.length, 2);
-  assert.equal(events.at(-1).event, 'done');
+  assert.equal(events.at(-1).event, 'error');
+});
+
+test('an empty fast answer (a model that only thought) reruns once on the strong chain; empty twice is an error, never a blank bubble', async () => {
+  const empty = [{ model: 'nvidia/x', choices: [{ delta: { content: '' }, finish_reason: 'length' }] }];
+  let calls = stubFetch((c, n) => (n === 1 ? upstreamSSE(empty) : upstreamSSE(textChunks('m/strong', 'Here you go.'))));
+  let events = await readSSE(await call(chatRequest({ messages: [u('How do I log a feed?')] }), env()));
+  assert.equal(calls.length, 2);
+  assert.equal(answerText(events), 'Here you go.');
+  assert.equal(events.at(-1).data.tier, 'strong');
+  silence();
+  calls = stubFetch(() => upstreamSSE(empty));
+  events = await readSSE(await call(chatRequest({ messages: [u('How do I log a feed?')] }), env()));
+  assert.equal(calls.length, 2);
+  assert.deepEqual(events.map((e) => e.event), ['error']);
+});
+
+test('reasoning is switched off in the payload', () => {
+  const payload = buildPayload({ env: {}, tier: 'fast', page: '', upstreamMessages: [u('x')] });
+  assert.deepEqual(payload.reasoning, { enabled: false });
 });
 
 test('hand_over emits an action after the text; with no text it gets a fallback sentence per target', async () => {

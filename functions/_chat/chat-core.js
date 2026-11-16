@@ -265,14 +265,16 @@ async function answer({ env, messages, page, send, signal }) {
   const upstreamMessages = lastUpstreamMessages(messages);
   let tier = chosen;
   let result = await callUpstream({ env, tier, page, upstreamMessages, send, signal });
-  let { handUp, handOver } = interpretToolCalls(result.toolCalls);
+  let { handOver } = interpretToolCalls(result.toolCalls);
 
-  // Fast chain asked for more brainpower before saying anything: one rerun, never a loop.
-  if (tier === 'fast' && handUp && !result.emitted) {
+  // The fast chain asked for more brainpower before saying anything, or came back with nothing at all
+  // (a model that spent its whole budget thinking): one rerun on the strong chain, never a loop.
+  if (tier === 'fast' && !result.emitted && !handOver) {
     tier = 'strong';
     result = await callUpstream({ env, tier, page, upstreamMessages, send, signal });
     ({ handOver } = interpretToolCalls(result.toolCalls));
   }
+  if (!result.emitted && !handOver) throw new Error('empty answer'); // the widget shows its error / form, never a blank bubble
 
   if (handOver) {
     if (!result.emitted) await send('delta', { text: HAND_OVER_FALLBACK[handOver.to] || HAND_OVER_FALLBACK.support });
@@ -295,6 +297,7 @@ export function buildPayload({ env, tier, page, upstreamMessages }) {
     stream: true,
     stream_options: { include_usage: true },
     max_tokens: LIMITS.MAX_TOKENS,
+    reasoning: { enabled: false }, // a reasoning model otherwise spends the whole 350 tokens thinking and answers with nothing
     messages: [{ role: 'system', content: buildSystemPrompt({ knowledge: KNOWLEDGE, page, tier }) }, ...upstreamMessages],
     tools: toolsFor(tier),
   };
