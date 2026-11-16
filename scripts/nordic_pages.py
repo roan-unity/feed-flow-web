@@ -7,7 +7,7 @@ the countdown is a memory aid; follow the label and helsestasjonen/BVC. No compe
 
 ARROW = '<svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#arrow"/></svg>'
 IMG = 'style="max-width:100%;height:auto;border-radius:14px;border:1px solid var(--border);margin:8px 0 4px"'
-HREFLANG = [("en", "https://tryfeedflow.app/"), ("nb", "https://tryfeedflow.app/no"), ("sv", "https://tryfeedflow.app/sv"), ("x-default", "https://tryfeedflow.app/")]
+from intl_pages import HREFLANG  # all localized pages
 
 NORDIC = [
     {

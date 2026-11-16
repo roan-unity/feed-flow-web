@@ -38,6 +38,10 @@ T = {
         "foot": "Gratis utskrift från tryfeedflow.app/sv &middot; En logg, inte medicinska råd. Är du orolig för måltider, blöta blöjor eller hur barnet mår, kontakta BVC eller läkare.",
     },
 }
+import sys
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from intl_pages import PRINT  # da de es fi fr it nl pl pt
+T.update(PRINT)
 SIZES = {"a4": "A4", "letter": "letter"}
 
 
@@ -48,7 +52,7 @@ def sheet(lang, size):
            f"<td class='opt'>{t['type']}</td><td></td><td></td><td></td>"
            "<td class='box'>&#9744;</td><td class='box'>&#9744;</td><td></td></tr>")
     totals = "".join(f"<div><span>{x}</span><i></i></div>" for x in t["t"])
-    return f"""<!DOCTYPE html><html lang="{lang}"><head><meta charset="utf-8"><title>{t['title']}</title><style>
+    return f"""<!DOCTYPE html><html lang="{t.get('lang', lang)}"><head><meta charset="utf-8"><title>{t['title']}</title><style>
 @page {{ size: {SIZES[size]}; margin: 11mm 10mm 10mm; }}
 * {{ box-sizing: border-box; }}
 body {{ margin: 0; font-family: -apple-system, 'Helvetica Neue', Arial, sans-serif; color: #102f38; font-size: 10pt; }}
@@ -59,11 +63,11 @@ h1 {{ font-size: 21pt; margin: 0; letter-spacing: -.3pt; }}
 .fields div {{ flex: 1; border-bottom: .8pt solid #8fb3ba; padding-bottom: 3pt; }}
 .unit {{ font-size: 8pt; color: #48636b; text-align: right; margin: -4pt 0 3pt; }}
 table {{ width: 100%; border-collapse: collapse; table-layout: fixed; }}
-th {{ background: #e2f1f3; font-size: 8.4pt; font-weight: 700; padding: 4pt 2pt; border: .8pt solid #9cc0c6; line-height: 1.15; }}
+th {{ hyphens: auto; -webkit-hyphens: auto; overflow-wrap: break-word; background: #e2f1f3; font-size: {'7.6pt' if lang in ('de', 'nl', 'pl', 'fi') else '8.4pt'}; font-weight: 700; padding: 4pt 2pt; border: .8pt solid #9cc0c6; line-height: 1.15; }}
 th small {{ font-weight: 400; font-size: 6.8pt; color: #48636b; }}
 td {{ border: .8pt solid #b7d2d6; height: {"15.6mm" if size == "a4" else "14.2mm"}; text-align: center; color: #9ab3b8; font-size: 8pt; }}
 td.lr span {{ color: #b7d2d6; }} td.box {{ font-size: 13pt; color: #8fb3ba; }}
-col.c0 {{ width: 9%; }} col.c1 {{ width: 12%; }} col.c2 {{ width: 10%; }} col.c3 {{ width: 11%; }} col.c4, col.c5, col.c6 {{ width: 8%; }} col.c7, col.c8 {{ width: 6%; }} col.c9 {{ width: 22%; }}
+col.c0 {{ width: 9%; }} col.c1 {{ width: 12%; }} col.c2 {{ width: 10%; }} col.c3 {{ width: 11%; }} col.c4, col.c5, col.c6 {{ width: 9.3%; }} col.c7, col.c8 {{ width: 6%; }} col.c9 {{ width: 18.1%; }}
 .totals {{ display: flex; gap: 6pt; margin-top: 8pt; align-items: center; }}
 .totals strong {{ font-size: 10pt; margin-right: 2pt; white-space: nowrap; }}
 .totals div {{ flex: 1; border: .8pt solid #9cc0c6; border-radius: 4pt; padding: 3pt 5pt; height: 34pt; }}
@@ -93,13 +97,16 @@ def main():
                 subprocess.run([CHROME, "--headless=new", "--disable-gpu", "--no-pdf-header-footer",
                                 f"--print-to-pdf={pdf}", src.as_uri()], check=True, capture_output=True, timeout=90)
                 print("Built", pdf.relative_to(ROOT), pdf.stat().st_size // 1024, "KB")
-            # Preview image (A4 page at 2x), cropped by the window size.
+            # Preview images for the web pages (A4 page at 2x), as WebP 480/960.
             png = Path(tmp) / f"{lang}.png"
             subprocess.run([CHROME, "--headless=new", "--disable-gpu", "--hide-scrollbars", "--force-device-scale-factor=2",
                             "--window-size=794,1123", f"--screenshot={png}", (Path(tmp) / f"{lang}-a4.html").as_uri()],
                            check=True, capture_output=True, timeout=90)
-            shutil.copy(png, OUT / f"feeding-log-{lang}-preview.png")
-            print("Built", f"printables/feeding-log-{lang}-preview.png")
+            from PIL import Image
+            im = Image.open(png).convert("RGB")
+            for w in (480, 960):
+                im.resize((w, round(im.height * w / im.width)), Image.LANCZOS).save(OUT / f"feeding-log-{lang}-{w}.webp", quality=85)
+            print("Built", f"printables/feeding-log-{lang}-480/960.webp")
 
 
 if __name__ == "__main__":

@@ -345,7 +345,7 @@ def header(active, lang="en"):
 def footer(lang="en"):
     social = [("linkedin", "https://www.linkedin.com/company/feedflow-babyfeedingapp/", "LinkedIn"), ("instagram", "https://www.instagram.com/feedflow_babyfeedingapp", "Instagram"), ("tiktok", "https://www.tiktok.com/@feedflow_babyfeedingapp", "TikTok"), ("youtube", "https://www.youtube.com/@FeedFlow-BabyFeedingApp", "YouTube"), ("facebook", "https://www.facebook.com/feedflowapp", "Facebook"), ("reddit", "https://www.reddit.com/r/FeedFlowParents/", "Reddit")]
     icons = "".join(f'<a class="social-link" href="{url}" target="_blank" rel="noopener noreferrer" aria-label="Feed Flow on {name}" title="{name}">{icon(key)}</a>' for key, url, name in social)
-    links = [("/formula-feeding", "Formula feeding"), ("/breastfeeding-pumping", "Breast & pumping"), ("/solids-allergens", "Solids & allergens"), ("/growth-development", "Growth & development"), ("/baby-health", "Baby health"), ("/flowcast", "FlowCast"), ("/vitamin-d-tracker", "Vitamin D tracker"), ("/baby-report", "Baby Reports"), ("/bottle-countdown", "Bottle countdown"), ("/combo-feeding", "Combo feeding"), ("/share-feeding-log", "Shared feeding log"), ("/free-baby-feeding-tracker", "Free tracker"), ("/printable-feeding-log", "Printable feeding log"), ("/resources", "Guides"), ("/compare", "Compare apps"), ("/faq", "FAQ"), ("/support", "Support"), ("/ambassador", "Ambassadors"), ("/privacy", "Privacy"), ("/terms", "Terms"), ("/no", "Norsk"), ("/sv", "Svenska")]
+    links = [("/formula-feeding", "Formula feeding"), ("/breastfeeding-pumping", "Breast & pumping"), ("/solids-allergens", "Solids & allergens"), ("/growth-development", "Growth & development"), ("/baby-health", "Baby health"), ("/flowcast", "FlowCast"), ("/vitamin-d-tracker", "Vitamin D tracker"), ("/baby-report", "Baby Reports"), ("/bottle-countdown", "Bottle countdown"), ("/combo-feeding", "Combo feeding"), ("/share-feeding-log", "Shared feeding log"), ("/free-baby-feeding-tracker", "Free tracker"), ("/printable-feeding-log", "Printable feeding log"), ("/resources", "Guides"), ("/compare", "Compare apps"), ("/faq", "FAQ"), ("/support", "Support"), ("/ambassador", "Ambassadors"), ("/privacy", "Privacy"), ("/terms", "Terms")]
     blurb = "Feed Flow! is the formula &amp; feeding tracker for iPhone, built in Norway by Zeolite. Feeding, growth and baby health in one calm, privacy-first app."
     if lang == "nb":
         links = [("/no", "Norsk"), ("/sv", "Svenska"), ("/", "English"), ("/printables/feeding-log-nb-a4.pdf", "Matingslogg (PDF)"), ("/support", "Support"), ("/privacy", "Personvern (engelsk)"), ("/terms", "Vilkår (engelsk)")]
@@ -353,8 +353,11 @@ def footer(lang="en"):
     elif lang == "sv":
         links = [("/sv", "Svenska"), ("/no", "Norsk"), ("/", "English"), ("/printables/feeding-log-sv-a4.pdf", "Matningslogg (PDF)"), ("/support", "Support"), ("/privacy", "Integritet (engelska)"), ("/terms", "Villkor (engelska)")]
         blurb = "Feed Flow! är appen för matning och ersättning på iPhone, byggd i Norge av Zeolite. Matning, tillväxt och bebisens hälsa i en lugn app med integriteten först."
+    elif "footer_links" in L.get(lang, {}):
+        links, blurb = L[lang]["footer_links"], L[lang]["blurb"]
+    lang_row = " · ".join(f'<a href="{path}" hreflang="{code}" lang="{code}">{name}</a>' for path, name, code, _ in LANGS)
     links_html = "".join(f'<a href="{url}">{label}</a>' for url, label in links)
-    return f'''<footer class="ft"><div class="wrap"><div class="ft-inner"><div class="ft-left">{wordmark()}<p>{blurb}</p><a class="ft-mail" href="mailto:support@tryfeedflow.app">support@tryfeedflow.app</a><nav class="social-list" aria-label="Feed Flow on social media">{icons}</nav></div><nav class="ft-links" aria-label="Footer">{links_html}</nav></div><div class="ft-bottom">&copy; 2026 Feed Flow!</div></div></footer>'''
+    return f'''<footer class="ft"><div class="wrap"><div class="ft-inner"><div class="ft-left">{wordmark()}<p>{blurb}</p><a class="ft-mail" href="mailto:support@tryfeedflow.app">support@tryfeedflow.app</a><nav class="social-list" aria-label="Feed Flow on social media">{icons}</nav></div><nav class="ft-links" aria-label="Footer">{links_html}</nav></div><div class="ft-bottom"><nav class="ft-langs" aria-label="Languages">{lang_row}</nav><div>&copy; 2026 Feed Flow!</div></div></div></footer>'''
 
 
 def schema(page):
@@ -384,7 +387,8 @@ def schema(page):
 
 
 def render(page):
-    lang = page.get("lang", "en")
+    html_lang = page.get("lang", "en")
+    lang = page.get("ui", html_lang)
     t = L[lang]
     store = APP_STORE if lang == "en" else APP_STORE.replace("ct=website_content", f"ct=website_{lang}")
     url = "https://tryfeedflow.app/" + page["slug"]
@@ -397,7 +401,7 @@ def render(page):
     aside_links = "".join(f'<a href="{link}">{escape(label)} →</a>' for link, label in page["related"])
     guide_crumb = '<a href="/resources">Guides</a><span>/</span>' if page.get("guide") else ('<a href="/compare">Compare apps</a><span>/</span>' if page.get("compare") and page["slug"] != "compare" else '')
     return f'''<!DOCTYPE html>
-<html lang="{lang}" data-theme="light"><head>
+<html lang="{html_lang}" data-theme="light"><head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="apple-itunes-app" content="app-id=6782075454">
 <title>{escape(page['title'])}</title><meta name="description" content="{escape(page['description'], quote=True)}"><meta name="robots" content="index, follow, max-image-preview:large"><meta name="theme-color" content="#2F7886">
 <link rel="canonical" href="{url}">{hreflang}<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@800&amp;display=swap"><link rel="stylesheet" href="/site.css">
@@ -416,7 +420,10 @@ _sys.path.insert(0, str(Path(__file__).resolve().parent))
 from compare_pages import COMPARE, COMPARE_QUERIES
 from question_pages import QUESTION, QUESTION_QUERIES
 from nordic_pages import NORDIC, NORDIC_QUERIES
-PAGES += COMPARE + QUESTION + NORDIC
+from intl_pages import INTL, INTL_QUERIES, INTL_UI, INTL_NAV, LANGS
+L.update(INTL_UI)
+NAV.update(INTL_NAV)
+PAGES += COMPARE + QUESTION + NORDIC + INTL
 
 for item in PAGES:
     target = ROOT / item["file"]
@@ -441,6 +448,7 @@ query_map = {
     **COMPARE_QUERIES,
     **QUESTION_QUERIES,
     **NORDIC_QUERIES,
+    **INTL_QUERIES,
     "guides/vitamin-d-for-babies": ["vitamin D for babies", "baby vitamin D drops and formula", "infant vitamin D supplement guide"]
 }
 (ROOT / "seo").mkdir(exist_ok=True)

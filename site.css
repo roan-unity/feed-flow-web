@@ -259,6 +259,9 @@ footer.ft { border-top: 1px solid var(--border-2); padding: 44px 0 40px; }
 .ft-links a { display: inline-flex; align-items: center; min-height: 36px; }
 .ft-links a:hover { color: var(--ink); text-decoration: underline; text-underline-offset: 4px; }
 .ft-bottom { margin-top: 30px; padding-top: 20px; border-top: 1px solid var(--border-2); font-size: 13px; color: var(--ink-2); }
+.ft-langs { display: flex; flex-wrap: wrap; gap: 4px 6px; margin-bottom: 10px; line-height: 1.8; }
+.ft-langs a { color: var(--ink-2); text-decoration: none; }
+.ft-langs a:hover { color: var(--accent); text-decoration: underline; }
 /* Editorial content pages */
 .content-hero { padding: 48px 0 60px; }
 .breadcrumbs { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 30px; color: var(--ink-2); font-size: 13px; }

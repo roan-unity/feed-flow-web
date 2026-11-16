@@ -438,6 +438,168 @@
         "/no",
         "/"
       ]
+    },
+    {
+      "url": "https://tryfeedflow.app/da",
+      "title": "Feed Flow: Babyapp til amning, flaske og modermælkserstatning | iPhone",
+      "intent": "Babyapp på dansk",
+      "role": "hub",
+      "primaryQueries": [
+        "amme app",
+        "amningsskema",
+        "babyapp dansk",
+        "app til flaskemadning",
+        "amningsskema til print"
+      ],
+      "relatedLinks": [
+        "/printables/feeding-log-da-a4.pdf",
+        "/",
+        "/printable-feeding-log"
+      ]
+    },
+    {
+      "url": "https://tryfeedflow.app/de",
+      "title": "Feed Flow: Still-App und Stillprotokoll für Babys | iPhone",
+      "intent": "Baby-App auf Deutsch",
+      "role": "hub",
+      "primaryQueries": [
+        "Still-App",
+        "Stillprotokoll",
+        "Baby App Fläschchen",
+        "Stillprotokoll zum Ausdrucken",
+        "Baby Tracker App Deutsch"
+      ],
+      "relatedLinks": [
+        "/printables/feeding-log-de-a4.pdf",
+        "/",
+        "/printable-feeding-log"
+      ]
+    },
+    {
+      "url": "https://tryfeedflow.app/es",
+      "title": "Feed Flow: app de lactancia y biberones para bebés | iPhone",
+      "intent": "App para bebés en español",
+      "role": "hub",
+      "primaryQueries": [
+        "app de lactancia",
+        "registro de tomas del bebé",
+        "app para biberones",
+        "registro de lactancia para imprimir",
+        "app para bebés en español"
+      ],
+      "relatedLinks": [
+        "/printables/feeding-log-es-letter.pdf",
+        "/",
+        "/printable-feeding-log"
+      ]
+    },
+    {
+      "url": "https://tryfeedflow.app/fi",
+      "title": "Feed Flow: Vauvasovellus imetykseen, pulloruokintaan ja korvikkeeseen | iPhone",
+      "intent": "Vauvasovellus suomeksi",
+      "role": "hub",
+      "primaryQueries": [
+        "imetyssovellus",
+        "syöttöseuranta vauva",
+        "vauvasovellus suomeksi",
+        "imetysseuranta tulostettava",
+        "pulloruokinta sovellus"
+      ],
+      "relatedLinks": [
+        "/printables/feeding-log-fi-a4.pdf",
+        "/",
+        "/printable-feeding-log"
+      ]
+    },
+    {
+      "url": "https://tryfeedflow.app/fr",
+      "title": "Feed Flow : appli d'allaitement et de biberons pour bébé | iPhone",
+      "intent": "Appli bébé en français",
+      "role": "hub",
+      "primaryQueries": [
+        "application allaitement",
+        "suivi biberon bébé appli",
+        "appli bébé en français",
+        "fiche suivi allaitement à imprimer",
+        "tableau biberons bébé"
+      ],
+      "relatedLinks": [
+        "/printables/feeding-log-fr-a4.pdf",
+        "/",
+        "/printable-feeding-log"
+      ]
+    },
+    {
+      "url": "https://tryfeedflow.app/it",
+      "title": "Feed Flow: app per allattamento, biberon e latte artificiale | iPhone",
+      "intent": "App per neonati in italiano",
+      "role": "hub",
+      "primaryQueries": [
+        "app allattamento",
+        "diario poppate",
+        "app neonato biberon",
+        "diario poppate da stampare",
+        "app per neonati in italiano"
+      ],
+      "relatedLinks": [
+        "/printables/feeding-log-it-a4.pdf",
+        "/",
+        "/printable-feeding-log"
+      ]
+    },
+    {
+      "url": "https://tryfeedflow.app/nl",
+      "title": "Feed Flow: app voor borstvoeding, flesvoeding en kolven | iPhone",
+      "intent": "Baby-app in het Nederlands",
+      "role": "hub",
+      "primaryQueries": [
+        "borstvoeding app",
+        "voedingsschema baby",
+        "flesvoeding app",
+        "voedingsschema baby printen",
+        "baby app Nederlands"
+      ],
+      "relatedLinks": [
+        "/printables/feeding-log-nl-a4.pdf",
+        "/",
+        "/printable-feeding-log"
+      ]
+    },
+    {
+      "url": "https://tryfeedflow.app/pl",
+      "title": "Feed Flow: aplikacja do karmienia piersią i butelką | iPhone",
+      "intent": "Aplikacja dla niemowląt po polsku",
+      "role": "hub",
+      "primaryQueries": [
+        "aplikacja do karmienia piersią",
+        "dziennik karmienia niemowlęcia",
+        "aplikacja dla niemowląt po polsku",
+        "dziennik karmienia do druku",
+        "aplikacja karmienie butelką"
+      ],
+      "relatedLinks": [
+        "/printables/feeding-log-pl-a4.pdf",
+        "/",
+        "/printable-feeding-log"
+      ]
+    },
+    {
+      "url": "https://tryfeedflow.app/pt",
+      "title": "Feed Flow: app de amamentação e mamadeira para bebês | iPhone",
+      "intent": "App para bebês em português",
+      "role": "hub",
+      "primaryQueries": [
+        "app de amamentação",
+        "registro de mamadas",
+        "app para bebê mamadeira",
+        "tabela de mamadas para imprimir",
+        "app para bebês em português"
+      ],
+      "relatedLinks": [
+        "/printables/feeding-log-pt-a4.pdf",
+        "/",
+        "/printable-feeding-log"
+      ]
     }
   ]
 }

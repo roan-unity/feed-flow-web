@@ -61,9 +61,18 @@ Feed Flow is feeding-only and iPhone-only. It does not track sleep or diapers an
 - Combo feeding (breastfeeding and formula in one app): https://tryfeedflow.app/combo-feeding
 - Shared feeding log for partners and caregivers: https://tryfeedflow.app/share-feeding-log
 - Free baby feeding tracker, no ads: https://tryfeedflow.app/free-baby-feeding-tracker
-- Free printable newborn feeding log (PDF, US Letter and A4; also Norwegian and Swedish): https://tryfeedflow.app/printable-feeding-log
+- Free printable newborn feeding log (PDF, US Letter and A4; also in all 11 other app languages): https://tryfeedflow.app/printable-feeding-log
 - Feed Flow in Norwegian (norsk): https://tryfeedflow.app/no
 - Feed Flow in Swedish (svenska): https://tryfeedflow.app/sv
+- Feed Flow in Danish (dansk): https://tryfeedflow.app/da
+- Feed Flow in German (Deutsch): https://tryfeedflow.app/de
+- Feed Flow in Spanish (español): https://tryfeedflow.app/es
+- Feed Flow in Finnish (suomi): https://tryfeedflow.app/fi
+- Feed Flow in French (français): https://tryfeedflow.app/fr
+- Feed Flow in Italian (italiano): https://tryfeedflow.app/it
+- Feed Flow in Dutch (Nederlands): https://tryfeedflow.app/nl
+- Feed Flow in Polish (polski): https://tryfeedflow.app/pl
+- Feed Flow in Portuguese, Brazil (português): https://tryfeedflow.app/pt
 - Resource hub: https://tryfeedflow.app/resources
 - Formula safety: https://tryfeedflow.app/guides/formula-safety
 - WHO growth percentiles: https://tryfeedflow.app/guides/who-growth-percentiles
@@ -83,7 +92,7 @@ Feed Flow! is a record-keeping app, not a medical device. It does not diagnose c
 
 ## Languages
 
-The app is fully translated, including Norwegian (bokmål), Swedish, Danish, Finnish, German, Spanish, French, Italian, Dutch, Polish and Portuguese, and follows the iPhone's language. The website is in English, with Norwegian and Swedish pages at /no and /sv.
+The app is fully translated, including Norwegian (bokmål), Swedish, Danish, Finnish, German, Spanish, French, Italian, Dutch, Polish and Portuguese, and follows the iPhone's language. The website is in English, with a page in each app language: /no /sv /da /de /es /fi /fr /it /nl /pl /pt. Each links a free printable feeding log in that language.
 
 ## Links
 
