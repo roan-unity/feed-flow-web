@@ -16,8 +16,8 @@ Pinned widget states for screenshots: `?chatdemo=bubbles`, `handsupport`, `handf
 | Name | Needed | What |
 | --- | --- | --- |
 | `OPENROUTER_API_KEY` | yes | Without it `/api/chat` answers `503 not_configured` and the widget falls back to the form. |
-| `CHAT_MODELS_FAST` | no | Comma separated OpenRouter slugs, tried in order. Default `nvidia/nemotron-3.5-super-vl:free,google/gemini-2.5-flash-lite,mistralai/mistral-small-2603`. |
-| `CHAT_MODELS_STRONG` | no | Default `mistralai/mistral-medium-3.1,google/gemini-2.5-flash-lite`. |
+| `CHAT_MODELS_FAST` | no | Comma separated OpenRouter slugs, tried in order. Default `openai/gpt-6-luna,google/gemini-2.5-flash-lite,nvidia/nemotron-3.5-super-vl:free`. |
+| `CHAT_MODELS_STRONG` | no | Default `mistralai/mistral-medium-3.1,openai/gpt-6-luna`. |
 | `RESEND_API_KEY` | for the form | Sends the hand-over emails. |
 | `FOUNDER_EMAIL` | no | Where `to: "founder"` goes. Falls back to support@tryfeedflow.app. |
 | `ESCALATION_FROM` | no | Sender address. |

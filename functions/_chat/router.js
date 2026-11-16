@@ -9,8 +9,8 @@
 // (its `models` fallback array) and reports which one answered.
 
 export const DEFAULT_MODELS = {
-  fast: ['nvidia/nemotron-3.5-super-vl:free', 'google/gemini-2.5-flash-lite', 'mistralai/mistral-small-2603'],
-  strong: ['mistralai/mistral-medium-3.1', 'google/gemini-2.5-flash-lite'],
+  fast: ['openai/gpt-6-luna', 'google/gemini-2.5-flash-lite', 'nvidia/nemotron-3.5-super-vl:free'],
+  strong: ['mistralai/mistral-medium-3.1', 'openai/gpt-6-luna'],
 };
 
 export const ROUTING = {
