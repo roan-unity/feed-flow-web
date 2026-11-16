@@ -332,14 +332,14 @@ def header(active):
 def footer():
     social = [("linkedin", "https://www.linkedin.com/company/feedflow-babyfeedingapp/", "LinkedIn"), ("instagram", "https://www.instagram.com/feedflow_babyfeedingapp", "Instagram"), ("tiktok", "https://www.tiktok.com/@feedflow_babyfeedingapp", "TikTok"), ("youtube", "https://www.youtube.com/@FeedFlow-BabyFeedingApp", "YouTube"), ("facebook", "https://www.facebook.com/feedflowapp", "Facebook"), ("reddit", "https://www.reddit.com/r/FeedFlowParents/", "Reddit")]
     icons = "".join(f'<a class="social-link" href="{url}" target="_blank" rel="noopener noreferrer" aria-label="Feed Flow on {name}" title="{name}">{icon(key)}</a>' for key, url, name in social)
-    links = [("/formula-feeding", "Formula feeding"), ("/breastfeeding-pumping", "Breast & pumping"), ("/solids-allergens", "Solids & allergens"), ("/growth-development", "Growth & development"), ("/baby-health", "Baby health"), ("/flowcast", "FlowCast"), ("/vitamin-d-tracker", "Vitamin D tracker"), ("/baby-report", "Baby Reports"), ("/resources", "Guides"), ("/compare", "Compare apps"), ("/faq", "FAQ"), ("/support", "Support"), ("/ambassador", "Ambassadors"), ("/privacy", "Privacy"), ("/terms", "Terms")]
+    links = [("/formula-feeding", "Formula feeding"), ("/breastfeeding-pumping", "Breast & pumping"), ("/solids-allergens", "Solids & allergens"), ("/growth-development", "Growth & development"), ("/baby-health", "Baby health"), ("/flowcast", "FlowCast"), ("/vitamin-d-tracker", "Vitamin D tracker"), ("/baby-report", "Baby Reports"), ("/bottle-countdown", "Bottle countdown"), ("/combo-feeding", "Combo feeding"), ("/share-feeding-log", "Shared feeding log"), ("/free-baby-feeding-tracker", "Free tracker"), ("/resources", "Guides"), ("/compare", "Compare apps"), ("/faq", "FAQ"), ("/support", "Support"), ("/ambassador", "Ambassadors"), ("/privacy", "Privacy"), ("/terms", "Terms")]
     links_html = "".join(f'<a href="{url}">{label}</a>' for url, label in links)
     return f'''<footer class="ft"><div class="wrap"><div class="ft-inner"><div class="ft-left">{wordmark()}<p>Feed Flow! is the formula &amp; feeding tracker for iPhone, built in Norway by Zeolite. Feeding, growth and baby health in one calm, privacy-first app.</p><a class="ft-mail" href="mailto:support@tryfeedflow.app">support@tryfeedflow.app</a><nav class="social-list" aria-label="Feed Flow on social media">{icons}</nav></div><nav class="ft-links" aria-label="Footer">{links_html}</nav></div><div class="ft-bottom">&copy; 2026 Feed Flow!</div></div></footer>'''
 
 
 def schema(page):
     url = "https://tryfeedflow.app/" + page["slug"]
-    webpage = {"@type": "WebPage", "@id": url + "#page", "url": url, "name": page["title"], "description": page["description"], "dateModified": "2026-11-12", "image": "https://tryfeedflow.app" + page["image"], "isPartOf": {"@id": "https://tryfeedflow.app/#website"}, "about": {"@id": "https://tryfeedflow.app/#app"}}
+    webpage = {"@type": "WebPage", "@id": url + "#page", "url": url, "name": page["title"], "description": page["description"], "dateModified": page.get("date", "2026-11-12"), "image": "https://tryfeedflow.app" + page["image"], "isPartOf": {"@id": "https://tryfeedflow.app/#website"}, "about": {"@id": "https://tryfeedflow.app/#app"}}
     citations = {
         "guides/formula-safety": ["https://www.cdc.gov/infant-toddler-nutrition/formula-feeding/preparation-and-storage.html"],
         "guides/who-growth-percentiles": ["https://www.who.int/tools/child-growth-standards/standards"],
@@ -389,7 +389,8 @@ def render(page):
 import sys as _sys
 _sys.path.insert(0, str(Path(__file__).resolve().parent))
 from compare_pages import COMPARE, COMPARE_QUERIES
-PAGES += COMPARE
+from question_pages import QUESTION, QUESTION_QUERIES
+PAGES += COMPARE + QUESTION
 
 for item in PAGES:
     target = ROOT / item["file"]
@@ -412,6 +413,7 @@ query_map = {
     "guides/who-growth-percentiles": ["what does baby weight percentile mean", "WHO baby growth percentiles", "head circumference percentile explained"],
     "guides/allergen-reaction-diary": ["baby allergen reaction diary", "baby reaction after egg next day", "what to record after baby food reaction"],
     **COMPARE_QUERIES,
+    **QUESTION_QUERIES,
     "guides/vitamin-d-for-babies": ["vitamin D for babies", "baby vitamin D drops and formula", "infant vitamin D supplement guide"]
 }
 (ROOT / "seo").mkdir(exist_ok=True)

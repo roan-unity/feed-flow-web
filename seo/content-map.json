@@ -314,6 +314,74 @@
         "/formula-feeding",
         "/breastfeeding-pumping"
       ]
+    },
+    {
+      "url": "https://tryfeedflow.app/bottle-countdown",
+      "title": "Bottle Countdown App: Know When a Prepared Bottle Was Made | Feed Flow",
+      "intent": "Bottle countdown",
+      "role": "hub",
+      "primaryQueries": [
+        "app that tells me when formula bottle expires",
+        "bottle timer app lock screen",
+        "prepared formula countdown app",
+        "how long has this bottle been out app"
+      ],
+      "relatedLinks": [
+        "/guides/formula-safety",
+        "/formula-feeding",
+        "/share-feeding-log"
+      ]
+    },
+    {
+      "url": "https://tryfeedflow.app/combo-feeding",
+      "title": "Combo Feeding Tracker: Breastfeeding and Formula in One App | Feed Flow",
+      "intent": "Combo feeding tracker",
+      "role": "hub",
+      "primaryQueries": [
+        "combo feeding tracker",
+        "breastfeeding and formula tracker app",
+        "mixed feeding app iPhone",
+        "track nursing and bottles together"
+      ],
+      "relatedLinks": [
+        "/breastfeeding-pumping",
+        "/bottle-countdown",
+        "/flowcast"
+      ]
+    },
+    {
+      "url": "https://tryfeedflow.app/share-feeding-log",
+      "title": "Baby Tracker You and Your Partner Can Both Log In | Feed Flow",
+      "intent": "Shared feeding log",
+      "role": "hub",
+      "primaryQueries": [
+        "baby tracker app for both parents",
+        "shared baby feeding log",
+        "baby tracker partner sync",
+        "caregiver baby log app"
+      ],
+      "relatedLinks": [
+        "/combo-feeding",
+        "/bottle-countdown",
+        "/baby-report"
+      ]
+    },
+    {
+      "url": "https://tryfeedflow.app/free-baby-feeding-tracker",
+      "title": "Free Baby Feeding Tracker for iPhone, No Ads | Feed Flow",
+      "intent": "Free feeding tracker",
+      "role": "hub",
+      "primaryQueries": [
+        "free baby feeding tracker",
+        "baby tracker app no ads",
+        "free breastfeeding and formula app",
+        "free baby feeding log iPhone"
+      ],
+      "relatedLinks": [
+        "/combo-feeding",
+        "/compare",
+        "/faq"
+      ]
     }
   ]
 }

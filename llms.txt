@@ -57,6 +57,10 @@ Feed Flow is feeding-only and iPhone-only. It does not track sleep or diapers an
 - FlowCast next-feed predictions and optional notifications: https://tryfeedflow.app/flowcast
 - Vitamin D drops and formula calculations: https://tryfeedflow.app/vitamin-d-tracker
 - Baby feeding and growth PDF reports: https://tryfeedflow.app/baby-report
+- Bottle countdown on the Lock Screen: https://tryfeedflow.app/bottle-countdown
+- Combo feeding (breastfeeding and formula in one app): https://tryfeedflow.app/combo-feeding
+- Shared feeding log for partners and caregivers: https://tryfeedflow.app/share-feeding-log
+- Free baby feeding tracker, no ads: https://tryfeedflow.app/free-baby-feeding-tracker
 - Resource hub: https://tryfeedflow.app/resources
 - Formula safety: https://tryfeedflow.app/guides/formula-safety
 - WHO growth percentiles: https://tryfeedflow.app/guides/who-growth-percentiles
