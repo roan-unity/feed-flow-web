@@ -62,6 +62,7 @@ Feed Flow is feeding-only and iPhone-only. It does not track sleep or diapers an
 - WHO growth percentiles: https://tryfeedflow.app/guides/who-growth-percentiles
 - Allergen reaction diary: https://tryfeedflow.app/guides/allergen-reaction-diary
 - Vitamin D tracking: https://tryfeedflow.app/guides/vitamin-d-for-babies
+- Should you use a feeding tracker? (when it helps, when it adds pressure): https://tryfeedflow.app/guides/should-you-use-a-feeding-tracker
 
 ## Ambassador program
 
