@@ -143,34 +143,27 @@ try {
   await page.locator('[data-review-index="2"] .review-toggle').click();
   check((await page.locator('[data-review-index="2"] blockquote').getAttribute("lang")) === "nb", "Translated review can be restored");
 
-  // Ambassador sharing, validation and successful form submission.
+  // Ambassador validation and successful form submission. The function is stubbed, so no email is sent.
   await page.setViewportSize({ width: 1440, height: 900 });
   await page.goto(origin + "/ambassador", { waitUntil: "networkidle" });
   await page.locator("#amb-submit").click();
   check(await page.locator("#formStatus").isVisible(), "Empty ambassador form shows validation feedback");
-  await page.getByRole("button", { name: "Share the application link" }).click();
-  await page.waitForTimeout(150);
-  const clipboard = await page.evaluate(() => navigator.clipboard.readText());
-  check(clipboard === "https://tryfeedflow.app/ambassador", "Ambassador application link copies", clipboard);
+  check((await page.locator("#ambassadorForm select, #ambassadorForm [name=platform], #ambassadorForm [name=audience-size]").count()) === 0, "Ambassador form asks for no role, platform or audience size");
   await page.locator("#amb-name").fill("Test Applicant");
   await page.locator("#amb-email").fill("test@example.com");
-  await page.locator("#amb-country").fill("Norway");
-  await page.locator("#amb-role").selectOption({ label: "IBCLC / lactation consultant" });
-  await page.locator("#p-pr").check();
-  await page.locator("#amb-handle").fill("https://example.com/practice");
-  await page.locator("#amb-note").fill("I support families with feeding and want to share a useful record-keeping tool.");
-  await page.locator("#amb-consent").check();
+  await page.locator("#amb-work").fill("https://example.com/practice");
+  await page.locator("#amb-note").fill("I support families with feeding.");
+  await page.locator("#amb-agree").check();
   let postedBody = "";
-  await page.route(origin + "/", async (route) => {
-    if (route.request().method() === "POST") {
-      postedBody = route.request().postData() || "";
-      await route.fulfill({ status: 200, contentType: "text/html", body: "OK" });
-    } else await route.continue();
+  await page.route(origin + "/api/ambassador", async (route) => {
+    postedBody = route.request().postData() || "";
+    await route.fulfill({ status: 200, contentType: "application/json", body: JSON.stringify({ ok: true }) });
   });
   await page.locator("#amb-submit").click();
-  await page.locator("#formStatus.success").waitFor();
-  check((await page.locator("#formStatus").textContent()).includes("received"), "Ambassador form shows successful submission");
-  check(postedBody.includes("Test+Applicant") && postedBody.includes("Professional+practice"), "Ambassador form submits expected fields", postedBody);
+  await page.locator("#formCard .done-card").waitFor();
+  check((await page.locator("#formCard").textContent()).includes("We have your application"), "Ambassador form shows successful submission");
+  const posted = JSON.parse(postedBody || "{}");
+  check(posted.name === "Test Applicant" && posted.email === "test@example.com" && posted.work === "https://example.com/practice" && posted.agree === true && posted.company === "", "Ambassador form submits expected fields", postedBody);
   await page.locator(".faq-list summary").first().click();
   check(await page.locator(".faq-list details").first().getAttribute("open") !== null, "Ambassador FAQ opens");
 

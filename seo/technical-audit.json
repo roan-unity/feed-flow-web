@@ -1,13 +1,14 @@
 {
   "workflow": "OpenSEO seo-audit local technical checks",
   "liveKeywordData": "Not connected; no volume, ranking or traffic claims are included",
-  "sitemapUrls": 42,
-  "pagesChecked": 42,
+  "sitemapUrls": 44,
+  "pagesChecked": 44,
   "errors": [],
   "warnings": [
     "index.html: meta description is 183 characters",
     "guides/should-you-use-a-feeding-tracker.html: meta description is 185 characters",
     "compare.html: meta description is 177 characters",
+    "founding-families.html: meta description is 176 characters",
     "bottle-countdown.html: title is 70 characters",
     "bottle-countdown.html: meta description is 190 characters",
     "combo-feeding.html: title is 71 characters",
@@ -126,8 +127,14 @@
     {
       "url": "https://tryfeedflow.app/ambassador",
       "file": "ambassador.html",
-      "titleLength": 57,
-      "descriptionLength": 152
+      "titleLength": 60,
+      "descriptionLength": 156
+    },
+    {
+      "url": "https://tryfeedflow.app/mom-creator-affiliate-program",
+      "file": "mom-creator-affiliate-program.html",
+      "titleLength": 56,
+      "descriptionLength": 163
     },
     {
       "url": "https://tryfeedflow.app/compare",
@@ -170,6 +177,12 @@
       "file": "support.html",
       "titleLength": 37,
       "descriptionLength": 169
+    },
+    {
+      "url": "https://tryfeedflow.app/founding-families",
+      "file": "founding-families.html",
+      "titleLength": 63,
+      "descriptionLength": 176
     },
     {
       "url": "https://tryfeedflow.app/gift",

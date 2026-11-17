@@ -11,7 +11,7 @@ import hashlib, pathlib, re
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 PATTERN = re.compile(
-    r'/(site\.css|chat\.css|chat\.js|how-it-works\.js|screens/how/[\w-]+\.(?:webp|png))(?:\?v=[0-9a-f]+)?'
+    r'/(site\.css|chat\.css|chat\.js|how-it-works\.js|ambassador\.js|screens/how/[\w-]+\.(?:webp|png))(?:\?v=[0-9a-f]+)?'
 )
 _cache = {}
 
