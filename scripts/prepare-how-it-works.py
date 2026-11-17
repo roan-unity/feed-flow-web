@@ -75,6 +75,18 @@ for name, filename in RECORDED.items():
         save(RECORDED_FRAMES[name], name)
 save(report_scroll(), "report-scroll", quality=74)
 
+# Step 02 lifts the action panel (type chip, amount slider, round log button) out of the Today frame
+# and shows it sharp in the middle of the phone. Same pixels as the "press" frame, only cropped; the
+# two sizes keep the scale of press-360 / press-720 so the panel can sit exactly on top of the frame.
+PANEL_BOX_1206 = (16, 1630, 1190, 2390)
+if "press" in RECORDED_FRAMES:
+    panel = RECORDED_FRAMES["press"].crop(PANEL_BOX_1206)
+    for width in (360, 720):
+        size = (round(panel.width * width / 1206), round(panel.height * width / 1206))
+        target = OUT / f"press-panel-{width}.webp"
+        panel.resize(size, Image.Resampling.LANCZOS).save(target, "WEBP", quality=82, method=6)
+        print(f"Created {target.relative_to(ROOT)} ({size[0]}x{size[1]}, {target.stat().st_size // 1024} KB)")
+
 
 def background_strip(image: Image.Image, name: str, left_cols=(0.008, 0.03), right_cols=(0.97, 0.992)) -> None:
     """The plain phone background for a screen: the left edge of the capture (where nothing is drawn),
