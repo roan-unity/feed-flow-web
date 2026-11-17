@@ -195,7 +195,7 @@ describe('ambassador page and script', () => {
   test('the published terms are on the page, and no job markup', () => {
     assert.match(html, /35–50% commission on net profit/);
     assert.match(html, /own link or code/);
-    assert.match(html, /not guaranteed/);
+    assert.match(html, /cannot (say yes to everyone or )?promise/);
     assert.ok(!/JobPosting/.test(html));
   });
 });
