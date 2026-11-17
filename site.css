@@ -454,13 +454,14 @@ html[data-theme="dark"] .form-status.error { background: #40231f; color: #ffb8aa
 
 /* How logging works (index.html #how-it-works, motion in how-it-works.js) */
 .hiw .section-heading { margin-bottom: 44px; }
-.hiw-steps { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 32px; list-style: none; }
-.hiw-step { display: flex; flex-direction: column; align-items: center; min-width: 0; text-align: center; }
+.hiw-steps { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); grid-template-rows: auto auto; gap: 0 28px; padding-bottom: 84px; list-style: none; }
+.hiw-step { display: grid; grid-row: span 2; grid-template-rows: subgrid; justify-items: center; align-content: start; min-width: 0; text-align: center; }
 .hiw-device { position: relative; width: 100%; max-width: 240px; }
+.hiw-steps .hiw-device { max-width: 236px; }
 .hiw-phone { position: relative; margin: 0; overflow: hidden; isolation: isolate; border: 1px solid var(--border); border-radius: 13% / 6%; background: var(--bg-soft); box-shadow: var(--shadow-lg); }
 .hiw-phone > img { display: block; width: 100%; height: auto; }
 .hiw-phone .hiw-layer { position: absolute; inset: 0; width: 100%; height: 100%; max-width: none; pointer-events: none; }
-.hiw-steps .hiw-phone { aspect-ratio: 360 / 786; }
+.hiw-steps .hiw-phone { aspect-ratio: 360 / 783; }
 .hiw-steps .hiw-phone > img, .hiw-steps .hiw-phone .hiw-layer { height: 100%; object-fit: cover; object-position: top; }
 .hiw-scroll { aspect-ratio: 360 / 783; }
 .hiw-scroll > img, .hiw-scroll .hiw-layer { position: absolute; top: 0; left: 0; right: auto; bottom: auto; width: 100%; height: auto; }
@@ -471,36 +472,34 @@ html[data-theme="dark"] .form-status.error { background: #40231f; color: #ffb8aa
 .hiw-meter-value { color: var(--ink); font-size: 26px; font-weight: 760; line-height: 1.1; letter-spacing: -.02em; font-variant-numeric: tabular-nums; }
 .hiw-count { display: inline-block; min-width: 2ch; text-align: right; }
 .hiw-meter-label { color: var(--ink-2); font-size: 14px; font-weight: 650; }
-.hiw-band { position: absolute; background: linear-gradient(#fcf6ea, #faf3e4); border-top: 1.5px solid #fffaf0; pointer-events: none; }
-.hiw-tipcover { position: absolute; left: 37.3%; top: 66.4%; width: 11.4%; height: 5.1%; border-radius: 6px; background: #748988; box-shadow: 0 0 6px 3px #748988; pointer-events: none; }
-.hiw-handle { position: absolute; top: 71.76%; width: 3.9%; aspect-ratio: 1; box-sizing: border-box; border: 2px solid #efab5a; border-radius: 50%; background: #fff6e9; pointer-events: none; }
-.hiw-finger { position: absolute; top: 71.76%; width: 8%; aspect-ratio: 1; box-sizing: border-box; border: 1.5px solid rgba(255, 255, 255, .85); border-radius: 50%; background: rgba(255, 255, 255, .32); box-shadow: 0 2px 8px rgba(0, 0, 0, .25); pointer-events: none; }
+.hiw-band { position: absolute; background: linear-gradient(#fbf2e3, #f8efdf); border-top: 1.5px solid #fffaf0; pointer-events: none; }
+.hiw-tipcover { position: absolute; left: 37.4%; top: 65.9%; width: 11.2%; height: 3.9%; border-radius: 6px; background: #768b8a; box-shadow: 0 0 5px 3px #768b8a; pointer-events: none; }
+.hiw-handle { position: absolute; top: 70.69%; width: 3.3%; aspect-ratio: 1; box-sizing: border-box; border: 2px solid #efab5a; border-radius: 50%; background: #fff6e9; pointer-events: none; }
+.hiw-finger { position: absolute; top: 70.69%; width: 8%; aspect-ratio: 1; box-sizing: border-box; border: 1.5px solid rgba(255, 255, 255, .85); border-radius: 50%; background: rgba(255, 255, 255, .32); box-shadow: 0 2px 8px rgba(0, 0, 0, .25); pointer-events: none; }
 .hiw-spark { position: absolute; z-index: 6; clip-path: polygon(50% 0, 65% 35%, 100% 50%, 65% 65%, 50% 100%, 35% 65%, 0 50%, 35% 35%); opacity: 0; pointer-events: none; }
 .hiw-steps .hiw-phone { container-type: inline-size; }
-.hiw-taken { position: absolute; z-index: 3; right: 55.83%; top: 83%; color: #fff; font-family: var(--sf); font-size: 7cqw; font-weight: 800; line-height: 1; letter-spacing: .02em; white-space: nowrap; pointer-events: none; }
+/* Step 02: everything but the log button is softly blurred and dimmed, and the button is ringed. */
+.hiw-steps .hiw-phone > .hiw-dim { position: absolute; inset: 0; z-index: 2; width: 100%; height: 100%; object-fit: cover; object-position: top; pointer-events: none; filter: blur(.5cqw) brightness(.8) saturate(.88); -webkit-mask-image: radial-gradient(circle at 50% 84.4%, transparent 14.5cqw, #000 23cqw); mask-image: radial-gradient(circle at 50% 84.4%, transparent 14.5cqw, #000 23cqw); }
+.hiw-cue-ring { position: absolute; left: 50%; top: 84.4%; z-index: 3; width: 30%; aspect-ratio: 1; box-sizing: border-box; border: 2px solid var(--coral); border-radius: 50%; transform: translate(-50%, -50%); pointer-events: none; }
+.hiw-taken { position: absolute; z-index: 3; right: 56.4%; top: 81.35%; color: #fff; font-family: var(--sf); font-size: 7cqw; font-weight: 800; line-height: 1; letter-spacing: .02em; white-space: nowrap; pointer-events: none; }
 .hiw-glow { position: absolute; z-index: 8; border-radius: 999px; box-shadow: 0 0 0 1.5px var(--teal), 0 0 14px 2px var(--glow); pointer-events: none; }
 .hiw-fan { position: relative; aspect-ratio: 360 / 783; }
 .hiw-fan .hiw-phone { position: absolute; left: 27%; top: 24%; width: 50%; transform: translateX(calc(var(--f) * 24%)) rotate(calc(var(--f) * 4.5deg)); transform-origin: 50% 100%; box-shadow: var(--shadow-sm); }
 .hiw-callout { position: absolute; left: 50%; top: calc(100% + 12px); z-index: 2; transform: translateX(-50%); padding: 7px 14px; border: 1px solid var(--border); border-radius: 999px; background: var(--surface); box-shadow: var(--shadow-sm); white-space: nowrap; }
 .hiw-callout-text { color: var(--ink); font-size: 14px; font-weight: 700; line-height: 1.2; }
-.hiw-callout-line { display: none; }
 .hiw-copy { min-width: 0; }
-.hiw-step .hiw-copy { margin-top: 92px; }
+.hiw-step .hiw-copy { margin-bottom: 22px; }
+.hiw-step .hiw-copy h3 { text-wrap: balance; }
 .hiw-num { display: block; color: var(--accent); font-family: var(--baloo); font-size: 24px; font-weight: 800; line-height: 1; }
 .hiw-copy h3 { margin-top: 10px; font-size: 22px; }
 .hiw-copy p { max-width: 30ch; margin: 8px auto 0; color: var(--ink-2); font-size: 16px; line-height: 1.5; text-wrap: pretty; }
-.hiw-beats { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; margin-top: 72px; }
+.hiw-beats { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; margin-top: 56px; }
 .hiw-beat { display: grid; grid-template-columns: minmax(0, 190px) minmax(0, 1fr); gap: 28px; align-items: center; padding: 26px; border: 1px solid var(--border); border-radius: var(--r-lg); background: var(--bg-soft); }
 .hiw-beat .hiw-copy p { margin-left: 0; }
-@media (min-width: 1100px) {
-  .hiw-callout { top: 68.3%; left: 0; width: 100%; transform: none; padding: 0; border: 0; border-radius: 0; background: none; box-shadow: none; white-space: normal; }
-  .hiw-callout-text { position: absolute; right: calc(100% + 18px); top: 0; width: 98px; transform: translateY(-50%); text-align: right; font-size: 14px; text-wrap: balance; }
-  .hiw-callout-line { display: block; position: absolute; left: -10px; top: 0; width: calc(37.8% + 10px); height: 1.5px; margin-top: -.75px; background: var(--accent); transform-origin: left center; }
-  .hiw-callout-line::after { content: ""; position: absolute; right: -3px; top: -2.25px; width: 6px; height: 6px; border-radius: 50%; background: var(--accent); }
-}
 @media (max-width: 900px) {
   .hiw-device { max-width: 260px; }
-  .hiw-steps { gap: 20px; }
+  .hiw-steps { grid-template-columns: repeat(2, minmax(0, 1fr)); grid-template-rows: none; gap: 104px 20px; }
+  .hiw-step { grid-row: auto; grid-template-rows: auto auto; }
   .hiw-copy h3 { font-size: 20px; }
   .hiw-copy p { font-size: 15px; }
   .hiw-beats { grid-template-columns: 1fr; margin-top: 56px; }
@@ -508,11 +507,13 @@ html[data-theme="dark"] .form-status.error { background: #40231f; color: #ffb8aa
 }
 @media (max-width: 640px) {
   .hiw .section-heading { margin-bottom: 32px; }
-  .hiw-steps { grid-template-columns: 1fr; gap: 56px; }
-  .hiw-step .hiw-copy { margin-top: 96px; }
+  .hiw-steps { grid-template-columns: 1fr; gap: 48px; }
+  .hiw-steps .hiw-device { max-width: 230px; }
+  .hiw-step .hiw-copy { margin-bottom: 18px; }
+  .hiw-step:nth-child(3) { padding-bottom: 48px; }
   .hiw-copy h3 { font-size: 21px; }
   .hiw-copy p { margin-left: auto; font-size: 16px; }
-  .hiw-beats { margin-top: 56px; gap: 16px; }
+  .hiw-beats { margin-top: 40px; gap: 16px; }
   .hiw-beat { grid-template-columns: 1fr; justify-items: center; gap: 26px; padding: 24px 20px; border-radius: var(--r-md); text-align: center; }
   .hiw-beat .hiw-device { max-width: 260px; }
   .hiw-beat .hiw-copy p { margin-left: auto; }
