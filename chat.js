@@ -110,9 +110,9 @@
   var ICON_CHECK = ['M5 12.5l4.5 4.5L19 7.5'];
   function store(key, value) { if (DEMO) return; try { sessionStorage.setItem(key, value); } catch (e) {} }
   function load(key) { if (DEMO) return null; try { return sessionStorage.getItem(key); } catch (e) { return null; } }
-  function avatar(cls) {
+  function avatar(cls, src) {
     var img = h('img', cls);
-    img.src = '/assets/nora.svg';
+    img.src = src || '/assets/nora.svg';
     img.alt = '';
     img.width = 96;
     img.height = 96;
@@ -225,7 +225,7 @@
   launcher.setAttribute('aria-expanded', 'false');
   launcher.setAttribute('aria-controls', 'ffc-panel');
   launcher.setAttribute('aria-label', COPY.launcher);
-  var launcherAv = avatar('ffc-l-av');
+  var launcherAv = avatar('ffc-l-av', '/assets/nora-face.svg');
   var launcherX = h('span', 'ffc-l-x');
   launcherX.appendChild(icon(ICON_X));
   launcher.appendChild(launcherAv);
