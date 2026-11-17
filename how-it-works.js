@@ -32,19 +32,25 @@
   /* Piece rectangles are [left, top, right, bottom] in % of the screenshot.
      Each piece is a copy of the real screenshot clipped to that rectangle. */
   var SCRIPTS = {
-    start: {
-      duration: 2900, rate: 1.45,
-      pieces: [
+    /* Step 01: the log menu with everything the app logs (a composite of real captures, see
+       scripts/prepare-how-it-works.py). The discs arrive one after another, back row then front row,
+       each rising a little and settling; then Formula is tapped. */
+    start: (function () {
+      var back = [12.7, 31.3, 50, 68.7, 87.3].map(function (x) { return [x - 8.8, 35.4, x + 8.8, 44.3]; });
+      var front = [[8.5, 46.8, 28, 60.5], [38, 46.8, 62, 60.5], [72, 46.8, 91.5, 60.5]];
+      var STEP = 138, FIRST = 620; /* 138 on this script's clock is 95 ms on screen (rate 1.45) */
+      var pieces = [
         { r: [8, 2.4, 95, 5.4], a: 'fade', t: [350, 650] },
-        { r: [15, 31, 85, 36.2], a: 'up', t: [450, 850] },
-        { r: [40.5, 36.4, 59.5, 46], a: 'drop', t: [600, 1000] },
-        { r: [6.5, 47.2, 29, 61], a: 'drop', t: [750, 1150] },
-        { r: [36.5, 46.4, 63.5, 61], a: 'drop', t: [900, 1300], press: [1900, 2350], origin: [50, 53.5] },
-        { r: [70.5, 47.2, 93, 61], a: 'drop', t: [1050, 1450] },
-        { r: [0, 61.7, 100, 100], a: 'up', t: [1500, 1950] }
-      ],
-      ring: { c: [50, 52.5], w: 25, t: [2050, 2700] }
-    },
+        { r: [15, 29.6, 85, 34.6], a: 'up', t: [450, 850] },
+        { r: [0, 61.7, 100, 100], a: 'up', t: [500, 950] }
+      ];
+      back.concat(front).forEach(function (r, i) {
+        var piece = { r: r, a: 'drop', lift: -4.5, f: i < 5 ? [0.5, 1.2] : [4, 1.4], t: [FIRST + i * STEP, FIRST + i * STEP + 430] };
+        if (i === 6) { piece.press = [2150, 2600]; piece.origin = [50, 52.4]; }
+        pieces.push(piece);
+      });
+      return { duration: 3150, rate: 1.45, pieces: pieces, ring: { c: [50, 52.4], w: 25, t: [2300, 2950] } };
+    })(),
     /* Step 02: the whole Today screen arrives, then the action panel (its own crop of the same
        capture, .hiw-panel in the HTML) lifts from where it really sits up to the centre while the
        screen behind blurs and dims (.hiw-dim). The log button's halo breathes three times and on the
