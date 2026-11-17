@@ -1,0 +1,82 @@
+{
+  "slug": "es/guias/mi-bebe-come-lo-suficiente",
+  "file": "es/guias/mi-bebe-come-lo-suficiente.html",
+  "active": "resources",
+  "guide": true,
+  "date": "2026-11-17",
+  "title": "¿Mi bebé come lo suficiente? Señales a observar | Feed Flow",
+  "description": "Pañales, peso al nacer recuperado en unas dos semanas, buen crecimiento y un bebé satisfecho. Qué dicen los CDC, la AAP, el NHS y la OMS, y cuándo llamar.",
+  "eyebrow": "Guía de señales de alimentación",
+  "h1": "¿Cómo sé si mi bebé está comiendo lo suficiente?",
+  "intro": "Fíjate en los pañales, el peso y cómo se ve tu bebé después de comer. Los CDC dicen que un bebé amamantado debe tener al menos 6 pañales mojados y 3 popós al día entre los días 5 y 7, recuperar su peso al nacer entre el día 10 y el 14, seguir subiendo de peso de forma constante y verse satisfecho después de comer. El NHS da a la mayoría de los bebés hasta 3 semanas para recuperar su peso al nacer.",
+  "image": "/screens/formula/10-feeding-report-360.webp",
+  "srcset": "/screens/formula/10-feeding-report-360.webp 1x, /screens/formula/10-feeding-report-720.webp 2x",
+  "width": 360,
+  "height": 780,
+  "alt": "Un Informe del bebé real de Feed Flow con totales de alimentación, crecimiento desde el nacimiento, promedios diarios y percentiles.",
+  "faqs": [
+    [
+      "¿Cuántos pañales mojados debe tener un recién nacido?",
+      "Según los CDC, un bebé amamantado necesita como mínimo 1 el día 1, 2 el día 2, 5 el día 3 y 6 al día desde el día 4. La AAP dice 6 o más, con orina pálida, entre los 5 y 7 días. El NHS: al menos 6 pañales mojados y pesados cada 24 horas desde el día 5."
+    ],
+    [
+      "¿Cómo sé si mi bebé amamantado recibe suficiente leche?",
+      "La AAP dice que no puedes medir exactamente cuánto toma un recién nacido del pecho, así que se fija en el aumento de peso, los pañales mojados y sucios y cuánto tiempo se ve satisfecho después de mamar. Los CDC agregan tomar el pecho de 8 a 12 veces en 24 horas y que puedas ver y oír cómo traga."
+    ],
+    [
+      "¿Cuándo debe recuperar mi bebé su peso al nacer?",
+      "Los CDC dicen que un bebé amamantado debe volver a su peso al nacer entre el día 10 y el día 14 de vida. Para la AAP, seguir por debajo de ese peso a las dos semanas es una señal de advertencia. El NHS dice que la mayoría de los bebés lo recuperan, o lo superan, a las 3 semanas."
+    ],
+    [
+      "¿Cuáles son las señales de deshidratación en un bebé?",
+      "El NHS menciona la mollera hundida, ojos hundidos, pocas lágrimas o ninguna al llorar, menos pañales mojados de lo normal y estar somnoliento o irritable. La AAP dice que avises al pediatra de inmediato si aparece cualquier señal de advertencia de deshidratación."
+    ],
+    [
+      "¿Feed Flow me dice si mi bebé come lo suficiente?",
+      "No. Feed Flow guarda el registro: las tomas del día, el crecimiento frente a los Patrones de crecimiento infantil de la OMS y un Informe del bebé que puedes llevar al control. No juzga si tu bebé come lo suficiente y no registra pañales. Esa decisión la toma el médico de tu bebé."
+    ]
+  ],
+  "related": [
+    [
+      "/es/guias/horario-de-alimentacion-del-recien-nacido",
+      "¿Cada cuánto debe comer un recién nacido?"
+    ],
+    [
+      "/es/guias/cuanta-formula-por-edad",
+      "Cuánta fórmula por edad"
+    ],
+    [
+      "/es",
+      "Feed Flow en español"
+    ]
+  ],
+  "queries": [
+    "cómo saber si mi bebé está comiendo lo suficiente",
+    "cuántos pañales mojados debe tener un recién nacido",
+    "cómo saber si mi bebé se llena con el pecho",
+    "cuándo recupera el bebé su peso al nacer",
+    "señales de deshidratación en bebés"
+  ],
+  "citations": [
+    "https://www.who.int/tools/child-growth-standards/standards",
+    "https://www.cdc.gov/infant-toddler-nutrition/breastfeeding/newborn-basics.html",
+    "https://www.cdc.gov/infant-toddler-nutrition/breastfeeding/how-much-and-how-often.html",
+    "https://www.cdc.gov/infant-toddler-nutrition/formula-feeding/how-much-and-how-often.html",
+    "https://www.cdc.gov/infant-toddler-nutrition/mealtime/signs-your-child-is-hungry-or-full.html",
+    "https://www.healthychildren.org/Spanish/ages-stages/baby/breastfeeding/Paginas/How-to-Tell-if-Baby-is-Getting-Enough-Milk.aspx",
+    "https://www.healthychildren.org/Spanish/ages-stages/baby/breastfeeding/Paginas/Warning-Signs-of-Breastfeeding-Problems.aspx",
+    "https://www.healthychildren.org/Spanish/ages-stages/baby/feeding-nutrition/Paginas/How-Often-and-How-Much-Should-Your-Baby-Eat.aspx",
+    "https://www.healthychildren.org/English/ages-stages/baby/feeding-nutrition/pages/How-Often-and-How-Much-Should-Your-Baby-Eat.aspx",
+    "https://www.healthychildren.org/Spanish/health-issues/injuries-emergencies/Paginas/dehydration.aspx",
+    "https://www.healthychildren.org/Spanish/health-issues/injuries-emergencies/Paginas/When-Your-Child-Needs-Emergency-Medical-Services.aspx",
+    "https://www.nhs.uk/baby/breastfeeding-and-bottle-feeding/breastfeeding-problems/enough-milk/",
+    "https://www.nhs.uk/baby/breastfeeding-and-bottle-feeding/breastfeeding/the-first-few-days/",
+    "https://www.nhs.uk/baby/babys-development/height-weight-and-reviews/baby-height-and-weight/",
+    "https://www.nhs.uk/conditions/dehydration/",
+    "https://www.who.int/es/news-room/fact-sheets/detail/infant-and-young-child-feeding"
+  ],
+  "lang": "es",
+  "translation_of": "guides/is-my-baby-eating-enough",
+  "hero_alt": "Ilustración de una persona en un sillón con un bebé tranquilo apoyado en su hombro después de comer.",
+  "hero": "/images/guides/is-my-baby-eating-enough-1200.webp"
+}

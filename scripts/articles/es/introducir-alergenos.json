@@ -1,0 +1,74 @@
+{
+  "slug": "es/guias/introducir-alergenos",
+  "file": "es/guias/introducir-alergenos.html",
+  "lang": "es",
+  "translation_of": "guides/introducing-allergens",
+  "active": "resources",
+  "guide": true,
+  "date": "2026-11-17",
+  "title": "Introducir alérgenos al bebé: maní y huevo | Feed Flow",
+  "description": "Qué dicen la AAP, los CDC, el NIAID y el NHS sobre cuándo darle maní, huevo y otros alérgenos a tu bebé, quién va antes al médico y cómo es una reacción.",
+  "eyebrow": "Guía para introducir alérgenos",
+  "h1": "¿Cuándo y cómo darle maní, huevo y otros alérgenos a mi bebé?",
+  "intro": "Las Guías Alimentarias para los Estadounidenses dicen que los alimentos que pueden causar alergia, como el maní y el huevo, se introducen junto con los demás alimentos complementarios a los 6 meses, más o menos, y los CDC dicen que se introducen cuando introduces los demás alimentos. Para bebés con eccema grave, alergia al huevo o ambos, un panel de expertos del NIAID habla de maní desde los 4 a 6 meses, con pruebas de alergia muy recomendables antes, y la AAP dice que hables primero con el pediatra. El NHS del Reino Unido les pide a las familias con eccema, una alergia o antecedentes familiares que hablen primero con su médico de cabecera o su visitador de salud.",
+  "image": "/screens/health-allergens-360.webp",
+  "srcset": "/screens/health-allergens-360.webp 1x, /screens/health-allergens-720.webp 2x",
+  "width": 360,
+  "height": 783,
+  "alt": "El Recorrido de alérgenos de Feed Flow con 6 de 9 alérgenos principales introducidos: una marca de reacción leve en el huevo, ninguna reacción registrada en maní, leche de vaca, soya, trigo y sésamo, y frutos secos de árbol, pescado y mariscos todavía sin probar.",
+  "faqs": [
+    [
+      "¿Puedo darle mantequilla de maní a mi bebé a los 4 meses?",
+      "La AAP dice que, sin motivo para sospechar un riesgo mayor de alergia, lo ideal es el maní desde los 4 a 6 meses, tras algunos primeros alimentos. Con eccema grave o alergia al huevo, el panel del NIAID dice desde los 4 a 6 meses, y los CDC, que antes preguntes al médico o la enfermera."
+    ],
+    [
+      "¿Mi bebé necesita una prueba de alergia antes de probar el maní?",
+      "El panel del NIAID recomienda considerar seriamente la prueba en bebés con eccema grave, alergia al huevo o ambos. Dice que los bebés con eccema leve a moderado pueden empezar con el maní en casa sin una evaluación en el consultorio, y que los bebés sin eccema ni alergia alimentaria pueden comerlo libremente con otros alimentos."
+    ],
+    [
+      "¿Cómo le doy huevo a mi bebé?",
+      "La AAP pone como ejemplo el huevo bien cocido, revuelto o duro, con un tercio de huevo, más o menos, como porción habitual. El NHS dice que el huevo se puede introducir desde alrededor de los 6 meses, y dice que los huevos sin el sello del león rojo del Reino Unido no deben comerse crudos ni poco cocidos."
+    ],
+    [
+      "¿Cuánto tarda en aparecer una reacción alérgica después de comer?",
+      "El NHS dice que las reacciones suelen aparecer en pocos minutos, pero pueden tardar hasta 2 horas, y hasta 3 días con la alergia a la leche de vaca. La AAP dice que la anafilaxia puede empezar en minutos o en varias horas, y que ante sus señales des epinefrina si la tienes y llames al 911."
+    ],
+    [
+      "¿Debo esperar unos días entre un alérgeno nuevo y otro?",
+      "Las fuentes no dicen lo mismo. La AAP dice que esperes al menos un día antes de empezar otro alimento nuevo. Los CDC dicen que esperes de 3 a 5 días entre cada alimento nuevo. El NHS dice que introduzcas los alimentos alergénicos de uno en uno para que puedas notar cualquier reacción."
+    ]
+  ],
+  "related": [
+    [
+      "/es/guias/cuando-empezar-alimentos-solidos",
+      "Guía para empezar con los alimentos sólidos"
+    ],
+    [
+      "/es/guias/mi-bebe-come-lo-suficiente",
+      "Guía: ¿mi bebé come lo suficiente?"
+    ],
+    [
+      "/es",
+      "Feed Flow en español"
+    ]
+  ],
+  "queries": [
+    "cuándo darle maní a mi bebé",
+    "cómo introducir el huevo al bebé",
+    "a qué edad dar alérgenos al bebé",
+    "bebé con eccema y maní",
+    "señales de alergia en bebé después de un alimento nuevo"
+  ],
+  "citations": [
+    "https://pmc.ncbi.nlm.nih.gov/articles/PMC5226648/",
+    "https://www.healthychildren.org/Spanish/healthy-living/nutrition/Paginas/when-to-introduce-egg-peanut-butter-and-other-common-food-allergens-to-your-baby-food-allergy-prevention-tips.aspx",
+    "https://www.healthychildren.org/Spanish/health-issues/injuries-emergencies/Paginas/Anaphylaxis.aspx",
+    "https://www.cdc.gov/infant-toddler-nutrition/foods-and-drinks/when-what-and-how-to-introduce-solid-foods.html",
+    "https://cdn.realfood.gov/DGA.pdf",
+    "https://www.nhs.uk/baby/weaning-and-feeding/food-allergies-in-babies-and-young-children/",
+    "https://www.nhs.uk/baby/weaning-and-feeding/foods-to-avoid-giving-babies-and-young-children/",
+    "https://www.nhs.uk/conditions/anaphylaxis/"
+  ],
+  "hero_alt": "Ilustración de un plato de bebé con huevo revuelto, yogur y pescado desmenuzado, una cuchara con mantequilla de maní al lado y la mano de un bebé acercándose.",
+  "hero": "/images/guides/introducing-allergens-1200.webp"
+}

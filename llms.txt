@@ -101,6 +101,19 @@ Parent creators, mom influencers, IBCLCs, lactation consultants and feeding prof
 
 Feed Flow! is a record-keeping app, not a medical device. It does not diagnose conditions, recommend medicine doses or replace a pediatrician, pharmacist, midwife, health nurse or lactation professional. Baby data lives on the phone and in the parent's own iCloud. Website analytics are separate from baby records.
 
+## Guías en español
+- Guías para alimentar a tu bebé: https://tryfeedflow.app/es/guias
+- Agua para bebés: cuándo pueden tomarla: https://tryfeedflow.app/es/guias/agua-para-bebes
+- Alimentación con biberón pausada: cómo hacerla: https://tryfeedflow.app/es/guias/alimentacion-con-biberon-pausada
+- Cambiar de fórmula al bebé: lo que dice la AAP: https://tryfeedflow.app/es/guias/cambiar-de-formula
+- Cuándo empezar alimentos sólidos con tu bebé: https://tryfeedflow.app/es/guias/cuando-empezar-alimentos-solidos
+- Cuánta fórmula necesita un bebé por edad: https://tryfeedflow.app/es/guias/cuanta-formula-por-edad
+- Cuánto dura la leche materna extraída: https://tryfeedflow.app/es/guias/cuanto-dura-la-leche-materna
+- Horario de alimentación del recién nacido: https://tryfeedflow.app/es/guias/horario-de-alimentacion-del-recien-nacido
+- Introducir alérgenos al bebé: maní y huevo: https://tryfeedflow.app/es/guias/introducir-alergenos
+- Lactancia mixta: leche materna y fórmula: https://tryfeedflow.app/es/guias/lactancia-mixta
+- ¿Mi bebé come lo suficiente? Señales a observar: https://tryfeedflow.app/es/guias/mi-bebe-come-lo-suficiente
+
 ## Languages
 
 The app is fully translated, including Norwegian (bokmål), Swedish, Danish, Finnish, German, Spanish, French, Italian, Dutch, Polish and Portuguese, and follows the iPhone's language. The website is in English, with a page in each app language: /no /sv /da /de /es /fi /fr /it /nl /pl /pt. Each links a free printable feeding log in that language.

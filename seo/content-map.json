@@ -780,6 +780,200 @@
         "/guides/formula-safety",
         "/breastfeeding-pumping"
       ]
+    },
+    {
+      "url": "https://tryfeedflow.app/es/guias/agua-para-bebes",
+      "title": "Agua para bebés: cuándo pueden tomarla | Feed Flow",
+      "intent": "Guía de agua para bebés",
+      "role": "guide",
+      "primaryQueries": [
+        "cuándo pueden tomar agua los bebés",
+        "cuánta agua puede tomar un bebé de 6 meses",
+        "se le puede dar agua a un recién nacido",
+        "agua para bebés cuando hace calor",
+        "a qué edad pueden tomar jugo los bebés"
+      ],
+      "relatedLinks": [
+        "/es/guias/cuando-empezar-alimentos-solidos",
+        "/es/guias/cuanta-formula-por-edad",
+        "/es"
+      ]
+    },
+    {
+      "url": "https://tryfeedflow.app/es/guias/alimentacion-con-biberon-pausada",
+      "title": "Alimentación con biberón pausada: cómo hacerla | Feed Flow",
+      "intent": "Guía de alimentación con biberón pausada",
+      "role": "guide",
+      "primaryQueries": [
+        "qué es la alimentación con biberón pausada",
+        "cómo dar el biberón de forma pausada",
+        "cuánto debe durar una toma de biberón",
+        "señales de que el bebé está lleno biberón",
+        "obligar al bebé a terminar el biberón"
+      ],
+      "relatedLinks": [
+        "/es/guias/lactancia-mixta",
+        "/es/guias/mi-bebe-come-lo-suficiente",
+        "/es/guias/cuanta-formula-por-edad"
+      ]
+    },
+    {
+      "url": "https://tryfeedflow.app/es/guias/cambiar-de-formula",
+      "title": "Cambiar de fórmula al bebé: lo que dice la AAP | Feed Flow",
+      "intent": "Guía para cambiar de fórmula",
+      "role": "guide",
+      "primaryQueries": [
+        "cómo cambiar de fórmula a mi bebé",
+        "se puede cambiar de marca de fórmula",
+        "fórmula de marca de tienda es buena",
+        "síntomas de que la fórmula no le cae bien al bebé",
+        "qué hacer si no encuentro fórmula para mi bebé"
+      ],
+      "relatedLinks": [
+        "/es/guias/cuanta-formula-por-edad",
+        "/es/guias/lactancia-mixta",
+        "/es"
+      ]
+    },
+    {
+      "url": "https://tryfeedflow.app/es/guias/cuando-empezar-alimentos-solidos",
+      "title": "Cuándo empezar alimentos sólidos con tu bebé | Feed Flow",
+      "intent": "Guía para empezar los sólidos",
+      "role": "guide",
+      "primaryQueries": [
+        "cuándo empezar a dar sólidos al bebé",
+        "señales de que el bebé está listo para comer sólidos",
+        "primeras comidas para bebé de 6 meses",
+        "alimentos que no puede comer un bebé menor de 1 año",
+        "arcadas o atragantamiento en bebés"
+      ],
+      "relatedLinks": [
+        "/es/guias/introducir-alergenos",
+        "/es/guias/agua-para-bebes",
+        "/es"
+      ]
+    },
+    {
+      "url": "https://tryfeedflow.app/es/guias/cuanta-formula-por-edad",
+      "title": "Cuánta fórmula necesita un bebé por edad | Feed Flow",
+      "intent": "Guía de cantidades de fórmula",
+      "role": "guide",
+      "primaryQueries": [
+        "cuánta fórmula necesita un bebé",
+        "cuántas onzas de fórmula por edad",
+        "cuántas onzas debe tomar un recién nacido",
+        "cuánta fórmula toma un bebé de 2 meses",
+        "máximo de fórmula al día bebé"
+      ],
+      "relatedLinks": [
+        "/es",
+        "/es/guias/mi-bebe-come-lo-suficiente",
+        "/es/guias/horario-de-alimentacion-del-recien-nacido"
+      ]
+    },
+    {
+      "url": "https://tryfeedflow.app/es/guias/cuanto-dura-la-leche-materna",
+      "title": "Cuánto dura la leche materna extraída | Feed Flow",
+      "intent": "Guía para guardar la leche materna",
+      "role": "guide",
+      "primaryQueries": [
+        "cuánto dura la leche materna",
+        "cuánto dura la leche materna fuera del refrigerador",
+        "cuánto dura la leche materna en el refrigerador",
+        "cuánto dura la leche materna descongelada",
+        "se puede volver a usar la leche materna que sobró"
+      ],
+      "relatedLinks": [
+        "/es",
+        "/es/guias/lactancia-mixta",
+        "/es/guias/alimentacion-con-biberon-pausada"
+      ]
+    },
+    {
+      "url": "https://tryfeedflow.app/es/guias/horario-de-alimentacion-del-recien-nacido",
+      "title": "Horario de alimentación del recién nacido | Feed Flow",
+      "intent": "Guía de alimentación del recién nacido",
+      "role": "guide",
+      "primaryQueries": [
+        "cada cuanto debe comer un recién nacido",
+        "horario de alimentación del recién nacido",
+        "cuántas veces come un recién nacido al día",
+        "debo despertar a mi bebé para comer",
+        "recién nacido quiere comer cada hora"
+      ],
+      "relatedLinks": [
+        "/es/guias/cuanta-formula-por-edad",
+        "/es/guias/mi-bebe-come-lo-suficiente",
+        "/es"
+      ]
+    },
+    {
+      "url": "https://tryfeedflow.app/es/guias/introducir-alergenos",
+      "title": "Introducir alérgenos al bebé: maní y huevo | Feed Flow",
+      "intent": "Guía para introducir alérgenos",
+      "role": "guide",
+      "primaryQueries": [
+        "cuándo darle maní a mi bebé",
+        "cómo introducir el huevo al bebé",
+        "a qué edad dar alérgenos al bebé",
+        "bebé con eccema y maní",
+        "señales de alergia en bebé después de un alimento nuevo"
+      ],
+      "relatedLinks": [
+        "/es/guias/cuando-empezar-alimentos-solidos",
+        "/es/guias/mi-bebe-come-lo-suficiente",
+        "/es"
+      ]
+    },
+    {
+      "url": "https://tryfeedflow.app/es/guias/lactancia-mixta",
+      "title": "Lactancia mixta: leche materna y fórmula | Feed Flow",
+      "intent": "Guía de lactancia mixta",
+      "role": "guide",
+      "primaryQueries": [
+        "lactancia mixta",
+        "cómo combinar leche materna y fórmula",
+        "se puede mezclar leche materna y fórmula en el mismo biberón",
+        "la fórmula disminuye la producción de leche",
+        "cómo empezar la lactancia mixta"
+      ],
+      "relatedLinks": [
+        "/es/guias/mi-bebe-come-lo-suficiente",
+        "/es/guias/alimentacion-con-biberon-pausada",
+        "/es"
+      ]
+    },
+    {
+      "url": "https://tryfeedflow.app/es/guias/mi-bebe-come-lo-suficiente",
+      "title": "¿Mi bebé come lo suficiente? Señales a observar | Feed Flow",
+      "intent": "Guía de señales de alimentación",
+      "role": "guide",
+      "primaryQueries": [
+        "cómo saber si mi bebé está comiendo lo suficiente",
+        "cuántos pañales mojados debe tener un recién nacido",
+        "cómo saber si mi bebé se llena con el pecho",
+        "cuándo recupera el bebé su peso al nacer",
+        "señales de deshidratación en bebés"
+      ],
+      "relatedLinks": [
+        "/es/guias/horario-de-alimentacion-del-recien-nacido",
+        "/es/guias/cuanta-formula-por-edad",
+        "/es"
+      ]
+    },
+    {
+      "url": "https://tryfeedflow.app/es/guias",
+      "title": "Guías para alimentar a tu bebé | Feed Flow",
+      "intent": "Guías en español",
+      "role": "hub",
+      "primaryQueries": [
+        "guías para alimentar a tu bebé",
+        "guías de lactancia y fórmula",
+        "alimentación del bebé guía"
+      ],
+      "relatedLinks": [
+        "/es"
+      ]
     }
   ]
 }

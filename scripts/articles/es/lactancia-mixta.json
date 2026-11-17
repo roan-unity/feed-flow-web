@@ -1,0 +1,82 @@
+{
+  "slug": "es/guias/lactancia-mixta",
+  "file": "es/guias/lactancia-mixta.html",
+  "active": "resources",
+  "guide": true,
+  "date": "2026-11-17",
+  "title": "Lactancia mixta: leche materna y fórmula | Feed Flow",
+  "description": "Cómo combinar pecho y fórmula: cuándo empezar, cómo cambiar tomas, qué pasa con tu producción de leche y cómo saber si tu bebé come lo suficiente.",
+  "eyebrow": "Guía de lactancia mixta",
+  "h1": "¿Cómo combinar la lactancia materna y la fórmula?",
+  "intro": "La lactancia mixta significa que tu bebé recibe algo de leche materna y algo de fórmula. El NHS del Reino Unido sugiere dar solo el pecho durante las primeras 6 a 8 semanas si puedes, y dice que después puedes empezar cambiando 1 toma de pecho al día por un biberón, dándole a tu cuerpo unos 5 a 7 días para ajustarse. La AAP dice que, si complementas, empieces con la leche materna que tengas y después des fórmula si hace falta.",
+  "image": "/screens/formula/04-home-360.webp",
+  "srcset": "/screens/formula/04-home-360.webp 1x, /screens/formula/04-home-720.webp 2x",
+  "width": 360,
+  "height": 780,
+  "alt": "La pantalla Hoy de Feed Flow con las tomas del día en una sola línea de tiempo y el total de leche del día hasta ahora.",
+  "faqs": [
+    [
+      "¿Se puede hacer lactancia mixta desde el nacimiento?",
+      "El NHS sugiere dar solo el pecho durante 6 a 8 semanas después del parto si es posible, para que tengas tiempo de aprender. Las páginas de la AAP y de los CDC que revisamos no dan un número de semanas. Tu pediatra puede ayudarte a ver qué funciona en tu caso."
+    ],
+    [
+      "¿La fórmula reduce mi producción de leche?",
+      "El NHS dice que introducir la fórmula probablemente va a reducir la cantidad de leche materna que produces, porque más tiempo entre tomas de pecho le indica a tu cuerpo que hace falta menos leche. Si quieres seguir dando el pecho, el NHS dice que extraerte leche mientras complementas ayuda a mantener tu producción."
+    ],
+    [
+      "¿Qué doy primero, leche materna o fórmula?",
+      "La AAP dice que, si complementas con fórmula, empieces la toma con la leche materna que tengas y después des fórmula si hace falta. Los CDC describen el mismo orden: primero leche materna, después fórmula."
+    ],
+    [
+      "¿Puedo mezclar leche materna y fórmula en el mismo biberón?",
+      "Ninguna de las páginas del NHS, los CDC, la AAP, la OMS o la Academia de Medicina de la Lactancia que revisamos da un sí o un no directo. Los CDC y la AAP describen primero leche materna y después fórmula, y los CDC advierten que los gérmenes crecen rápido si se agrega leche a un biberón usado a medias."
+    ],
+    [
+      "¿Cómo sé si mi bebé con lactancia mixta come lo suficiente?",
+      "El NHS da señales escritas para bebés que toman pecho: desde el día 5, al menos 6 pañales pesados y mojados cada 24 horas, y aumento de peso constante después de los primeros 3 a 4 días. El NHS dice que pidas ayuda pronto si te preocupa cuánta leche recibe tu bebé."
+    ]
+  ],
+  "related": [
+    [
+      "/es/guias/mi-bebe-come-lo-suficiente",
+      "¿Mi bebé come lo suficiente?"
+    ],
+    [
+      "/es/guias/alimentacion-con-biberon-pausada",
+      "Alimentación con biberón pausada"
+    ],
+    [
+      "/es",
+      "Feed Flow en español"
+    ]
+  ],
+  "queries": [
+    "lactancia mixta",
+    "cómo combinar leche materna y fórmula",
+    "se puede mezclar leche materna y fórmula en el mismo biberón",
+    "la fórmula disminuye la producción de leche",
+    "cómo empezar la lactancia mixta"
+  ],
+  "citations": [
+    "https://www.nhshighland.scot.nhs.uk/your-services/all-services-a-z/maternity-and-neonatal/after-you-ve-had-your-baby/infant-feeding/mixed-combination-feeding/",
+    "https://www.nhs.uk/best-start-in-life/baby/feeding-your-baby/mixed-feeding/introduction-to-mixed-feeding/",
+    "https://www.who.int/es/news-room/fact-sheets/detail/infant-and-young-child-feeding",
+    "https://www.healthychildren.org/Spanish/ages-stages/baby/breastfeeding/Paginas/where-we-stand-breastfeeding.aspx",
+    "https://www.nhs.uk/best-start-in-life/baby/feeding-your-baby/mixed-feeding/introducing-formula-feeds/",
+    "https://www.cdc.gov/infant-toddler-nutrition/bottle-feeding/index.html",
+    "https://www.healthychildren.org/Spanish/ages-stages/baby/breastfeeding/Paginas/low-breast-milk-supply.aspx",
+    "https://www.cdc.gov/infant-feeding-emergencies-toolkit/php/powdered-infant-formula.html",
+    "https://www.bfmed.org/assets/DOCUMENTS/PROTOCOLS/3-supplementation-protocol-english.pdf",
+    "https://www.nhs.uk/best-start-in-life/baby/feeding-your-baby/mixed-feeding/mixed-feeding-challenges/",
+    "https://www.nhs.uk/best-start-in-life/baby/feeding-your-baby/mixed-feeding/top-up-feeds/",
+    "https://www.nhs.uk/best-start-in-life/baby/feeding-your-baby/mixed-feeding/adjusting-your-milk-supply/",
+    "https://www.cdc.gov/hygiene/faq/index.html",
+    "https://www.nhs.uk/baby/breastfeeding-and-bottle-feeding/breastfeeding-problems/enough-milk/",
+    "https://www.cdc.gov/infant-toddler-nutrition/breastfeeding/how-much-and-how-often.html",
+    "https://www.cdc.gov/infant-toddler-nutrition/vitamins-minerals/vitamin-d.html",
+    "https://www.nhs.uk/baby/weaning-and-feeding/vitamins-for-children/"
+  ],
+  "lang": "es",
+  "translation_of": "guides/combination-feeding",
+  "hero_alt": "Ilustración de un sillón de lactancia con un cojín de lactancia, junto a una mesita con un biberón y un sacaleches."
+}

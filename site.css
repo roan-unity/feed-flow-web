@@ -572,3 +572,25 @@ html[data-theme="dark"] .form-status.error { background: #40231f; color: #ffb8aa
 /* Guide cards inside article pages: the card is the link, no underline on every line */
 .article-body a.resource-card:not(.btn):not(.text-link) { text-decoration: none; }
 .article-body a.resource-card:not(.btn):not(.text-link):hover h3 { text-decoration: underline; }
+
+/* Optional illustration at the top of a guide (scripts/articles/<slug>.json "hero"). */
+/* Guides with an illustration: the drawing leads, the app screenshot sits in the section about the app. */
+.guide-lead .content-hero-grid { grid-template-columns: 1fr 1fr; gap: 52px; }
+.guide-lead h1 { max-width: 17ch; font-size: clamp(36px, 4.4vw, 52px); }
+.guide-art { margin: 0; }
+.guide-art img { display: block; width: 100%; height: auto; aspect-ratio: 1200 / 670; object-fit: cover; border-radius: 26px; border: 1px solid var(--border); box-shadow: var(--shadow-lg); background: var(--bg-soft); }
+.guide-meta { display: flex; flex-wrap: wrap; gap: 6px 0; margin-top: 22px; padding-top: 16px; border-top: 1px solid var(--border-2); color: var(--ink-2); font-size: 13px; font-weight: 600; }
+.guide-meta span:not(:last-child)::after { content: "·"; margin: 0 9px; color: var(--accent); font-weight: 800; }
+.article-body .guide-shot { float: right; width: 210px; margin: 4px 0 18px 30px; }
+.article-body .guide-shot img { border-radius: 22px; box-shadow: var(--shadow-sm); }
+.article-body section:has(.guide-shot)::after { content: ""; display: block; clear: both; }
+.guide-lead + .content-layout .article-body > section:first-child > p:first-of-type { color: var(--ink); font-size: 19px; line-height: 1.65; }
+@media (max-width: 980px) {
+  .guide-lead .content-hero-grid { grid-template-columns: 1fr; gap: 30px; }
+  .guide-art { max-width: 640px; }
+}
+@media (max-width: 560px) {
+  .guide-art img { border-radius: 20px; }
+  .article-body .guide-shot { float: none; width: min(200px, 62%); margin: 20px auto 6px; }
+  .guide-meta { font-size: 12.5px; }
+}

@@ -307,6 +307,8 @@ for slug, c in C.items():
     u = dict(c["ui"])
     u["locale"] = c["locale"]
     u["footer_links"] = [("/", "English"), (pdf_path(slug), u["pdf"]), ("/support", "Support"), ("/privacy", u["privacy"]), ("/terms", u["terms"])]
+    if slug == "es":
+        u.update(breadcrumb="Ruta de navegación", related_info="Información relacionada")
     INTL_UI[slug] = u
     f, cd, pr, fq = u["nav"]
     INTL_NAV[slug] = [("feeding", f"/{slug}#feeding", f), ("countdown", f"/{slug}#countdown", cd), ("print", f"/{slug}#printable", pr), ("faq", f"/{slug}#faq", fq), ("en", "/", "English")]

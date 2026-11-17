@@ -111,7 +111,7 @@ export function build() {
   }
   const llms = path.join(root, 'llms.txt');
   if (existsSync(llms)) {
-    const text = readFileSync(llms, 'utf8').replace(/ [—–] /g, ', ').trim();
+    const text = readFileSync(llms, 'utf8').replace(/## Guías en español\n(?:- .*\n)*\n?/, '').replace(/ [—–] /g, ', ').trim(); // Spanish guides stay out of the chat knowledge
     sections.push({ key: 'llms.txt', kind: 'page', text: `URL: ${SITE}/llms.txt\n## llms.txt (the site summary)\n\n${text}` });
   }
   const notes = mdFiles(SOURCE_DIR).map((f) => ({

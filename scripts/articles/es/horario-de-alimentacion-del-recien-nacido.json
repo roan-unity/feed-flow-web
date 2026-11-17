@@ -1,0 +1,77 @@
+{
+  "slug": "es/guias/horario-de-alimentacion-del-recien-nacido",
+  "file": "es/guias/horario-de-alimentacion-del-recien-nacido.html",
+  "lang": "es",
+  "translation_of": "guides/newborn-feeding-schedule",
+  "active": "resources",
+  "guide": true,
+  "date": "2026-11-17",
+  "title": "Horario de alimentación del recién nacido | Feed Flow",
+  "description": "La mayoría de los recién nacidos comen de 8 a 12 veces en 24 horas. Lo que dicen los CDC, la AAP, el NHS y la OMS sobre señales de hambre y tomas de noche.",
+  "eyebrow": "Guía de alimentación del recién nacido",
+  "h1": "¿Cada cuánto debe comer un recién nacido?",
+  "intro": "La mayoría de los recién nacidos comen de 8 a 12 veces en 24 horas, según los CDC, tanto si toman pecho como fórmula. Si toma pecho, en los primeros días tu bebé puede querer comer cada 1 a 3 horas. La AAP dice que le des de comer cada vez que parezca tener hambre, el NHS dice tan seguido como quiera, y la OMS dice con la frecuencia que pida el bebé, de día y de noche.",
+  "image": "/screens/flowcast-360.webp",
+  "srcset": "/screens/flowcast-360.webp 1x, /screens/flowcast-720.webp 2x",
+  "width": 360,
+  "height": 783,
+  "alt": "La pantalla FlowCast de Feed Flow con una ventana probable para la próxima toma, una cantidad estimada y las ventanas de toma del resto del día.",
+  "faqs": [
+    [
+      "¿Es normal que un recién nacido coma cada hora?",
+      "Puede serlo. Los CDC dicen que algunos bebés a veces comen hasta cada hora, lo que suele llamarse tomas en racimo. El NHS dice que las tomas en racimo suelen darse en los primeros 3 a 4 meses, que pueden durar unos días durante un estirón de crecimiento, y que son muy normales."
+    ],
+    [
+      "¿Debo despertar a mi recién nacido para comer?",
+      "En las primeras semanas, a veces sí. La AAP dice que un recién nacido que toma pecho no debe pasar más de unas dos a tres horas de día, o cuatro de noche, sin comer. Si toma fórmula, dice que lo despiertes si duerme más de 4 a 5 horas y empieza a saltarse tomas."
+    ],
+    [
+      "¿Cuántas veces al día debe comer un recién nacido?",
+      "Los CDC dicen que la mayoría de los recién nacidos, con pecho o con fórmula, comen de 8 a 12 veces en 24 horas. La AAP dice que lo normal son de 10 a 12 tomas si toma pecho y al menos 8 si toma biberón. El NHS dice al menos 8 veces al día en las primeras semanas."
+    ],
+    [
+      "¿A qué edad dejan los bebés de comer de noche?",
+      "Para bebés que toman fórmula, la AAP dice que la mayoría ya no necesita una toma a mitad de la noche entre los 2 y los 4 meses, o cuando pesan más de 12 lb (5.4 kg). Las fuentes no dan una edad fija si toma pecho. El NHS dice que puede comer más y por más tiempo de noche."
+    ],
+    [
+      "¿Cuáles son las primeras señales de hambre de un recién nacido?",
+      "Los CDC mencionan llevarse las manos a la boca, girar la cabeza hacia el pecho o el biberón, fruncir o lamerse los labios y apretar los puños. La AAP agrega el reflejo de búsqueda, sacar la lengua y estar inquieto. Los CDC dicen que el llanto suele ser una señal tardía, y la AAP lo llama una señal tardía."
+    ]
+  ],
+  "related": [
+    [
+      "/es/guias/cuanta-formula-por-edad",
+      "Cuánta fórmula por edad"
+    ],
+    [
+      "/es/guias/mi-bebe-come-lo-suficiente",
+      "¿Mi bebé come lo suficiente?"
+    ],
+    [
+      "/es",
+      "Feed Flow en español"
+    ]
+  ],
+  "queries": [
+    "cada cuanto debe comer un recién nacido",
+    "horario de alimentación del recién nacido",
+    "cuántas veces come un recién nacido al día",
+    "debo despertar a mi bebé para comer",
+    "recién nacido quiere comer cada hora"
+  ],
+  "citations": [
+    "https://www.cdc.gov/infant-toddler-nutrition/breastfeeding/how-much-and-how-often.html",
+    "https://www.cdc.gov/infant-toddler-nutrition/formula-feeding/how-much-and-how-often.html",
+    "https://www.cdc.gov/infant-toddler-nutrition/mealtime/signs-your-child-is-hungry-or-full.html",
+    "https://www.healthychildren.org/English/ages-stages/baby/feeding-nutrition/Pages/How-Often-and-How-Much-Should-Your-Baby-Eat.aspx",
+    "https://www.healthychildren.org/Spanish/ages-stages/baby/breastfeeding/Paginas/How-Often-to-Breastfeed.aspx",
+    "https://www.healthychildren.org/English/ages-stages/baby/formula-feeding/Pages/amount-and-schedule-of-formula-feedings.aspx",
+    "https://www.healthychildren.org/Spanish/ages-stages/baby/breastfeeding/Paginas/Warning-Signs-of-Breastfeeding-Problems.aspx",
+    "https://www.nhs.uk/baby/breastfeeding-and-bottle-feeding/breastfeeding/the-first-few-days/",
+    "https://www.nhs.uk/best-start-in-life/baby/feeding-your-baby/breastfeeding/how-to-breastfeed/latching-on/",
+    "https://www.nhs.uk/best-start-in-life/baby/feeding-your-baby/bottle-feeding/bottle-feeding-your-baby/cluster-feeding/",
+    "https://www.who.int/es/news-room/fact-sheets/detail/infant-and-young-child-feeding"
+  ],
+  "hero": "/images/guides/newborn-feeding-schedule-1200.webp",
+  "hero_alt": "Ilustración de una persona con un recién nacido envuelto en brazos, sentada en un sillón de noche, con una lámpara y un biberón en la mesita."
+}

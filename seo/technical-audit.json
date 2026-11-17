@@ -1,8 +1,8 @@
 {
   "workflow": "OpenSEO seo-audit local technical checks",
   "liveKeywordData": "Not connected; no volume, ranking or traffic claims are included",
-  "sitemapUrls": 54,
-  "pagesChecked": 54,
+  "sitemapUrls": 65,
+  "pagesChecked": 65,
   "errors": [],
   "warnings": [],
   "checked": [
@@ -293,6 +293,72 @@
       "file": "es.html",
       "titleLength": 59,
       "descriptionLength": 141
+    },
+    {
+      "url": "https://tryfeedflow.app/es/guias",
+      "file": "es/guias.html",
+      "titleLength": 42,
+      "descriptionLength": 140
+    },
+    {
+      "url": "https://tryfeedflow.app/es/guias/agua-para-bebes",
+      "file": "es/guias/agua-para-bebes.html",
+      "titleLength": 50,
+      "descriptionLength": 156
+    },
+    {
+      "url": "https://tryfeedflow.app/es/guias/alimentacion-con-biberon-pausada",
+      "file": "es/guias/alimentacion-con-biberon-pausada.html",
+      "titleLength": 58,
+      "descriptionLength": 146
+    },
+    {
+      "url": "https://tryfeedflow.app/es/guias/cambiar-de-formula",
+      "file": "es/guias/cambiar-de-formula.html",
+      "titleLength": 58,
+      "descriptionLength": 155
+    },
+    {
+      "url": "https://tryfeedflow.app/es/guias/cuando-empezar-alimentos-solidos",
+      "file": "es/guias/cuando-empezar-alimentos-solidos.html",
+      "titleLength": 56,
+      "descriptionLength": 155
+    },
+    {
+      "url": "https://tryfeedflow.app/es/guias/cuanta-formula-por-edad",
+      "file": "es/guias/cuanta-formula-por-edad.html",
+      "titleLength": 52,
+      "descriptionLength": 157
+    },
+    {
+      "url": "https://tryfeedflow.app/es/guias/cuanto-dura-la-leche-materna",
+      "file": "es/guias/cuanto-dura-la-leche-materna.html",
+      "titleLength": 49,
+      "descriptionLength": 155
+    },
+    {
+      "url": "https://tryfeedflow.app/es/guias/horario-de-alimentacion-del-recien-nacido",
+      "file": "es/guias/horario-de-alimentacion-del-recien-nacido.html",
+      "titleLength": 53,
+      "descriptionLength": 155
+    },
+    {
+      "url": "https://tryfeedflow.app/es/guias/introducir-alergenos",
+      "file": "es/guias/introducir-alergenos.html",
+      "titleLength": 54,
+      "descriptionLength": 153
+    },
+    {
+      "url": "https://tryfeedflow.app/es/guias/lactancia-mixta",
+      "file": "es/guias/lactancia-mixta.html",
+      "titleLength": 52,
+      "descriptionLength": 146
+    },
+    {
+      "url": "https://tryfeedflow.app/es/guias/mi-bebe-come-lo-suficiente",
+      "file": "es/guias/mi-bebe-come-lo-suficiente.html",
+      "titleLength": 59,
+      "descriptionLength": 154
     },
     {
       "url": "https://tryfeedflow.app/fi",

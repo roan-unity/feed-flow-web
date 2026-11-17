@@ -1,0 +1,75 @@
+{
+  "slug": "es/guias/alimentacion-con-biberon-pausada",
+  "file": "es/guias/alimentacion-con-biberon-pausada.html",
+  "active": "resources",
+  "guide": true,
+  "date": "2026-11-17",
+  "lang": "es",
+  "translation_of": "guides/paced-bottle-feeding",
+  "title": "Alimentación con biberón pausada: cómo hacerla | Feed Flow",
+  "description": "Con el biberón pausado tu bebé marca el ritmo: semierguido, biberón casi horizontal, pausas y parar al estar lleno. Pasos de CDC, AAP, NHS y USDA.",
+  "eyebrow": "Guía de alimentación con biberón pausada",
+  "h1": "¿Qué es la alimentación con biberón pausada y cómo se hace?",
+  "intro": "En la alimentación con biberón pausada tu bebé marca el ritmo: lo sostienes semierguido, mantienes el biberón casi horizontal para que la leche solo salga cuando succiona, le dejas hacer pausas y paras cuando muestra que está lleno, aunque quede leche. Los CDC, el NHS, el USDA y UNICEF Reino Unido dicen que no obligues a un bebé a terminar el biberón, y la AAP dice que dejes que tu bebé te indique cuándo ya tuvo suficiente. El USDA dice que una toma típica dura de 15 a 20 minutos, pero que debe basarse en las señales de saciedad de tu bebé.",
+  "image": "/screens/formula/01-safe-bottle-360.webp",
+  "srcset": "/screens/formula/01-safe-bottle-360.webp 1x, /screens/formula/01-safe-bottle-720.webp 2x",
+  "width": 360,
+  "height": 780,
+  "alt": "Pantalla de biberón de fórmula de Feed Flow con 3.5 oz tomadas y 2 oz restantes en el biberón, con el anillo de cuenta regresiva arriba.",
+  "faqs": [
+    [
+      "¿La alimentación con biberón pausada es solo para bebés que toman pecho?",
+      "Las fuentes no dicen lo mismo. El USDA dice que a veces se usa con bebés que toman pecho, y la Academy of Breastfeeding Medicine la sugiere para bebés amamantados que reciben biberón. UNICEF Reino Unido describe el biberón receptivo en su folleto sobre fórmula, y el NHS da consejos parecidos, guiados por el bebé, para cualquier biberón."
+    ],
+    [
+      "¿Cuánto debe durar una toma de biberón?",
+      "El USDA dice que una toma típica de biberón dura de 15 a 20 minutos, y que la duración debe basarse en las señales de saciedad del bebé. El NHS dice que siempre le des a tu bebé mucho tiempo para comer."
+    ],
+    [
+      "¿Está bien si mi bebé no termina el biberón?",
+      "Sí. El NHS dice que no te preocupes si tu bebé no termina el biberón, y los CDC dicen que pares cuando tu bebé muestre señales de estar lleno, aunque el biberón no esté vacío. Obligarlo a tomar más puede llevar a darle de más."
+    ],
+    [
+      "¿Qué tetina uso para la alimentación con biberón pausada?",
+      "El USDA sugiere una tetina de flujo lento, que ayuda al bebé a controlar cuánto come. Para revisarla, pon el biberón lleno boca abajo: las gotas deben caer seguidas, muy cerca una de otra, sin formar un chorro."
+    ],
+    [
+      "¿Puedo guardar la leche que mi bebé no se tomó?",
+      "El NHS dice que tires la fórmula o la leche materna que no se tomó una vez que termines de darle el biberón a tu bebé."
+    ]
+  ],
+  "related": [
+    [
+      "/es/guias/lactancia-mixta",
+      "Lactancia mixta"
+    ],
+    [
+      "/es/guias/mi-bebe-come-lo-suficiente",
+      "¿Mi bebé come lo suficiente?"
+    ],
+    [
+      "/es/guias/cuanta-formula-por-edad",
+      "Cuánta fórmula por edad"
+    ]
+  ],
+  "queries": [
+    "qué es la alimentación con biberón pausada",
+    "cómo dar el biberón de forma pausada",
+    "cuánto debe durar una toma de biberón",
+    "señales de que el bebé está lleno biberón",
+    "obligar al bebé a terminar el biberón"
+  ],
+  "citations": [
+    "https://www.nhs.uk/baby/breastfeeding-and-bottle-feeding/bottle-feeding/advice/",
+    "https://www.healthychildren.org/English/ages-stages/baby/formula-feeding/Pages/Amount-and-Schedule-of-Formula-Feedings.aspx",
+    "https://www.cdc.gov/infant-toddler-nutrition/bottle-feeding/index.html",
+    "https://fns-prod.azureedge.us/sites/default/files/resource-files/FI_Ch5_BottleandCup.pdf",
+    "https://www.bfmed.org/assets/DOCUMENTS/PROTOCOLS/ModelMaternityPolicyFinal25.pdf",
+    "https://www.unicef.org.uk/babyfriendly/baby-friendly-resources/bottle-feeding-resources/infant-formula-responsive-bottle-feeding-guide-for-parents/",
+    "https://www.cdc.gov/infant-toddler-nutrition/mealtime/signs-your-child-is-hungry-or-full.html",
+    "https://www.healthychildren.org/English/ages-stages/baby/feeding-nutrition/Pages/Bottle-Feeding-How-Its-Done.aspx",
+    "https://www.unicef.org.uk/babyfriendly/wp-content/uploads/sites/2/2019/04/Infant-formula-and-responsive-bottle-feeding.pdf"
+  ],
+  "hero_alt": "Ilustración de una persona que sostiene a un bebé casi erguido en su regazo y le ofrece un biberón casi horizontal.",
+  "hero": "/images/guides/paced-bottle-feeding-1200.webp"
+}

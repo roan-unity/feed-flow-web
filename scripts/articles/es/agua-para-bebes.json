@@ -1,0 +1,79 @@
+{
+  "slug": "es/guias/agua-para-bebes",
+  "file": "es/guias/agua-para-bebes.html",
+  "active": "resources",
+  "guide": true,
+  "date": "2026-11-17",
+  "lang": "es",
+  "translation_of": "guides/water-for-babies",
+  "title": "Agua para bebés: cuándo pueden tomarla | Feed Flow",
+  "description": "La AAP dice que antes de los 6 meses un bebé solo necesita leche materna o fórmula. De 6 a 12 meses, los CDC y la AAP dan de 4 a 8 oz (120 a 240 ml) al día.",
+  "eyebrow": "Guía de agua para bebés",
+  "h1": "¿Cuándo pueden tomar agua los bebés?",
+  "intro": "Alrededor de los 6 meses. La AAP dice que antes de esa edad los bebés solo deben tomar leche materna o fórmula. La OMS dice que la lactancia materna exclusiva significa solo leche materna, ni siquiera agua, y el NHS dice que los bebés que solo toman pecho no necesitan agua hasta que empiezan a comer sólidos. De los 6 a los 12 meses, los CDC y la AAP dan de 4 a 8 onzas de agua al día (unos 120 a 240 ml).",
+  "image": "/screens/how/start-360.webp",
+  "srcset": "/screens/how/start-360.webp 1x, /screens/how/start-720.webp 2x",
+  "width": 360,
+  "height": 783,
+  "alt": "El menú de registro de Feed Flow, que pregunta qué quieres registrar, con Agua, Leche extraída, Extracción, Vitamina D y Salud en la fila de arriba, y Pecho, Fórmula y Sólidos debajo.",
+  "faqs": [
+    [
+      "¿Le puedo dar agua a mi recién nacido?",
+      "La AAP dice que antes de los 6 meses solo deben tomar leche materna o fórmula, sin agua extra salvo que el pediatra lo indique. La OMS dice que la lactancia exclusiva los primeros 6 meses es solo leche materna, ni siquiera agua. El NHS dice que los bebés que solo toman pecho no necesitan agua hasta empezar los sólidos."
+    ],
+    [
+      "¿Cuánta agua puede tomar un bebé de 6 meses?",
+      "Los CDC y la AAP dicen de 4 a 8 onzas de agua al día para bebés de 6 a 12 meses, unos 120 a 240 ml. La AAP también lo expresa como media taza a 1 taza al día. El NHS no da una cantidad y dice que ofrezcas sorbos en un vaso con las comidas."
+    ],
+    [
+      "¿Por qué el agua es mala para bebés menores de 6 meses?",
+      "La AAP dice que añadir agua de más a la fórmula, o dar agua además de la leche materna o la fórmula, puede causar intoxicación por agua. Reduce los nutrientes que recibe el bebé, lo que puede frenar su crecimiento, y altera el equilibrio de calcio, sodio y potasio, lo que puede causar problemas graves, como convulsiones."
+    ],
+    [
+      "¿Le doy agua a mi bebé cuando hace calor?",
+      "El NHS dice que los bebés que toman pecho pueden querer mamar más con calor, y que los menores de 6 meses con fórmula pueden necesitar pequeños sorbos de agua hervida y enfriada además de su leche. La AAP no recomienda más agua antes de los 6 meses y dice que llames al pediatra si te preocupa que beba poco."
+    ],
+    [
+      "¿Puede tomar jugo un bebé antes de los 12 meses?",
+      "La AAP recomienda no dar jugo de fruta antes de los 12 meses, y los CDC dicen que los menores de 12 meses no deben tomar ningún jugo de fruta ni de verdura. El NHS dice que no lo necesitan y que, si se da, se diluya una parte de jugo por 10 de agua, con las comidas."
+    ]
+  ],
+  "related": [
+    [
+      "/es/guias/cuando-empezar-alimentos-solidos",
+      "Cuándo empezar los alimentos sólidos"
+    ],
+    [
+      "/es/guias/cuanta-formula-por-edad",
+      "Cuánta fórmula por edad"
+    ],
+    [
+      "/es",
+      "Feed Flow en español"
+    ]
+  ],
+  "queries": [
+    "cuándo pueden tomar agua los bebés",
+    "cuánta agua puede tomar un bebé de 6 meses",
+    "se le puede dar agua a un recién nacido",
+    "agua para bebés cuando hace calor",
+    "a qué edad pueden tomar jugo los bebés"
+  ],
+  "citations": [
+    "https://www.healthychildren.org/Spanish/healthy-living/nutrition/Paginas/Choose-Water-for-Healthy-Hydration.aspx",
+    "https://www.healthychildren.org/English/ages-stages/baby/formula-feeding/Pages/How-to-Safely-Prepare-Formula-with-Water.aspx",
+    "https://www.who.int/es/health-topics/breastfeeding",
+    "https://www.who.int/tools/elena/interventions/exclusive-breastfeeding",
+    "https://www.nhs.uk/baby/weaning-and-feeding/drinks-and-cups-for-babies-and-young-children/",
+    "https://www.cdc.gov/infant-toddler-nutrition/formula-feeding/preparation-and-storage.html",
+    "https://www.healthychildren.org/Spanish/healthy-living/nutrition/Paginas/Recommended-Drinks-for-Young-Children-Ages-0-5.aspx",
+    "https://www.healthychildren.org/Spanish/ages-stages/baby/feeding-nutrition/Paginas/Discontinuing-the-Bottle.aspx",
+    "https://www.nhs.uk/conditions/dehydration/",
+    "https://www.nhs.uk/baby/breastfeeding-and-bottle-feeding/bottle-feeding/making-up-baby-formula/",
+    "https://www.healthychildren.org/Spanish/healthy-living/nutrition/Paginas/Where-We-Stand-Fruit-Juice.aspx",
+    "https://www.cdc.gov/infant-toddler-nutrition/foods-and-drinks/foods-and-drinks-to-avoid-or-limit.html",
+    "https://www.cdc.gov/infant-toddler-nutrition/foods-and-drinks/foods-and-drinks-to-encourage.html"
+  ],
+  "hero_alt": "Ilustración de la mano de un bebé que alcanza un vasito abierto con agua sobre la bandeja de una silla alta, con un vaso con asas detrás.",
+  "hero": "/images/guides/water-for-babies-1200.webp"
+}

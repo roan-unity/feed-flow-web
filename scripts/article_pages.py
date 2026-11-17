@@ -9,7 +9,10 @@ import re
 import sys
 from pathlib import Path
 
+ROOT = Path(__file__).resolve().parents[1]
+SITE = "https://tryfeedflow.app"
 ARTICLES_DIR = Path(__file__).resolve().parent / "articles"
+ES_DIR = ARTICLES_DIR / "es"
 REQUIRED = ("slug", "file", "title", "description", "eyebrow", "h1", "intro", "image", "srcset", "width", "height", "alt", "date")
 _TABLE = re.compile(r'(<table\b[^>]*class="[^"]*\bdata-table\b[^"]*"[^>]*>.*?</table>)', re.S)
 
@@ -43,49 +46,133 @@ def _warn(message):
     print(f"article_pages: skipped {message}", file=sys.stderr)
 
 
+def _note(message):
+    print(f"article_pages: warning: {message}", file=sys.stderr)
+
+
+def _read(json_path, folder_label):
+    """One validated guide dict (raw JSON plus a body string), or None after a warning."""
+    body_path = json_path.with_suffix(".body.html")
+    try:
+        data = json.loads(json_path.read_text(encoding="utf-8"))
+    except (OSError, ValueError) as error:
+        _warn(f"{json_path.name}: invalid JSON ({error})")
+        return None
+    if not isinstance(data, dict):
+        _warn(f"{json_path.name}: not a JSON object")
+        return None
+    if not body_path.is_file():
+        _warn(f"{json_path.name}: no {body_path.name}")
+        return None
+    missing = [key for key in REQUIRED if key not in data]
+    if missing:
+        _warn(f"{json_path.name}: missing keys {', '.join(missing)}")
+        return None
+    try:
+        body = body_path.read_text(encoding="utf-8")
+    except OSError as error:
+        _warn(f"{body_path.name}: unreadable ({error})")
+        return None
+    data["_body"] = _TABLE.sub(lambda m: '<div class="table-wrap">' + _label_cells(m.group(1)) + "</div>", body)
+    return data
+
+
+def _hero_ok(hero, where):
+    """A hero is used only when its 1200 px file is on disk; otherwise warn and render no figure."""
+    if not hero:
+        return False
+    if not hero.startswith("/") or not hero.endswith("-1200.webp"):
+        _note(f"{where}: hero must look like /images/guides/<name>-1200.webp, got {hero!r}")
+        return False
+    if not (ROOT / hero.lstrip("/")).is_file():
+        _note(f"{where}: hero image {hero} not found on disk, no figure rendered")
+        return False
+    return True
+
+
 def _load():
-    pages, queries, citations = [], {}, {}
+    english, spanish = {}, {}
     for json_path in sorted(ARTICLES_DIR.glob("*.json")):
-        body_path = json_path.with_suffix(".body.html")
-        try:
-            data = json.loads(json_path.read_text(encoding="utf-8"))
-        except (ValueError, OSError) as error:
-            _warn(f"{json_path.name}: invalid JSON ({error})")
-            continue
-        if not isinstance(data, dict):
-            _warn(f"{json_path.name}: not a JSON object")
-            continue
-        if not body_path.is_file():
-            _warn(f"{json_path.name}: no {body_path.name}")
-            continue
-        missing = [key for key in REQUIRED if key not in data]
-        if missing:
-            _warn(f"{json_path.name}: missing keys {', '.join(missing)}")
-            continue
-        try:
-            body = body_path.read_text(encoding="utf-8")
-        except OSError as error:
-            _warn(f"{body_path.name}: unreadable ({error})")
-            continue
-        body = _TABLE.sub(lambda m: '<div class="table-wrap">' + _label_cells(m.group(1)) + "</div>", body)
+        data = _read(json_path, "en")
+        if data:
+            english[data["slug"]] = data
+    if ES_DIR.is_dir():
+        for json_path in sorted(ES_DIR.glob("*.json")):
+            data = _read(json_path, "es")
+            if data:
+                spanish[data["slug"]] = data
+
+    pages_en, pages_es, queries, citations = [], [], {}, {}
+
+    def build(data, lang):
         page = {key: data[key] for key in REQUIRED}
         page.update({
             "active": data.get("active", "resources"),
             "guide": True,
             "article": True,
-            "body": body,
+            "body": data["_body"],
             "faqs": [tuple(item) for item in data.get("faqs", [])],
             "related": [tuple(item) for item in data.get("related", [])],
         })
-        pages.append(page)
+        if lang == "es":
+            page.update({"lang": "es", "ui": "es"})
         queries[data["slug"]] = data.get("queries", [])
         if data.get("citations"):
             citations[data["slug"]] = data["citations"]
-    pages.sort(key=lambda page: page["slug"])
-    return pages, queries, citations
+        return page
+
+    for slug, data in english.items():
+        page = build(data, "en")
+        if _hero_ok(data.get("hero"), data["slug"]):
+            page["hero"], page["hero_alt"] = data["hero"], data.get("hero_alt", "")
+        pages_en.append(page)
+    by_slug = {page["slug"]: page for page in pages_en}
+
+    for slug, data in spanish.items():
+        page = build(data, "es")
+        original = data.get("translation_of")
+        if original not in by_slug:
+            _note(f"{data['slug']}: translation_of {original!r} is not an English guide, so no hreflang pair and no inherited hero")
+            original = None
+        hero = data.get("hero") or (by_slug[original].get("hero") if original else None)
+        if hero and _hero_ok(hero, data["slug"]):
+            page["hero"] = hero
+            page["hero_alt"] = data.get("hero_alt", "")
+            if not page["hero_alt"]:
+                _note(f"{data['slug']}: hero without its own hero_alt, using an empty alt")
+        if original:
+            page["translation_of"] = original
+            pair = [("en", f"{SITE}/{original}"), ("es", f"{SITE}/{page['slug']}"), ("x-default", f"{SITE}/{original}")]
+            page["hreflang"] = pair
+            by_slug[original].setdefault("hreflang", pair)
+        pages_es.append(page)
+
+    pages_en.sort(key=lambda page: page["slug"])
+    pages_es.sort(key=lambda page: page["slug"])
+    return pages_en, pages_es, queries, citations
 
 
-ARTICLES, ARTICLE_QUERIES, ARTICLE_CITATIONS = _load()
+ARTICLES, ES_ARTICLES, ARTICLE_QUERIES, ARTICLE_CITATIONS = _load()
+
+
+def _es_index():
+    """The Spanish guides index at /es/guias, only when at least one Spanish guide exists."""
+    if not ES_ARTICLES:
+        return []
+    cards = resource_cards(ES_ARTICLES)
+    return [{
+        "slug": "es/guias", "file": "es/guias.html", "active": "resources", "lang": "es", "ui": "es", "guide": False, "es_index": True,
+        "date": max(page["date"] for page in ES_ARTICLES),
+        "title": "Guías para alimentar a tu bebé | Feed Flow",
+        "description": "Guías claras sobre lactancia, fórmula, biberón, sólidos y alérgenos, con las fuentes de salud enlazadas y las cifras explicadas paso a paso.",
+        "eyebrow": "Guías en español", "h1": "Guías para alimentar a tu bebé",
+        "intro": "Respuestas cortas a las dudas de cada toma, con la fuente oficial al lado de cada cifra.",
+        "image": "/screens/nordic/es-03-360.webp", "srcset": "/screens/nordic/es-03-360.webp 1x, /screens/nordic/es-03-720.webp 2x", "width": 360, "height": 780,
+        "alt": "Feed Flow en español: la pantalla de hoy con la última toma, la próxima toma y los biberones del día.",
+        "body": f'<section id="guias"><div class="resource-grid">{cards}</div></section>',
+        "faqs": [], "related": [("/es", "Feed Flow en español")],
+    }]
+
 
 # feature page slug -> [(article slug, link text)]; a link is added only when that article exists.
 ARTICLE_LINKS = {
@@ -144,3 +231,6 @@ def resource_cards(articles=None):
             f'<a class="resource-card" href="/{page["slug"]}"><span class="tag">{tag}</span><h3>{title}</h3><p>{blurb}</p>{_ARROW}</a>'
         )
     return "".join(cards)
+
+
+ES_INDEX = _es_index()

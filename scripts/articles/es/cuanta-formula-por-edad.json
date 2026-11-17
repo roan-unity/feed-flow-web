@@ -1,0 +1,72 @@
+{
+  "slug": "es/guias/cuanta-formula-por-edad",
+  "file": "es/guias/cuanta-formula-por-edad.html",
+  "lang": "es",
+  "translation_of": "guides/how-much-formula-by-age",
+  "active": "resources",
+  "guide": true,
+  "date": "2026-11-17",
+  "title": "Cuánta fórmula necesita un bebé por edad | Feed Flow",
+  "description": "Cuánta fórmula toma un bebé en cada toma y al día, del nacimiento a los 12 meses, en oz y ml, según la AAP, los CDC y el NHS, y señales de hambre y saciedad.",
+  "eyebrow": "Guía de cantidades de fórmula",
+  "h1": "¿Cuánta fórmula necesita mi bebé?",
+  "intro": "Los CDC dicen que, si tu recién nacido toma solo fórmula, empieces con 1 a 2 onzas (30 a 60 ml) cada 2 a 3 horas. La AAP dice que al final del primer mes la mayoría de los bebés toman al menos 3 o 4 onzas (90 a 120 ml) por toma, y que a los 6 meses toman 6 a 8 onzas (180 a 240 ml) en 4 o 5 tomas al día. Son rangos habituales, y cada bebé es diferente.",
+  "image": "/screens/formula/04-home-360.webp",
+  "srcset": "/screens/formula/04-home-360.webp 1x, /screens/formula/04-home-720.webp 2x",
+  "width": 360,
+  "height": 780,
+  "alt": "La pantalla Hoy de Feed Flow con el total de fórmula del día hasta ahora, la cantidad de cada biberón en la línea de tiempo y botones de un toque para los tamaños de biberón habituales.",
+  "faqs": [
+    [
+      "¿Cuántas onzas debe tomar un recién nacido?",
+      "Los CDC dicen que, si tu recién nacido toma solo fórmula, empieces con 1 a 2 onzas (30 a 60 ml) cada 2 a 3 horas en los primeros días, y que le des más si muestra señales de hambre. La AAP dice que algunos bebés toman solo media onza por toma el primer o segundo día."
+    ],
+    [
+      "¿Cuánta fórmula debe tomar un bebé de 2 meses?",
+      "La AAP dice que al final del primer mes la mayoría de los bebés toman al menos 3 a 4 onzas (90 a 120 ml) por toma, cada 3 a 4 horas, y 6 a 8 onzas a los 6 meses. Los CDC dicen que toman más en cada toma al crecer. Ninguno da una cifra para los 2 meses."
+    ],
+    [
+      "¿Cuál es el máximo de fórmula que puede tomar un bebé al día?",
+      "La AAP dice que, por lo general, un bebé no debería tomar más de un promedio de unas 32 onzas (960 ml) de fórmula en 24 horas. Dice que hay límites altos y bajos, y que si tu bebé parece querer más o menos de forma constante, lo hables con tu pediatra."
+    ],
+    [
+      "¿Está bien si mi bebé no se termina el biberón?",
+      "Sí. Los CDC dicen que tu hijo no tiene que terminarse el biberón, y el NHS dice que no te preocupes si no se lo termina. El NHS también dice que no obligues a tu bebé a tomar más de lo que quiere, porque puede llevar a que coma de más."
+    ],
+    [
+      "¿Cómo sé si mi bebé que toma fórmula está comiendo lo suficiente?",
+      "La AAP y el NHS miran pañales mojados y aumento de peso. La AAP dice al menos 5 a 6 pañales mojados al día después de los primeros 4 a 5 días. El NHS dice unos 6 al día desde pocos días después del nacimiento, y que hables con una partera o enfermera visitadora si te preocupa el peso."
+    ]
+  ],
+  "related": [
+    [
+      "/es",
+      "Feed Flow en español"
+    ],
+    [
+      "/es/guias/mi-bebe-come-lo-suficiente",
+      "¿Mi bebé come lo suficiente?"
+    ],
+    [
+      "/es/guias/horario-de-alimentacion-del-recien-nacido",
+      "Horario de alimentación del recién nacido"
+    ]
+  ],
+  "queries": [
+    "cuánta fórmula necesita un bebé",
+    "cuántas onzas de fórmula por edad",
+    "cuántas onzas debe tomar un recién nacido",
+    "cuánta fórmula toma un bebé de 2 meses",
+    "máximo de fórmula al día bebé"
+  ],
+  "citations": [
+    "https://www.healthychildren.org/English/ages-stages/baby/formula-feeding/Pages/Amount-and-Schedule-of-Formula-Feedings.aspx",
+    "https://www.healthychildren.org/English/ages-stages/baby/feeding-nutrition/Pages/How-Often-and-How-Much-Should-Your-Baby-Eat.aspx",
+    "https://www.healthychildren.org/Spanish/ages-stages/baby/feeding-nutrition/Paginas/sample-one-day-menu-for-an-8-to-12-month-old.aspx",
+    "https://www.cdc.gov/infant-toddler-nutrition/formula-feeding/how-much-and-how-often.html",
+    "https://www.cdc.gov/infant-toddler-nutrition/mealtime/signs-your-child-is-hungry-or-full.html",
+    "https://www.nhs.uk/baby/breastfeeding-and-bottle-feeding/bottle-feeding/formula-milk-questions/",
+    "https://www.nhs.uk/baby/breastfeeding-and-bottle-feeding/bottle-feeding/advice/"
+  ],
+  "hero_alt": "Ilustración de cuatro biberones en fila sobre una encimera, cada uno un poco más lleno que el anterior, junto a un bote de fórmula y una cuchara medidora."
+}

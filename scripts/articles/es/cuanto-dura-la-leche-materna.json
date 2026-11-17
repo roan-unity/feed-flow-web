@@ -1,0 +1,68 @@
+{
+  "slug": "es/guias/cuanto-dura-la-leche-materna",
+  "file": "es/guias/cuanto-dura-la-leche-materna.html",
+  "lang": "es",
+  "translation_of": "guides/breast-milk-storage",
+  "active": "resources",
+  "guide": true,
+  "date": "2026-11-17",
+  "title": "Cuánto dura la leche materna extraída | Feed Flow",
+  "description": "Según los CDC, la leche materna recién extraída dura 4 horas a temperatura ambiente y 4 días en el refrigerador. Congelada, 6 meses lo ideal, 12 aceptable.",
+  "eyebrow": "Guía para guardar la leche materna",
+  "h1": "¿Cuánto tiempo dura la leche materna fuera del refrigerador?",
+  "intro": "Según los CDC, la leche materna recién extraída puede estar fuera hasta 4 horas a 77°F (25°C) o menos, dura hasta 4 días en el refrigerador y unos 6 meses en el congelador (hasta 12 es aceptable). La leche descongelada que ya calentaste, y la que queda en el biberón después de una toma, se usan en un máximo de 2 horas. El NHS del Reino Unido es más estricto con lo que sobra (1 hora) y permite más tiempo en un refrigerador a 39°F (4°C) o menos (hasta 8 días).",
+  "image": "/screens/formula/02-lock-screen-360.webp",
+  "srcset": "/screens/formula/02-lock-screen-360.webp 1x, /screens/formula/02-lock-screen-720.webp 2x",
+  "width": 360,
+  "height": 780,
+  "alt": "La pantalla bloqueada de un iPhone con la cuenta regresiva del biberón de Feed Flow: quedan 49:48, biberón de 6.5 oz, 4.5 oz tomadas y 2 oz restantes.",
+  "faqs": [
+    [
+      "¿Cuánto tiempo puede estar fuera la leche materna después de extraerla?",
+      "Los CDC dicen que la leche recién extraída aguanta 4 horas a temperatura ambiente, a 77°F o menos. La Academia de Medicina de la Lactancia Materna dice que 4 horas es lo ideal y que 6 a 8 horas puede ser razonable para leche muy limpia en un cuarto más fresco. El NHS no da un tiempo a temperatura ambiente."
+    ],
+    [
+      "¿Puedo volver a usar la leche materna que mi bebé no terminó?",
+      "Los CDC dicen que uses lo que sobró en un máximo de 2 horas y después lo tires. El NHS dice que la uses en 1 hora desde que tu bebé tomó del biberón y tires lo que quede. La Academia de Medicina de la Lactancia Materna dice de 1 a 2 horas después de que termina la toma."
+    ],
+    [
+      "¿Cuánto dura la leche materna en el refrigerador?",
+      "Los CDC dicen que hasta 4 días. El NHS dice que hasta 8 días a 39°F (4°C) o menos, o en 3 días si no sabes la temperatura de tu refrigerador o si está entre 41 y 50°F (5 y 10°C)."
+    ],
+    [
+      "¿Se puede volver a congelar la leche materna descongelada?",
+      "Los CDC y el NHS dicen que no vuelvas a congelar la leche materna una vez descongelada. La Academia de Medicina de la Lactancia Materna dice que hay muy poca investigación para hacer una recomendación."
+    ],
+    [
+      "¿Cuánto dura la leche materna descongelada?",
+      "Los CDC dicen que la leche descongelada en el refrigerador se usa en 24 horas, contando desde que está completamente descongelada, y en 2 horas una vez que está a temperatura ambiente o tibia. El NHS dice que uses la leche descongelada de inmediato."
+    ]
+  ],
+  "related": [
+    [
+      "/es",
+      "Feed Flow en español"
+    ],
+    [
+      "/es/guias/lactancia-mixta",
+      "Lactancia mixta"
+    ],
+    [
+      "/es/guias/alimentacion-con-biberon-pausada",
+      "Alimentación con biberón pausada"
+    ]
+  ],
+  "queries": [
+    "cuánto dura la leche materna",
+    "cuánto dura la leche materna fuera del refrigerador",
+    "cuánto dura la leche materna en el refrigerador",
+    "cuánto dura la leche materna descongelada",
+    "se puede volver a usar la leche materna que sobró"
+  ],
+  "citations": [
+    "https://www.cdc.gov/breastfeeding/breast-milk-preparation-and-storage/handling-breastmilk.html",
+    "https://www.bfmed.org/assets/DOCUMENTS/PROTOCOLS/8-human-milk-storage-protocol-english.pdf",
+    "https://www.nhs.uk/baby/breastfeeding-and-bottle-feeding/breastfeeding/expressing-breast-milk/"
+  ],
+  "hero_alt": "Ilustración de un estante de refrigerador con tres biberones de leche materna y dos bolsas de almacenamiento."
+}

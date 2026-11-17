@@ -1,0 +1,78 @@
+{
+  "slug": "es/guias/cambiar-de-formula",
+  "file": "es/guias/cambiar-de-formula.html",
+  "active": "resources",
+  "guide": true,
+  "date": "2026-11-17",
+  "title": "Cambiar de fórmula al bebé: lo que dice la AAP | Feed Flow",
+  "description": "La AAP dice que la mayoría de los bebés puede cambiar de marca de fórmula, incluso a marcas de tienda. Cuándo consultar, qué síntomas importan y qué hacer.",
+  "eyebrow": "Guía para cambiar de fórmula",
+  "h1": "¿Cómo cambiar de fórmula a mi bebé?",
+  "intro": "Para la mayoría de los bebés, cambiar entre fórmulas a base de leche, incluidas las marcas de tienda, no es un problema, dice la Academia Americana de Pediatría. La excepción que menciona es el bebé que toma una fórmula extensamente hidrolizada, y los CDC incluyen el querer cambiar de marca o de tipo de fórmula entre los motivos para hablar con el médico o la enfermera de tu bebé. La AAP dice que nunca diluyas la fórmula, y la AAP, los CDC y la FDA advierten contra la fórmula hecha en casa.",
+  "image": "/screens/formula/04-home-360.webp",
+  "srcset": "/screens/formula/04-home-360.webp 1x, /screens/formula/04-home-720.webp 2x",
+  "width": 360,
+  "height": 780,
+  "alt": "La pantalla Hoy real de Feed Flow con cuatro biberones de fórmula, cada uno con la fórmula usada, la hora y la cantidad en onzas.",
+  "faqs": [
+    [
+      "¿Se puede cambiar de marca de fórmula?",
+      "Para la mayoría de los bebés, sí. La AAP dice que no hay problema en cambiar de marca de fórmula de leche, incluidas las marcas de tienda, salvo si tu bebé toma una fórmula extensamente hidrolizada. Los CDC incluyen querer cambiar de marca o de tipo entre los motivos para hablar con el médico o la enfermera de tu bebé."
+    ],
+    [
+      "¿La fórmula de marca de tienda es buena?",
+      "La FDA dice que toda fórmula infantil que se vende en Estados Unidos debe cumplir sus especificaciones de nutrientes, con cantidades mínimas para 29 nutrientes. La AAP dice que la mayoría de los bebés puede cambiar entre fórmulas a base de leche, incluidas las marcas de tienda. Los CDC dicen que ninguna marca de fórmula infantil es la mejor."
+    ],
+    [
+      "¿Cambiar de fórmula ayuda con los gases o las regurgitaciones?",
+      "Rara vez, según la AAP. Su página sobre el biberón dice que cambiar de fórmula por llanto frecuente, regurgitaciones o gases rara vez ayuda, y que pasar de una fórmula a base de leche a otra no ayuda con ningún síntoma. También pide no cambiar sin hablar con el médico de tu bebé."
+    ],
+    [
+      "¿Puedo diluir la fórmula para que dure más?",
+      "No. La AAP dice que nunca diluyas la fórmula, porque es peligroso y puede causar desequilibrios nutricionales y problemas graves de salud. La AAP, los CDC y la FDA también advierten contra la fórmula hecha en casa."
+    ],
+    [
+      "¿Cuándo llamo al médico después de cambiar de fórmula?",
+      "La AAP dice que llames al pediatra de inmediato si hay grandes cantidades de sangre, mucosidad o agua en las heces, sangre o bilis verde en el vómito, vómito fuerte y repetido, o señales de deshidratación. Y que contactes al médico dentro de 24 horas si tu bebé no parece subir suficiente de peso."
+    ]
+  ],
+  "related": [
+    [
+      "/es/guias/cuanta-formula-por-edad",
+      "Cuánta fórmula según la edad"
+    ],
+    [
+      "/es/guias/lactancia-mixta",
+      "Lactancia mixta"
+    ],
+    [
+      "/es",
+      "Feed Flow en español"
+    ]
+  ],
+  "queries": [
+    "cómo cambiar de fórmula a mi bebé",
+    "se puede cambiar de marca de fórmula",
+    "fórmula de marca de tienda es buena",
+    "síntomas de que la fórmula no le cae bien al bebé",
+    "qué hacer si no encuentro fórmula para mi bebé"
+  ],
+  "citations": [
+    "https://www.healthychildren.org/Spanish/tips-tools/ask-the-pediatrician/Paginas/how-should-we-feed-our-baby-if-running-low-on-money.aspx",
+    "https://www.cdc.gov/infant-toddler-nutrition/formula-feeding/choosing-a-formula.html",
+    "https://www.fda.gov/food/people-risk-foodborne-illness/preguntas-y-respuestas-para-los-consumidores-sobre-la-formula-infantil",
+    "https://www.healthychildren.org/Spanish/tips-tools/ask-the-pediatrician/Paginas/What-should-I-know-about-the-infant-formula-recall.aspx",
+    "https://www.healthychildren.org/Spanish/ages-stages/baby/formula-feeding/Paginas/choosing-an-infant-formula.aspx",
+    "https://www.nhs.uk/baby/breastfeeding-and-bottle-feeding/bottle-feeding/types-of-formula/",
+    "https://www.healthychildren.org/Spanish/ages-stages/baby/Paginas/babys-first-days-bowel-movements-and-urination.aspx",
+    "https://www.healthychildren.org/English/tips-tools/symptom-checker/Pages/symptomviewer.aspx?symptom=Bottle-Feeding+%28Formula%29+Questions",
+    "https://www.healthychildren.org/Spanish/health-issues/conditions/abdominal/Paginas/Abdominal-Pains-in-Infants.aspx",
+    "https://www.healthychildren.org/Spanish/health-issues/conditions/abdominal/Paginas/Infant-Vomiting.aspx",
+    "https://www.nhs.uk/conditions/food-allergy/",
+    "https://archive.cdc.gov/www_cdc_gov/infant-toddler-nutrition/formula-feeding/infant-formula-shortages.html",
+    "https://www.healthychildren.org/Spanish/ages-stages/baby/formula-feeding/Paginas/Is-Homemade-Baby-Formula-Safe.aspx"
+  ],
+  "lang": "es",
+  "translation_of": "guides/switching-formula",
+  "hero_alt": "Ilustración de dos botes de fórmula distintos sobre una encimera, con un biberón preparado y una cuchara medidora entre ellos."
+}

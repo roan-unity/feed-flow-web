@@ -2,6 +2,7 @@
 from pathlib import Path
 from html import escape
 import json
+import re
 
 ROOT = Path(__file__).resolve().parents[1]
 APP_STORE = "https://apps.apple.com/app/apple-store/id6782075454?pt=126898045&ct=website_content&mt=8"
@@ -365,6 +366,8 @@ def footer(lang="en"):
     learn = [("/resources", "Guides"), ("/vitamin-d-tracker", "Vitamin D tracker"), ("/bottle-countdown", "Bottle countdown"), ("/combo-feeding", "Combo feeding"), ("/printable-feeding-log", "Printable feeding log"), ("/compare", "Compare apps"), ("/free-baby-feeding-tracker", "Free tracker"), ("/faq", "FAQ")]
     if pdf:
         learn.insert(5, pdf)
+    if lang == "es" and ES_INDEX:
+        learn.insert(0, ("/es/guias", "Guías"))
     columns = [
         ("product", [("/formula-feeding", "Formula feeding"), ("/breastfeeding-pumping", "Breast &amp; pumping"), ("/solids-allergens", "Solids &amp; allergens"), ("/growth-development", "Growth &amp; development"), ("/baby-health", "Baby health"), ("/flowcast", "FlowCast"), ("/baby-report", "Baby Reports"), ("/share-feeding-log", "Shared feeding log")]),
         ("learn", learn),
@@ -395,9 +398,17 @@ def schema(page):
         webpage["citation"] = citations[page["slug"]]
     if page.get("guide"):
         webpage["lastReviewed"] = page["date"] if page.get("article") else "2026-11-12"
-    graph = [webpage, {"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Feed Flow", "item": "https://tryfeedflow.app/"}] + ([{"@type": "ListItem", "position": 2, "name": "Guides", "item": "https://tryfeedflow.app/resources"}, {"@type": "ListItem", "position": 3, "name": page["eyebrow"].replace(" guide", ""), "item": url}] if page.get("guide") else [{"@type": "ListItem", "position": 2, "name": page["eyebrow"], "item": url}])}]
+    if page.get("lang") == "es" and (page.get("guide") or page.get("es_index")):
+        crumbs = [{"@type": "ListItem", "position": 1, "name": "Feed Flow", "item": "https://tryfeedflow.app/es"}, {"@type": "ListItem", "position": 2, "name": "Guías", "item": "https://tryfeedflow.app/es/guias"}]
+        if page.get("guide"):
+            crumbs.append({"@type": "ListItem", "position": 3, "name": page["eyebrow"], "item": url})
+        else:
+            crumbs = crumbs[:1] + [{"@type": "ListItem", "position": 2, "name": "Guías", "item": url}]
+        graph = [webpage, {"@type": "BreadcrumbList", "itemListElement": crumbs}]
+    else:
+        graph = [webpage, {"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Feed Flow", "item": "https://tryfeedflow.app/"}] + ([{"@type": "ListItem", "position": 2, "name": "Guides", "item": "https://tryfeedflow.app/resources"}, {"@type": "ListItem", "position": 3, "name": page["eyebrow"].replace(" guide", ""), "item": url}] if page.get("guide") else [{"@type": "ListItem", "position": 2, "name": page["eyebrow"], "item": url}])}]
     if page.get("article"):
-        graph.append({"@type": "Article", "@id": url + "#article", "headline": page["h1"], "description": page["description"], "datePublished": page["date"], "dateModified": page["date"], "image": "https://tryfeedflow.app" + page["image"], "mainEntityOfPage": {"@id": url + "#page"}, "author": {"@id": "https://tryfeedflow.app/#org"}, "publisher": {"@id": "https://tryfeedflow.app/#org"}, "inLanguage": "en"})
+        graph.append({"@type": "Article", "@id": url + "#article", "headline": page["h1"], "description": page["description"], "datePublished": page["date"], "dateModified": page["date"], "image": "https://tryfeedflow.app" + page.get("hero", page["image"]), "mainEntityOfPage": {"@id": url + "#page"}, "author": {"@id": "https://tryfeedflow.app/#org"}, "publisher": {"@id": "https://tryfeedflow.app/#org"}, "inLanguage": page.get("lang", "en")})
     if page["slug"] == "resources":
         graph.append({"@type": "ItemList", "name": "Feed Flow feature and guide library", "itemListElement": [{"@type": "ListItem", "position": index, "name": item["title"], "url": "https://tryfeedflow.app/" + item["slug"]} for index, item in enumerate([entry for entry in PAGES if entry["slug"] != "resources"], start=1)]})
     if page["faqs"]:
@@ -418,7 +429,37 @@ def render(page):
         faqs = f'<section id="faq"><h2>{t['faq']}</h2><div class="faq-list">{details}</div></section>'
     related = "".join(f'<a class="resource-card" href="{link}"><span class="tag">{t['explore']}</span><h3>{escape(label)}</h3>{icon("arrow")}</a>' for link, label in page["related"])
     aside_links = "".join(f'<a href="{link}">{escape(label)} →</a>' for link, label in page["related"])
-    guide_crumb = '<a href="/resources">Guides</a><span>/</span>' if page.get("guide") else ('<a href="/compare">Compare apps</a><span>/</span>' if page.get("compare") and page["slug"] != "compare" else '')
+    if html_lang == "es" and (page.get("guide") or page.get("es_index")):
+        guide_crumb = '<a href="/es/guias">Guías</a><span>/</span>' if page.get("guide") else ""
+        home_url = "/es"
+    else:
+        home_url = "/"
+    hero = page.get("hero")
+    og_image, og_height = ("https://tryfeedflow.app" + hero, 670) if hero else ("https://tryfeedflow.app/og.png", 630)
+    og_alt = escape(page.get("hero_alt", ""), quote=True) if hero else ("Cuatro pantallas reales de Feed Flow: cuenta regresiva del biberón, FlowCast, vitamina D y un informe de alimentación y crecimiento" if html_lang == "es" else "Four real Feed Flow screens: bottle countdown, FlowCast, vitamin D tracking and a feeding and growth report")
+    hero_figure = ""
+    if hero:
+        small = hero[: -len("-1200.webp")] + "-800.webp"
+        sources = (f"{small} 800w, " if (ROOT / small.lstrip("/")).is_file() else "") + f"{hero} 1200w"
+        hero_figure = f'<figure class="guide-hero"><img src="{hero}" width="1200" height="670" loading="eager" decoding="async" srcset="{sources}" sizes="(max-width: 800px) 100vw, 800px" alt="{escape(page.get("hero_alt", ""), quote=True)}"></figure>'
+    shot_figure = f'<figure class="shot"><img src="{page['image']}" srcset="{page['srcset']}" width="{page['width']}" height="{page['height']}" {{prio}} decoding="async" alt="{escape(page['alt'], quote=True)}"></figure>'
+    body_html = page["body"]
+    guide_meta = ""
+    if hero:
+        # Guides with an illustration read as articles: the drawing leads, the app screenshot moves down to the section about the app.
+        lead_figure = hero_figure.replace('class="guide-hero"', 'class="guide-art"').replace('loading="eager"', 'fetchpriority="high"').replace('sizes="(max-width: 800px) 100vw, 800px"', 'sizes="(max-width: 980px) 100vw, 560px"')
+        in_body = shot_figure.replace("{prio}", 'loading="lazy"').replace('class="shot"', 'class="shot guide-shot"')
+        marks = [m for m in re.finditer(r'<section id="(?:feed-flow|how-feed-flow-helps)">\s*<h2>[^<]*</h2>', body_html)]
+        if marks:
+            at = marks[-1].end()
+            body_html = body_html[:at] + in_body + body_html[at:]
+        words = len(re.sub(r"<[^>]+>", " ", body_html).split())
+        minutes = max(2, round(words / 220))
+        guide_meta = (f'<p class="guide-meta"><span>Actualizado en noviembre de 2026</span><span>{minutes} min de lectura</span><span>Cada dato enlaza a su fuente</span></p>' if html_lang == "es"
+                      else f'<p class="guide-meta"><span>Updated November 2026</span><span>{minutes} min read</span><span>Every figure links to its source</span></p>')
+    else:
+        lead_figure = shot_figure.replace("{prio}", 'fetchpriority="high"')
+    guide_crumb = guide_crumb if (html_lang == "es" and (page.get("guide") or page.get("es_index"))) else '<a href="/resources">Guides</a><span>/</span>' if page.get("guide") else ('<a href="/compare">Compare apps</a><span>/</span>' if page.get("compare") and page["slug"] != "compare" else '')
     return f'''<!DOCTYPE html>
 <html lang="{html_lang}" data-theme="light"><head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="apple-itunes-app" content="app-id=6782075454">
@@ -426,10 +467,10 @@ def render(page):
 <link rel="canonical" href="{url}">{hreflang}<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@800&amp;display=swap"><link rel="stylesheet" href="/site.css">
 <script defer data-domain="tryfeedflow.app" src="https://plausible.io/js/script.outbound-links.tagged-events.js"></script><script defer src="/analytics.js"></script><script defer src="/site.js"></script><script>try{{var t=localStorage.getItem('ff-web-theme');if(t!=='light'&&t!=='dark')t=matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';document.documentElement.dataset.theme=t;}}catch(e){{}}</script>
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 96 96'%3E%3Crect width='96' height='96' rx='22' fill='%232F7886'/%3E%3Crect x='27' y='28' width='7' height='40' rx='3' fill='%23fff'/%3E%3Crect x='27' y='28' width='22' height='7' rx='3' fill='%23fff'/%3E%3Ccircle cx='63.5' cy='55' r='12' fill='%23E87352'/%3E%3C/svg%3E">
-<meta property="og:type" content="website"><meta property="og:url" content="{url}"><meta property="og:title" content="{escape(page['title'], quote=True)}"><meta property="og:description" content="{escape(page['description'], quote=True)}"><meta property="og:image" content="https://tryfeedflow.app/og.png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:image:alt" content="Four real Feed Flow screens: bottle countdown, FlowCast, vitamin D tracking and a feeding and growth report"><meta property="og:site_name" content="Feed Flow!"><meta property="og:locale" content="{t['locale']}"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="{escape(page['title'], quote=True)}"><meta name="twitter:description" content="{escape(page['description'], quote=True)}"><meta name="twitter:image" content="https://tryfeedflow.app/og.png"><meta name="twitter:image:alt" content="Four real Feed Flow screens: bottle countdown, FlowCast, vitamin D tracking and a feeding and growth report">
+<meta property="og:type" content="website"><meta property="og:url" content="{url}"><meta property="og:title" content="{escape(page['title'], quote=True)}"><meta property="og:description" content="{escape(page['description'], quote=True)}"><meta property="og:image" content="{og_image}"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="{og_height}"><meta property="og:image:alt" content="{og_alt}"><meta property="og:site_name" content="Feed Flow!"><meta property="og:locale" content="{t['locale']}"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="{escape(page['title'], quote=True)}"><meta name="twitter:description" content="{escape(page['description'], quote=True)}"><meta name="twitter:image" content="{og_image}"><meta name="twitter:image:alt" content="{og_alt}">
 <script type="application/ld+json">{schema(page)}</script></head><body><a class="skip-link" href="#main">{t['skip']}</a>{header(page['active'], lang)}
-<main id="main"><section class="content-hero"><div class="wrap"><nav class="breadcrumbs" aria-label="Breadcrumb"><a href="/">Feed Flow</a><span>/</span>{guide_crumb}<span>{escape(page['eyebrow'].replace(' guide',''))}</span></nav><div class="content-hero-grid"><div><p class="eyebrow">{escape(page['eyebrow'])}</p><h1>{escape(page['h1'])}</h1><p class="intro">{escape(page['intro'])}</p><div class="hero-cta"><a class="btn btn-primary" href="{store}">{icon('apple','apple')}{t['download']}</a></div><p class="meta">{t['meta']}</p></div><figure class="shot"><img src="{page['image']}" srcset="{page['srcset']}" width="{page['width']}" height="{page['height']}" fetchpriority="high" decoding="async" alt="{escape(page['alt'], quote=True)}"></figure></div></div></section>
-<div class="wrap content-layout"><article class="article-body">{page['body']}{faqs}</article><aside class="article-aside" aria-label="Related information"><div class="aside-card"><h2>{t['aside1']}</h2><p>{t['aside1p']}</p><div class="aside-links">{aside_links}</div></div><div class="aside-card"><h2>{t['aside2']}</h2><p>{t['aside2p']}</p></div></aside></div>
+<main id="main"><section class="content-hero{" guide-lead" if hero else ""}"><div class="wrap"><nav class="breadcrumbs" aria-label="{t.get('breadcrumb', 'Breadcrumb')}"><a href="{home_url}">Feed Flow</a><span>/</span>{guide_crumb}<span>{escape(page['eyebrow'].replace(' guide',''))}</span></nav><div class="content-hero-grid"><div><p class="eyebrow">{escape(page['eyebrow'])}</p><h1>{escape(page['h1'])}</h1><p class="intro">{escape(page['intro'])}</p><div class="hero-cta"><a class="btn btn-primary" href="{store}">{icon('apple','apple')}{t['download']}</a></div><p class="meta">{t['meta']}</p>{guide_meta}</div>{lead_figure}</div></div></section>
+<div class="wrap content-layout"><article class="article-body">{body_html}{faqs}</article><aside class="article-aside" aria-label="{t.get('related_info', 'Related information')}"><div class="aside-card"><h2>{t['aside1']}</h2><p>{t['aside1p']}</p><div class="aside-links">{aside_links}</div></div><div class="aside-card"><h2>{t['aside2']}</h2><p>{t['aside2p']}</p></div></aside></div>
 <section class="related-section"><div class="wrap"><h2>{t['more']}</h2><div class="resource-grid">{related}</div></div></section>
 <section class="cta"><div class="wrap"><div class="cta-banner"><p class="lead">{t['lead']}</p><p class="tiers">{t['tiers']}</p><a class="btn btn-primary" href="{store.replace('website_content','website_closing')}">{icon('apple','apple')}{t['download']}</a></div></div></section></main>{footer(lang)}<script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{{"token":"066ad3912fc4436c8f31f2f912b89230"}}'></script></body></html>'''
 
@@ -440,10 +481,10 @@ from compare_pages import COMPARE, COMPARE_QUERIES
 from question_pages import QUESTION, QUESTION_QUERIES
 from nordic_pages import NORDIC, NORDIC_QUERIES
 from intl_pages import INTL, INTL_QUERIES, INTL_UI, INTL_NAV, LANGS
-from article_pages import ARTICLES, ARTICLE_QUERIES, ARTICLE_CITATIONS, inject_article_links, resource_cards
+from article_pages import ARTICLES, ES_ARTICLES, ES_INDEX, ARTICLE_QUERIES, ARTICLE_CITATIONS, inject_article_links, resource_cards
 L.update(INTL_UI)
 NAV.update(INTL_NAV)
-PAGES += COMPARE + QUESTION + NORDIC + INTL + ARTICLES
+PAGES += COMPARE + QUESTION + NORDIC + INTL + ARTICLES + ES_ARTICLES + ES_INDEX
 inject_article_links(PAGES)
 for _page in PAGES:
     if _page["slug"] == "resources" and ARTICLES:
@@ -498,6 +539,7 @@ query_map = {
     **NORDIC_QUERIES,
     **INTL_QUERIES,
     **ARTICLE_QUERIES,
+    "es/guias": ["guías para alimentar a tu bebé", "guías de lactancia y fórmula", "alimentación del bebé guía"],
     "guides/vitamin-d-for-babies": ["vitamin D for babies", "baby vitamin D drops and formula", "infant vitamin D supplement guide"]
 }
 (ROOT / "seo").mkdir(exist_ok=True)
@@ -512,20 +554,35 @@ sync_static_pages()
 
 def sync_article_discovery():
     """Keep sitemap.xml and llms.txt in step with scripts/articles (idempotent: our lines are removed and re-added)."""
-    if not ARTICLES:
+    es_pages = ES_ARTICLES + ES_INDEX
+    if not ARTICLES and not es_pages:
         return
-    urls = {"https://tryfeedflow.app/" + a["slug"] for a in ARTICLES}
     sitemap = ROOT / "sitemap.xml"
-    lines = [l for l in sitemap.read_text(encoding="utf-8").split("\n") if not any(f"<loc>{u}</loc>" in l for u in urls)]
-    new = [f'  <url><loc>https://tryfeedflow.app/{a["slug"]}</loc><lastmod>{a["date"]}</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>' for a in ARTICLES]
-    at = max(i for i, l in enumerate(lines) if "/guides/" in l) + 1
-    sitemap.write_text("\n".join(lines[:at] + new + lines[at:]), encoding="utf-8")
     llms = ROOT / "llms.txt"
-    lines = [l for l in llms.read_text(encoding="utf-8").split("\n") if not any(l.endswith(u) for u in urls)]
-    new = [f'- {a["title"].rsplit(" | ", 1)[0]} ({a["description"]}): https://tryfeedflow.app/{a["slug"]}' for a in ARTICLES]
-    at = max(i for i, l in enumerate(lines) if "tryfeedflow.app/guides/" in l) + 1
-    llms.write_text("\n".join(lines[:at] + new + lines[at:]), encoding="utf-8")
-    print(f"Synced sitemap.xml and llms.txt for {len(ARTICLES)} guides")
+    urls = {"https://tryfeedflow.app/" + a["slug"] for a in ARTICLES}
+    lines = [l for l in sitemap.read_text(encoding="utf-8").split("\n") if not any(f"<loc>{u}</loc>" in l for u in urls) and "<loc>https://tryfeedflow.app/es/guias" not in l]
+    if ARTICLES:
+        new = [f'  <url><loc>https://tryfeedflow.app/{a["slug"]}</loc><lastmod>{a["date"]}</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>' for a in ARTICLES]
+        at = max(i for i, l in enumerate(lines) if "/guides/" in l) + 1
+        lines[at:at] = new
+    if es_pages:
+        new = [f'  <url><loc>https://tryfeedflow.app/{a["slug"]}</loc><lastmod>{a["date"]}</lastmod><changefreq>monthly</changefreq><priority>{"0.7" if a.get("es_index") else "0.8"}</priority></url>' for a in sorted(es_pages, key=lambda a: (not a.get("es_index"), a["slug"]))]
+        at = max((i for i, l in enumerate(lines) if "<loc>https://tryfeedflow.app/es</loc>" in l), default=max(i for i, l in enumerate(lines) if "<loc>" in l)) + 1
+        lines[at:at] = new
+    sitemap.write_text("\n".join(lines), encoding="utf-8")
+    text = llms.read_text(encoding="utf-8")
+    text = _re.sub(r"## Guías en español\n(?:- .*\n)*\n?", "", text)
+    lines = [l for l in text.split("\n") if not any(l.endswith(u) for u in urls)]
+    if ARTICLES:
+        new = [f'- {a["title"].rsplit(" | ", 1)[0]} ({a["description"]}): https://tryfeedflow.app/{a["slug"]}' for a in ARTICLES]
+        at = max(i for i, l in enumerate(lines) if "tryfeedflow.app/guides/" in l) + 1
+        lines[at:at] = new
+    if es_pages:
+        block = ["## Guías en español"] + [f'- {a["title"].rsplit(" | ", 1)[0]}: https://tryfeedflow.app/{a["slug"]}' for a in sorted(es_pages, key=lambda a: (not a.get("es_index"), a["slug"]))] + [""]
+        at = next((i for i, l in enumerate(lines) if l.strip() == "## Languages"), len(lines))
+        lines[at:at] = block
+    llms.write_text("\n".join(lines), encoding="utf-8")
+    print(f"Synced sitemap.xml and llms.txt for {len(ARTICLES)} guides and {len(es_pages)} Spanish pages")
 
 
 sync_article_discovery()

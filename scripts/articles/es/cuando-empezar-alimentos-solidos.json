@@ -1,0 +1,78 @@
+{
+  "slug": "es/guias/cuando-empezar-alimentos-solidos",
+  "file": "es/guias/cuando-empezar-alimentos-solidos.html",
+  "lang": "es",
+  "translation_of": "guides/starting-solids",
+  "active": "resources",
+  "guide": true,
+  "date": "2026-11-17",
+  "title": "Cuándo empezar alimentos sólidos con tu bebé | Feed Flow",
+  "description": "CDC, AAP, OMS y NHS coinciden: alrededor de los 6 meses. Señales de que tu bebé está listo, primeras comidas, qué evitar el primer año y arcadas o asfixia.",
+  "eyebrow": "Guía para empezar los sólidos",
+  "h1": "¿Cuándo puede empezar mi bebé a comer sólidos?",
+  "intro": "Alrededor de los 6 meses. Los CDC, la AAP, la OMS y el NHS coinciden en esa edad, y los CDC agregan que no se recomiendan los sólidos antes de los 4 meses. También depende de lo que tu bebé ya puede hacer, como sentarse controlando la cabeza y tragar la comida en lugar de empujarla hacia afuera.",
+  "image": "/screens/health-allergens-360.webp",
+  "srcset": "/screens/health-allergens-360.webp 1x, /screens/health-allergens-720.webp 2x",
+  "width": 360,
+  "height": 783,
+  "alt": "La pantalla real de alérgenos de Feed Flow, con seis de nueve alérgenos principales introducidos y una marca leve en el huevo.",
+  "faqs": [
+    [
+      "¿Puedo empezar los sólidos a los 4 meses?",
+      "Los CDC dicen que no se recomienda introducir alimentos antes de los 4 meses y que los niños pueden empezar alrededor de los 6 meses. La AAP dice que cada bebé está listo según su propio desarrollo. La OMS y el NHS dicen a partir de los 6 meses o alrededor de esa edad."
+    ],
+    [
+      "¿Cuáles son las señales de que mi bebé está listo para los sólidos?",
+      "El NHS menciona tres: se queda sentado y mantiene la cabeza firme, puede mirar la comida, agarrarla y llevársela a la boca, y la traga en lugar de escupirla. Morderse los puños, despertarse más por la noche y pedir más leche son conductas normales, según el NHS, y no siempre indican que esté listo."
+    ],
+    [
+      "¿Mi bebé sigue necesitando leche después de empezar los sólidos?",
+      "Sí. La AAP dice que, al principio, los bebés siguen obteniendo la mayor parte de su nutrición de la leche materna, de la fórmula o de ambas. El NHS dice que la leche materna o la fórmula infantil debe ser la bebida principal durante el primer año."
+    ],
+    [
+      "¿Por qué los bebés no pueden comer miel?",
+      "Los CDC dicen que la miel antes de los 12 meses puede causar una intoxicación alimentaria grave llamada botulismo. La AAP y el NHS también dicen que no se dé miel hasta después del primer cumpleaños."
+    ],
+    [
+      "¿Es normal que mi bebé tenga arcadas al empezar los sólidos?",
+      "El NHS dice que los bebés pueden tener arcadas al empezar los sólidos. Puede que les lloren los ojos, que empujen la lengua hacia adelante y que tengan arcadas o vomiten. La AAP dice que si no puede respirar, no puede hablar, llorar ni hacer ruido, o se pone azulado, puede estar atragantándose y necesita ayuda de inmediato."
+    ]
+  ],
+  "related": [
+    [
+      "/es/guias/introducir-alergenos",
+      "Cómo introducir alérgenos"
+    ],
+    [
+      "/es/guias/agua-para-bebes",
+      "Agua para bebés"
+    ],
+    [
+      "/es",
+      "Feed Flow en español"
+    ]
+  ],
+  "queries": [
+    "cuándo empezar a dar sólidos al bebé",
+    "señales de que el bebé está listo para comer sólidos",
+    "primeras comidas para bebé de 6 meses",
+    "alimentos que no puede comer un bebé menor de 1 año",
+    "arcadas o atragantamiento en bebés"
+  ],
+  "citations": [
+    "https://www.cdc.gov/infant-toddler-nutrition/foods-and-drinks/when-what-and-how-to-introduce-solid-foods.html",
+    "https://www.cdc.gov/infant-toddler-nutrition/foods-and-drinks/foods-and-drinks-to-avoid-or-limit.html",
+    "https://www.cdc.gov/infant-toddler-nutrition/foods-and-drinks/choking-hazards.html",
+    "https://www.healthychildren.org/Spanish/ages-stages/baby/feeding-nutrition/Paginas/Starting-Solid-Foods.aspx",
+    "https://www.healthychildren.org/Spanish/health-issues/conditions/infections/Paginas/Botulism.aspx",
+    "https://www.healthychildren.org/English/health-issues/injuries-emergencies/Pages/Choking-Prevention.aspx",
+    "https://www.healthychildren.org/Spanish/health-issues/injuries-emergencies/Paginas/When-Your-Child-Needs-Emergency-Medical-Services.aspx",
+    "https://www.who.int/es/news-room/fact-sheets/detail/infant-and-young-child-feeding",
+    "https://www.nhs.uk/baby/weaning-and-feeding/babys-first-solid-foods/",
+    "https://www.nhs.uk/baby/weaning-and-feeding/foods-to-avoid-giving-babies-and-young-children/",
+    "https://www.nhs.uk/baby/weaning-and-feeding/drinks-and-cups-for-babies-and-young-children/",
+    "https://www.nhs.uk/baby/first-aid-and-safety/first-aid/how-to-stop-a-child-from-choking/"
+  ],
+  "hero": "/images/guides/starting-solids-1200.webp",
+  "hero_alt": "Ilustración de un bebé sentado erguido en una silla alta que se inclina hacia una cucharita de puré que le acerca un adulto."
+}
