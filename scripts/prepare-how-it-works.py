@@ -1,7 +1,9 @@
 """Images for the home page "How logging works" section (index.html #how-it-works).
 
 Every frame is a real app capture. Nothing is drawn or retouched:
-- start   = screens/logging.jpg (the log menu), resized.
+- start   = the log menu ("What do you want to log?") showing everything the app can log at once. The app
+  shows three types and keeps the rest behind More; for the website the discs are laid out together in two
+  rows. Every disc and every word is cut from a real 1206x2622 capture (see compose_picker below).
 - press, log, finish = three frames of ONE real recording of a 2.5 oz bottle being logged
   (ff-167-livepolish scratch/livepolish/round3/attempt1/clip-i17.mp4, 1206x2622): Today before the
   feed at 14.5 s (17.5 oz so far), the bottle screen at 37.5 s (2.5 oz taken, 1.5 oz left) and Today
@@ -55,14 +57,84 @@ def save(image: Image.Image, name: str, quality: int = 78) -> None:
         print(f"Created {target.relative_to(ROOT)} ({width}x{height}, {target.stat().st_size // 1024} KB)")
 
 
-# Phone 1: the current type picker ("What do you want to log?"), a 1206x2622 in-app capture from
-# the 2026-11-15 fill-stage run. Falls back to the older radial menu when that folder is missing.
-NEWER_PICKER = Path.home() / "Developer/ff-167-settings/scratch/fill/after/fill-menu-ocean-en-i17.png"
-if NEWER_PICKER.exists():
-    START = Image.open(NEWER_PICKER).convert("RGB")
-else:
-    START = Image.open(ROOT / "screens" / "logging.jpg").convert("RGB")
-save(START, "start")
+# Phone 1: the type picker ("What do you want to log?") with EVERYTHING the app logs on one screen (round 6).
+# The app's own stage shows up to three feed types and opens the rest behind More, so no single capture holds
+# them all. This composes one from real pixels, all Ocean, English, iPhone 17 (1206x2622), all at the app's
+# own scale:
+#   ground, title, Breast, Formula (selected), the blurred panel  = fill-menu-ocean-en-i17 (2026-11-15 fill run)
+#   Solids as a large disc                                        = health-three-extras-en-i17 (health run r3)
+#   Pumped Milk, Pumping, Vitamin D, Health as small discs        = health-six-extras-en-i17 (health run r3)
+#   Water as a small disc = the large Water disc of fill-menu scaled 156/228 (no capture has it small); its
+#   word is the capture's own, unscaled.
+# A disc is moved as (its pixels minus the plain ground behind it) added onto the ground where it lands, so
+# nothing is redrawn and no box shows. The ground is the capture's own edge columns, blended across.
+PICKER_MENU = Path.home() / "Developer/ff-167-settings/scratch/fill/after/fill-menu-ocean-en-i17.png"
+PICKER_HEALTH = Path.home() / "Developer/ff-167-health/scratch/health/r3"
+LARGE_Y, SMALL_Y_SIX, LARGE_X = 1374.5, 792.5, (218.5, 602.5, 986.5)
+BACK_Y, TITLE_SHIFT = 1019, -48
+BACK_X = tuple(603 + 225 * i for i in range(-2, 3))
+
+
+def compose_picker() -> Image.Image:
+    import numpy as np
+    from PIL import ImageFilter
+
+    def load(path):
+        return np.asarray(Image.open(path).convert("RGB"), dtype=float)
+
+    def ground(a):
+        left, right = a[:, 4:24].mean(axis=1), a[:, 1182:1202].mean(axis=1)
+        mix = np.linspace(0, 1, a.shape[1])[None, :, None]
+        return left[:, None, :] * (1 - mix) + right[:, None, :] * mix
+
+    menu, three, six = load(PICKER_MENU), load(PICKER_HEALTH / "health-three-extras-en-i17.png"), load(PICKER_HEALTH / "health-six-extras-en-i17.png")
+    delta = {"menu": menu - ground(menu), "three": three - ground(three), "six": six - ground(six)}
+
+    def soft(height, width, feather=10):
+        mask = Image.new("L", (width, height), 0)
+        mask.paste(255, (feather, feather, width - feather, height - feather))
+        return np.asarray(mask.filter(ImageFilter.GaussianBlur(feather / 2.5)), dtype=float)[..., None] / 255
+
+    # The ground: the menu capture with its title, More and three discs taken out (x 40..1166, y 820..1600).
+    out = menu.copy()
+    y0, y1, x0, x1 = 820, 1600, 40, 1166
+    out[y0:y1, x0:x1] -= delta["menu"][y0:y1, x0:x1] * soft(y1 - y0, x1 - x0, 14)
+
+    def place(patch, cx, cy):
+        """Add a ground-free patch (h x w x 3) centred on (cx, cy)."""
+        h, w, _ = patch.shape
+        top, left = round(cy - h / 2), round(cx - w / 2)
+        out[top:top + h, left:left + w] += patch * soft(h, w)
+
+    def cut(name, cx, cy, half_w, up, down):
+        return delta[name][round(cy - up):round(cy + down), round(cx - half_w):round(cx + half_w)], (down - up) / 2
+
+    def move(name, cx, cy, to_x, to_y, half_w, up, down):
+        patch, offset = cut(name, cx, cy, half_w, up, down)
+        place(patch, to_x, to_y + offset)
+
+    move("menu", 603, 889, 603, 889 + TITLE_SHIFT, 420, 50, 50)                    # the title
+    move("menu", LARGE_X[0], LARGE_Y, LARGE_X[0], LARGE_Y, 150, 152, 214)          # Breast
+    move("menu", LARGE_X[1], LARGE_Y, LARGE_X[1], LARGE_Y, 156, 152, 214)          # Formula, with its ring
+    move("three", LARGE_X[2], LARGE_Y, LARGE_X[2], LARGE_Y, 150, 152, 214)         # Solids
+    # Back row, left to right: Water, Pumped Milk, Pumping, Vitamin D, Health.
+    move("six", 484.5, SMALL_Y_SIX, BACK_X[1], BACK_Y, 112, 88, 138)
+    move("six", 964.5, SMALL_Y_SIX, BACK_X[2], BACK_Y, 112, 88, 138)
+    move("six", 244.5, SMALL_Y_SIX, BACK_X[3], BACK_Y, 112, 88, 138)
+    move("six", 730.5, 546.5, BACK_X[4], BACK_Y, 112, 88, 138)
+    disc, _ = cut("menu", LARGE_X[2], LARGE_Y, 126, 126, 126)
+    size = round(252 * 156 / 228)
+    small = np.stack([np.asarray(Image.fromarray(disc[..., c]).resize((size, size), Image.Resampling.LANCZOS)) for c in range(3)], axis=-1)
+    place(small, BACK_X[0], BACK_Y)
+    word, _ = cut("menu", LARGE_X[2], 1559.5, 80, 24, 24)
+    place(word, BACK_X[0], BACK_Y + 111.5)
+    return Image.fromarray(out.clip(0, 255).round().astype("uint8"))
+
+
+# Without those two capture folders the committed start webps and start-bg.png stay as they are.
+START = compose_picker() if PICKER_MENU.exists() and PICKER_HEALTH.exists() else None
+if START is not None:
+    save(START, "start")
 
 # swiftc -O scripts/extract-frames.swift -o /tmp/extract-frames
 # /tmp/extract-frames <clip-i17.mp4> <RECORDING dir> 14.5 37.5 44.1   (then rename as below)
@@ -115,7 +187,8 @@ def background_strip(image: Image.Image, name: str, left_cols=(0.008, 0.03), rig
     print(f"Created {target.relative_to(ROOT)}")
 
 
-background_strip(START, "start")
+if START is not None:
+    background_strip(START, "start")
 for name, frame in RECORDED_FRAMES.items():
     background_strip(frame, name)
 background_strip(Image.open(ROOT / "screens" / "flowcast-720.webp"), "flowcast")
