@@ -45,17 +45,17 @@
       ],
       ring: { c: [50, 52.5], w: 25, t: [2050, 2700] }
     },
-    /* Step 02: the whole Today screen arrives, everything but the log button softly blurs and dims
-       (the .hiw-dim overlay, which stays), two rings pulse out of the button, then it is pressed. */
+    /* Step 02: the whole Today screen arrives, then the action panel (its own crop of the same
+       capture, .hiw-panel in the HTML) lifts from where it really sits up to the centre while the
+       screen behind blurs and dims (.hiw-dim). The log button's halo breathes three times and on the
+       third the button is pressed. The HTML and CSS are the resting state; here things only arrive. */
     press: {
-      duration: 2100,
+      duration: 3300,
       whole: [150, 550],
-      dim: [500, 1000],
-      pieces: [
-        { r: [35.5, 77.8, 64.5, 91], ellipse: [14, 6.44, 50, 84.4], a: 'fade', t: [150, 550], press: [1500, 1850], origin: [50, 84.4] }
-      ],
-      rings: [{ c: [50, 84.4], w: 26, t: [850, 1400] }, { c: [50, 84.4], w: 26, t: [1150, 1700] }],
-      cue: [900, 1200]
+      pieces: [],
+      /* from: the panel's real centre, in % of its own height below the phone's centre; scale: real size / resting size */
+      lift: { dim: [500, 1000], t: [650, 1250], from: 94.3, scale: 1.0247, radius: 7, glow: [1150, 2800], breaths: 2.5, press: [2800, 3150], rest: 0.75,
+        button: [14.65, 22.6, 50, 76.8] }
     },
     log: {
       duration: 4900, rate: 1.35,
@@ -82,24 +82,26 @@
       drag: { t: [2500, 3350], from: 60.95, to: 70.69, band: [33.5, 66.4, 60.95, 71.7], hx: [40.2, 68.7], show: [1500, 2050], taken: [0.5, 2.5] },
       sparks: { t: [3660, 4890], c: [73.3, 89.6] }
     },
+    /* Step 04: the screen's frame arrives first (status bar, header card, "Today", the action panel),
+       with no feeds on the timeline. Then the feeds arrive one by one, oldest first, each with the gap
+       pill beneath it as one piece (the pill belongs to the newer feed). The newest, the 2.5 oz one
+       just logged, comes last, together with the "+2.5 oz formula" chip. */
     finish: {
-      duration: 3550, rate: 1.35,
+      duration: 3580, rate: 1.35,
       pieces: [
         { r: [8, 1.2, 95, 5.6], a: 'fade', t: [300, 600] },
         { r: [3, 6.6, 97, 26.8], a: 'fade', t: [400, 750] },
-        { r: [3, 27.8, 28, 31.6], a: 'fade', t: [600, 900] },
-        { r: [3, 53.2, 97, 59.8], a: 'drop', t: [750, 1100] },
-        { r: [3, 49.8, 30, 52.8], a: 'fade', t: [950, 1200] },
-        { r: [3, 42.7, 97, 49.3], a: 'drop', t: [1050, 1400] },
-        { r: [3, 39.3, 30, 42.3], a: 'fade', t: [1250, 1500] },
-        { r: [3, 32.2, 97, 38.8], a: 'drop', t: [1700, 2150], lift: 9 },
-        { r: [0, 60.2, 100, 100], a: 'up', t: [2300, 2700] }
+        { r: [3, 27.8, 28, 31.6], a: 'fade', t: [600, 900], f: [4, 0.3] },
+        { r: [0, 62.1, 100, 100], a: 'up', t: [700, 1100], f: [4, 0.2] },
+        { r: [3, 53, 97, 62.1], a: 'up', t: [1150, 1600], f: [4, 0.3] },
+        { r: [3, 42.5, 97, 53], a: 'up', t: [1515, 1965], f: [4, 0.3] },
+        { r: [3, 32, 97, 42.5], a: 'drop', t: [1880, 2380], lift: 9, f: [4, 0.3] }
       ],
       /* The day meter: the same bar from the frame before the feed (17.5 oz, step 02's image) sits on
          top of this frame's bar (20 oz). Its number cross-fades and its right part is wiped away left
          to right, so the real fill and the real usual-zone marks grow to where the app drew them. */
       meter: { from: 'press', r: [4.5, 20.3, 72.5, 25.7], split: 42.3, to: 57, show: [400, 750] },
-      count: { t: [2450, 3450], show: [2100, 2400], add: [1850, 2150] }
+      count: { t: [2480, 3480], show: [2130, 2430], add: [1880, 2180] }
     },
     flowcast: {
       duration: 3000,
@@ -266,12 +268,48 @@
       track(spec.duration - 320, spec.duration, 'lin', function (k) { main.op = k; });
     }
 
-    if (spec.dim) {
-      /* .hiw-dim and .hiw-cue-ring are in the HTML (the resting state); here they only arrive. */
-      var dim = figure.querySelector('.hiw-dim');
-      if (dim) { var ds = state(dim); track(spec.dim[0], spec.dim[1], 'inout', function (k) { ds.op = k; }); }
-      var cue = figure.querySelector('.hiw-cue-ring');
-      if (cue) { var qs = state(cue, 'translate(-50%, -50%)'); track(spec.cue[0], spec.cue[1], 'out', function (k) { qs.op = k; qs.sc = 1.12 - 0.12 * k; }); }
+    var resets = [];
+    if (spec.lift) {
+      var lf = spec.lift;
+      var dim = figure.querySelector('.hiw-dim'), panel = figure.querySelector('.hiw-panel'), halo = figure.querySelector('.hiw-press-glow');
+      if (dim) { var ds = state(dim, 'scale(1.1)'); track(lf.dim[0], lf.dim[1], 'inout', function (k) { ds.op = k; }); }
+      if (panel) {
+        var ps = state(panel, 'translateY(-50%)');
+        track(lf.t[0], lf.t[1], 'inout', function (k) {
+          ps.ty = lf.from * (1 - k);
+          ps.sc = lf.scale + (1 - lf.scale) * k;
+          panel.style.borderRadius = (lf.radius * k).toFixed(3) + 'cqw';
+          panel.style.setProperty('--hiw-lifted', k.toFixed(3));
+        });
+        resets.push(function () { panel.style.borderRadius = ''; panel.style.removeProperty('--hiw-lifted'); });
+        /* the button alone, a copy of the panel's own pixels clipped to a circle a little wider than
+           the button, so the pressed (smaller) copy still covers the one underneath */
+        var source = panel.querySelector('img');
+        var button = new Image();
+        button.className = 'hiw-panel-button';
+        button.alt = '';
+        button.setAttribute('aria-hidden', 'true');
+        button.decoding = 'sync';
+        button.src = source.currentSrc || source.src;
+        button.style.clipPath = 'ellipse(' + lf.button[0] + '% ' + lf.button[1] + '% at ' + lf.button[2] + '% ' + lf.button[3] + '%)';
+        button.style.transformOrigin = lf.button[2] + '% ' + lf.button[3] + '%';
+        panel.insertBefore(button, halo);
+        added.push(button);
+        var bs = state(button), hs = halo ? state(halo, 'translate(-50%, -50%)') : null;
+        var g0 = lf.glow[0], span = spec.duration - g0;
+        track(g0, spec.duration, 'lin', function (k) {
+          var t = g0 + k * span;
+          var pk = clamp((t - lf.press[0]) / (lf.press[1] - lf.press[0]));
+          var sc = pk <= 0 || pk >= 1 ? 1 : pk < 0.35 ? 1 - 0.1 * EASE.out(pk / 0.35) : 0.9 + 0.1 * EASE.back((pk - 0.35) / 0.65);
+          bs.sc = sc;
+          button.style.filter = sc < 1 ? 'brightness(' + (1 - (1 - sc) * 1.2).toFixed(3) + ')' : '';
+          if (!hs) return;
+          var breath = t <= g0 ? 0 : t >= lf.glow[1] ? 1 : 0.5 - 0.5 * Math.cos(2 * Math.PI * lf.breaths * (t - g0) / (lf.glow[1] - g0));
+          var settle = clamp((t - lf.press[1]) / (spec.duration - lf.press[1]));
+          hs.op = t <= g0 ? 0 : Math.min(0.999, (0.25 + 0.75 * breath) * (1 - (1 - lf.rest) * settle));
+          hs.sc = (1 + 0.07 * breath * (1 - settle)) * sc;
+        });
+      }
     }
 
     if (spec.meter) {
@@ -473,7 +511,7 @@
 
     return {
       duration: spec.duration / rate, tracks: tracks, elements: elements,
-      cleanup: function () { added.forEach(function (el) { el.remove(); }); figure.style.background = ''; shot.style.position = ''; shot.style.zIndex = ''; shot.style.filter = ''; shot.style.clipPath = ''; }
+      cleanup: function () { added.forEach(function (el) { el.remove(); }); resets.forEach(function (reset) { reset(); }); figure.style.background = ''; shot.style.position = ''; shot.style.zIndex = ''; shot.style.filter = ''; shot.style.clipPath = ''; }
     };
   }
 
