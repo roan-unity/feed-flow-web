@@ -1,0 +1,71 @@
+{
+  "slug": "guides/paced-bottle-feeding",
+  "file": "guides/paced-bottle-feeding.html",
+  "active": "resources",
+  "guide": true,
+  "date": "2026-11-17",
+  "title": "What Is Paced Bottle Feeding? How to Do It | Feed Flow",
+  "description": "Paced bottle feeding lets your baby set the speed: upright baby, flat bottle, pauses, and stopping at fullness. Steps and signs from CDC, AAP, NHS and USDA.",
+  "eyebrow": "Paced bottle feeding guide",
+  "h1": "What is paced bottle feeding and how do you do it?",
+  "intro": "Paced bottle feeding means your baby sets the speed: you hold them semi-upright, keep the bottle close to flat so milk flows only when they suck, let them pause, and stop when they show they are full, even if milk is left. The CDC, NHS, USDA and UNICEF UK say not to force a baby to finish the bottle, and the AAP says to let your baby tell you when they have had enough. The USDA says a typical feeding takes 15 to 20 minutes, but should be based on your baby's fullness signs.",
+  "image": "/screens/formula/01-safe-bottle-360.webp",
+  "srcset": "/screens/formula/01-safe-bottle-360.webp 1x, /screens/formula/01-safe-bottle-720.webp 2x",
+  "width": 360,
+  "height": 780,
+  "alt": "Feed Flow's formula bottle screen showing 3.5 oz taken and 2 oz left in the bottle, with the bottle countdown ring above.",
+  "faqs": [
+    [
+      "Is paced bottle feeding only for breastfed babies?",
+      "The sources differ on this. The USDA says paced bottle feeding is sometimes used with breastfed babies, and the Academy of Breastfeeding Medicine suggests it for breastfed babies given bottles. UNICEF UK describes responsive bottle feeding in its leaflet on infant formula, and the NHS gives similar baby-led advice for any bottle feed."
+    ],
+    [
+      "How long should a bottle feed take?",
+      "The USDA says a typical bottle feeding takes 15 to 20 minutes, and that the length should be based on the baby's fullness signs. The NHS says to always give your baby plenty of time to feed."
+    ],
+    [
+      "Is it okay if my baby does not finish the bottle?",
+      "Yes. The NHS says not to worry if your baby does not finish the bottle, and the CDC says to stop when your baby shows signs of fullness, even if the bottle is not empty. Forcing more can lead to overfeeding."
+    ],
+    [
+      "What nipple should I use for paced bottle feeding?",
+      "The USDA suggests a slow flow nipple, which helps a baby control how much they eat. To check, turn the filled bottle upside down: drops should follow each other closely without running in a stream."
+    ],
+    [
+      "Can I save the milk my baby did not drink?",
+      "The NHS says to throw away any unused formula or breast milk once you have finished bottle feeding your baby."
+    ]
+  ],
+  "related": [
+    [
+      "/formula-feeding",
+      "Formula feeding and bottle tracking"
+    ],
+    [
+      "/guides/combination-feeding",
+      "Combination feeding"
+    ],
+    [
+      "/guides/is-my-baby-eating-enough",
+      "Is my baby eating enough?"
+    ]
+  ],
+  "queries": [
+    "what is paced bottle feeding",
+    "how to do paced bottle feeding",
+    "how long should a bottle feed take",
+    "signs baby is full bottle",
+    "should I make my baby finish the bottle"
+  ],
+  "citations": [
+    "https://www.cdc.gov/infant-toddler-nutrition/bottle-feeding/index.html",
+    "https://www.cdc.gov/infant-toddler-nutrition/mealtime/signs-your-child-is-hungry-or-full.html",
+    "https://www.healthychildren.org/English/ages-stages/baby/feeding-nutrition/Pages/Bottle-Feeding-How-Its-Done.aspx",
+    "https://www.healthychildren.org/English/ages-stages/baby/formula-feeding/Pages/Amount-and-Schedule-of-Formula-Feedings.aspx",
+    "https://www.nhs.uk/baby/breastfeeding-and-bottle-feeding/bottle-feeding/advice/",
+    "https://www.unicef.org.uk/babyfriendly/baby-friendly-resources/bottle-feeding-resources/infant-formula-responsive-bottle-feeding-guide-for-parents/",
+    "https://www.unicef.org.uk/babyfriendly/wp-content/uploads/sites/2/2019/04/Infant-formula-and-responsive-bottle-feeding.pdf",
+    "https://fns-prod.azureedge.us/sites/default/files/resource-files/FI_Ch5_BottleandCup.pdf",
+    "https://www.bfmed.org/assets/DOCUMENTS/PROTOCOLS/ModelMaternityPolicyFinal25.pdf"
+  ]
+}

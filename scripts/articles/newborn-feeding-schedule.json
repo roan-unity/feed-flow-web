@@ -1,0 +1,73 @@
+{
+  "slug": "guides/newborn-feeding-schedule",
+  "file": "guides/newborn-feeding-schedule.html",
+  "active": "resources",
+  "guide": true,
+  "date": "2026-11-17",
+  "title": "How Often Should a Newborn Eat? Feeding by Age | Feed Flow",
+  "description": "Most newborns eat 8 to 12 times in 24 hours, every 1 to 3 hours at first. What the CDC, AAP, NHS and WHO say about cues, cluster feeds and night feeds.",
+  "eyebrow": "Newborn feeding guide",
+  "h1": "How often should a newborn eat?",
+  "intro": "Most newborns eat 8 to 12 times in 24 hours, the CDC says, for breastfed and formula-fed babies alike. Breastfed newborns may want to eat every 1 to 3 hours in the first days. The AAP says to feed whenever your baby seems hungry, the NHS says as often as they want, and the WHO says as often as the child wants, day and night.",
+  "image": "/screens/flowcast-360.webp",
+  "srcset": "/screens/flowcast-360.webp 1x, /screens/flowcast-720.webp 2x",
+  "width": 360,
+  "height": 783,
+  "alt": "The FlowCast screen in Feed Flow with a likely next-feed window, an estimated amount and later feeding windows for the day.",
+  "faqs": [
+    [
+      "Is it normal for a newborn to eat every hour?",
+      "It can be. The CDC says some babies feed as often as every hour at times, which is often called cluster feeding. The NHS says cluster feeding usually happens in the first 3 to 4 months, that a baby may cluster feed for a few days during a growth spurt, and calls it very normal."
+    ],
+    [
+      "Should I wake my newborn to feed?",
+      "In the first weeks, sometimes. The AAP says a breastfed newborn should not go longer than about two to three hours in the day or four hours at night without a feeding. For formula-fed babies, it says to wake them if they sleep longer than 4 to 5 hours and start missing feedings."
+    ],
+    [
+      "How many times a day should a newborn eat?",
+      "The CDC says most breastfed and formula-fed newborns feed 8 to 12 times in 24 hours. The AAP describes 10 to 12 sessions as the norm for breastfed newborns and at least 8 for bottle-fed newborns. The NHS says at least 8 times a day for the first few weeks."
+    ],
+    [
+      "When do babies stop eating at night?",
+      "For formula-fed babies, the AAP says most no longer need a middle-of-the-night feeding between 2 and 4 months, or once they weigh more than 12 lb (5.4 kg). The sources give no set age for breastfed babies. The NHS says breastfed babies may feed more and for longer at night."
+    ],
+    [
+      "What are the first signs a newborn is hungry?",
+      "The CDC lists hands to the mouth, turning toward the breast or bottle, puckering or licking the lips, and clenched hands. The AAP adds rooting, sticking the tongue out and fussiness. The CDC says crying is often a late sign of hunger, and the AAP calls it a late sign."
+    ]
+  ],
+  "related": [
+    [
+      "/flowcast",
+      "FlowCast next-feed windows"
+    ],
+    [
+      "/guides/how-much-formula-by-age",
+      "How much formula by age"
+    ],
+    [
+      "/guides/is-my-baby-eating-enough",
+      "Is my baby eating enough?"
+    ]
+  ],
+  "queries": [
+    "how often should a newborn eat",
+    "newborn feeding schedule by age",
+    "should I wake my newborn to feed",
+    "newborn eating every hour cluster feeding",
+    "when do babies stop night feeds"
+  ],
+  "citations": [
+    "https://www.cdc.gov/infant-toddler-nutrition/breastfeeding/how-much-and-how-often.html",
+    "https://www.cdc.gov/infant-toddler-nutrition/formula-feeding/how-much-and-how-often.html",
+    "https://www.cdc.gov/infant-toddler-nutrition/mealtime/signs-your-child-is-hungry-or-full.html",
+    "https://www.healthychildren.org/English/ages-stages/baby/feeding-nutrition/Pages/How-Often-and-How-Much-Should-Your-Baby-Eat.aspx",
+    "https://www.healthychildren.org/English/ages-stages/baby/breastfeeding/Pages/How-Often-to-Breastfeed.aspx",
+    "https://www.healthychildren.org/English/ages-stages/baby/formula-feeding/Pages/amount-and-schedule-of-formula-feedings.aspx",
+    "https://www.healthychildren.org/English/ages-stages/baby/breastfeeding/Pages/Warning-Signs-of-Breastfeeding-Problems.aspx",
+    "https://www.nhs.uk/baby/breastfeeding-and-bottle-feeding/breastfeeding/the-first-few-days/",
+    "https://www.nhs.uk/best-start-in-life/baby/feeding-your-baby/breastfeeding/how-to-breastfeed/latching-on/",
+    "https://www.nhs.uk/best-start-in-life/baby/feeding-your-baby/bottle-feeding/bottle-feeding-your-baby/cluster-feeding/",
+    "https://www.who.int/news-room/fact-sheets/detail/infant-and-young-child-feeding"
+  ]
+}

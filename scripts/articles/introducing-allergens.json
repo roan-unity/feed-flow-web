@@ -1,0 +1,70 @@
+{
+  "slug": "guides/introducing-allergens",
+  "file": "guides/introducing-allergens.html",
+  "active": "resources",
+  "guide": true,
+  "date": "2026-11-17",
+  "title": "When to Introduce Allergens Like Peanut and Egg | Feed Flow",
+  "description": "What the AAP, CDC, NIAID and NHS say about when to give a baby peanut, egg and other allergens, who sees a doctor first, and signs of a reaction.",
+  "eyebrow": "Allergen introduction guide",
+  "h1": "When and how do you introduce allergens like peanut and egg to a baby?",
+  "intro": "The US Dietary Guidelines say to introduce allergenic foods like peanut and egg with other complementary foods at about 6 months, and the CDC says to introduce them when you introduce other foods. For babies with severe eczema, egg allergy or both, an NIAID expert panel says peanut as early as 4 to 6 months, with allergy testing strongly considered first, and the AAP says to talk with the pediatrician first. The NHS asks families with eczema, an allergy or a family history to talk to a GP or health visitor first.",
+  "image": "/screens/health-allergens-360.webp",
+  "srcset": "/screens/health-allergens-360.webp 1x, /screens/health-allergens-720.webp 2x",
+  "width": 360,
+  "height": 783,
+  "alt": "Feed Flow's Allergen journey showing 6 of 9 major allergens introduced: a Mild reaction marker on egg, None logged on peanut, cow's milk, soy, wheat and sesame, and tree nut, fish and shellfish not tried yet.",
+  "faqs": [
+    [
+      "Can I give my baby peanut butter at 4 months?",
+      "The AAP says that for babies with no reason to suspect increased allergy risk, peanut ideally goes in as early as 4 to 6 months, after a few first foods. For severe eczema or egg allergy, the NIAID panel says as early as 4 to 6 months, and the CDC says to ask your child's doctor or nurse first."
+    ],
+    [
+      "Does my baby need an allergy test before trying peanut?",
+      "The NIAID panel recommends testing be strongly considered for babies with severe eczema, egg allergy or both. It says babies with mild to moderate eczema may start peanut at home without an in-office check, and babies without eczema or food allergy can have it freely with other foods."
+    ],
+    [
+      "How do I give egg to my baby?",
+      "The AAP uses well-cooked egg, scrambled or hard-boiled, as its example, with about a third of an egg as a routine portion. The NHS lists eggs among the foods that can be introduced from around 6 months, and says eggs without the UK red lion stamp should not be eaten raw or lightly cooked."
+    ],
+    [
+      "How soon after eating does an allergic reaction show?",
+      "The NHS says reactions usually happen within a few minutes but can take up to 2 hours, and up to 3 days with cow's milk allergy. The AAP says anaphylaxis can start within minutes or several hours, and that for its signs you give epinephrine if you have it and call 911."
+    ],
+    [
+      "Should I wait a few days between new allergens?",
+      "The sources differ. The AAP says to wait at least a day before starting another new food. The CDC says to wait 3 to 5 days between each new food. The NHS says to introduce allergenic foods one at a time so you can spot any reaction."
+    ]
+  ],
+  "related": [
+    [
+      "/guides/allergen-reaction-diary",
+      "Allergen reaction diary guide"
+    ],
+    [
+      "/guides/starting-solids",
+      "Starting solids guide"
+    ],
+    [
+      "/solids-allergens",
+      "Solid foods & allergen tracker"
+    ]
+  ],
+  "queries": [
+    "when to introduce peanut to baby",
+    "how to introduce egg to baby",
+    "baby allergen introduction age",
+    "baby eczema peanut introduction",
+    "signs of allergic reaction in baby after new food"
+  ],
+  "citations": [
+    "https://pmc.ncbi.nlm.nih.gov/articles/PMC5226648/",
+    "https://www.healthychildren.org/English/healthy-living/nutrition/Pages/when-to-introduce-egg-peanut-butter-and-other-common-food-allergens-to-your-baby-food-allergy-prevention-tips.aspx",
+    "https://www.healthychildren.org/English/health-issues/injuries-emergencies/Pages/Anaphylaxis.aspx",
+    "https://www.cdc.gov/infant-toddler-nutrition/foods-and-drinks/when-what-and-how-to-introduce-solid-foods.html",
+    "https://cdn.realfood.gov/DGA.pdf",
+    "https://www.nhs.uk/baby/weaning-and-feeding/food-allergies-in-babies-and-young-children/",
+    "https://www.nhs.uk/baby/weaning-and-feeding/foods-to-avoid-giving-babies-and-young-children/",
+    "https://www.nhs.uk/conditions/anaphylaxis/"
+  ]
+}

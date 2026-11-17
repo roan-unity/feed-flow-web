@@ -1,0 +1,50 @@
+{
+  "slug": "guides/starting-solids",
+  "file": "guides/starting-solids.html",
+  "active": "resources",
+  "guide": true,
+  "date": "2026-11-17",
+  "title": "When Can Babies Start Solid Foods? | Feed Flow",
+  "description": "The CDC, AAP, WHO and NHS all say about 6 months. The signs of readiness, first foods, what to avoid in year one, and how gagging differs from choking.",
+  "eyebrow": "Starting solids guide",
+  "h1": "When can babies start solid foods?",
+  "intro": "At about 6 months. The CDC, the AAP, the WHO and the NHS all point there, and the CDC adds that solids before 4 months are not recommended. Readiness also depends on what your baby can do, like sitting with head control and swallowing food instead of pushing it out.",
+  "image": "/screens/health-allergens-360.webp",
+  "srcset": "/screens/health-allergens-360.webp 1x, /screens/health-allergens-720.webp 2x",
+  "width": 360,
+  "height": 783,
+  "alt": "The real Feed Flow allergen screen with six of nine major allergens introduced and a mild marker on egg.",
+  "faqs": [
+    ["Can I start solids at 4 months?", "The CDC says introducing foods before 4 months is not recommended and that children can begin at about 6 months. The AAP says readiness depends on each child's development. The WHO and the NHS say from or around 6 months."],
+    ["What are the signs my baby is ready for solids?", "The NHS names three: your baby can sit and hold their head steady, can look at food, pick it up and bring it to their mouth, and can swallow food instead of spitting it out. The NHS calls chewing fists, waking more at night and wanting extra milk normal behaviors, not necessarily a sign of readiness."],
+    ["Do babies still need milk after starting solids?", "Yes. The AAP says that at first babies still get most of their nutrition from breast milk, formula or both. The NHS says breast milk or infant formula should be the main drink in the first year."],
+    ["Why can't babies have honey?", "The CDC says honey given before 12 months may cause a severe food poisoning called botulism. The AAP and the NHS also say no honey until after a baby's first birthday."],
+    ["Is gagging normal when starting solids?", "The NHS says babies may gag when solids start. Their eyes may water, they might push their tongue forward and they might retch or vomit. The AAP says a child who can't breathe, can't talk, cry or make noise, or turns bluish may be choking and needs help right away."]
+  ],
+  "related": [
+    ["/guides/introducing-allergens", "Introducing allergens"],
+    ["/guides/water-for-babies", "Water for babies"],
+    ["/solids-allergens", "Solid foods & allergen tracker"]
+  ],
+  "queries": [
+    "when can babies start solid foods",
+    "signs baby is ready for solids",
+    "best first foods for baby",
+    "foods to avoid baby first year",
+    "baby gagging vs choking"
+  ],
+  "citations": [
+    "https://www.cdc.gov/infant-toddler-nutrition/foods-and-drinks/when-what-and-how-to-introduce-solid-foods.html",
+    "https://www.cdc.gov/infant-toddler-nutrition/foods-and-drinks/foods-and-drinks-to-avoid-or-limit.html",
+    "https://www.cdc.gov/infant-toddler-nutrition/foods-and-drinks/choking-hazards.html",
+    "https://www.healthychildren.org/English/ages-stages/baby/feeding-nutrition/Pages/Starting-Solid-Foods.aspx",
+    "https://www.healthychildren.org/English/health-issues/conditions/infections/Pages/Botulism.aspx",
+    "https://www.healthychildren.org/English/health-issues/injuries-emergencies/Pages/Choking-Prevention.aspx",
+    "https://www.healthychildren.org/English/health-issues/injuries-emergencies/Pages/When-Your-Child-Needs-Emergency-Medical-Services.aspx",
+    "https://www.who.int/news-room/fact-sheets/detail/infant-and-young-child-feeding",
+    "https://www.nhs.uk/baby/weaning-and-feeding/babys-first-solid-foods/",
+    "https://www.nhs.uk/baby/weaning-and-feeding/foods-to-avoid-giving-babies-and-young-children/",
+    "https://www.nhs.uk/baby/weaning-and-feeding/drinks-and-cups-for-babies-and-young-children/",
+    "https://www.nhs.uk/baby/first-aid-and-safety/first-aid/how-to-stop-a-child-from-choking/"
+  ]
+}

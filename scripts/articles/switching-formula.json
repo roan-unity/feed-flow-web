@@ -1,0 +1,75 @@
+{
+  "slug": "guides/switching-formula",
+  "file": "guides/switching-formula.html",
+  "active": "resources",
+  "guide": true,
+  "date": "2026-11-17",
+  "title": "How to Switch Baby Formula Safely | Feed Flow",
+  "description": "The AAP says most babies can switch between milk-based formulas, store brands included. When to ask a doctor, which symptoms matter, and shortage rules.",
+  "eyebrow": "Switching formula guide",
+  "h1": "How do you switch baby formula?",
+  "intro": "For most babies, switching between milk-based formulas, store brands included, is OK, says the American Academy of Pediatrics. The exception it names is a baby on a specific, highly hydrolyzed formula, and the CDC lists wanting to switch infant formula brands or types as a reason to talk with your child's doctor or nurse. The AAP says never to water formula down, and the AAP, CDC and FDA all warn against homemade formula.",
+  "image": "/screens/formula/04-home-360.webp",
+  "srcset": "/screens/formula/04-home-360.webp 1x, /screens/formula/04-home-720.webp 2x",
+  "width": 360,
+  "height": 780,
+  "alt": "Feed Flow's real Today screen listing four formula bottles, each with the formula used, the time and the amount in ounces.",
+  "faqs": [
+    [
+      "Is it OK to switch baby formula brands?",
+      "For most babies, yes. The AAP says it is OK to switch between different milk-based formulas, including store brands, unless your baby is on a specific, highly hydrolyzed one. The CDC lists wanting to switch brands or types as a reason to talk with your child's doctor or nurse."
+    ],
+    [
+      "Is store brand formula OK?",
+      "The FDA says every infant formula sold in the United States must meet its nutrient specifications, with minimum amounts for 29 nutrients. The AAP says most babies can switch between milk-based formulas, store brands included. The CDC says no brand of infant formula is best."
+    ],
+    [
+      "Will switching formula help with gas or spitting up?",
+      "Rarely, according to the AAP. Its bottle-feeding page says switching formulas for frequent crying, spitting up or gas is rarely helpful, and that moving from one milk-based formula to another is not helpful for any symptom. It also says not to switch without talking with your child's doctor."
+    ],
+    [
+      "Can I water down formula to make it last longer?",
+      "No. The AAP says never water down formula, because it is dangerous and can cause nutritional imbalances and serious health problems. The AAP, CDC and FDA also warn against homemade formula."
+    ],
+    [
+      "When should I call the doctor after changing formula?",
+      "The AAP says to call your pediatrician immediately for large amounts of blood, mucus or water in the stool, blood or green bile in vomit, repeated forceful vomiting, or signs of dehydration. It says to contact the doctor within 24 hours if your baby does not seem to be gaining enough weight."
+    ]
+  ],
+  "related": [
+    [
+      "/formula-feeding",
+      "Formula feeding & brands"
+    ],
+    [
+      "/guides/formula-safety",
+      "Formula preparation & storage"
+    ],
+    [
+      "/baby-health",
+      "Baby health & reaction notes"
+    ]
+  ],
+  "queries": [
+    "how to switch baby formula",
+    "is it ok to switch formula brands",
+    "is store brand formula ok",
+    "signs baby is not tolerating new formula",
+    "what to do in a formula shortage"
+  ],
+  "citations": [
+    "https://www.healthychildren.org/English/tips-tools/ask-the-pediatrician/Pages/how-should-we-feed-our-baby-if-running-low-on-money.aspx",
+    "https://www.healthychildren.org/English/tips-tools/ask-the-pediatrician/Pages/What-should-I-know-about-the-infant-formula-recall.aspx",
+    "https://www.healthychildren.org/English/ages-stages/baby/formula-feeding/Pages/choosing-an-infant-formula.aspx",
+    "https://www.healthychildren.org/English/tips-tools/symptom-checker/Pages/symptomviewer.aspx?symptom=Bottle-Feeding+%28Formula%29+Questions",
+    "https://www.healthychildren.org/English/ages-stages/baby/Pages/babys-first-days-bowel-movements-and-urination.aspx",
+    "https://www.healthychildren.org/English/health-issues/conditions/abdominal/Pages/Abdominal-Pains-in-Infants.aspx",
+    "https://www.healthychildren.org/English/health-issues/conditions/abdominal/Pages/Infant-Vomiting.aspx",
+    "https://www.healthychildren.org/English/ages-stages/baby/formula-feeding/Pages/Is-Homemade-Baby-Formula-Safe.aspx",
+    "https://www.cdc.gov/infant-toddler-nutrition/formula-feeding/choosing-a-formula.html",
+    "https://archive.cdc.gov/www_cdc_gov/infant-toddler-nutrition/formula-feeding/infant-formula-shortages.html",
+    "https://www.fda.gov/food/people-risk-foodborne-illness/questions-answers-consumers-concerning-infant-formula",
+    "https://www.nhs.uk/baby/breastfeeding-and-bottle-feeding/bottle-feeding/types-of-formula/",
+    "https://www.nhs.uk/conditions/food-allergy/"
+  ]
+}

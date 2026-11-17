@@ -1,0 +1,75 @@
+{
+  "slug": "guides/water-for-babies",
+  "file": "guides/water-for-babies.html",
+  "active": "resources",
+  "guide": true,
+  "date": "2026-11-17",
+  "title": "When Can Babies Drink Water? | Feed Flow",
+  "description": "The AAP says babies under 6 months need only breast milk or formula. From 6 to 12 months, the CDC and AAP give 4 to 8 oz (about 120 to 240 ml) of water a day.",
+  "eyebrow": "Water for babies guide",
+  "h1": "When can babies drink water?",
+  "intro": "Around 6 months. The AAP says babies younger than that should only drink breast milk or formula, the WHO says exclusive breastfeeding means only breast milk, not even water, and the NHS says fully breastfed babies need no water until they start solid foods. From 6 to 12 months, the CDC and the AAP both give 4 to 8 ounces of water a day (about 120 to 240 ml).",
+  "image": "/screens/how/start-360.webp",
+  "srcset": "/screens/how/start-360.webp 1x, /screens/how/start-720.webp 2x",
+  "width": 360,
+  "height": 783,
+  "alt": "The Feed Flow log menu asking what you want to log, with Water, Pumped Milk, Pumping, Vitamin D and Health in the top row and Breast, Formula and Solids below.",
+  "faqs": [
+    [
+      "Can I give my newborn water?",
+      "The AAP says infants under 6 months should only drink breast milk or formula, and additional water is not recommended unless a pediatrician specifically advises it. The WHO says exclusive breastfeeding for the first 6 months means only breast milk, not even water. The NHS says fully breastfed babies need no water until they start solid foods."
+    ],
+    [
+      "How much water can a 6 month old have?",
+      "The CDC and the AAP both say 4 to 8 ounces of water a day for babies 6 to 12 months old, about 120 to 240 ml. The AAP also writes this as half a cup to 1 cup a day. The NHS gives no amount and says to offer sips from a cup with meals."
+    ],
+    [
+      "Why is water bad for babies under 6 months?",
+      "The AAP says adding extra water to formula, or giving water on top of breast milk or formula, can lead to water intoxication. It reduces the nutrients a baby gets, which can slow growth, and disturbs the balance of calcium, sodium and potassium, which can lead to major health problems, including seizures."
+    ],
+    [
+      "Should I give my baby water in hot weather?",
+      "The NHS says breastfed babies may want to breastfeed more in hot weather, and formula-fed babies under 6 months may need small sips of cooled boiled water as well as their usual milk. The AAP says additional water is not recommended under 6 months and to call your pediatrician if you worry your infant is not drinking enough."
+    ],
+    [
+      "Can babies have juice before 12 months?",
+      "The AAP recommends no fruit juice under 12 months, and the CDC says children younger than 12 months should not drink any fruit or vegetable juice. The NHS says babies under 12 months do not need it, and if given it should be diluted one part juice to 10 parts water, at mealtimes."
+    ]
+  ],
+  "related": [
+    [
+      "/guides/starting-solids",
+      "Starting solids"
+    ],
+    [
+      "/guides/formula-safety",
+      "Formula safety guide"
+    ],
+    [
+      "/breastfeeding-pumping",
+      "Breastfeeding, pumping and the day's timeline"
+    ]
+  ],
+  "queries": [
+    "when can babies drink water",
+    "how much water can a 6 month old have",
+    "can newborns drink water",
+    "water for babies in hot weather",
+    "can babies have juice before 1"
+  ],
+  "citations": [
+    "https://www.cdc.gov/infant-toddler-nutrition/foods-and-drinks/foods-and-drinks-to-encourage.html",
+    "https://www.cdc.gov/infant-toddler-nutrition/foods-and-drinks/foods-and-drinks-to-avoid-or-limit.html",
+    "https://www.cdc.gov/infant-toddler-nutrition/formula-feeding/preparation-and-storage.html",
+    "https://www.healthychildren.org/English/healthy-living/nutrition/Pages/Choose-Water-for-Healthy-Hydration.aspx",
+    "https://www.healthychildren.org/English/healthy-living/nutrition/Pages/Recommended-Drinks-for-Young-Children-Ages-0-5.aspx",
+    "https://www.healthychildren.org/English/ages-stages/baby/formula-feeding/Pages/How-to-Safely-Prepare-Formula-with-Water.aspx",
+    "https://www.healthychildren.org/English/ages-stages/baby/feeding-nutrition/Pages/Discontinuing-the-Bottle.aspx",
+    "https://www.healthychildren.org/English/healthy-living/nutrition/Pages/Where-We-Stand-Fruit-Juice.aspx",
+    "https://www.nhs.uk/baby/weaning-and-feeding/drinks-and-cups-for-babies-and-young-children/",
+    "https://www.nhs.uk/baby/breastfeeding-and-bottle-feeding/bottle-feeding/making-up-baby-formula/",
+    "https://www.nhs.uk/conditions/dehydration/",
+    "https://www.who.int/tools/elena/interventions/exclusive-breastfeeding",
+    "https://www.who.int/health-topics/breastfeeding"
+  ]
+}

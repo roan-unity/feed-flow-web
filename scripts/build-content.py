@@ -390,11 +390,14 @@ def schema(page):
         "vitamin-d-tracker": ["https://www.nhs.uk/conditions/baby/weaning-and-feeding/vitamins-for-children/", "https://www.cdc.gov/infant-toddler-nutrition/vitamins-minerals/vitamin-d.html"],
         "guides/should-you-use-a-feeding-tracker": ["https://www.who.int/news-room/fact-sheets/detail/infant-and-young-child-feeding", "https://www.healthychildren.org/English/ages-stages/baby/feeding-nutrition/Pages/How-Often-and-How-Much-Should-Your-Baby-Eat.aspx", "https://www.cdc.gov/infant-toddler-nutrition/breastfeeding/how-much-and-how-often.html", "https://www.cdc.gov/breastfeeding-data/about/index.html", "https://www.cdc.gov/infant-toddler-nutrition/formula-feeding/preparation-and-storage.html", "https://www.cdc.gov/breastfeeding/breast-milk-preparation-and-storage/handling-breastmilk.html", "https://www.who.int/tools/child-growth-standards/standards", "https://pubmed.ncbi.nlm.nih.gov/31793799/", "https://pubmed.ncbi.nlm.nih.gov/37887451/"]
     }
+    citations.update(ARTICLE_CITATIONS)
     if page["slug"] in citations:
         webpage["citation"] = citations[page["slug"]]
     if page.get("guide"):
-        webpage["lastReviewed"] = "2026-11-12"
+        webpage["lastReviewed"] = page["date"] if page.get("article") else "2026-11-12"
     graph = [webpage, {"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Feed Flow", "item": "https://tryfeedflow.app/"}] + ([{"@type": "ListItem", "position": 2, "name": "Guides", "item": "https://tryfeedflow.app/resources"}, {"@type": "ListItem", "position": 3, "name": page["eyebrow"].replace(" guide", ""), "item": url}] if page.get("guide") else [{"@type": "ListItem", "position": 2, "name": page["eyebrow"], "item": url}])}]
+    if page.get("article"):
+        graph.append({"@type": "Article", "@id": url + "#article", "headline": page["h1"], "description": page["description"], "datePublished": page["date"], "dateModified": page["date"], "image": "https://tryfeedflow.app" + page["image"], "mainEntityOfPage": {"@id": url + "#page"}, "author": {"@id": "https://tryfeedflow.app/#org"}, "publisher": {"@id": "https://tryfeedflow.app/#org"}, "inLanguage": "en"})
     if page["slug"] == "resources":
         graph.append({"@type": "ItemList", "name": "Feed Flow feature and guide library", "itemListElement": [{"@type": "ListItem", "position": index, "name": item["title"], "url": "https://tryfeedflow.app/" + item["slug"]} for index, item in enumerate([entry for entry in PAGES if entry["slug"] != "resources"], start=1)]})
     if page["faqs"]:
@@ -437,9 +440,16 @@ from compare_pages import COMPARE, COMPARE_QUERIES
 from question_pages import QUESTION, QUESTION_QUERIES
 from nordic_pages import NORDIC, NORDIC_QUERIES
 from intl_pages import INTL, INTL_QUERIES, INTL_UI, INTL_NAV, LANGS
+from article_pages import ARTICLES, ARTICLE_QUERIES, ARTICLE_CITATIONS, inject_article_links, resource_cards
 L.update(INTL_UI)
 NAV.update(INTL_NAV)
-PAGES += COMPARE + QUESTION + NORDIC + INTL
+PAGES += COMPARE + QUESTION + NORDIC + INTL + ARTICLES
+inject_article_links(PAGES)
+for _page in PAGES:
+    if _page["slug"] == "resources" and ARTICLES:
+        _marker = '</div></section>'
+        _head, _sep, _tail = _page["body"].partition(_marker)
+        _page["body"] = _head + resource_cards() + _sep + _tail
 
 import re as _re
 
@@ -487,6 +497,7 @@ query_map = {
     **QUESTION_QUERIES,
     **NORDIC_QUERIES,
     **INTL_QUERIES,
+    **ARTICLE_QUERIES,
     "guides/vitamin-d-for-babies": ["vitamin D for babies", "baby vitamin D drops and formula", "infant vitamin D supplement guide"]
 }
 (ROOT / "seo").mkdir(exist_ok=True)
@@ -497,3 +508,24 @@ query_map = {
     "pages": [{"url": "https://tryfeedflow.app/" + p["slug"], "title": p["title"], "intent": p["eyebrow"], "role": "guide" if p.get("guide") else "hub", "primaryQueries": query_map[p["slug"]], "relatedLinks": [link for link, _ in p["related"]]} for p in PAGES]
 }, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
 sync_static_pages()
+
+
+def sync_article_discovery():
+    """Keep sitemap.xml and llms.txt in step with scripts/articles (idempotent: our lines are removed and re-added)."""
+    if not ARTICLES:
+        return
+    urls = {"https://tryfeedflow.app/" + a["slug"] for a in ARTICLES}
+    sitemap = ROOT / "sitemap.xml"
+    lines = [l for l in sitemap.read_text(encoding="utf-8").split("\n") if not any(f"<loc>{u}</loc>" in l for u in urls)]
+    new = [f'  <url><loc>https://tryfeedflow.app/{a["slug"]}</loc><lastmod>{a["date"]}</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>' for a in ARTICLES]
+    at = max(i for i, l in enumerate(lines) if "/guides/" in l) + 1
+    sitemap.write_text("\n".join(lines[:at] + new + lines[at:]), encoding="utf-8")
+    llms = ROOT / "llms.txt"
+    lines = [l for l in llms.read_text(encoding="utf-8").split("\n") if not any(l.endswith(u) for u in urls)]
+    new = [f'- {a["title"].rsplit(" | ", 1)[0]} ({a["description"]}): https://tryfeedflow.app/{a["slug"]}' for a in ARTICLES]
+    at = max(i for i, l in enumerate(lines) if "tryfeedflow.app/guides/" in l) + 1
+    llms.write_text("\n".join(lines[:at] + new + lines[at:]), encoding="utf-8")
+    print(f"Synced sitemap.xml and llms.txt for {len(ARTICLES)} guides")
+
+
+sync_article_discovery()

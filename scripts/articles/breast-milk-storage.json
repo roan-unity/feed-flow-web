@@ -1,0 +1,65 @@
+{
+  "slug": "guides/breast-milk-storage",
+  "file": "guides/breast-milk-storage.html",
+  "active": "resources",
+  "guide": true,
+  "date": "2026-11-17",
+  "title": "How Long Can Breast Milk Sit Out? | Feed Flow",
+  "description": "The CDC says fresh breast milk keeps 4 hours at room temperature and 4 days in the fridge. Frozen, 6 months is best and 12 acceptable. Leftovers differ.",
+  "eyebrow": "Breast milk storage guide",
+  "h1": "How long can breast milk sit out?",
+  "intro": "The CDC says freshly pumped breast milk can sit out for up to 4 hours at 77°F (25°C) or colder, keep up to 4 days in the fridge, and keep about 6 months in the freezer (up to 12 is acceptable). Thawed milk that has been warmed, and milk left in the bottle after a feed, should be used within 2 hours. The UK's NHS is stricter on leftovers (1 hour) and allows longer in a fridge at 4°C or lower (up to 8 days).",
+  "image": "/screens/formula/02-lock-screen-360.webp",
+  "srcset": "/screens/formula/02-lock-screen-360.webp 1x, /screens/formula/02-lock-screen-720.webp 2x",
+  "width": 360,
+  "height": 780,
+  "alt": "An iPhone Lock Screen showing Feed Flow's bottle countdown with 49:48 left, a 6.5 oz bottle, 4.5 oz taken and 2 oz left.",
+  "faqs": [
+    [
+      "How long can breast milk sit out after pumping?",
+      "The CDC says freshly pumped breast milk can stay at room temperature, 77°F or colder, for up to 4 hours. The Academy of Breastfeeding Medicine says 4 hours is best, and 6 to 8 hours may be reasonable for very clean milk in a cooler room. The NHS page gives no room temperature time."
+    ],
+    [
+      "Can I reuse breast milk my baby didn't finish?",
+      "The CDC says to use leftover milk within 2 hours, then discard it. The NHS says to use it within 1 hour of your baby drinking from the bottle and throw away anything left over. The Academy of Breastfeeding Medicine says 1 to 2 hours after the feed ends."
+    ],
+    [
+      "How long is breast milk good in the fridge?",
+      "The CDC says up to 4 days. The NHS says up to 8 days at 4°C or lower, or within 3 days if you are unsure of your fridge's temperature or it runs between 5 and 10°C."
+    ],
+    [
+      "Can you refreeze thawed breast milk?",
+      "The CDC and the NHS both say not to refreeze breast milk once it has thawed. The Academy of Breastfeeding Medicine says there is too little research to make a recommendation."
+    ],
+    [
+      "How long is thawed breast milk good for?",
+      "The CDC says to use milk thawed in the fridge within 24 hours, counted from when it is fully thawed, and within 2 hours once it is at room temperature or warmed. The NHS says to use defrosted milk straight away."
+    ]
+  ],
+  "related": [
+    [
+      "/bottle-countdown",
+      "Bottle countdown on the Lock Screen"
+    ],
+    [
+      "/guides/combination-feeding",
+      "Combination feeding"
+    ],
+    [
+      "/guides/formula-safety",
+      "Formula preparation & storage"
+    ]
+  ],
+  "queries": [
+    "how long can breast milk sit out",
+    "how long is breast milk good in the fridge",
+    "how long is thawed breast milk good for",
+    "can you reuse breast milk baby didn't finish",
+    "how long does frozen breast milk last"
+  ],
+  "citations": [
+    "https://www.cdc.gov/breastfeeding/breast-milk-preparation-and-storage/handling-breastmilk.html",
+    "https://www.bfmed.org/assets/DOCUMENTS/PROTOCOLS/8-human-milk-storage-protocol-english.pdf",
+    "https://www.nhs.uk/baby/breastfeeding-and-bottle-feeding/breastfeeding/expressing-breast-milk/"
+  ]
+}

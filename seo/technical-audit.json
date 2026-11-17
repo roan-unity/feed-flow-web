@@ -1,8 +1,8 @@
 {
   "workflow": "OpenSEO seo-audit local technical checks",
   "liveKeywordData": "Not connected; no volume, ranking or traffic claims are included",
-  "sitemapUrls": 44,
-  "pagesChecked": 44,
+  "sitemapUrls": 54,
+  "pagesChecked": 54,
   "errors": [],
   "warnings": [
     "index.html: meta description is 183 characters",
@@ -123,6 +123,66 @@
       "file": "guides/should-you-use-a-feeding-tracker.html",
       "titleLength": 55,
       "descriptionLength": 185
+    },
+    {
+      "url": "https://tryfeedflow.app/guides/breast-milk-storage",
+      "file": "guides/breast-milk-storage.html",
+      "titleLength": 45,
+      "descriptionLength": 152
+    },
+    {
+      "url": "https://tryfeedflow.app/guides/combination-feeding",
+      "file": "guides/combination-feeding.html",
+      "titleLength": 56,
+      "descriptionLength": 154
+    },
+    {
+      "url": "https://tryfeedflow.app/guides/how-much-formula-by-age",
+      "file": "guides/how-much-formula-by-age.html",
+      "titleLength": 53,
+      "descriptionLength": 157
+    },
+    {
+      "url": "https://tryfeedflow.app/guides/introducing-allergens",
+      "file": "guides/introducing-allergens.html",
+      "titleLength": 59,
+      "descriptionLength": 145
+    },
+    {
+      "url": "https://tryfeedflow.app/guides/is-my-baby-eating-enough",
+      "file": "guides/is-my-baby-eating-enough.html",
+      "titleLength": 55,
+      "descriptionLength": 148
+    },
+    {
+      "url": "https://tryfeedflow.app/guides/newborn-feeding-schedule",
+      "file": "guides/newborn-feeding-schedule.html",
+      "titleLength": 58,
+      "descriptionLength": 151
+    },
+    {
+      "url": "https://tryfeedflow.app/guides/paced-bottle-feeding",
+      "file": "guides/paced-bottle-feeding.html",
+      "titleLength": 54,
+      "descriptionLength": 156
+    },
+    {
+      "url": "https://tryfeedflow.app/guides/starting-solids",
+      "file": "guides/starting-solids.html",
+      "titleLength": 46,
+      "descriptionLength": 151
+    },
+    {
+      "url": "https://tryfeedflow.app/guides/switching-formula",
+      "file": "guides/switching-formula.html",
+      "titleLength": 45,
+      "descriptionLength": 152
+    },
+    {
+      "url": "https://tryfeedflow.app/guides/water-for-babies",
+      "file": "guides/water-for-babies.html",
+      "titleLength": 40,
+      "descriptionLength": 158
     },
     {
       "url": "https://tryfeedflow.app/ambassador",

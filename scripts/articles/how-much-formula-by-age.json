@@ -1,0 +1,69 @@
+{
+  "slug": "guides/how-much-formula-by-age",
+  "file": "guides/how-much-formula-by-age.html",
+  "active": "resources",
+  "guide": true,
+  "date": "2026-11-17",
+  "title": "How Much Formula Does a Baby Need? By Age | Feed Flow",
+  "description": "Typical formula amounts per feed and per day from birth to 12 months, in oz and ml, from the AAP, CDC and NHS, with signs of hunger, fullness and too little.",
+  "eyebrow": "Formula amounts guide",
+  "h1": "How much formula does my baby need?",
+  "intro": "The CDC says to start a formula-only newborn on 1 to 2 ounces (30 to 60 ml) every 2 to 3 hours. The AAP says most babies take at least 3 or 4 ounces (90 to 120 ml) per feed by the end of the first month, and 6 to 8 ounces (180 to 240 ml) at 4 or 5 feeds a day by 6 months. These are typical ranges, and every baby is different.",
+  "image": "/screens/formula/04-home-360.webp",
+  "srcset": "/screens/formula/04-home-360.webp 1x, /screens/formula/04-home-720.webp 2x",
+  "width": 360,
+  "height": 780,
+  "alt": "The Feed Flow Today screen with the day's formula total so far, each bottle's amount in the timeline, and one-tap buttons for usual bottle sizes.",
+  "faqs": [
+    [
+      "How many ounces should a newborn drink?",
+      "The CDC says to start a formula-only newborn on 1 to 2 ounces (30 to 60 ml) every 2 to 3 hours in the first days, and to give more if they show signs of hunger. The AAP says some babies take only half an ounce per feed in the first day or two."
+    ],
+    [
+      "How much formula should a 2 month old drink?",
+      "The AAP says that by the end of the first month most babies take at least 3 to 4 ounces (90 to 120 ml) per feed, about every 3 to 4 hours, and 6 to 8 ounces by 6 months. The CDC says babies drink more at each feed as they grow. Neither gives a separate figure for 2 months."
+    ],
+    [
+      "What is the most formula a baby should drink in a day?",
+      "The AAP says a baby should usually drink no more than an average of about 32 ounces (960 ml) of formula in 24 hours. It says there are high and low limits, and if your baby consistently seems to want more or less, discuss it with your pediatrician."
+    ],
+    [
+      "Is it OK if my baby does not finish the bottle?",
+      "Yes. The CDC says your child does not need to finish a bottle, and the NHS says not to worry if they do not finish it. The NHS also says not to force a baby to take more than they want, because it can lead to overfeeding."
+    ],
+    [
+      "How do I know my formula-fed baby is getting enough?",
+      "The AAP and NHS point to wet diapers and weight gain. The AAP says at least 5 to 6 wet diapers a day after the first 4 to 5 days. The NHS says around 6 a day from a few days after birth, and to speak to a midwife or health visitor about any concerns about weight gain."
+    ]
+  ],
+  "related": [
+    [
+      "/formula-feeding",
+      "Formula feeding in Feed Flow"
+    ],
+    [
+      "/guides/is-my-baby-eating-enough",
+      "Is my baby eating enough?"
+    ],
+    [
+      "/guides/newborn-feeding-schedule",
+      "Newborn feeding schedule"
+    ]
+  ],
+  "queries": [
+    "how much formula does a baby need",
+    "how much formula by age chart",
+    "how many ounces should a newborn eat",
+    "how much formula should a 2 month old drink",
+    "maximum formula per day baby"
+  ],
+  "citations": [
+    "https://www.healthychildren.org/English/ages-stages/baby/formula-feeding/Pages/Amount-and-Schedule-of-Formula-Feedings.aspx",
+    "https://www.healthychildren.org/English/ages-stages/baby/feeding-nutrition/Pages/How-Often-and-How-Much-Should-Your-Baby-Eat.aspx",
+    "https://www.healthychildren.org/English/ages-stages/baby/feeding-nutrition/Pages/sample-one-day-menu-for-an-8-to-12-month-old.aspx",
+    "https://www.cdc.gov/infant-toddler-nutrition/formula-feeding/how-much-and-how-often.html",
+    "https://www.cdc.gov/infant-toddler-nutrition/mealtime/signs-your-child-is-hungry-or-full.html",
+    "https://www.nhs.uk/baby/breastfeeding-and-bottle-feeding/bottle-feeding/formula-milk-questions/",
+    "https://www.nhs.uk/baby/breastfeeding-and-bottle-feeding/bottle-feeding/advice/"
+  ]
+}

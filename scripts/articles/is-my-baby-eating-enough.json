@@ -1,0 +1,77 @@
+{
+  "slug": "guides/is-my-baby-eating-enough",
+  "file": "guides/is-my-baby-eating-enough.html",
+  "active": "resources",
+  "guide": true,
+  "date": "2026-11-17",
+  "title": "Is My Baby Eating Enough? Signs to Look For | Feed Flow",
+  "description": "Wet and dirty diapers, birth weight back by about two weeks, steady growth and a content baby. What the CDC, AAP, NHS and WHO say, and when to call.",
+  "eyebrow": "Feeding signs guide",
+  "h1": "How do I know if my baby is eating enough?",
+  "intro": "Look at diapers, weight and how your baby seems after feeds. The CDC says a breastfed baby should have at least 6 wet diapers and 3 poops a day by days 5 to 7, be back to birth weight by day 10 to 14, keep gaining steadily and seem content after a feed. The NHS gives most babies until 3 weeks to regain birth weight.",
+  "image": "/screens/formula/10-feeding-report-360.webp",
+  "srcset": "/screens/formula/10-feeding-report-360.webp 1x, /screens/formula/10-feeding-report-720.webp 2x",
+  "width": 360,
+  "height": 780,
+  "alt": "A real Feed Flow Baby Report with feeding totals, growth since birth, daily averages and percentiles.",
+  "faqs": [
+    [
+      "How many wet diapers should a newborn have?",
+      "The CDC's minimums for a breastfed baby are 1 on day 1, 2 on day 2, 5 on day 3 and 6 a day from day 4. The AAP says 6 or more a day with pale urine by 5 to 7 days old. The NHS says at least 6 heavy, wet nappies every 24 hours from day 5."
+    ],
+    [
+      "How do I know if my breastfed baby is getting enough milk?",
+      "The AAP says you can't measure exactly how much a breastfed newborn takes, so it looks at weight gain, wet and dirty diapers, and how long your baby seems satisfied after nursing. The CDC adds feeding 8 to 12 times in 24 hours and swallowing you can see and hear."
+    ],
+    [
+      "When should my baby be back to birth weight?",
+      "The CDC says breastfed babies should be back to birth weight by day 10 to 14 of life. The AAP lists being under birth weight at two weeks as a warning sign. The NHS says most babies are at, or above, their birth weight by 3 weeks."
+    ],
+    [
+      "What are signs of dehydration in a baby?",
+      "The NHS lists a sunken soft spot on top of the head, sunken eyes, few or no tears when crying, fewer wet nappies than usual, and being drowsy or irritable. The AAP says to notify the pediatrician immediately if any warning sign of dehydration develops."
+    ],
+    [
+      "Does Feed Flow tell me if my baby is eating enough?",
+      "No. Feed Flow keeps the record: the day's feeds, growth against the WHO Child Growth Standards and a Baby Report you can bring to a check-up. It does not judge whether your baby is eating enough, and it does not track diapers. Your baby's doctor makes that call."
+    ]
+  ],
+  "related": [
+    [
+      "/guides/newborn-feeding-schedule",
+      "How often should a newborn eat?"
+    ],
+    [
+      "/guides/who-growth-percentiles",
+      "What growth percentiles mean"
+    ],
+    [
+      "/baby-report",
+      "Baby Reports for check-ups"
+    ]
+  ],
+  "queries": [
+    "how do I know if my baby is eating enough",
+    "how many wet diapers should a newborn have",
+    "how to tell if breastfed baby is getting enough milk",
+    "when should baby be back to birth weight",
+    "signs of dehydration in babies"
+  ],
+  "citations": [
+    "https://www.cdc.gov/infant-toddler-nutrition/breastfeeding/newborn-basics.html",
+    "https://www.cdc.gov/infant-toddler-nutrition/breastfeeding/how-much-and-how-often.html",
+    "https://www.cdc.gov/infant-toddler-nutrition/formula-feeding/how-much-and-how-often.html",
+    "https://www.cdc.gov/infant-toddler-nutrition/mealtime/signs-your-child-is-hungry-or-full.html",
+    "https://www.healthychildren.org/English/ages-stages/baby/breastfeeding/Pages/How-to-Tell-if-Baby-is-Getting-Enough-Milk.aspx",
+    "https://www.healthychildren.org/English/ages-stages/baby/breastfeeding/Pages/Warning-Signs-of-Breastfeeding-Problems.aspx",
+    "https://www.healthychildren.org/English/ages-stages/baby/feeding-nutrition/pages/How-Often-and-How-Much-Should-Your-Baby-Eat.aspx",
+    "https://www.healthychildren.org/English/health-issues/injuries-emergencies/Pages/dehydration.aspx",
+    "https://www.healthychildren.org/English/health-issues/injuries-emergencies/Pages/When-Your-Child-Needs-Emergency-Medical-Services.aspx",
+    "https://www.nhs.uk/baby/breastfeeding-and-bottle-feeding/breastfeeding-problems/enough-milk/",
+    "https://www.nhs.uk/baby/breastfeeding-and-bottle-feeding/breastfeeding/the-first-few-days/",
+    "https://www.nhs.uk/baby/babys-development/height-weight-and-reviews/baby-height-and-weight/",
+    "https://www.nhs.uk/conditions/dehydration/",
+    "https://www.who.int/news-room/fact-sheets/detail/infant-and-young-child-feeding",
+    "https://www.who.int/tools/child-growth-standards/standards"
+  ]
+}

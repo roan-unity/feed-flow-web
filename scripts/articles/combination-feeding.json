@@ -1,0 +1,79 @@
+{
+  "slug": "guides/combination-feeding",
+  "file": "guides/combination-feeding.html",
+  "active": "resources",
+  "guide": true,
+  "date": "2026-11-17",
+  "title": "Combination Feeding: Breast Milk and Formula | Feed Flow",
+  "description": "How to combine breastfeeding and formula: when to start, how to swap feeds, what it does to milk supply and how to tell baby gets enough, per NHS and AAP.",
+  "eyebrow": "Combination feeding guide",
+  "h1": "How do you combine breastfeeding and formula?",
+  "intro": "Combination feeding means your baby gets some breast milk and some formula. The NHS suggests breastfeeding only for the first 6 to 8 weeks if you can, and says you could then start by replacing 1 breastfeed a day with a bottle feed, giving your body around 5 to 7 days to adjust. The AAP says that when you supplement, start with the breast milk you have, then give formula if needed.",
+  "image": "/screens/formula/04-home-360.webp",
+  "srcset": "/screens/formula/04-home-360.webp 1x, /screens/formula/04-home-720.webp 2x",
+  "width": 360,
+  "height": 780,
+  "alt": "The Feed Flow Today screen with the day's feeds in one timeline and the day's milk total so far.",
+  "faqs": [
+    [
+      "Can you combine breastfeeding and formula from birth?",
+      "The NHS suggests breastfeeding only for 6 to 8 weeks after the birth if possible, to allow you time to get the hang of it. The AAP and CDC pages we checked do not set a number of weeks. Your baby's doctor can talk through what fits your situation."
+    ],
+    [
+      "Will giving formula reduce my milk supply?",
+      "The NHS says introducing formula will probably reduce the amount of breast milk you make, because longer gaps between breastfeeds signal that less milk is needed. If you want to keep breastfeeding, the NHS says expressing your milk while you top up helps maintain your supply."
+    ],
+    [
+      "Should I give breast milk or formula first?",
+      "The AAP says that when you supplement with formula, start the feed with the breast milk you have, then give formula if needed. The CDC describes the same order: breast milk first, then formula."
+    ],
+    [
+      "Can I mix breast milk and formula in the same bottle?",
+      "None of the NHS, CDC, AAP, WHO or Academy of Breastfeeding Medicine pages we checked gives a direct yes or no. The CDC and AAP describe giving breast milk first, then formula, and the CDC warns that germs grow quickly when milk is added to a partly used bottle."
+    ],
+    [
+      "How do I know my combo fed baby is getting enough?",
+      "The NHS lists signs written for breastfed babies: from day 5, at least 6 heavy, wet diapers every 24 hours, and steady weight gain after the first 3 to 4 days. The NHS says to ask for help early if you are worried about how much milk your baby gets."
+    ]
+  ],
+  "related": [
+    [
+      "/combo-feeding",
+      "Combo feeding tracker"
+    ],
+    [
+      "/breastfeeding-pumping",
+      "Breastfeeding and pumping"
+    ],
+    [
+      "/guides/is-my-baby-eating-enough",
+      "Is my baby eating enough?"
+    ]
+  ],
+  "queries": [
+    "how to combine breastfeeding and formula",
+    "combination feeding breast milk and formula",
+    "can you mix breast milk and formula in the same bottle",
+    "does supplementing with formula reduce milk supply",
+    "how to start combo feeding"
+  ],
+  "citations": [
+    "https://www.nhs.uk/best-start-in-life/baby/feeding-your-baby/mixed-feeding/introduction-to-mixed-feeding/",
+    "https://www.nhs.uk/best-start-in-life/baby/feeding-your-baby/mixed-feeding/introducing-formula-feeds/",
+    "https://www.nhs.uk/best-start-in-life/baby/feeding-your-baby/mixed-feeding/mixed-feeding-challenges/",
+    "https://www.nhs.uk/best-start-in-life/baby/feeding-your-baby/mixed-feeding/top-up-feeds/",
+    "https://www.nhs.uk/best-start-in-life/baby/feeding-your-baby/mixed-feeding/adjusting-your-milk-supply/",
+    "https://www.nhs.uk/baby/breastfeeding-and-bottle-feeding/breastfeeding-problems/enough-milk/",
+    "https://www.nhs.uk/baby/weaning-and-feeding/vitamins-for-children/",
+    "https://www.nhshighland.scot.nhs.uk/your-services/all-services-a-z/maternity-and-neonatal/after-you-ve-had-your-baby/infant-feeding/mixed-combination-feeding/",
+    "https://www.cdc.gov/infant-toddler-nutrition/breastfeeding/how-much-and-how-often.html",
+    "https://www.cdc.gov/infant-toddler-nutrition/bottle-feeding/index.html",
+    "https://www.cdc.gov/infant-feeding-emergencies-toolkit/php/powdered-infant-formula.html",
+    "https://www.cdc.gov/hygiene/faq/index.html",
+    "https://www.cdc.gov/infant-toddler-nutrition/vitamins-minerals/vitamin-d.html",
+    "https://www.healthychildren.org/English/ages-stages/baby/breastfeeding/Pages/Where-We-Stand-Breastfeeding.aspx",
+    "https://www.healthychildren.org/English/ages-stages/baby/breastfeeding/Pages/low-breast-milk-supply.aspx",
+    "https://www.who.int/news-room/fact-sheets/detail/infant-and-young-child-feeding",
+    "https://www.bfmed.org/assets/DOCUMENTS/PROTOCOLS/3-supplementation-protocol-english.pdf"
+  ]
+}

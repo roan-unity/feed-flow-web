@@ -79,6 +79,16 @@ Feed Flow is feeding-only and iPhone-only. It does not track sleep or diapers an
 - Allergen reaction diary: https://tryfeedflow.app/guides/allergen-reaction-diary
 - Vitamin D tracking: https://tryfeedflow.app/guides/vitamin-d-for-babies
 - Should you use a feeding tracker? (when it helps, when it adds pressure): https://tryfeedflow.app/guides/should-you-use-a-feeding-tracker
+- How Long Can Breast Milk Sit Out? (The CDC says fresh breast milk keeps 4 hours at room temperature and 4 days in the fridge. Frozen, 6 months is best and 12 acceptable. Leftovers differ.): https://tryfeedflow.app/guides/breast-milk-storage
+- Combination Feeding: Breast Milk and Formula (How to combine breastfeeding and formula: when to start, how to swap feeds, what it does to milk supply and how to tell baby gets enough, per NHS and AAP.): https://tryfeedflow.app/guides/combination-feeding
+- How Much Formula Does a Baby Need? By Age (Typical formula amounts per feed and per day from birth to 12 months, in oz and ml, from the AAP, CDC and NHS, with signs of hunger, fullness and too little.): https://tryfeedflow.app/guides/how-much-formula-by-age
+- When to Introduce Allergens Like Peanut and Egg (What the AAP, CDC, NIAID and NHS say about when to give a baby peanut, egg and other allergens, who sees a doctor first, and signs of a reaction.): https://tryfeedflow.app/guides/introducing-allergens
+- Is My Baby Eating Enough? Signs to Look For (Wet and dirty diapers, birth weight back by about two weeks, steady growth and a content baby. What the CDC, AAP, NHS and WHO say, and when to call.): https://tryfeedflow.app/guides/is-my-baby-eating-enough
+- How Often Should a Newborn Eat? Feeding by Age (Most newborns eat 8 to 12 times in 24 hours, every 1 to 3 hours at first. What the CDC, AAP, NHS and WHO say about cues, cluster feeds and night feeds.): https://tryfeedflow.app/guides/newborn-feeding-schedule
+- What Is Paced Bottle Feeding? How to Do It (Paced bottle feeding lets your baby set the speed: upright baby, flat bottle, pauses, and stopping at fullness. Steps and signs from CDC, AAP, NHS and USDA.): https://tryfeedflow.app/guides/paced-bottle-feeding
+- When Can Babies Start Solid Foods? (The CDC, AAP, WHO and NHS all say about 6 months. The signs of readiness, first foods, what to avoid in year one, and how gagging differs from choking.): https://tryfeedflow.app/guides/starting-solids
+- How to Switch Baby Formula Safely (The AAP says most babies can switch between milk-based formulas, store brands included. When to ask a doctor, which symptoms matter, and shortage rules.): https://tryfeedflow.app/guides/switching-formula
+- When Can Babies Drink Water? (The AAP says babies under 6 months need only breast milk or formula. From 6 to 12 months, the CDC and AAP give 4 to 8 oz (about 120 to 240 ml) of water a day.): https://tryfeedflow.app/guides/water-for-babies
 
 ## Ambassador program
 

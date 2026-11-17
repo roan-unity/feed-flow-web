@@ -12,7 +12,7 @@ const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const OUT = path.join(root, 'functions/_chat/knowledge.js');
 const SOURCE_DIR = path.join(root, 'functions/_chat/chat-knowledge');
 const SITE = 'https://tryfeedflow.app';
-export const MAX_CHARS = 120_000;
+export const MAX_CHARS = 126_000;
 
 const FIXED_PAGES = [
   'index', 'faq', 'support', 'flowcast', 'bottle-countdown', 'formula-feeding', 'breastfeeding-pumping',
@@ -94,6 +94,18 @@ export function build() {
     if (!existsSync(file)) continue;
     const html = readFileSync(file, 'utf8');
     if (!/<html[^>]*\blang="en/i.test(html)) continue; // English pages only
+    // Sourced parent guides (scripts/articles) go in as a pointer, never as full text: the chat links the
+    // guide and leaves the health figures on the page, next to their sources. It also keeps the file small.
+    const articleMeta = path.join(root, 'scripts', 'articles', `${path.basename(p.rel)}.json`);
+    if (p.kind === 'guides' && existsSync(articleMeta)) {
+      const meta = JSON.parse(readFileSync(articleMeta, 'utf8'));
+      sections.push({
+        key: p.rel,
+        kind: 'page',
+        text: `URL: ${urlFor(p.rel)}\n## ${titleOf(html, p.rel)}\n\nA sourced parent guide. ${meta.description} For questions on this topic, link this guide and do not restate its figures.`,
+      });
+      continue;
+    }
     const text = htmlToText(html);
     sections.push({ key: p.rel, kind: p.kind, text: `URL: ${urlFor(p.rel)}\n## ${titleOf(html, p.rel)}\n\n${text}` });
   }

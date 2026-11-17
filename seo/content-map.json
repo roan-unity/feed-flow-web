@@ -600,6 +600,186 @@
         "/",
         "/printable-feeding-log"
       ]
+    },
+    {
+      "url": "https://tryfeedflow.app/guides/breast-milk-storage",
+      "title": "How Long Can Breast Milk Sit Out? | Feed Flow",
+      "intent": "Breast milk storage guide",
+      "role": "guide",
+      "primaryQueries": [
+        "how long can breast milk sit out",
+        "how long is breast milk good in the fridge",
+        "how long is thawed breast milk good for",
+        "can you reuse breast milk baby didn't finish",
+        "how long does frozen breast milk last"
+      ],
+      "relatedLinks": [
+        "/bottle-countdown",
+        "/guides/combination-feeding",
+        "/guides/formula-safety"
+      ]
+    },
+    {
+      "url": "https://tryfeedflow.app/guides/combination-feeding",
+      "title": "Combination Feeding: Breast Milk and Formula | Feed Flow",
+      "intent": "Combination feeding guide",
+      "role": "guide",
+      "primaryQueries": [
+        "how to combine breastfeeding and formula",
+        "combination feeding breast milk and formula",
+        "can you mix breast milk and formula in the same bottle",
+        "does supplementing with formula reduce milk supply",
+        "how to start combo feeding"
+      ],
+      "relatedLinks": [
+        "/combo-feeding",
+        "/breastfeeding-pumping",
+        "/guides/is-my-baby-eating-enough"
+      ]
+    },
+    {
+      "url": "https://tryfeedflow.app/guides/how-much-formula-by-age",
+      "title": "How Much Formula Does a Baby Need? By Age | Feed Flow",
+      "intent": "Formula amounts guide",
+      "role": "guide",
+      "primaryQueries": [
+        "how much formula does a baby need",
+        "how much formula by age chart",
+        "how many ounces should a newborn eat",
+        "how much formula should a 2 month old drink",
+        "maximum formula per day baby"
+      ],
+      "relatedLinks": [
+        "/formula-feeding",
+        "/guides/is-my-baby-eating-enough",
+        "/guides/newborn-feeding-schedule"
+      ]
+    },
+    {
+      "url": "https://tryfeedflow.app/guides/introducing-allergens",
+      "title": "When to Introduce Allergens Like Peanut and Egg | Feed Flow",
+      "intent": "Allergen introduction guide",
+      "role": "guide",
+      "primaryQueries": [
+        "when to introduce peanut to baby",
+        "how to introduce egg to baby",
+        "baby allergen introduction age",
+        "baby eczema peanut introduction",
+        "signs of allergic reaction in baby after new food"
+      ],
+      "relatedLinks": [
+        "/guides/allergen-reaction-diary",
+        "/guides/starting-solids",
+        "/solids-allergens"
+      ]
+    },
+    {
+      "url": "https://tryfeedflow.app/guides/is-my-baby-eating-enough",
+      "title": "Is My Baby Eating Enough? Signs to Look For | Feed Flow",
+      "intent": "Feeding signs guide",
+      "role": "guide",
+      "primaryQueries": [
+        "how do I know if my baby is eating enough",
+        "how many wet diapers should a newborn have",
+        "how to tell if breastfed baby is getting enough milk",
+        "when should baby be back to birth weight",
+        "signs of dehydration in babies"
+      ],
+      "relatedLinks": [
+        "/guides/newborn-feeding-schedule",
+        "/guides/who-growth-percentiles",
+        "/baby-report"
+      ]
+    },
+    {
+      "url": "https://tryfeedflow.app/guides/newborn-feeding-schedule",
+      "title": "How Often Should a Newborn Eat? Feeding by Age | Feed Flow",
+      "intent": "Newborn feeding guide",
+      "role": "guide",
+      "primaryQueries": [
+        "how often should a newborn eat",
+        "newborn feeding schedule by age",
+        "should I wake my newborn to feed",
+        "newborn eating every hour cluster feeding",
+        "when do babies stop night feeds"
+      ],
+      "relatedLinks": [
+        "/flowcast",
+        "/guides/how-much-formula-by-age",
+        "/guides/is-my-baby-eating-enough"
+      ]
+    },
+    {
+      "url": "https://tryfeedflow.app/guides/paced-bottle-feeding",
+      "title": "What Is Paced Bottle Feeding? How to Do It | Feed Flow",
+      "intent": "Paced bottle feeding guide",
+      "role": "guide",
+      "primaryQueries": [
+        "what is paced bottle feeding",
+        "how to do paced bottle feeding",
+        "how long should a bottle feed take",
+        "signs baby is full bottle",
+        "should I make my baby finish the bottle"
+      ],
+      "relatedLinks": [
+        "/formula-feeding",
+        "/guides/combination-feeding",
+        "/guides/is-my-baby-eating-enough"
+      ]
+    },
+    {
+      "url": "https://tryfeedflow.app/guides/starting-solids",
+      "title": "When Can Babies Start Solid Foods? | Feed Flow",
+      "intent": "Starting solids guide",
+      "role": "guide",
+      "primaryQueries": [
+        "when can babies start solid foods",
+        "signs baby is ready for solids",
+        "best first foods for baby",
+        "foods to avoid baby first year",
+        "baby gagging vs choking"
+      ],
+      "relatedLinks": [
+        "/guides/introducing-allergens",
+        "/guides/water-for-babies",
+        "/solids-allergens"
+      ]
+    },
+    {
+      "url": "https://tryfeedflow.app/guides/switching-formula",
+      "title": "How to Switch Baby Formula Safely | Feed Flow",
+      "intent": "Switching formula guide",
+      "role": "guide",
+      "primaryQueries": [
+        "how to switch baby formula",
+        "is it ok to switch formula brands",
+        "is store brand formula ok",
+        "signs baby is not tolerating new formula",
+        "what to do in a formula shortage"
+      ],
+      "relatedLinks": [
+        "/formula-feeding",
+        "/guides/formula-safety",
+        "/baby-health"
+      ]
+    },
+    {
+      "url": "https://tryfeedflow.app/guides/water-for-babies",
+      "title": "When Can Babies Drink Water? | Feed Flow",
+      "intent": "Water for babies guide",
+      "role": "guide",
+      "primaryQueries": [
+        "when can babies drink water",
+        "how much water can a 6 month old have",
+        "can newborns drink water",
+        "water for babies in hot weather",
+        "can babies have juice before 1"
+      ],
+      "relatedLinks": [
+        "/guides/starting-solids",
+        "/guides/formula-safety",
+        "/breastfeeding-pumping"
+      ]
     }
   ]
 }
