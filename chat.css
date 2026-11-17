@@ -63,8 +63,9 @@ html[data-theme="light"] .ffc-root {
 .ffc-dock > * { pointer-events: auto; }
 .ffc-launcher {
   position: relative; flex: 0 0 auto; width: 60px; height: 60px; padding: 0; border: 0; border-radius: 50%;
-  background: linear-gradient(132deg, var(--chat-head-a), var(--chat-head-c));
-  box-shadow: var(--chat-shadow);
+  background: linear-gradient(132deg, rgba(44, 116, 130, .84), rgba(23, 79, 91, .84));
+  -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px);
+  box-shadow: 0 0 0 2px var(--chat-surface), var(--chat-shadow);
   transition: transform .18s ease;
 }
 .ffc-launcher:hover { transform: scale(1.04); }
@@ -214,6 +215,13 @@ textarea.ffc-input { resize: none; height: 72px; }
 }
 .ffc-foot { flex: 0 0 auto; padding: 2px 16px calc(10px + env(safe-area-inset-bottom, 0px)); font-size: 12px; line-height: 1.4; color: var(--chat-ink-2); text-align: center; }
 .ffc-foot a { display: inline-block; padding: 10px 4px; margin: -10px 0; }
+
+/* Narrow screens: launcher tucked to the edge and a little smaller, so it covers less content */
+@media (max-width: 480px) {
+  .ffc-dock { right: max(8px, env(safe-area-inset-right, 0px)); bottom: calc(16px + var(--chat-lift) + env(safe-area-inset-bottom, 0px)); }
+  .ffc-launcher, .ffc-l-av { width: 52px; height: 52px; }
+  .ffc-pill { max-width: min(300px, calc(100vw - 8px - 8px - 52px - 12px - 8px)); }
+}
 
 /* Small screens: full-screen sheet */
 @media (max-width: 519px) {
