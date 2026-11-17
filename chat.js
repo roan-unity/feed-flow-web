@@ -28,7 +28,7 @@
      model answers at once. Under prefers-reduced-motion every pause shrinks to `calm`. */
   var PACE = {
     firstMin: 600, firstMax: 900,       /* dots before the first bubble (longer only if the stream is slow) */
-    base: 350, perChar: 18, cap: 1600,  /* dots before each later bubble, scaled to its length */
+    base: 350, perChar: 12, cap: 1200,  /* dots before each later bubble, scaled to its length */
     card: 320,                          /* beat before a hand-over card or an error notice */
     connect: 900, settle: 380, greet: 760, chips: 260, /* first open: connecting, the system line, dots, greeting, chips */
     calm: 150
