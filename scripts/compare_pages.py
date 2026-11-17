@@ -42,7 +42,7 @@ def ul(items):
 
 HUB = page(
     "compare", "Choosing a Baby Feeding Tracker App: Core Differences",
-    "How Feed Flow differs from Huckleberry, Baby Tracker, Nara and Baby Daybook: what each app is built around, sleep and diaper tracking, Android, and when another app fits better.",
+    "How Feed Flow differs from Huckleberry, Baby Tracker, Nara and Baby Daybook: what each app is built around, sleep, Android, and when another app fits better.",
     "Choosing a baby tracker", "Which baby tracker fits your family?",
     "Most baby trackers log the same basics. The real difference is what each app is built around. Here is an honest guide, including when another app is the better choice.",
     """<section id="core"><h2>The core differences</h2>""" + ul([

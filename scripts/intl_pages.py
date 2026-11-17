@@ -20,8 +20,8 @@ C = {}
 
 C["da"] = dict(
     lang="da", locale="da_DK", size="a4",
-    title="Feed Flow: Babyapp til amning, flaske og modermælkserstatning | iPhone",
-    description="Feed Flow er en babyapp til iPhone, helt på dansk. Log amning, pumpning, flaske og modermælkserstatning på én tidslinje, del loggen med din partner, og se nedtællingen for flasken på låseskærmen. Gratis at logge, uden reklamer.",
+    title="Feed Flow: amning, flaske og modermælkserstatning | iPhone",
+    description="Feed Flow er en babyapp til iPhone, helt på dansk. Log amning, pumpning, flaske og modermælkserstatning på én tidslinje. Gratis at logge, uden reklamer.",
     eyebrow="Babyapp på dansk", h1="Log til amning, pumpning og flaske",
     intro="Feed Flow er appen til alt, hvad din baby spiser: amning, pumpning, modermælk på flaske, modermælkserstatning og fast føde, på én tidslinje. Appen er helt på dansk, udviklet i Norge, og det er gratis at logge. Ingen reklamer, og dataene ligger i din egen iCloud.",
     alt1="Feed Flow på dansk: I dag-skærmen med seneste måltid, næste måltid og dagens flasker.",
@@ -49,7 +49,7 @@ C["da"] = dict(
 C["de"] = dict(
     lang="de", locale="de_DE", size="a4",
     title="Feed Flow: Still-App und Stillprotokoll für Babys | iPhone",
-    description="Feed Flow ist eine Baby-App fürs iPhone, komplett auf Deutsch. Stillen, Abpumpen, Fläschchen und Säuglingsnahrung in einer Zeitleiste protokollieren, mit dem Partner teilen und den Countdown fürs Fläschchen auf dem Sperrbildschirm sehen. Kostenlos, ohne Werbung.",
+    description="Feed Flow ist eine Baby-App fürs iPhone, komplett auf Deutsch. Stillen, Abpumpen, Fläschchen und Säuglingsnahrung protokollieren. Kostenlos, ohne Werbung.",
     eyebrow="Baby-App auf Deutsch", h1="Stillprotokoll für Stillen, Abpumpen und Fläschchen",
     intro="Feed Flow ist die App für alles, was dein Baby trinkt und isst: Stillen, Abpumpen, Muttermilch im Fläschchen, Säuglingsnahrung und Beikost, in einer Zeitleiste. Die App ist komplett auf Deutsch, wurde in Norwegen entwickelt, und das Protokollieren ist kostenlos. Keine Werbung, und die Daten liegen in deiner eigenen iCloud.",
     alt1="Feed Flow auf Deutsch: der Heute-Bildschirm mit letzter Mahlzeit, nächster Mahlzeit und den Fläschchen des Tages.",
@@ -77,7 +77,7 @@ C["de"] = dict(
 C["es"] = dict(
     lang="es", locale="es_MX", size="letter",
     title="Feed Flow: app de lactancia y biberones para bebés | iPhone",
-    description="Feed Flow es una app para bebés en iPhone, totalmente en español. Registra lactancia, extracción, biberones y fórmula en una sola línea de tiempo, compártela con tu pareja y ve la cuenta regresiva del biberón en la pantalla bloqueada. Gratis y sin anuncios.",
+    description="Feed Flow es una app para bebés en iPhone, totalmente en español. Registra lactancia, extracción, biberones y fórmula. Gratis y sin anuncios.",
     eyebrow="App para bebés en español", h1="Registro de lactancia, extracción y biberones",
     intro="Feed Flow es la app para todo lo que come tu bebé: lactancia, extracción, leche materna en biberón, fórmula y sólidos, en una sola línea de tiempo. La app está totalmente en español, se creó en Noruega y registrar es gratis. Sin anuncios, y los datos se guardan en tu propio iCloud.",
     alt1="Feed Flow en español: la pantalla Hoy con la última toma, la próxima toma y los biberones del día.",
@@ -104,8 +104,8 @@ C["es"] = dict(
 
 C["fi"] = dict(
     lang="fi", locale="fi_FI", size="a4",
-    title="Feed Flow: Vauvasovellus imetykseen, pulloruokintaan ja korvikkeeseen | iPhone",
-    description="Feed Flow on iPhonen vauvasovellus kokonaan suomeksi. Kirjaa imetys, pumppaus, pullot ja äidinmaidonkorvike samalle aikajanalle, jaa seuranta kumppanin kanssa ja näe pullon ajastin lukitusnäytöllä. Ilmainen kirjata, ei mainoksia.",
+    title="Feed Flow: Vauvasovellus imetykseen ja pulloruokintaan",
+    description="Feed Flow on iPhonen vauvasovellus suomeksi. Kirjaa imetys, pumppaus, pullot ja äidinmaidonkorvike samalle aikajanalle. Ilmainen kirjata, ei mainoksia.",
     eyebrow="Vauvasovellus suomeksi", h1="Syöttöseuranta imetykseen, pumppaukseen ja pulloon",
     intro="Feed Flow on sovellus kaikkeen, mitä vauvasi syö: imetys, pumppaus, äidinmaito pullosta, korvike ja kiinteät ruoat samalla aikajanalla. Sovellus on kokonaan suomeksi, se on tehty Norjassa, ja kirjaaminen on ilmaista. Ei mainoksia, ja tiedot ovat omassa iCloudissasi.",
     alt1="Feed Flow suomeksi: Tänään-näkymä, jossa viimeisin syöttö, seuraava syöttö ja päivän pullot.",
@@ -132,8 +132,8 @@ C["fi"] = dict(
 
 C["fr"] = dict(
     lang="fr", locale="fr_FR", size="a4",
-    title="Feed Flow : appli d'allaitement et de biberons pour bébé | iPhone",
-    description="Feed Flow est une appli bébé pour iPhone, entièrement en français. Notez l'allaitement, le tire-lait, les biberons et le lait infantile sur une seule chronologie, partagez le suivi avec votre partenaire et voyez le compte à rebours du biberon sur l'écran verrouillé. Gratuit, sans publicité.",
+    title="Feed Flow : appli d'allaitement et de biberons | iPhone",
+    description="Feed Flow, l'appli bébé pour iPhone entièrement en français. Notez l'allaitement, le tire-lait, les biberons et le lait infantile. Gratuit, sans publicité.",
     eyebrow="Appli bébé en français", h1="Suivi de l'allaitement, du tire-lait et des biberons",
     intro="Feed Flow est l'appli pour tout ce que mange votre bébé : allaitement, tire-lait, lait maternel au biberon, lait infantile et diversification, sur une seule chronologie. L'appli est entièrement en français, conçue en Norvège, et la saisie est gratuite. Pas de publicité, et les données restent dans votre propre iCloud.",
     alt1="Feed Flow en français : l'écran Aujourd'hui avec le dernier repas, le prochain repas et les biberons du jour.",
@@ -160,8 +160,8 @@ C["fr"] = dict(
 
 C["it"] = dict(
     lang="it", locale="it_IT", size="a4",
-    title="Feed Flow: app per allattamento, biberon e latte artificiale | iPhone",
-    description="Feed Flow è un'app per neonati su iPhone, completamente in italiano. Registra allattamento, tiralatte, biberon e latte artificiale in un'unica cronologia, condividila con il partner e vedi il conto alla rovescia del biberon sulla schermata di blocco. Gratis, senza pubblicità.",
+    title="Feed Flow: app per allattamento, biberon e latte artificiale",
+    description="Feed Flow è un'app per neonati su iPhone, completamente in italiano. Registra allattamento, tiralatte, biberon e latte artificiale. Gratis, senza pubblicità.",
     eyebrow="App per neonati in italiano", h1="Diario dell'allattamento, del tiralatte e dei biberon",
     intro="Feed Flow è l'app per tutto ciò che mangia il tuo bambino: allattamento, tiralatte, latte materno nel biberon, latte artificiale e svezzamento, in un'unica cronologia. L'app è completamente in italiano, è nata in Norvegia e registrare è gratis. Niente pubblicità, e i dati restano nel tuo iCloud.",
     alt1="Feed Flow in italiano: la schermata Oggi con l'ultimo pasto, il prossimo pasto e i biberon del giorno.",
@@ -189,7 +189,7 @@ C["it"] = dict(
 C["nl"] = dict(
     lang="nl", locale="nl_NL", size="a4",
     title="Feed Flow: app voor borstvoeding, flesvoeding en kolven | iPhone",
-    description="Feed Flow is een baby-app voor iPhone, helemaal in het Nederlands. Houd borstvoeding, kolven, flesjes en kunstvoeding bij op één tijdlijn, deel het logboek met je partner en zie de aftelling van het flesje op je toegangsscherm. Gratis, zonder advertenties.",
+    description="Feed Flow is een baby-app voor iPhone, helemaal in het Nederlands. Houd borstvoeding, kolven, flesjes en kunstvoeding bij. Gratis, zonder advertenties.",
     eyebrow="Baby-app in het Nederlands", h1="Voedingslogboek voor borstvoeding, kolven en flesjes",
     intro="Feed Flow is de app voor alles wat je baby eet: borstvoeding, kolven, moedermelk uit de fles, kunstvoeding en vaste voeding, op één tijdlijn. De app is helemaal in het Nederlands, gemaakt in Noorwegen, en bijhouden is gratis. Geen advertenties, en de gegevens staan in je eigen iCloud.",
     alt1="Feed Flow in het Nederlands: het Vandaag-scherm met de laatste voeding, de volgende voeding en de flesjes van de dag.",
@@ -217,7 +217,7 @@ C["nl"] = dict(
 C["pl"] = dict(
     lang="pl", locale="pl_PL", size="a4",
     title="Feed Flow: aplikacja do karmienia piersią i butelką | iPhone",
-    description="Feed Flow to aplikacja dla niemowląt na iPhone'a, w całości po polsku. Zapisuj karmienie piersią, odciąganie, butelki i mleko modyfikowane na jednej osi czasu, udostępnij dziennik partnerowi i sprawdzaj odliczanie dla butelki na ekranie blokady. Za darmo, bez reklam.",
+    description="Feed Flow to aplikacja dla niemowląt na iPhone'a, po polsku. Zapisuj karmienie piersią, odciąganie, butelki i mleko modyfikowane. Za darmo, bez reklam.",
     eyebrow="Aplikacja dla niemowląt po polsku", h1="Dziennik karmienia piersią, odciągania i butelek",
     intro="Feed Flow to aplikacja do wszystkiego, co je Twoje dziecko: karmienia piersią, odciągania, mleka mamy z butelki, mleka modyfikowanego i stałych pokarmów, na jednej osi czasu. Aplikacja jest w całości po polsku, powstała w Norwegii, a zapisywanie jest darmowe. Bez reklam, a dane zostają w Twoim własnym iCloud.",
     alt1="Feed Flow po polsku: ekran Dziś z ostatnim karmieniem, następnym karmieniem i butelkami z całego dnia.",
@@ -245,7 +245,7 @@ C["pl"] = dict(
 C["pt"] = dict(
     lang="pt-BR", locale="pt_BR", size="a4",
     title="Feed Flow: app de amamentação e mamadeira para bebês | iPhone",
-    description="Feed Flow é um app para bebês no iPhone, todo em português. Registre amamentação, extração, mamadeiras e fórmula em uma só linha do tempo, compartilhe com quem cuida do bebê e veja a contagem regressiva da mamadeira na tela bloqueada. Grátis e sem anúncios.",
+    description="Feed Flow é um app para bebês no iPhone, todo em português. Registre amamentação, extração, mamadeiras e fórmula em uma linha do tempo. Grátis e sem anúncios.",
     eyebrow="App para bebês em português", h1="Registro de mamadas, extração e mamadeiras",
     intro="Feed Flow é o app para tudo o que seu bebê come: amamentação, extração, leite materno na mamadeira, fórmula e introdução alimentar, em uma só linha do tempo. O app é todo em português, foi criado na Noruega e registrar é grátis. Sem anúncios, e os dados ficam no seu próprio iCloud.",
     alt1="Feed Flow em português: a tela Hoje com a última mamada, a próxima mamada e as mamadeiras do dia.",

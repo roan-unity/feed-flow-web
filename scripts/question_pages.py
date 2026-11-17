@@ -6,8 +6,8 @@ Each page answers its question in the first lines, then explains. Facts must mat
 QUESTION = [
     {
         "slug": "bottle-countdown", "file": "bottle-countdown.html", "active": "feeding", "date": "2026-11-16",
-        "title": "Bottle Countdown App: Know When a Prepared Bottle Was Made | Feed Flow",
-        "description": "Feed Flow puts a countdown on every prepared bottle, from the moment you make it, right on your iPhone Lock Screen. One hour for formula and two for pumped milk by default, adjustable. Free.",
+        "title": "Bottle Countdown App: When Was the Bottle Made? | Feed Flow",
+        "description": "Feed Flow puts a countdown on every prepared bottle on your iPhone Lock Screen. One hour for formula and two for pumped milk by default, adjustable. Free.",
         "eyebrow": "Bottle countdown", "h1": "Is there an app that tells you when a prepared bottle has to go?",
         "intro": "Yes. Feed Flow starts a countdown the moment you make a bottle and keeps it on your iPhone Lock Screen. The default is one hour for formula and two hours for pumped milk, and you set it to match your label and local guidance. The countdown is free.",
         "image": "/screens/formula/02-lock-screen-360.webp", "srcset": "/screens/formula/02-lock-screen-360.webp 1x, /screens/formula/02-lock-screen-720.webp 2x", "width": 360, "height": 780,
@@ -27,8 +27,8 @@ QUESTION = [
     },
     {
         "slug": "combo-feeding", "file": "combo-feeding.html", "active": "feeding", "date": "2026-11-16",
-        "title": "Combo Feeding Tracker: Breastfeeding and Formula in One App | Feed Flow",
-        "description": "Track combo feeding in one iPhone app. Feed Flow logs nursing, pumping, expressed milk and formula in one timeline with one daily milk total, shared with everyone who feeds your baby.",
+        "title": "Combo Feeding Tracker: Breastfeeding and Formula | Feed Flow",
+        "description": "Track combo feeding on iPhone. Feed Flow logs nursing, pumping, expressed milk and formula in one timeline with one daily milk total, shared with caregivers.",
         "eyebrow": "Combo feeding tracker", "h1": "Which app tracks breastfeeding and formula together?",
         "intro": "Feed Flow was built for combo feeding. Nursing, pumping, expressed milk and formula go in one timeline, the day's milk total counts all of them, and everyone who feeds your baby logs into the same record. Logging is free.",
         "image": "/screens/formula/04-home-360.webp", "srcset": "/screens/formula/04-home-360.webp 1x, /screens/formula/04-home-720.webp 2x", "width": 360, "height": 780,
@@ -49,7 +49,7 @@ QUESTION = [
     {
         "slug": "share-feeding-log", "file": "share-feeding-log.html", "active": "feeding", "date": "2026-11-16",
         "title": "Baby Tracker You and Your Partner Can Both Log In | Feed Flow",
-        "description": "Share one baby feeding log with your partner, grandparents or a sitter. Everyone logs from their own iPhone through their own iCloud. Sharing is free, with no limit on caregivers.",
+        "description": "Share one baby feeding log with your partner, grandparents or a sitter. Everyone logs from their own iPhone. Sharing is free, with no limit on caregivers.",
         "eyebrow": "Shared feeding log", "h1": "Which baby tracker can my partner and I both log in?",
         "intro": "Feed Flow lets you invite everyone who looks after your baby to the same log. Each person logs from their own iPhone through their own iCloud, so nobody has to ask \"did she eat?\" again. Sharing is free and there is no limit on caregivers.",
         "image": "/screens/formula/07-family-360.webp", "srcset": "/screens/formula/07-family-360.webp 1x, /screens/formula/07-family-720.webp 2x", "width": 360, "height": 780,
@@ -70,7 +70,7 @@ QUESTION = [
     {
         "slug": "free-baby-feeding-tracker", "file": "free-baby-feeding-tracker.html", "active": "feeding", "date": "2026-11-16",
         "title": "Free Baby Feeding Tracker for iPhone, No Ads | Feed Flow",
-        "description": "Feed Flow is a free baby feeding tracker for iPhone with no ads. Log breastfeeding, pumping, formula and solids, share with family and get a Lock Screen bottle countdown for free.",
+        "description": "A free baby feeding tracker for iPhone with no ads. Log breastfeeding, pumping, formula and solids, share with family and get a Lock Screen bottle countdown.",
         "eyebrow": "Free feeding tracker", "h1": "Is there a free baby feeding tracker without ads?",
         "intro": "Feed Flow is free to log and has no ads. Breastfeeding, pumping, formula, solids, growth and vitamin D drops, the Lock Screen bottle countdown and family sharing are all included for free. Premium is optional.",
         "image": "/screens/formula/01-safe-bottle-360.webp", "srcset": "/screens/formula/01-safe-bottle-360.webp 1x, /screens/formula/01-safe-bottle-720.webp 2x", "width": 360, "height": 780,
@@ -90,8 +90,8 @@ QUESTION = [
     },
     {
         "slug": "printable-feeding-log", "file": "printable-feeding-log.html", "active": "feeding", "date": "2026-11-16",
-        "title": "Free Printable Newborn Feeding Log (PDF, A4 and US Letter) | Feed Flow",
-        "description": "A free one-page newborn feeding log to print: time, breastfeeding minutes per side, bottle made at, formula or breast milk, amount offered and drunk, pumping and wet and dirty diapers. PDF in US Letter and A4.",
+        "title": "Free Printable Newborn Feeding Log (PDF) | Feed Flow",
+        "description": "A free newborn feeding log to print: breastfeeding minutes per side, bottle made at, amount offered and drunk, pumping and diapers. PDF in US Letter and A4.",
         "eyebrow": "Printable feeding log", "h1": "Free printable newborn feeding log",
         "intro": "Download a one-page feeding log for the first weeks: twelve rows per day for time, breastfeeding minutes on each side, when a bottle was made, formula or breast milk, amount offered and drunk, pumping, and wet and dirty diapers. Free, no sign-up, in US Letter and A4.",
         "image": "/printables/feeding-log-en-480.webp", "srcset": "/printables/feeding-log-en-480.webp 1x, /printables/feeding-log-en-960.webp 2x", "width": 360, "height": 509,

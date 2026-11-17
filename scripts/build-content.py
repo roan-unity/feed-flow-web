@@ -288,7 +288,7 @@ PAGES = [
     {
         "slug": "guides/should-you-use-a-feeding-tracker", "file": "guides/should-you-use-a-feeding-tracker.html", "active": "resources", "guide": True,
         "title": "Should You Use a Baby Feeding Tracker? An Honest Answer",
-        "description": "When a baby feeding tracker helps, when it adds pressure, and how to log without obsessing over numbers. An honest guide from the dad who built Feed Flow, with CDC, AAP and WHO sources.",
+        "description": "When a baby feeding tracker helps, when it adds pressure, and how to log calmly. From the dad who built Feed Flow, with CDC, AAP and WHO sources.",
         "eyebrow": "Should you track feeds?", "h1": "Should you use a baby feeding tracker?",
         "intro": "An honest answer from the dad who built one: sometimes the answer is no. Here is when a tracker earns its place, when it gets in the way, and how to use one without letting the numbers take over.",
         "image": "/screens/formula/04-home-360.webp", "srcset": "/screens/formula/04-home-360.webp 1x, /screens/formula/04-home-720.webp 2x", "width": 360, "height": 780,

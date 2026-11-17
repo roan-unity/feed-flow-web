@@ -13,7 +13,7 @@ NORDIC = [
     {
         "slug": "no", "file": "no.html", "lang": "nb", "active": "feeding", "date": "2026-11-16", "hreflang": HREFLANG,
         "title": "Feed Flow: Babyapp for amming, flaske og MME på norsk | iPhone",
-        "description": "Feed Flow er en babyapp for iPhone, helt på norsk. Logg amming, pumping, flaske og morsmelkerstatning på én tidslinje, del loggen med partneren og se nedtellingen for flasken på låseskjermen. Gratis å logge, uten reklame.",
+        "description": "Feed Flow er en babyapp for iPhone, helt på norsk. Logg amming, pumping, flaske og morsmelkerstatning på én tidslinje. Gratis å logge, uten reklame.",
         "eyebrow": "Babyapp på norsk", "h1": "Matingslogg for amming, pumping og flaske, laget i Norge",
         "intro": "Feed Flow er appen for alt babyen spiser: amming, pumping, morsmelk på flaske, morsmelkerstatning og fast føde, på én tidslinje. Appen er helt på norsk, laget i Norge, og det er gratis å logge. Ingen reklame, og dataene ligger i din egen iCloud.",
         "image": "/screens/nordic/no-03-360.webp", "srcset": "/screens/nordic/no-03-360.webp 1x, /screens/nordic/no-03-720.webp 2x", "width": 360, "height": 780,
@@ -38,7 +38,7 @@ NORDIC = [
     {
         "slug": "sv", "file": "sv.html", "lang": "sv", "active": "feeding", "date": "2026-11-16", "hreflang": HREFLANG,
         "title": "Feed Flow: Bebisapp för amning, flaska och ersättning | iPhone",
-        "description": "Feed Flow är en bebisapp för iPhone, helt på svenska. Logga amning, pumpning, flaska och modersmjölksersättning i en tidslinje, dela loggen med din partner och se nedräkningen för flaskan på låsskärmen. Gratis att logga, utan reklam.",
+        "description": "Feed Flow är en bebisapp för iPhone, helt på svenska. Logga amning, pumpning, flaska och modersmjölksersättning i en tidslinje. Gratis att logga, utan reklam.",
         "eyebrow": "Bebisapp på svenska", "h1": "Matningslogg för amning, pumpning och flaska",
         "intro": "Feed Flow är appen för allt din bebis äter: amning, pumpning, bröstmjölk på flaska, ersättning och fast föda, i en och samma tidslinje. Appen finns helt på svenska, är byggd i Norge och det är gratis att logga. Ingen reklam, och datan ligger i ditt eget iCloud.",
         "image": "/screens/nordic/sv-03-360.webp", "srcset": "/screens/nordic/sv-03-360.webp 1x, /screens/nordic/sv-03-720.webp 2x", "width": 360, "height": 780,

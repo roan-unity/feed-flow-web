@@ -317,7 +317,7 @@
     },
     {
       "url": "https://tryfeedflow.app/bottle-countdown",
-      "title": "Bottle Countdown App: Know When a Prepared Bottle Was Made | Feed Flow",
+      "title": "Bottle Countdown App: When Was the Bottle Made? | Feed Flow",
       "intent": "Bottle countdown",
       "role": "hub",
       "primaryQueries": [
@@ -334,7 +334,7 @@
     },
     {
       "url": "https://tryfeedflow.app/combo-feeding",
-      "title": "Combo Feeding Tracker: Breastfeeding and Formula in One App | Feed Flow",
+      "title": "Combo Feeding Tracker: Breastfeeding and Formula | Feed Flow",
       "intent": "Combo feeding tracker",
       "role": "hub",
       "primaryQueries": [
@@ -385,7 +385,7 @@
     },
     {
       "url": "https://tryfeedflow.app/printable-feeding-log",
-      "title": "Free Printable Newborn Feeding Log (PDF, A4 and US Letter) | Feed Flow",
+      "title": "Free Printable Newborn Feeding Log (PDF) | Feed Flow",
       "intent": "Printable feeding log",
       "role": "hub",
       "primaryQueries": [
@@ -441,7 +441,7 @@
     },
     {
       "url": "https://tryfeedflow.app/da",
-      "title": "Feed Flow: Babyapp til amning, flaske og modermælkserstatning | iPhone",
+      "title": "Feed Flow: amning, flaske og modermælkserstatning | iPhone",
       "intent": "Babyapp på dansk",
       "role": "hub",
       "primaryQueries": [
@@ -495,7 +495,7 @@
     },
     {
       "url": "https://tryfeedflow.app/fi",
-      "title": "Feed Flow: Vauvasovellus imetykseen, pulloruokintaan ja korvikkeeseen | iPhone",
+      "title": "Feed Flow: Vauvasovellus imetykseen ja pulloruokintaan",
       "intent": "Vauvasovellus suomeksi",
       "role": "hub",
       "primaryQueries": [
@@ -513,7 +513,7 @@
     },
     {
       "url": "https://tryfeedflow.app/fr",
-      "title": "Feed Flow : appli d'allaitement et de biberons pour bébé | iPhone",
+      "title": "Feed Flow : appli d'allaitement et de biberons | iPhone",
       "intent": "Appli bébé en français",
       "role": "hub",
       "primaryQueries": [
@@ -531,7 +531,7 @@
     },
     {
       "url": "https://tryfeedflow.app/it",
-      "title": "Feed Flow: app per allattamento, biberon e latte artificiale | iPhone",
+      "title": "Feed Flow: app per allattamento, biberon e latte artificiale",
       "intent": "App per neonati in italiano",
       "role": "hub",
       "primaryQueries": [
