@@ -2,8 +2,11 @@
 
 Every frame is a real app capture. Nothing is drawn or retouched:
 - start   = screens/logging.jpg (the log menu), resized.
-- log     = the phone screen cropped out of the 01-safe-bottle store frame (bottle timer + Similac).
-- finish  = the phone screen cropped out of the 04-home store frame (today's total + timeline).
+- press, log, finish = three frames of ONE real recording of a 2.5 oz bottle being logged
+  (ff-167-livepolish scratch/livepolish/round3/attempt1/clip-i17.mp4, 1206x2622): Today before the
+  feed at 14.5 s (17.5 oz so far), the bottle screen at 37.5 s (2.5 oz taken, 1.5 oz left) and Today
+  after it at 44.1 s (the 2.5 oz row on top, 20 oz so far). So the amounts in the three phones agree
+  because they are the same feed. Extract them with scripts/extract-frames.swift (see RECORDING below).
 - report-scroll = screens/report.jpg stacked on top of the lower part of
   screens/store/report-detail.png (two real scroll positions of the same Baby Report),
   so the section can scroll it inside a phone frame.
@@ -60,8 +63,16 @@ if NEWER_PICKER.exists():
 else:
     START = Image.open(ROOT / "screens" / "logging.jpg").convert("RGB")
 save(START, "start")
-save(store_screen("01-safe-bottle"), "log")
-save(store_screen("04-home"), "finish")
+
+# swiftc -O scripts/extract-frames.swift -o /tmp/extract-frames
+# /tmp/extract-frames <clip-i17.mp4> <RECORDING dir> 14.5 37.5 44.1   (then rename as below)
+RECORDING = Path.home() / "Developer/feed-flow-web-howitworks-frames/sources"
+RECORDED = {"press": "home-before-t14.50.png", "log": "bottle-t37.50.png", "finish": "home-after-t44.10.png"}
+RECORDED_FRAMES = {}
+for name, filename in RECORDED.items():
+    if (RECORDING / filename).exists():
+        RECORDED_FRAMES[name] = Image.open(RECORDING / filename).convert("RGB")
+        save(RECORDED_FRAMES[name], name)
 save(report_scroll(), "report-scroll", quality=74)
 
 
@@ -93,8 +104,8 @@ def background_strip(image: Image.Image, name: str, left_cols=(0.008, 0.03), rig
 
 
 background_strip(START, "start")
-background_strip(store_screen("01-safe-bottle"), "log")
-background_strip(store_screen("04-home"), "finish")
+for name, frame in RECORDED_FRAMES.items():
+    background_strip(frame, name)
 background_strip(Image.open(ROOT / "screens" / "flowcast-720.webp"), "flowcast")
 
 
