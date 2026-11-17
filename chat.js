@@ -23,6 +23,16 @@
   var STREAM_TIMEOUT_MS = 60000;
   var SVG_NS = 'http://www.w3.org/2000/svg';
   var NORA_LANE = { assistant: 1, card: 1, error: 1 };
+  var MET_KEY = 'ffc-met';
+  /* Human pacing (Robin, 2026-11-17). Typing dots show before the first bubble and between bubbles, even when the
+     model answers at once. Under prefers-reduced-motion every pause shrinks to `calm`. */
+  var PACE = {
+    firstMin: 600, firstMax: 900,       /* dots before the first bubble (longer only if the stream is slow) */
+    base: 350, perChar: 18, cap: 1600,  /* dots before each later bubble, scaled to its length */
+    card: 320,                          /* beat before a hand-over card or an error notice */
+    connect: 900, settle: 380, greet: 760, chips: 260, /* first open: connecting, the system line, dots, greeting, chips */
+    calm: 150
+  };
 
   var COPY = {
     launcher: "Chat with Nora, Feed Flow's AI assistant",
@@ -30,6 +40,9 @@
     pill: 'Questions? Ask Nora.',
     dismiss: 'Dismiss',
     role: 'Feed Flow assistant ',
+    online: 'Online',
+    connecting: 'Connecting',
+    connected: 'Nora is connected to the chat',
     greeting: "Hi, I'm Nora, Feed Flow's AI assistant. Ask me anything about the app.",
     chips: ['What does Feed Flow track?', 'Is it free?', 'Can two parents log together?', 'Talk to a person'],
     person: 'Sure. Leave your email and a person on the team will write back.',
@@ -84,6 +97,11 @@
   var L = null; /* the contact form's state while in closed mode */
   var leaveCard = null;
   var mobileQuery = window.matchMedia ? window.matchMedia('(max-width: 519px)') : { matches: false };
+  var calmQuery = window.matchMedia ? window.matchMedia('(prefers-reduced-motion: reduce)') : { matches: false };
+  var flushPending = null; /* shows at once whatever a paced reply still holds back */
+  var pendingTail = null;  /* the same held-back items, for persist() */
+  var intro = null;        /* the first-open sequence while it plays: { timers: [] } */
+  var introDue = false;
 
   /* ---------- small helpers ---------- */
   function h(tag, cls, text) {
@@ -119,6 +137,12 @@
     return img;
   }
   function pagePath() { return location.pathname; }
+  function pace(ms) { return calmQuery.matches ? Math.min(ms, PACE.calm) : ms; }
+  function onlineDot() {
+    var dot = h('span', 'ffc-dot');
+    dot.setAttribute('aria-hidden', 'true');
+    return dot;
+  }
   function track(name) { try { if (window.plausible) window.plausible(name); } catch (e) {} }
 
   /* Plain text into a node, with **bold**, https links and email addresses. Nothing is ever parsed as HTML. */
@@ -230,6 +254,7 @@
   launcherX.appendChild(icon(ICON_X));
   launcher.appendChild(launcherAv);
   launcher.appendChild(launcherX);
+  launcher.appendChild(onlineDot());
   dock.appendChild(pill);
   dock.appendChild(launcher);
 
@@ -240,10 +265,12 @@
   var head = h('div', 'ffc-head');
   var headAv = h('div', 'ffc-head-av');
   headAv.appendChild(avatar(''));
+  headAv.appendChild(onlineDot());
   var headTxt = h('div', 'ffc-head-txt');
   headTxt.appendChild(h('div', 'ffc-name', 'Nora'));
   var role = h('div', 'ffc-role', COPY.role);
   role.appendChild(h('b', '', 'AI'));
+  role.appendChild(h('span', 'ffc-on', COPY.online));
   headTxt.appendChild(role);
   var closeBtn = h('button', 'ffc-close');
   closeBtn.type = 'button';
@@ -298,7 +325,7 @@
   function persist() {
     if (DEMO) return;
     var out = [];
-    items.forEach(function (it) {
+    items.concat(pendingTail ? pendingTail() : []).forEach(function (it) {
       if (it.typing) return;
       var c = {};
       for (var k in it) if (k !== 'el' && k !== 'bubble' && k !== 'typing') c[k] = it[k];
@@ -342,8 +369,23 @@
     var prev = index > 0 ? items[index - 1] : null;
     var first = !prev || itemSide(prev) !== s;
     var row = h('div', 'ffc-row ffc-' + (s === 'user' ? 'user' : 'nora') + (first ? ' ffc-first' : ''));
-    if (s === 'nora') row.appendChild(first ? avatar('ffc-av') : h('span', 'ffc-av-sp'));
+    /* The typing dots always sit beside her avatar; in the middle of a reply it bows out when the text lands. */
+    if (s === 'nora') row.appendChild(first ? avatar('ffc-av') : it.typing ? avatar('ffc-av ffc-av-typing') : h('span', 'ffc-av-sp'));
     return row;
+  }
+  function settleTyping(it, text) {
+    it.typing = false;
+    it.text = text;
+    fill(it.bubble, text);
+    it.bubble.classList.add('ffc-landed');
+    var av = it.el && it.el.querySelector('.ffc-av-typing');
+    if (av) av.classList.add('ffc-av-out');
+  }
+  function sysLine(text, waiting) {
+    var line = h('div', 'ffc-sys' + (waiting ? ' ffc-sys-wait' : ''));
+    line.appendChild(h('i'));
+    line.appendChild(h('span', '', text));
+    return line;
   }
 
   function buildMsg(it, index) {
@@ -463,6 +505,7 @@
     items.push(it);
     var index = items.length - 1;
     var node = it.t === 'msg' ? buildMsg(it, index) : it.t === 'error' ? buildError(it, index) : buildCard(it, index);
+    if (!silent) node.classList.add('ffc-in');
     log.appendChild(node);
     if (chipsEl && !silent) dropChips();
     if (!silent) toBottom();
@@ -477,27 +520,226 @@
     if (chipsEl && chipsEl.parentNode) chipsEl.parentNode.removeChild(chipsEl);
     chipsEl = null;
   }
+  function chipRow() {
+    var box = h('div', 'ffc-chips');
+    COPY.chips.forEach(function (label, i) {
+      var b = h('button', 'ffc-chip', label);
+      b.type = 'button';
+      b.addEventListener('click', function () { onChip(i, label); });
+      box.appendChild(b);
+    });
+    return box;
+  }
   function renderAll() {
     log.textContent = '';
+    log.appendChild(sysLine(COPY.connected));
     var greet = h('div', 'ffc-row ffc-first ffc-nora');
     greet.appendChild(avatar('ffc-av'));
     greet.appendChild(h('div', 'ffc-bubble', COPY.greeting));
     log.appendChild(greet);
     chipsEl = null;
     if (!items.length) {
-      chipsEl = h('div', 'ffc-chips');
-      COPY.chips.forEach(function (label, i) {
-        var b = h('button', 'ffc-chip', label);
-        b.type = 'button';
-        b.addEventListener('click', function () { onChip(i, label); });
-        chipsEl.appendChild(b);
-      });
+      chipsEl = chipRow();
       log.appendChild(chipsEl);
     }
     var list = items;
     items = [];
     list.forEach(function (it) { addItem(it, true); });
     toBottom();
+  }
+
+  /* First open of a visit: a short connecting moment, the system line, then her greeting arrives the way a reply does.
+     Any interruption (closing, sending) settles straight to the finished state that renderAll draws. */
+  function playIntro() {
+    introDue = false;
+    intro = { timers: [] };
+    var at = 0;
+    function after(ms, fn) { at += pace(ms); intro.timers.push(setTimeout(fn, at)); }
+    log.textContent = '';
+    chipsEl = null;
+    var line = sysLine(COPY.connecting, true);
+    line.classList.add('ffc-in');
+    log.appendChild(line);
+    var row = null;
+    var bubble = null;
+    after(PACE.connect, function () {
+      var next = sysLine(COPY.connected);
+      next.classList.add('ffc-sys-now');
+      log.replaceChild(next, line);
+    });
+    after(PACE.settle, function () {
+      row = h('div', 'ffc-row ffc-first ffc-nora ffc-in');
+      row.appendChild(avatar('ffc-av'));
+      bubble = h('div', 'ffc-bubble');
+      setTyping(bubble);
+      row.appendChild(bubble);
+      log.appendChild(row);
+    });
+    after(PACE.greet, function () {
+      bubble.textContent = COPY.greeting;
+      bubble.classList.add('ffc-landed');
+    });
+    after(PACE.chips, function () {
+      intro = null;
+      store(MET_KEY, '1');
+      if (items.length) return;
+      chipsEl = chipRow();
+      chipsEl.classList.add('ffc-in');
+      log.appendChild(chipsEl);
+      toBottom();
+    });
+  }
+  function settleIntro() {
+    if (!intro) return;
+    intro.timers.forEach(clearTimeout);
+    intro = null;
+    store(MET_KEY, '1');
+    renderAll();
+  }
+
+  /* One reply, paced. Text streams into feed(); it shows as one bubble per paragraph, with the typing dots before the
+     first and between each. Nothing fed is ever dropped or reordered: flush() shows all of it at once, and persist()
+     already stores what is still held back. end(tail) appends a card or an error notice after the last bubble. */
+  function present() {
+    var segs = [''];
+    var shown = -1;
+    var cur = null;
+    var dots = addItem({ t: 'msg', role: 'assistant', text: '', typing: true });
+    var since = Date.now();
+    var firstWait = pace(PACE.firstMin + Math.random() * (PACE.firstMax - PACE.firstMin));
+    var timer = null;
+    var ended = false;
+    var closed = false;
+    var instant = false;
+    var tail = null;
+    var carry = '';
+    var breakNext = false;
+
+    function has(i) { return i < segs.length && /\S/.test(segs[i]); }
+    function need() { return shown < 0 ? firstWait : pace(Math.min(PACE.cap, PACE.base + PACE.perChar * segs[shown + 1].length)); }
+    function held() {
+      var out = [];
+      if (closed) return out;
+      for (var i = shown + 1; i < segs.length; i += 1) if (has(i)) out.push({ t: 'msg', role: 'assistant', text: segs[i] });
+      if (ended && tail) out.push(tail);
+      return out;
+    }
+    function reveal() {
+      shown += 1;
+      if (!dots) dots = addItem({ t: 'msg', role: 'assistant', text: '', typing: true }, true);
+      cur = dots;
+      dots = null;
+      settleTyping(cur, segs[shown]);
+      if (has(shown + 1)) startDots();
+    }
+    function startDots() {
+      if (dots || instant) return;
+      dots = addItem({ t: 'msg', role: 'assistant', text: '', typing: true }, true);
+      dots.el.classList.add('ffc-in');
+      since = Date.now();
+    }
+    function dropDots() {
+      if (dots) { removeItem(dots); dots = null; }
+    }
+    function close(wait) {
+      if (closed) return;
+      var last = tail;
+      closed = true;
+      dropDots();
+      if (flushPending === flush) flushPending = null;
+      if (pendingTail === held) pendingTail = null;
+      if (last && wait) {
+        /* the card is not on screen yet: keep it in storage, and let flush() put it up early */
+        var put = function () {
+          if (!last) return;
+          clearTimeout(timer);
+          if (flushPending === put) flushPending = null;
+          if (pendingTail === lastHeld) pendingTail = null;
+          var stick = nearBottom();
+          addItem(last, true);
+          last.el.classList.add('ffc-in');
+          last = null;
+          persist();
+          if (stick) toBottom();
+        };
+        var lastHeld = function () { return last ? [last] : []; };
+        flushPending = put;
+        pendingTail = lastHeld;
+        timer = setTimeout(put, wait);
+        persist();
+      } else {
+        if (last) addItem(last, true);
+        persist();
+      }
+    }
+    function step() {
+      clearTimeout(timer);
+      timer = null;
+      if (closed) return;
+      var stick = nearBottom();
+      while (has(shown + 1)) {
+        var wait = instant ? 0 : since + need() - Date.now();
+        if (wait > 0) { timer = setTimeout(step, wait); break; }
+        reveal();
+      }
+      if (cur && cur.text !== segs[shown]) { cur.text = segs[shown]; fill(cur.bubble, cur.text); }
+      if (!timer && has(shown + 1)) startDots();
+      if (ended && !has(shown + 1)) close(instant || !tail ? 0 : pace(PACE.card));
+      if (stick) toBottom();
+    }
+    function flush() {
+      instant = true;
+      step();
+    }
+    function put(text) {
+      if (!text) return;
+      if (breakNext) {
+        if (!/\S/.test(text)) return;
+        breakNext = false;
+        segs.push('');
+        text = text.replace(/^\s+/, '');
+      }
+      segs[segs.length - 1] += text;
+    }
+
+    flushPending = flush;
+    pendingTail = held;
+    return {
+      /* Each paragraph of the reply (a blank line between) is its own bubble. */
+      feed: function (text) {
+        if (!text || ended) return;
+        var s = carry + text;
+        carry = '';
+        var tailBreak = /[ \t]*\n\s*$/.exec(s);
+        if (tailBreak) { carry = tailBreak[0]; s = s.slice(0, tailBreak.index); }
+        s.split(/\n[ \t]*\n\s*/).forEach(function (part, i) {
+          if (i > 0) breakNext = true;
+          put(part);
+        });
+        if (shown >= 0 && !dots && has(shown + 1)) startDots();
+        step();
+      },
+      hasText: function () { return has(0); },
+      end: function (item, now) {
+        if (ended) return;
+        ended = true;
+        tail = item || null;
+        if (now) instant = true;
+        step();
+        persist();
+      },
+      cancel: function () {
+        clearTimeout(timer);
+        closed = true;
+        dropDots();
+        if (flushPending === flush) flushPending = null;
+        if (pendingTail === held) pendingTail = null;
+      }
+    };
+  }
+  function settleAll() {
+    settleIntro();
+    if (flushPending) flushPending();
   }
 
   /* ---------- sending ---------- */
@@ -512,6 +754,7 @@
   function submitText(text) {
     text = text.replace(/^\s+|\s+$/g, '').slice(0, MAX_CHARS);
     if (!text || busy) return;
+    settleAll();
     clearErrors();
     addItem({ t: 'msg', role: 'user', text: text });
     persist();
@@ -523,16 +766,18 @@
   function onChip(i, label) {
     if (busy) return;
     if (i === COPY.chips.length - 1) {
+      settleAll();
       addItem({ t: 'msg', role: 'user', text: label });
-      addItem({ t: 'msg', role: 'assistant', text: COPY.person });
-      addItem({ t: 'card', status: 'form', needsTopic: true, to: 'support', reason: 'request', summary: '' });
-      persist();
+      var p = present();
+      p.feed(COPY.person);
+      p.end({ t: 'card', status: 'form', needsTopic: true, to: 'support', reason: 'request', summary: '' });
       return;
     }
     submitText(label);
   }
   function retryLast() {
     if (busy) return;
+    settleAll();
     clearErrors();
     var tail = lastOf(items);
     while (tail && tail.t === 'msg' && tail.role === 'assistant') { removeItem(tail); tail = lastOf(items); }
@@ -544,8 +789,7 @@
     if (DEMO) { demoRun(); return; }
     setBusy(true);
     var firstMessage = !items.some(function (it) { return it.t === 'msg' && it.role === 'assistant'; });
-    var reply = addItem({ t: 'msg', role: 'assistant', text: '', typing: true });
-    var gotText = false;
+    var reply = present();
     var pendingAction = null;
     var finished = false;
     var aborter = window.AbortController ? new AbortController() : null;
@@ -553,39 +797,6 @@
     var token = {};
     activeRequest = token;
 
-    function stuck() { return nearBottom(); }
-    /* Each paragraph of the reply (a blank line between) is its own bubble. The stream decides when they arrive. */
-    var current = reply;
-    var carry = '';
-    var breakNext = false;
-    function put(text) {
-      if (!text) return;
-      if (breakNext) {
-        if (!text.replace(/\s/g, '')) return;
-        breakNext = false;
-        current = addItem({ t: 'msg', role: 'assistant', text: '' }, true);
-        text = text.replace(/^\s+/, '');
-        if (stuck()) toBottom();
-      }
-      current.text += text;
-      if (current.typing) current.typing = false;
-      fill(current.bubble, current.text);
-      gotText = true;
-    }
-    function onDelta(text) {
-      if (!text) return;
-      var stick = stuck();
-      var s = carry + text;
-      carry = '';
-      var tailBreak = /[ \t]*\n\s*$/.exec(s);
-      if (tailBreak) { carry = tailBreak[0]; s = s.slice(0, tailBreak.index); }
-      var parts = s.split(/\n[ \t]*\n\s*/);
-      parts.forEach(function (part, i) {
-        if (i > 0) breakNext = true;
-        put(part);
-      });
-      if (stick) toBottom();
-    }
     function fallBackToForm() {
       var typed = '';
       items.forEach(function (it) { if (it.t === 'msg' && it.role === 'user') typed = it.text; });
@@ -601,23 +812,23 @@
       clearTimeout(timer);
       if (activeRequest === token) activeRequest = null;
       /* First message and nothing came back (not set up, a server error, a rate limit, no network): show the form instead. */
-      if (errCode && !gotText && firstMessage && (errCode === 'upstream' || errCode === 'rate_limited' || errCode === 'not_configured')) {
-        removeItem(reply);
+      if (errCode && !reply.hasText() && firstMessage && (errCode === 'upstream' || errCode === 'rate_limited' || errCode === 'not_configured')) {
+        reply.cancel();
         fallBackToForm();
         return;
       }
-      if (!gotText) removeItem(reply); else { reply.typing = false; current.typing = false; }
+      var tail = null;
       if (errCode) {
-        addItem({ t: 'error', code: errCode });
+        tail = { t: 'error', code: errCode };
       } else if (pendingAction && !items.some(function (it) { return it.t === 'card' && it.status !== 'sent'; })) {
-        addItem({ t: 'card', status: 'form', needsTopic: true, to: pendingAction.to === 'founder' ? 'founder' : 'support', reason: pendingAction.reason || 'request', summary: pendingAction.summary || '', topic: pendingAction.summary || '' });
+        tail = { t: 'card', status: 'form', needsTopic: true, to: pendingAction.to === 'founder' ? 'founder' : 'support', reason: pendingAction.reason || 'request', summary: pendingAction.summary || '', topic: pendingAction.summary || '' };
       }
+      /* The stream is over, so the visitor may write again; the bubbles still held back keep their pace (or flush). */
       setBusy(false);
-      persist();
-      toBottom();
+      reply.end(tail, !!errCode);
     }
     function onEvent(name, data) {
-      if (name === 'delta') onDelta(data && data.text);
+      if (name === 'delta') reply.feed(data && data.text);
       else if (name === 'action') { if (data && (data.type === 'hand_over' || data.type === 'escalate_form')) pendingAction = data; }
       else if (name === 'done') finish(null);
       else if (name === 'error') finish((data && data.code) || 'upstream');
@@ -639,7 +850,7 @@
         });
       }
       return readStream(res, onEvent).then(function () {
-        finish(gotText ? null : 'upstream');
+        finish(reply.hasText() ? null : 'upstream');
       });
     }).catch(function () {
       finish('upstream');
@@ -737,6 +948,8 @@
     closedMode = true;
     L = state;
     root.classList.add('ffc-closed');
+    root.classList.remove('ffc-online');
+    introDue = false;
     launcherLabel = COPY.closedLauncher;
     launcher.setAttribute('aria-label', launcherLabel);
     pillText.textContent = COPY.closedPill;
@@ -983,6 +1196,7 @@
       launcherAv.classList.remove('ffc-breathe');
       if (!DEMO && !load(OPENED_KEY)) { store(OPENED_KEY, '1'); track('Chat Open'); }
       if (!openedAt) openedAt = Date.now();
+      if (introDue && !closedMode) playIntro();
       if (closedMode) log.scrollTop = 0; else toBottom();
       if (opts.focus !== false) {
         window.requestAnimationFrame(function () {
@@ -991,8 +1205,9 @@
           target.focus({ preventScroll: true });
         });
       }
-    } else if (opts.focus !== false) {
-      launcher.focus({ preventScroll: true });
+    } else {
+      settleAll();
+      if (opts.focus !== false) launcher.focus({ preventScroll: true });
     }
   }
   function fitViewport() {
@@ -1078,8 +1293,10 @@
       pillTimer = setTimeout(showPill, 4000);
       return;
     }
+    root.classList.add('ffc-online');
     restore();
     renderAll();
+    introDue = !items.length && !load(MET_KEY);
     if (!load(OPENED_KEY)) launcherAv.classList.add('ffc-breathe');
     pillTimer = setTimeout(showPill, 4000);
   }
@@ -1087,7 +1304,7 @@
   /* =================================================================
      Pinned demo states. ?chatdemo=<state> renders a fixed state with no
      network at all and no storage, for photographing the design.
-     States: closed greeting open typing answered long escalate escalated bubbles handsupport handfounder
+     States: closed greeting open connecting connected between typing answered long escalate escalated bubbles handsupport handfounder
              error ratelimited escalate-error  (these force the open chat, whatever CHAT says)
      Closed-mode states (the contact form): closedform closedhours closedinvalid closedsending
              closedsent closedmailto closederror closedpill
@@ -1105,6 +1322,7 @@
     DEMO = true;
     root.classList.add('ffc-still');
     if (state.indexOf('closed') === 0 && state !== 'closed') { startClosedDemo(state); return; }
+    root.classList.add('ffc-online');
     var build = {
       closed: [],
       greeting: [],
@@ -1136,6 +1354,11 @@
         msg('assistant', 'Done. Leave your email in the form below and he will reply by email.'),
         { t: 'card', status: 'form', needsTopic: true, to: 'founder', reason: 'important', summary: 'A journalist writing about baby apps wants to talk to someone at Feed Flow.', topic: 'A journalist writing about baby apps wants to talk to someone at Feed Flow.' }
       ],
+      between: [
+        msg('user', 'What does Feed Flow do?'),
+        msg('assistant', 'Good one to start with.'),
+        { t: 'msg', role: 'assistant', text: '', typing: true }
+      ],
       bubbles: [
         msg('user', 'What does Feed Flow do?'),
         msg('assistant', 'Good one to start with.'),
@@ -1149,6 +1372,12 @@
     };
     items = build[state] || [];
     renderAll();
+    if (state === 'connecting' || state === 'connected') {
+      log.textContent = '';
+      chipsEl = null;
+      log.appendChild(sysLine(state === 'connecting' ? COPY.connecting : COPY.connected, state === 'connecting'));
+      if (state === 'connected') log.appendChild(buildMsg({ t: 'msg', role: 'assistant', text: '', typing: true }, 0));
+    }
     if (state === 'closed') return;
     if (state === 'greeting') { pill.classList.add('ffc-show'); return; }
     setOpen(true, { focus: false });
@@ -1171,15 +1400,9 @@
     setOpen(true, { focus: false });
   }
   function demoRun() {
-    setBusy(true);
-    var reply = addItem({ t: 'msg', role: 'assistant', text: '', typing: true });
-    setTimeout(function () {
-      reply.typing = false;
-      reply.text = 'This is the design preview. No message leaves this page.';
-      fill(reply.bubble, reply.text);
-      setBusy(false);
-      toBottom();
-    }, 900);
+    var p = present();
+    p.feed('This is the design preview.\n\nNo message leaves this page.');
+    p.end(null);
   }
 
   if (document.body) mount();
