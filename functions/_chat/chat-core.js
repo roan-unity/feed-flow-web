@@ -4,7 +4,7 @@
 // Events the widget reads: delta {text} · action {type:'hand_over', to, reason, summary} · done {tier, model} · error {code, message}
 
 import { KNOWLEDGE } from './knowledge.js';
-import { buildSystemPrompt } from './prompt.js';
+import { buildSystemPrompt, DOWNLOAD_LINK } from './prompt.js';
 import { explainTier, interpretToolCalls, modelsFor, toolsFor } from './router.js';
 import { CHAT_PER_HOUR, withinLimit } from './ratelimit.js';
 
@@ -37,11 +37,17 @@ const ERRORS = {
 const LIMIT_REACHED_TEXT =
   'We’ve covered a lot in this chat. To keep going, leave your email below and the team will write back.';
 const HAND_OVER_FALLBACK = {
-  founder: 'I’ll pass this on to Robin. Leave your email in the form below and Robin will write back.',
-  support: 'I’ll pass this to support. Leave your email in the form below and they’ll write back.',
+  founder: 'Lovely, I’ll pass this on to Robin. Leave your email in the form below and Robin will write back.',
+  support: 'I’m sorry about that. Let’s get it to support so they can sort it out. Leave your email in the form below and they’ll write back.',
 };
 
-const FORM_STILL_OPEN = 'The form above is still open. It’s there whenever it suits.';
+const FORM_STILL_OPEN = 'I hear you. The form just above is the way to reach them, and it stays open for whenever you have a minute.';
+const FORM_LINE = /form (just )?(below|above)/i;
+const THANKS = /\b(thanks|thank you|thx|cheers|takk|tack|tak|kiitos|gracias|merci|danke|grazie|obrigad[oa])\b/i;
+const THANKS_REPLY = 'You’re so welcome.';
+const STORE_LINK = /https:\/\/apps\.apple\.com\/[\w/-]*id6782075454(\?[^\s)]*)?/g;
+// A model glitch: markup, or notes about the reply instead of the reply. Nora never says these.
+const JUNK = /<\/?(final|assistant|system|user|call)\b|<\||\b(the reply|the response|the visitor|the user|60 words|knowledge block)\b/i;
 const SMILEYS = /[\u{1F600}-\u{1F64F}\u{1F44D}\u{263A}]\uFE0F?/gu;
 
 // Cleans a streamed reply: no smiley in the first reply of a chat, and a model that writes its
@@ -68,7 +74,8 @@ export function createReplyFilter({ firstReply = false } = {}) {
         const startsNew = i > 0 || /\n\n\s*$/.test(sent + out) || (sent + out) === '';
         const isRepeat = (sent + out).length >= 24 && startsNew && para.replace(/\s+/g, ' ').trimStart().startsWith(opening().slice(0, 24)) && opening().length >= 24;
         if (isRepeat) { cut = true; break; }
-        if (!last && para && !/[\p{L}\p{N}]/u.test(para)) continue; // a stray comma on its own line
+        if (JUNK.test(para)) { cut = true; break; }
+        if (!last && startsNew && (sent + out) !== '' && para && !/[\p{L}\p{N}]/u.test(para)) continue; // a stray comma on its own line
         if (last && startsNew && (sent + out).length >= 24 && para.replace(/\s+/g, ' ').trimStart().length < 24) { held = para; break; } // wait until it can be judged
         out += para + (last ? '' : breaks[i]);
       }
@@ -78,7 +85,7 @@ export function createReplyFilter({ firstReply = false } = {}) {
       return out;
     },
     end() {
-      if (cut) return '';
+      if (cut || JUNK.test(held)) return '';
       const out = clean(held);
       held = '';
       sent += out;
@@ -322,12 +329,21 @@ async function answer({ env, messages, page, send, signal }) {
   }
   if (!result.emitted && !handOver) throw new Error('empty answer'); // the widget shows its error / form, never a blank bubble
 
-  // The form from the previous reply is still on screen: never show the hand-over line twice in a row.
-  const previous = [...messages].reverse().find((m) => m.role === 'assistant');
-  if (handOver && previous && /form (below|above)/i.test(previous.content || '')) {
-    if (!result.emitted) await send('delta', { text: FORM_STILL_OPEN });
+  // A form was already offered in this chat, or the visitor is only saying thanks: no new form.
+  const lastUser = [...messages].reverse().find((m) => m.role === 'user');
+  const formOffered = messages.some((m) => m.role === 'assistant' && FORM_LINE.test(m.content || ''));
+  const justThanks = !!lastUser && THANKS.test(lastUser.content || '') && (lastUser.content || '').length < 90 && !/\?/.test(lastUser.content || '');
+  if (handOver && (formOffered || justThanks)) {
     handOver = null;
+    if (!result.emitted) {
+      // The model reached for the form without a word: ask the strong chain for a real answer instead.
+      result = await callUpstream({ env, tier: 'strong', page, upstreamMessages, send, signal });
+      tier = 'strong';
+      if (!result.emitted) await send('delta', { text: justThanks ? THANKS_REPLY : FORM_STILL_OPEN });
+    }
   }
+  // Nora asked whether to pass it on to Robin: the visitor answers first, the form waits.
+  if (handOver && handOver.to === 'founder' && /\?\s*$/.test(result.said || '')) handOver = null;
   if (handOver) {
     if (!result.emitted) await send('delta', { text: HAND_OVER_FALLBACK[handOver.to] || HAND_OVER_FALLBACK.support });
     await send('action', handOver);
@@ -372,8 +388,19 @@ async function callUpstream({ env, tier, page, upstreamMessages, send, signal })
   const onOuterAbort = () => timeout.abort();
   signal?.addEventListener('abort', onOuterAbort);
 
+  // Hold a link back until it is whole, so a bare App Store link can get its campaign tags.
+  let linkTail = '';
+  const withLinks = (text, final = false) => {
+    let t = linkTail + text;
+    linkTail = '';
+    const open = final ? null : t.match(/(?<=^|[\s(])(?:h|ht|htt|https?)(?::\/{0,2}\S*)?$/);
+    if (open) { linkTail = open[0]; t = t.slice(0, open.index); }
+    return t.replace(STORE_LINK, (url, query) => (query && /ct=/.test(query) ? url : DOWNLOAD_LINK));
+  };
+
   const toolCalls = [];
   let emitted = false;
+  let said = '';
   let started = false;
   let usage = null;
   let model = null;
@@ -403,9 +430,10 @@ async function callUpstream({ env, tier, page, upstreamMessages, send, signal })
           if (!text) continue;
           started = true;
         }
-        text = filter.push(text);
+        text = withLinks(filter.push(text));
         if (!text) continue;
         emitted = true;
+        said += text;
         await send('delta', { text });
       }
       for (const tc of delta.tool_calls || []) {
@@ -414,16 +442,17 @@ async function callUpstream({ env, tier, page, upstreamMessages, send, signal })
         if (tc.function?.arguments) entry.arguments += tc.function.arguments;
       }
     }
-    const rest = filter.end();
+    const rest = withLinks(filter.end(), true);
     if (rest.trim()) {
       emitted = true;
+      said += rest;
       await send('delta', { text: rest });
     }
   } finally {
     clearTimeout(timer);
     signal?.removeEventListener('abort', onOuterAbort);
   }
-  return { emitted, toolCalls: toolCalls.filter(Boolean), usage, model };
+  return { emitted, said, toolCalls: toolCalls.filter(Boolean), usage, model };
 }
 
 /** Yields the data payload of each SSE event. Ignores comments; stops at [DONE]. */
