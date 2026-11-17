@@ -35,7 +35,7 @@
   }
   function done(data) {
     if (window.plausible) window.plausible('Ambassador application');
-    card.innerHTML = '<div class="done-card" role="status" tabindex="-1"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#check"/></svg><h3>Thank you, <span data-first></span>. We have your application.</h3><p>We read every application ourselves and answer by email, at <strong></strong>.</p><p>Until then, the best thing you can do is use the app with your own baby. <a href="/">See what Feed Flow does</a></p></div>';
+    card.innerHTML = '<div class="done-card" role="status" tabindex="-1"><svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#check"/></svg><h3>Thank you so much, <span data-first></span>. Your application is in.</h3><p>We read every one ourselves and will write to you at <strong></strong>. We are glad you want to be part of this.</p><p>Until then, the best thing you can do is use the app with your own baby. <a href="/">See what Feed Flow does</a></p></div>';
     card.querySelector('[data-first]').textContent = data.name.split(' ')[0];
     card.querySelector('strong').textContent = data.email;
     card.querySelector('.done-card').focus();
