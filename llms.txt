@@ -134,6 +134,6 @@ The app is fully translated, including Norwegian (bokmål), Swedish, Danish, Fin
 
 ## Founding families
 
-The first 100 families in the US get the full version of Feed Flow! (Lifetime) free. Sign-up with first name and email; a personal App Store code arrives by email. US App Store accounts only, one per family, nothing has to be posted or reviewed.
+The first 100 families get the full version of Feed Flow! (Lifetime) free. Sign-up with first name and email; a personal App Store code arrives by email. The form asks which country the App Store account is in so the code matches (US, UK, Canada, Australia, Norway, Sweden, Denmark, Finland, Mexico, Colombia; other countries on request), one per family, nothing has to be posted or reviewed.
 
 Sign up: https://tryfeedflow.app/founding-families

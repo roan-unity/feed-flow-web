@@ -9,6 +9,7 @@ const SUPPORT_ADDRESS = 'support@tryfeedflow.app';
 const FROM = 'Feed Flow site <chat@tryfeedflow.app>';
 const EMAIL_RE = /^[^\s@<>"',;:\\()[\]]+@[^\s@<>"',;:\\()[\]]+\.[^\s@<>"',;:\\()[\]]+$/;
 const NAME_RE = /^[\p{L}\p{M}][\p{L}\p{M} .'-]{0,39}$/u;
+const STORES = ['US', 'GB', 'CA', 'AU', 'NO', 'SE', 'DK', 'FI', 'MX', 'CO', 'OTHER'];
 const LIMITS = { BODY_BYTES: 4 * 1024, EMAIL_CHARS: 254, MIN_FILL_MS: 2500 };
 const ALLOWED_ORIGINS = ['https://tryfeedflow.app', 'https://www.tryfeedflow.app'];
 
@@ -61,7 +62,9 @@ export async function onRequestPost({ request, env }) {
   }
   const first = typeof body.first === 'string' ? body.first.trim().replace(/\s+/g, ' ') : '';
   if (!first || !NAME_RE.test(first)) return fail(400, 'bad_name', 'Write your first name, letters only.');
-  if (body.us !== true) return fail(400, 'not_us', 'The codes only work on the US App Store, so tick the box if that is yours.');
+  const store = typeof body.store === 'string' ? body.store.trim().toUpperCase() : '';
+  if (!STORES.includes(store)) return fail(400, 'bad_store', 'Choose the country of your App Store account.');
+  const other = store === 'OTHER' && typeof body.other === 'string' ? body.other.replace(/[^\p{L}\p{M} .'-]/gu, '').trim().slice(0, 40) : '';
 
   // Spam guards. Both answer as if it worked, so a bot learns nothing.
   if (typeof body.company === 'string' && body.company.trim() !== '') {
@@ -79,7 +82,7 @@ export async function onRequestPost({ request, env }) {
 
   const country = (request.cf && typeof request.cf.country === 'string' && request.cf.country) || '??';
   const ref = crypto.randomUUID().slice(0, 8);
-  const text = `FF-FOUNDING v1\nref: ${ref}\nemail: ${email}\nfirst: ${first}\ncountry: ${country}\nat: ${new Date().toISOString()}\n`;
+  const text = `FF-FOUNDING v1\nref: ${ref}\nemail: ${email}\nfirst: ${first}\ncountry: ${country}\nstore: ${store}\nother: ${other || '-'}\nat: ${new Date().toISOString()}\n`;
 
   let res;
   try {

@@ -31,12 +31,15 @@
     .catch(function () {});
 
   if (!form) return;
+  var store = document.getElementById('ff-store');
+  var otherRow = document.getElementById('ff-other-row');
+  if (store && otherRow) store.addEventListener('change', function () { otherRow.hidden = store.value !== 'OTHER'; });
   form.addEventListener('submit', function (event) {
     event.preventDefault();
     status.hidden = true;
     if (!form.checkValidity()) {
       form.reportValidity();
-      showStatus('error', 'Fill in your first name and email, and tick the box if your App Store account is a US one.');
+      showStatus('error', 'Fill in your first name and email, and choose the country of your App Store account.');
       return;
     }
     var data = new FormData(form);
@@ -45,7 +48,7 @@
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
-        first: data.get('first'), email: data.get('email'), us: !!data.get('us'),
+        first: data.get('first'), email: data.get('email'), store: data.get('store') || '', other: data.get('other') || '',
         company: data.get('company') || '', elapsedMs: Date.now() - opened
       })
     }).then(function (r) {
@@ -58,6 +61,7 @@
       }
       if (window.plausible) window.plausible('Founding signup');
       card.innerHTML = '<div class="done-card"><h3>You are on the list</h3><p>Your code is on its way to <strong></strong>. It usually arrives within ten minutes. Look in spam or promotions if you don\'t see it.</p><p>Open the email on your iPhone and tap the link. Any trouble, write to support@tryfeedflow.app.</p></div>';
+      if (data.get('store') === 'OTHER') card.innerHTML = '<div class="done-card"><h3>Got it, thank you</h3><p>We don\'t have codes for your country yet. Robin will write to <strong></strong> as soon as one is ready, usually within a few days.</p><p>Any questions, write to support@tryfeedflow.app.</p></div>';
       card.querySelector('strong').textContent = String(data.get('email'));
     }).catch(function () {
       submit.disabled = false;
