@@ -32,6 +32,7 @@ NORDIC = [
             ("Kan vi være flere som logger?", "Ja. Inviter partner, besteforeldre eller barnevakt. Alle logger fra sin egen iPhone, og det er ingen grense på antall."),
             ("Hvor lagres dataene?", "På telefonen din og i din egen iCloud, ikke på en reklameplattform. Feed Flow har ingen reklame."),
             ("Finnes Feed Flow til Android?", "Nei, Feed Flow er foreløpig bare for iPhone."),
+            ("Reklamerer Feed Flow for morsmelkerstatning?", "Nei. Det finnes ikke promotert innhold i appen: ingen reklame, ingen sponsede plasseringer og ingen betalt rangering av produkter. Per i dag har vi ingen sponsoravtale eller kommersiell avtale med noen produsent av morsmelkerstatning, flasker eller flaskesmokker. Produktlisten finnes av to grunner: så du kan notere hvilket produkt ditt eget barn får og se hva som fungerer for akkurat det barnet, og så appen kan regne næringsstoffer som vitamin D fra nettopp det produktet. Amming, pumpet melk, morsmelkerstatning og fast føde behandles likt. Appen fører loggen og gir deg oversikten. Den gir ingen råd om mating og foreslår aldri at du skal bytte måte å mate på. Feed Flow lager og selger ikke morsmelkerstatning, flasker eller smokker, så WHO-koden for markedsføring av morsmelkerstatninger gjelder formelt ikke for appen. Vi bryr oss likevel om det koden er til for: foreldre skal få informasjon, ikke markedsføring."),
         ],
         "related": [("/printables/feeding-log-nb-a4.pdf", "Matingslogg til utskrift (PDF)"), ("/sv", "På svenska"), ("/", "In English")],
     },
