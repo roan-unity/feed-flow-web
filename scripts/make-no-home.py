@@ -14,7 +14,7 @@ alt text that has no Norwegian entry stops the script, so English can never slip
 
 Norwegian screenshots: every screenshot path is listed in IMAGE_SLOTS and the comment at the top of no.html.
 To swap one for a Norwegian capture, put the new path prefix in IMAGE_MAP (for example
-"/screens/how/start": "/screens/no/how/start", which also covers -360/-720 and the ?v= stamp is dropped by
+"/screens/how/pick-poster": "/screens/no/how/pick-poster", which also covers -360/-720 and the ?v= stamp is dropped by
 stamp-assets for paths outside /screens/how) and re-run the three commands above.
 """
 import json, re, sys
@@ -26,28 +26,29 @@ S = json.loads((ROOT / "scripts" / "no-home-strings.json").read_text(encoding="u
 # The English chat widget (Nora) has English-only interface text, so the Norwegian page leaves it out until it is translated.
 INCLUDE_CHAT = False
 
-# Norwegian captures replace these prefixes one by one (empty = same files as the English page).
-IMAGE_MAP = {}
+# Norwegian captures replace these prefixes one by one (made by scripts/prepare-how-it-works.py no, from the nb
+# captures). The Forest, Lavender and Midnight themes have no Norwegian capture yet and stay the English ones.
+IMAGE_MAP = {f"/screens/how/{name}": f"/screens/no/how/{name}" for name in (
+    "pick-poster", "fill-poster", "before", "log", "finish", "flowcast", "hero-report", "report-scroll", "report-detail", "growth", "health",
+    "family", "vitamin-d", "theme-ocean", "flow-pick", "flow-fill")}
 
-# On-page callouts that carry amounts. PLACEHOLDERS in ml until the Norwegian captures exist (oz on the frames now).
-CALLOUT_LEFT = "45 ml igjen i flasken"          # was "1.5 oz left in the bottle"
-CALLOUT_ADD = "+75 ml morsmelkerstatning"       # was "+2.5 oz formula"
-COUNTER_FROM, COUNTER_TO, COUNTER_UNIT = "515", "590", "ml"   # was data-from 17.5, data-to 20, "oz"
-COUNTER_LABEL = "så langt i dag"                # was "so far today"
+# On-page callouts that carry amounts, read from the Norwegian captures (bottle 45 ml tatt / 75 ml igjen, Erstatning 45 ml,
+# the day bar 125 ml before and 170 ml after). On the English page: "2.5 oz left in the bottle", "+1.5 oz formula", 4.5 to 6 oz.
+CALLOUT_LEFT = "75 ml igjen i flasken"
+CALLOUT_ADD = "+45 ml morsmelkerstatning"
+COUNTER_FROM, COUNTER_TO, COUNTER_UNIT, COUNTER_STEP = "125", "170", "ml", "5"
+COUNTER_LABEL = "så langt i dag"
 
 ALT = {
- "Feed Flow's real bottle screen with a safe countdown ring, start and end times, and amounts taken and left.": "Feed Flows ekte flaskeskjerm med en trygg nedtellingsring, start- og sluttid og hvor mye babyen har fått og hvor mye som er igjen.",
- "A real Feed Flow baby report showing weight at the 49th percentile and height at the 50th percentile.": "En ekte babyrapport fra Feed Flow som viser vekt på 49. persentil og lengde på 50. persentil.",
- "The Feed Flow log menu asking what you want to log, showing everything at once: breast, formula and solids in front, with water, pumped milk, pumping, vitamin D and health behind.": "Loggmenyen i Feed Flow som spør hva du vil logge og viser alt samtidig: amming, morsmelkerstatning og fast føde foran, med vann, pumpet melk, pumping, D-vitamin og helse bak.",
- "The real Today screen, blurred and dimmed in the background.": "Den ekte I dag-skjermen, uskarp og dempet i bakgrunnen.",
- "The real action panel lifted to the middle of the screen: the Formula chip, the amount slider and the big round log button, which glows.": "Det ekte handlingspanelet løftet til midten av skjermen: valget for morsmelkerstatning, mengdeglidebryteren og den store runde loggknappen, som lyser.",
- "The real bottle screen with a countdown ring, the start and end times, 1.5 oz left in the bottle and 2.5 oz taken.": "Den ekte flaskeskjermen med en nedtellingsring, start- og sluttid, 45 ml igjen i flasken og 75 ml drukket.",
- "The real Today screen after the feed: the 2.5 oz bottle on top of the timeline and the day meter at 20 oz so far.": "Den ekte I dag-skjermen etter måltidet: flasken på 75 ml øverst på tidslinjen og dagsmåleren på 590 ml så langt.",
- "The real FlowCast screen showing the next feeding window from 1:30 to 2:00 PM and four more predicted feeds later today.": "Den ekte FlowCast-skjermen med neste måltidsvindu fra 13.30 til 14.00 og fire flere forventede måltider senere i dag.",
- "A real Feed Flow Baby Report with feeding totals, weight and height percentiles, and a head-circumference growth curve.": "En ekte babyrapport fra Feed Flow med sum for mating, persentiler for vekt og lengde og en vekstkurve for hodeomkrets.",
- "The real Feed Flow growth card showing the 51st percentile at the latest weigh-in, with five weights plotted inside the WHO range from birth.": "Det ekte vekstkortet i Feed Flow som viser 51. persentil ved siste veiing, med fem vekter plottet innenfor WHOs område fra fødselen.",
- "The real Feed Flow allergen journey showing six of nine major allergens introduced, each with its meals and last attempt date.": "Allergenoversikten i Feed Flow: seks av ni store allergener er introdusert, hver med måltider og dato for siste forsøk.",
- "The real Feed Flow activity feed showing bottles logged by you, Alex and Anna, each with the amount and time.": "Den ekte aktivitetsoversikten i Feed Flow med flasker logget av deg, Alex og Anna, hver med mengde og klokkeslett.",
+ "Feed Flow's real bottle screen with a safe countdown ring, start and end times, 1.5 oz taken and 2.5 oz left.": "Feed Flows ekte flaskeskjerm med en trygg nedtellingsring, start- og sluttid, 45 ml tatt og 75 ml igjen.",
+ "A real Feed Flow baby report, Theo's last 3 weeks, with 431 oz from 67 bottles and weight and length at the 49th percentile.": "En ekte babyrapport fra Feed Flow, Theos siste 3 uker, med 13 l melk fra 67 flasker og vekt og lengde på 49. persentil.",
+ "The real bottle screen with a safe countdown ring, the start and end times, 1.5 oz taken and 2.5 oz left in the bottle.": "Den ekte flaskeskjermen med en trygg nedtellingsring, start- og sluttid, 45 ml tatt og 75 ml igjen i flasken.",
+ "The real Today screen after the feed: the 1.5 oz formula bottle on top of the timeline and the day meter at 6 oz so far.": "Den ekte I dag-skjermen etter måltidet: flasken med 45 ml erstatning øverst på tidslinjen og dagsmåleren på 170 ml så langt.",
+ "The real FlowCast screen showing Theo's next feed at about 11:45 AM and the feeds predicted later today.": "Den ekte FlowCast-skjermen med Theos neste måltid ved omtrent 11:45 og måltidene som er forventet senere i dag.",
+ "A real Feed Flow Baby Report, Theo's last 3 weeks, with feeding totals, weight and length percentiles, and WHO growth curves.": "En ekte babyrapport fra Feed Flow, Theos siste 3 uker, med sum for mating, persentiler for vekt og lengde og vekstkurver fra WHO.",
+ "The real Feed Flow growth card showing Theo at the 63rd percentile at the latest weigh-in, along his own curve inside the WHO range since birth.": "Det ekte vekstkortet i Feed Flow som viser Theo på 63. persentil ved siste veiing, langs sin egen kurve innenfor WHOs område siden fødselen.",
+ "The real Feed Flow health page: Theo is well, with 6 of 9 major allergens introduced, each with its meals and last attempt.": "Den ekte helsesiden i Feed Flow: Theo er frisk, med 6 av 9 viktige allergener introdusert, hver med måltider og siste forsøk.",
+ "The real Feed Flow activity feed showing feeds logged by You, Anna and Alex, each with the amount and time.": "Den ekte aktivitetsstrømmen i Feed Flow med måltider logget av deg, Anna og Alex, hver med mengde og klokkeslett.",
  "The same bottle screen in the Ocean theme, teal.": "Samme flaskeskjerm i temaet Ocean, blågrønn.",
  "The same bottle screen in the Forest theme, green.": "Samme flaskeskjerm i temaet Forest, grønn.",
  "The same bottle screen in the Lavender theme, purple.": "Samme flaskeskjerm i temaet Lavender, lilla.",
@@ -59,6 +60,8 @@ ARIA = {
  "Product highlights": "Hovedpunkter",
  "App Store reviews": "Anmeldelser i App Store",
  "5 out of 5 stars": "5 av 5 stjerner",
+ "A real recording of the Feed Flow log menu: the feed types pop up, Pumped Milk, Breast and Formula with More beside them, and Formula is picked.": "Et ekte opptak av loggmenyen i Feed Flow: valgene dukker opp, Pumpet melk, Bryst og Erstatning med Mer ved siden av, og Erstatning velges.",
+ "A real recording of Feed Flow: the amount is chosen, the bottle fills, and the big round button is pressed, which opens the bottle screen.": "Et ekte opptak fra Feed Flow: mengden velges, flasken fylles, og den store runde knappen trykkes, som åpner flaskeskjermen.",
 }
 HEAD = {
  "title": "Feed Flow: Matingslogg for amming og flaske | iPhone",
@@ -68,12 +71,12 @@ HEAD = {
  "og_image_alt": "Fire ekte skjermbilder fra Feed Flow: nedtelling for flasken, FlowCast, D-vitamin og en rapport om mating og vekst",
 }
 SCREENSHOT_CAPTIONS = [
- "Flaskeskjermen med nedtellingsring",
- "FlowCast med neste måltidsvindu, forventet mengde og flere måltidsvinduer senere",
- "D-vitamin-kortet som viser morsmelkerstatning og planlagte dråper mot referansen på 10 µg / 400 IE",
- "En ekte babyrapport som viser vekt på 49. persentil og lengde på 50. persentil",
- "En detaljside i rapporten med WHOs kurve for hodeomkrets og milepæler",
- "Allergenoversikten i appen med matvarer og reaksjoner",
+ "Flaskeskjermen med nedtellingsring, 45 ml tatt og 75 ml igjen",
+ "FlowCast med neste måltid ved omtrent 11:45 og måltidene som er forventet senere i dag",
+ "D-vitamin-kortet som viser omtrent 10 µg fra dråper i dag mot dagens grense på 35 µg",
+ "En ekte babyrapport som viser vekt og lengde på 49. persentil",
+ "En detaljside i rapporten med flaskestørrelser og vekstkurver fra WHO",
+ "Allergenoversikten i appen: 6 av 9 viktige allergener er introdusert, med matvarer og reaksjoner",
 ]
 FEATURES = [
  "Logging av amming, morsmelkerstatning, pumping, vann og fast føde",
@@ -99,11 +102,12 @@ LD = {
 }
 REVIEW_CAPTION = {"Irene": "Irene", "Alec": "Alec", "Lokal-bruker": "Lokal-bruker"}
 IMAGE_SLOTS = [
- ("hero, main phone", "/screens/formula/01-safe-bottle-360.webp"), ("hero, second phone", "/screens/growth-report-360.webp"),
- ("step 1, log menu", "/screens/how/start-360.webp"), ("step 2, Today screen", "/screens/how/press-360.webp"), ("step 2, action panel", "/screens/how/press-panel-360.webp"),
- ("step 3, bottle screen (oz on frame)", "/screens/how/log-360.webp"), ("step 4, Today after the feed (oz on frame)", "/screens/how/finish-360.webp"),
- ("beat, FlowCast", "/screens/flowcast-360.webp"), ("beat, report (scrolling)", "/screens/how/report-scroll-360.webp"), ("beat, growth", "/screens/how/growth-360.webp"),
- ("beat, health", "/screens/health-allergens-360.webp"), ("beat, share", "/screens/how/family-360.webp"),
+ ("hero, second phone", "/screens/how/hero-report-360.webp"), ("structured data", "/screens/how/vitamin-d-900.webp, report-detail-720.webp"),
+ ("step 1, poster", "/screens/how/pick-poster-720.webp"), ("step 1, recording", "/screens/how/flow-pick.mp4"), ("step 2, poster", "/screens/how/fill-poster-720.webp"), ("step 2, recording", "/screens/how/flow-fill.mp4"),
+ ("step 4, day meter 'before' frame", "/screens/how/before-360.webp"),
+ ("step 3 and hero, bottle screen (amounts on frame)", "/screens/how/log-360.webp"), ("step 4, Today after the feed (amounts on frame)", "/screens/how/finish-360.webp"),
+ ("beat, FlowCast", "/screens/how/flowcast-360.webp"), ("beat, report (scrolling)", "/screens/how/report-scroll-360.webp"), ("beat, growth", "/screens/how/growth-360.webp"),
+ ("beat, health", "/screens/how/health-360.webp"), ("beat, share", "/screens/how/family-360.webp"),
  ("themes, Ocean", "/screens/how/theme-ocean-360.webp"), ("themes, Forest", "/screens/how/theme-forest-360.webp"), ("themes, Lavender", "/screens/how/theme-lavender-360.webp"), ("themes, Midnight", "/screens/how/theme-midnight-360.webp"),
  ("Open Graph / Twitter card", "/og.png"),
 ]
@@ -132,7 +136,7 @@ KEEP = {"Dansk", "Nederlands", "Suomi", "Français", "Deutsch", "Italiano", "Nor
 
 
 nb = nb_reviews()
-EXTRA = {"1.5 oz left in the bottle": CALLOUT_LEFT, "+2.5 oz formula": CALLOUT_ADD, "so far today": COUNTER_LABEL, "oz": COUNTER_UNIT}
+EXTRA = {"2.5 oz left in the bottle": CALLOUT_LEFT, "+1.5 oz formula": CALLOUT_ADD, "so far today": COUNTER_LABEL, "oz": COUNTER_UNIT}
 ORIGINALS = re.findall(r'\n      text: "(.*?)",\n      name', (ROOT / "reviews.js").read_text(encoding="utf-8"))
 for _original, _norwegian in zip(ORIGINALS, nb):
     EXTRA[_original] = _norwegian          # server-rendered Norwegian review text (reviews.js keeps it in step)
@@ -174,7 +178,7 @@ main = "".join(out)
 main = main.replace(">View original<", ">" + S["View original"] + "<")
 main = main.replace('<option value="auto">Automatic</option>', '<option value="auto">' + S["Automatic"] + "</option>")
 # callouts with amounts (text nodes are mapped above; the counter attributes here)
-main = main.replace('data-from="17.5" data-to="20">20</span>', f'data-from="{COUNTER_FROM}" data-to="{COUNTER_TO}">{COUNTER_TO}</span>')
+main = main.replace('data-from="4.5" data-to="6">6</span>', f'data-from="{COUNTER_FROM}" data-to="{COUNTER_TO}" data-step="{COUNTER_STEP}">{COUNTER_TO}</span>')
 # attributes
 def attr(name, table):
     def rep(m):
@@ -246,8 +250,8 @@ for node in graph["@graph"]:
         node["slogan"] = LD["org_slogan"]
 graph["@graph"].append({"@type": "WebPage", "@id": "https://tryfeedflow.app/no#page", "url": "https://tryfeedflow.app/no", "name": LD["page_name"], "description": HEAD["description"], "inLanguage": "nb", "dateModified": "2026-11-19", "isPartOf": {"@id": "https://tryfeedflow.app/#website"}, "about": {"@id": "https://tryfeedflow.app/#app"}})
 howto["name"], howto["description"], howto["inLanguage"] = LD["howto_name"], LD["howto_description"], "nb"
-step_names = [S["Pick what to log"], S["Press the button"], S["Log what your baby eats"], S["See the whole day"]]
-step_texts = [S["Tap what your baby is having: breast, formula, solids or more."], S["The big round button at the bottom starts the feed."], S["Slide the milk level down to what is left, then tap finish."], S["Every feed lands on one timeline, with one meter for the day."]]
+step_names = [S["Pick what to log"], S["Fill the bottle"], S["Log what your baby eats"], S["See the whole day"]]
+step_texts = [S["Tap what your baby is having: pumped milk, breast or formula, or More for solids, water and the rest."], S["Tap a size or drag the slider and the bottle fills. Then press the big round button."], S["Slide the milk level down to what is left, then tap finish."], S["Every feed lands on one timeline, with one meter for the day."]]
 for step, n, t_ in zip(howto["step"], step_names, step_texts):
     step["name"], step["text"], step["url"] = n, t_, "https://tryfeedflow.app/no#how-it-works"
 howto["tool"]["name"] = "Feed Flow! for iPhone"
@@ -259,9 +263,9 @@ h = swap_images(h)
 slots = "\n".join(f"  {name}: {path}" for name, path in IMAGE_SLOTS)
 comment = f"""<!--
 Norwegian homepage, derived from index.html by scripts/make-no-home.py (do not hand-edit text: change scripts/no-home-strings.json or the tables in that script, then re-run).
-IMAGE SLOTS (all still the English captures; Norwegian ones go under /screens/no/..., swap them in IMAGE_MAP in the script):
+IMAGE SLOTS (Norwegian captures under /screens/no/how/ via IMAGE_MAP in the script; Forest, Lavender and Midnight themes are still the English captures):
 {slots}
-AMOUNT CALLOUTS (placeholders in ml, to be set from the Norwegian captures; constants CALLOUT_LEFT, CALLOUT_ADD, COUNTER_* in the script):
+AMOUNT CALLOUTS (in ml, read from the Norwegian captures; constants CALLOUT_LEFT, CALLOUT_ADD, COUNTER_* in the script):
   "{CALLOUT_LEFT}" · "{CALLOUT_ADD}" · counter {COUNTER_FROM} to {COUNTER_TO} {COUNTER_UNIT} "{COUNTER_LABEL}"
 -->
 """

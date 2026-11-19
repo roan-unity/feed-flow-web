@@ -486,31 +486,23 @@ html[data-theme="dark"] .form-status.error { background: #40231f; color: #ffb8aa
 .hiw-device { position: relative; width: 100%; max-width: 240px; }
 .hiw-steps .hiw-device { max-width: 236px; }
 .hiw-phone { position: relative; margin: 0; overflow: hidden; isolation: isolate; border: 1px solid var(--border); border-radius: 13% / 6%; background: var(--bg-soft); box-shadow: var(--shadow-lg); }
+.hiw-phone > video { display: block; width: 100%; height: 100%; object-fit: cover; object-position: top; background: var(--bg-soft); }
 .hiw-phone > img { display: block; width: 100%; height: auto; }
 .hiw-phone .hiw-layer { position: absolute; inset: 0; width: 100%; height: 100%; max-width: none; pointer-events: none; }
 .hiw-steps .hiw-phone { aspect-ratio: 360 / 783; }
 .hiw-steps .hiw-phone > img, .hiw-steps .hiw-phone .hiw-layer { height: 100%; object-fit: cover; object-position: top; }
 .hiw-scroll { aspect-ratio: 360 / 783; }
 .hiw-scroll > img, .hiw-scroll .hiw-layer { position: absolute; top: 0; left: 0; right: auto; bottom: auto; width: 100%; height: auto; }
-.hiw-ring { position: absolute; z-index: 3; aspect-ratio: 1; border: 3px solid var(--coral); border-radius: 50%; opacity: 0; pointer-events: none; }
 .hiw-meter { position: absolute; left: 50%; top: calc(100% + 12px); z-index: 2; display: flex; flex-direction: column; align-items: center; gap: 6px; transform: translateX(-50%); white-space: nowrap; }
 .hiw-add { color: var(--accent); font-size: 14px; font-weight: 700; line-height: 1; letter-spacing: .01em; }
 .hiw-pill { display: flex; align-items: baseline; gap: 8px; padding: 9px 18px; border: 1px solid var(--border); border-radius: 999px; background: var(--surface); box-shadow: var(--shadow-sm); }
 .hiw-meter-value { color: var(--ink); font-size: 26px; font-weight: 760; line-height: 1.1; letter-spacing: -.02em; font-variant-numeric: tabular-nums; }
 .hiw-count { display: inline-block; min-width: 2ch; text-align: right; }
 .hiw-meter-label { color: var(--ink-2); font-size: 14px; font-weight: 650; }
-.hiw-band { position: absolute; background: linear-gradient(#fbf2e3, #f8efdf); border-top: 1.5px solid #fffaf0; pointer-events: none; }
-.hiw-tipcover { position: absolute; left: 37.4%; top: 65.9%; width: 11.2%; height: 3.9%; border-radius: 6px; background: #768b8a; box-shadow: 0 0 5px 3px #768b8a; pointer-events: none; }
-.hiw-handle { position: absolute; top: 70.69%; width: 3.3%; aspect-ratio: 1; box-sizing: border-box; border: 2px solid #efab5a; border-radius: 50%; background: #fff6e9; pointer-events: none; }
-.hiw-finger { position: absolute; top: 70.69%; width: 8%; aspect-ratio: 1; box-sizing: border-box; border: 1.5px solid rgba(255, 255, 255, .85); border-radius: 50%; background: rgba(255, 255, 255, .32); box-shadow: 0 2px 8px rgba(0, 0, 0, .25); pointer-events: none; }
 .hiw-spark { position: absolute; z-index: 6; clip-path: polygon(50% 0, 65% 35%, 100% 50%, 65% 65%, 50% 100%, 35% 65%, 0 50%, 35% 35%); opacity: 0; pointer-events: none; }
 .hiw-steps .hiw-phone { container-type: inline-size; }
-/* Step 02: everything but the log button is softly blurred and dimmed, and the button is ringed. */
-.hiw-steps .hiw-phone > .hiw-dim { position: absolute; inset: 0; z-index: 2; width: 100%; height: 100%; object-fit: cover; object-position: top; pointer-events: none; filter: blur(2.4cqw) brightness(.62) saturate(.8); transform: scale(1.1); }
-.hiw-panel { --hiw-lifted: 1; position: absolute; left: 2.5%; top: 50%; z-index: 4; width: 95%; aspect-ratio: 350 / 227; border-radius: 7cqw; transform: translateY(-50%); box-shadow: 0 3cqw 9cqw rgba(0, 0, 0, calc(.5 * var(--hiw-lifted))), 0 0 0 1px rgba(255, 255, 255, calc(.16 * var(--hiw-lifted))); pointer-events: none; }
-.hiw-panel img { position: absolute; inset: 0; display: block; width: 100%; height: 100%; max-width: none; border-radius: inherit; }
-.hiw-press-glow { position: absolute; left: 50%; top: 76.8%; width: 25.6%; aspect-ratio: 1; border-radius: 50%; opacity: .75; transform: translate(-50%, -50%); box-shadow: 0 0 0 .45cqw color-mix(in srgb, var(--coral) 70%, transparent), 0 0 4cqw 1.4cqw color-mix(in srgb, var(--coral) 70%, transparent), 0 0 11cqw 4cqw color-mix(in srgb, var(--coral) 42%, transparent), inset 0 0 3.5cqw color-mix(in srgb, var(--coral) 45%, transparent); }
-.hiw-taken { position: absolute; z-index: 3; right: 56.4%; top: 81.35%; color: #fff; font-family: var(--sf); font-size: 7cqw; font-weight: 800; line-height: 1; letter-spacing: .02em; white-space: nowrap; pointer-events: none; }
+/* Steps 01 and 02 are recordings (<video>); step 02's round button gets a halo that how-it-works.js breathes before the press. */
+.hiw-press-glow { position: absolute; left: 50%; top: 84.3%; width: 25%; z-index: 3; pointer-events: none; aspect-ratio: 1; border-radius: 50%; opacity: 0; transform: translate(-50%, -50%); box-shadow: 0 0 0 .45cqw color-mix(in srgb, var(--coral) 70%, transparent), 0 0 4cqw 1.4cqw color-mix(in srgb, var(--coral) 70%, transparent), 0 0 11cqw 4cqw color-mix(in srgb, var(--coral) 42%, transparent), inset 0 0 3.5cqw color-mix(in srgb, var(--coral) 45%, transparent); }
 .hiw-glow { position: absolute; z-index: 8; border-radius: 999px; box-shadow: 0 0 0 1.5px var(--teal), 0 0 14px 2px var(--glow); pointer-events: none; }
 .hiw-fan { position: relative; aspect-ratio: 360 / 783; }
 .hiw-fan .hiw-phone { position: absolute; left: 27%; top: 24%; width: 50%; transform: translateX(calc(var(--f) * 24%)) rotate(calc(var(--f) * 4.5deg)); transform-origin: 50% 100%; box-shadow: var(--shadow-sm); }

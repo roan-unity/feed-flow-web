@@ -1,11 +1,12 @@
-/* Home page "How logging works": each phone plays once when it scrolls into view,
+/* Home page "How logging works": steps 01 and 02 are two real recordings (<video>, played while in view, the
+   poster alone with prefers-reduced-motion); every other phone plays once when it scrolls into view,
    steps chained (a phone starts as the one before it lands). The HTML is the final state,
    so with JS off or prefers-reduced-motion nothing moves and everything is shown.
    The cards below the steps each play on their own when they scroll into view.
    ?hiwdemo=0..100 pins every sequence at that percent of its timeline (for screenshots);
-   add &hiwcards=0..100 to pin the cards at a different percent from the four steps.
-   Steps 02 to 04 are three frames of one real recording of a 2.5 oz bottle, so the amount on the
-   bottle screen is the amount that lands on the timeline and on the day meter. */
+   add &hiwcards=0..100 to pin the cards at a different percent from the steps.
+   Steps 03 and 04 are real frames of the same feed, so the amount on the bottle screen is the amount that
+   lands on the timeline and on the day meter. */
 (function () {
   var section = document.getElementById('how-it-works');
   if (!section) return;
@@ -19,6 +20,43 @@
   if (demo === null) demo = demoCards;
   if (demoCards === null) demoCards = demo;
   var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* Steps 01 and 02 are the real recordings. Each plays (muted, looped) while at least 40% of it is in view and
+     stops when it leaves; with reduced motion, no IntersectionObserver or ?hiwdemo it stays on its poster. The
+     recording of step 02 does not draw a halo, so data-glow="from,to" (seconds into the video) breathes the
+     round button's halo until the press, and lets it settle once the app shows the press. */
+  Array.prototype.forEach.call(section.querySelectorAll('[data-hiw-video]'), function (figure) {
+    var video = figure.querySelector('video');
+    if (!video) return;
+    video.muted = true;
+    if (reduce || demo !== null || !('IntersectionObserver' in window)) return;
+    var glow = figure.querySelector('.hiw-press-glow');
+    var glowAt = (figure.getAttribute('data-glow') || '').split(',').map(Number);
+    var frame = 0;
+    function paint() {
+      var t = video.currentTime, g0 = glowAt[0], g1 = glowAt[1], level = 0, scale = 1;
+      if (t >= g0 && t < g1) {
+        var breath = 0.5 - 0.5 * Math.cos(2 * Math.PI * 1.5 * (t - g0) / (g1 - g0));
+        level = Math.min(0.999, 0.25 + 0.75 * breath); scale = 1 + 0.07 * breath;
+      } else if (t >= g1 && t < g1 + 0.4) {
+        level = 0.5 * (1 - (t - g1) / 0.4);
+      }
+      glow.style.opacity = level ? String(level) : '';
+      glow.style.transform = scale === 1 ? '' : 'translate(-50%, -50%) scale(' + scale.toFixed(4) + ')';
+      frame = video.paused ? 0 : window.requestAnimationFrame(paint);
+    }
+    new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          var started = video.play();
+          if (started && started.catch) started.catch(function () {});
+          if (glow && glowAt.length === 2 && !frame) frame = window.requestAnimationFrame(paint);
+        } else {
+          video.pause();
+        }
+      });
+    }, { threshold: 0.4 }).observe(figure);
+  });
   if (demo === null && (reduce || !('IntersectionObserver' in window) || !window.requestAnimationFrame)) return;
 
   var EASE = {
@@ -32,123 +70,84 @@
   /* Piece rectangles are [left, top, right, bottom] in % of the screenshot.
      Each piece is a copy of the real screenshot clipped to that rectangle. */
   var SCRIPTS = {
-    /* Step 01: the log menu with everything the app logs (a composite of real captures, see
-       scripts/prepare-how-it-works.py). The discs arrive one after another, back row then front row,
-       each rising a little and settling; then Formula is tapped. */
-    start: (function () {
-      var back = [12.7, 31.3, 50, 68.7, 87.3].map(function (x) { return [x - 8.8, 35.4, x + 8.8, 44.3]; });
-      var front = [[8.5, 46.8, 28, 60.5], [38, 46.8, 62, 60.5], [72, 46.8, 91.5, 60.5]];
-      var STEP = 138, FIRST = 620; /* 138 on this script's clock is 95 ms on screen (rate 1.45) */
-      var pieces = [
-        { r: [8, 2.4, 95, 5.4], a: 'fade', t: [350, 650] },
-        { r: [15, 29.6, 85, 34.6], a: 'up', t: [450, 850] },
-        { r: [0, 61.7, 100, 100], a: 'up', t: [500, 950] }
-      ];
-      back.concat(front).forEach(function (r, i) {
-        var piece = { r: r, a: 'drop', lift: -4.5, f: i < 5 ? [0.5, 1.2] : [4, 1.4], t: [FIRST + i * STEP, FIRST + i * STEP + 430] };
-        if (i === 6) { piece.press = [2150, 2600]; piece.origin = [50, 52.4]; }
-        pieces.push(piece);
-      });
-      return { duration: 3150, rate: 1.45, pieces: pieces, ring: { c: [50, 52.4], w: 25, t: [2300, 2950] } };
-    })(),
-    /* Step 02: the whole Today screen arrives, then the action panel (its own crop of the same
-       capture, .hiw-panel in the HTML) lifts from where it really sits up to the centre while the
-       screen behind blurs and dims (.hiw-dim). The log button's halo breathes three times and on the
-       third the button is pressed. The HTML and CSS are the resting state; here things only arrive. */
-    press: {
-      duration: 3300,
-      whole: [150, 550],
-      pieces: [],
-      /* from: the panel's real centre, in % of its own height below the phone's centre; scale: real size / resting size */
-      lift: { dim: [500, 1000], t: [650, 1250], from: 94.3, scale: 1.0247, radius: 7, glow: [1150, 2800], breaths: 2.5, press: [2800, 3150], rest: 0.75,
-        button: [14.65, 22.6, 50, 76.8] }
-    },
+    /* Step 03: the bottle screen arrives piece by piece (the bottle rises like milk filling it), then the
+       "Log · finish" button is pressed and sparks fly. */
     log: {
       duration: 4900, rate: 1.35,
       pieces: [
         { r: [8, 1.2, 95, 5.6], a: 'fade', t: [300, 600] },
-        { r: [3, 10, 97, 14.6], a: 'fade', t: [350, 650] },
-        { r: [4.5, 15.2, 95.5, 21], a: 'slide', t: [450, 900] },
-        { r: [36.5, 21.6, 63.5, 34.4], a: 'sweep', t: [700, 1650], c: [50, 27.9] },
-        { r: [9, 24.5, 36, 31.5], a: 'up', t: [800, 1100] },
-        { r: [64.5, 24.5, 91, 31.5], a: 'up', t: [900, 1200] },
-        { r: [27, 36, 74, 80.6], hole: [30.5, 56.8, 71.3, 79.8], a: 'fade', t: [1050, 1450], f: [12, 5] },
-        { r: [30.5, 56.8, 66.6, 79.8], a: 'rise', t: [1300, 2050], f: [4, 1.8, 0.01] },
-        { r: [66.6, 69.3, 71.3, 72.1], a: 'fade', t: [1700, 2050], f: [0.2, 0.7, 0.7], ride: true },
-        { r: [19, 67.3, 29, 73.3], a: 'fade', t: [1900, 2200] },
-        { r: [72, 67.3, 82, 73.3], a: 'fade', t: [1900, 2200], f: [0.4, 1.8, 4] },
-        { r: [30, 81, 44.8, 85.5], a: 'up', t: [1850, 2200], f: [4, 1.8, 0.01], taken: true },
-        { r: [44.8, 81, 70, 85.5], a: 'up', t: [1850, 2200], f: [0.01, 1.8, 4] },
+        { r: [2, 9.8, 98, 21.2], a: 'fade', t: [350, 650] },
+        { r: [36, 21.5, 64, 34.5], a: 'sweep', t: [700, 1650], c: [50, 28] },
+        { r: [8, 24, 36, 31.5], a: 'up', t: [800, 1100] },
+        { r: [64.5, 24, 91, 31.5], a: 'up', t: [900, 1200] },
+        { r: [18, 36.5, 82, 80.5], a: 'rise', t: [1100, 2100], f: [3, 1.2, 3] },
+        { r: [30, 81, 70, 85.7], a: 'up', t: [1850, 2200] },
         { r: [4.5, 86.2, 49.5, 93], a: 'up', t: [2000, 2350] },
-        { r: [50.5, 86.2, 96, 93], a: 'up', t: [2000, 2350], press: [3450, 3750], origin: [73.3, 89.6] }
+        { r: [50.5, 86.2, 96, 93], a: 'up', t: [2000, 2350], press: [3450, 3750], origin: [72.5, 89.5] }
       ],
-      /* The recording's bottle goes from 3.5 oz left (0.5 taken) to 1.5 oz left (2.5 taken); the frame
-         shown is the second. The screenshot cannot move its own level, so a drawn milk band, a drawn
-         handle and a fingertip dot play that drag on top of it; at the end they swap for the real ones. */
-      drag: { t: [2500, 3350], from: 60.95, to: 70.69, band: [33.5, 66.4, 60.95, 71.7], hx: [40.2, 68.7], show: [1500, 2050], taken: [0.5, 2.5] },
-      sparks: { t: [3660, 4890], c: [73.3, 89.6] }
+      callout: [2300, 2900],
+      sparks: { t: [3660, 4890], c: [72.5, 89.5] }
     },
     /* Step 04: the screen's frame arrives first (status bar, header card, "Today", the action panel),
        with no feeds on the timeline. Then the feeds arrive one by one, oldest first, each with the gap
-       pill beneath it as one piece (the pill belongs to the newer feed). The newest, the 2.5 oz one
-       just logged, comes last, together with the "+2.5 oz formula" chip. */
+       pill beneath it as one piece (the pill belongs to the newer feed). The newest, the one just
+       logged, comes last, together with the "+ amount" chip. */
     finish: {
       duration: 3580, rate: 1.35,
       pieces: [
         { r: [8, 1.2, 95, 5.6], a: 'fade', t: [300, 600] },
-        { r: [3, 6.6, 97, 26.8], a: 'fade', t: [400, 750] },
-        { r: [3, 27.8, 28, 31.6], a: 'fade', t: [600, 900], f: [4, 0.3] },
+        { r: [3, 6.6, 97, 26.5], a: 'fade', t: [400, 750] },
+        { r: [3, 27.5, 28, 31.5], a: 'fade', t: [600, 900], f: [4, 0.3] },
         { r: [0, 62.1, 100, 100], a: 'up', t: [700, 1100], f: [4, 0.2] },
-        { r: [3, 53, 97, 62.1], a: 'up', t: [1150, 1600], f: [4, 0.3] },
-        { r: [3, 42.5, 97, 53], a: 'up', t: [1515, 1965], f: [4, 0.3] },
-        { r: [3, 32, 97, 42.5], a: 'drop', t: [1880, 2380], lift: 9, f: [4, 0.3] }
+        { r: [3, 50, 97, 62.1], a: 'up', t: [1150, 1600], f: [4, 0.3] },
+        { r: [3, 42.4, 97, 50], a: 'up', t: [1515, 1965], f: [4, 0.3] },
+        { r: [3, 32, 97, 42.4], a: 'drop', t: [1880, 2380], lift: 9, f: [4, 0.3] }
       ],
-      /* The day meter: the same bar from the frame before the feed (17.5 oz, step 02's image) sits on
-         top of this frame's bar (20 oz). Its number cross-fades and its right part is wiped away left
-         to right, so the real fill and the real usual-zone marks grow to where the app drew them. */
-      meter: { from: 'press', r: [4.5, 20.3, 72.5, 25.7], split: 42.3, to: 57, show: [400, 750] },
+      /* The day meter: the same bar from the frame before the feed (the "before" image) sits on
+         top of this frame's bar (after the feed). Its number cross-fades and its right part is wiped away
+         left to right, so the real fill and the real usual-zone marks settle where the app drew them. */
+      meter: { from: 'before', r: [4.5, 20.3, 72.5, 25.7], split: 46.5, to: 62, show: [400, 750] },
       count: { t: [2480, 3480], show: [2130, 2430], add: [1880, 2180] }
     },
     flowcast: {
       duration: 3000,
-      focus: { t: [350, 1500], keep: [0, 0, 100, 61.5] },
+      focus: { t: [350, 1500], keep: [0, 0, 100, 46.5] },
       pieces: [
-        { r: [3, 61.8, 97, 65], a: 'fade', t: [1350, 1650] },
-        { r: [3, 65.3, 97, 72.2], a: 'up', t: [1500, 1950] },
-        { r: [3, 73.3, 97, 81], a: 'up', t: [1750, 2200] },
-        { r: [3, 82.3, 97, 90], a: 'up', t: [2000, 2450] },
-        { r: [3, 91.3, 97, 99.6], a: 'up', t: [2250, 2700] }
+        { r: [3, 46.5, 97, 55.5], a: 'up', t: [1450, 1900] },
+        { r: [3, 55.5, 97, 65.3], a: 'up', t: [1700, 2150] },
+        { r: [3, 65.3, 97, 75], a: 'up', t: [1950, 2400] },
+        { r: [3, 75, 97, 84], a: 'up', t: [2200, 2650] },
+        { r: [0, 84, 100, 100], a: 'up', t: [2450, 2850] }
       ]
     },
     report: {
       duration: 11000,
-      scroll: { header: 392 / 4794, travel: (4794 - 2622) / 4794, down: [900, 8400], back: [9100, 10700] }
+      scroll: { header: 480 / 4062, travel: (4062 - 2622) / 4062, down: [900, 8400], back: [9100, 10700] }
     },
     /* The four cards below keep the whole screenshot in view and hold back only the rectangles in
        `hold` (shown as the card's own plain colour) until their pieces arrive. */
     growth: {
       duration: 5200,
-      hold: [[14.6, 37.2, 78.2, 54]],
+      hold: [[11, 58.5, 85, 76]],
       pieces: [
-        { r: [14.6, 37.2, 73.4, 54], a: 'wipe', t: [600, 3300], ease: 'inout', f: [0, 0, 0] },
-        { r: [73.4, 37.2, 78.2, 54], ellipse: [2.3, 1.05, 75.33, 42.5], a: 'drop', t: [3300, 3800], lift: 5 },
-        { r: [73.4, 37.2, 78.2, 54], a: 'fade', t: [3750, 4050], f: [0, 0, 0] }
+        { r: [11, 58.5, 70, 76], a: 'wipe', t: [600, 3300], ease: 'inout', f: [0, 0, 0] },
+        { r: [70, 58.5, 85, 76], ellipse: [2.6, 1.2, 72, 63.2], a: 'drop', t: [3300, 3800], lift: 5 },
+        { r: [70, 58.5, 85, 76], a: 'fade', t: [3750, 4050], f: [0, 0, 0] }
       ],
-      glow: { r: [5.4, 25.9, 78.4, 31.3], t: [3950, 5150] }
+      glow: { r: [7, 46.8, 80, 52.8], t: [3950, 5150] }
     },
     health: {
       duration: 4700,
-      hold: [[6.2, 29, 22.4, 36.6], [6.9, 37.1, 93.1, 88.5]],
-      pieces: [0, 1, 2, 3, 4, 5, 6, 7, 8].map(function (i) {
-        var top = (581 + 90.5 * i) / 15.65, bottom = Math.min(88.5, (664 + 90.5 * i) / 15.65);
-        return { r: [6.9, top, 93.1, bottom], a: 'drop', t: [500 + i * 250, 900 + i * 250], lift: 3, f: [0, 0.2, 0] };
-      }).concat([{ r: [6.2, 29, 22.4, 36.6], a: 'sweep', t: [3150, 4350], c: [14.17, 32.84], f: [0, 0, 0] }])
+      hold: [[6.2, 54.5, 23, 62.5], [6.9, 62.5, 93.1, 89]],
+      pieces: [62.5, 68.4, 74.3, 80.2, 86].map(function (top, i) {
+        return { r: [6.9, top, 93.1, Math.min(89, top + 5.9)], a: 'drop', t: [500 + i * 300, 900 + i * 300], lift: 3, f: [0, 0.2, 0] };
+      }).concat([{ r: [6.2, 54.5, 23, 62.5], a: 'sweep', t: [2150, 3350], c: [15, 58.5], f: [0, 0, 0] }])
     },
     family: {
       duration: 3700,
-      hold: [[2.9, 17.5, 97.1, 47.3], [2.9, 51, 97.1, 95.9]],
-      pieces: [278, 397, 516, 635, 805, 924, 1043, 1162, 1281, 1400].map(function (y, i) {
-        return { r: [2.9, (y - 3) / 15.72, 97.1, (y + 107) / 15.72], a: 'slide', dx: i % 2 ? 45 : -45, t: [450 + i * 240, 1000 + i * 240], f: [0, 0, 0] };
+      hold: [[2.9, 19.2, 97.1, 36.5], [2.9, 38.8, 97.1, 99]],
+      pieces: [168, 239, 341, 413, 485, 556, 628, 700, 771].map(function (y, i) {
+        return { r: [2.9, (y - 2) / 8.7, 97.1, (y + 64) / 8.7], a: 'slide', dx: i % 2 ? 45 : -45, t: [450 + i * 240, 1000 + i * 240], f: [0, 0, 0] };
       })
     },
     themes: {
@@ -157,9 +156,6 @@
     }
   };
 
-  /* The live "oz taken" number is set in the system font, which only matches the screenshot's own
-     digits on Apple devices; elsewhere the screenshot's number is left as it is. */
-  var appleFont = /Mac|iPhone|iPad|iPod/.test(navigator.platform || navigator.userAgent || '');
   function clamp(k) { return k < 0 ? 0 : k > 1 ? 1 : k; }
   function inset(r) { return 'inset(' + r[1] + '% ' + (100 - r[2]) + '% ' + (100 - r[3]) + '% ' + r[0] + '%)'; }
   function holed(r, h) {
@@ -268,54 +264,8 @@
       track(spec.duration - 250, spec.duration, 'lin', function (k) {
         shot.style.clipPath = k < 1 ? inset(keep) : '';
       });
-    } else if (spec.whole) {
-      track(spec.whole[0], spec.whole[1], 'out', function (k) { main.op = k; });
     } else {
       track(spec.duration - 320, spec.duration, 'lin', function (k) { main.op = k; });
-    }
-
-    var resets = [];
-    if (spec.lift) {
-      var lf = spec.lift;
-      var dim = figure.querySelector('.hiw-dim'), panel = figure.querySelector('.hiw-panel'), halo = figure.querySelector('.hiw-press-glow');
-      if (dim) { var ds = state(dim, 'scale(1.1)'); track(lf.dim[0], lf.dim[1], 'inout', function (k) { ds.op = k; }); }
-      if (panel) {
-        var ps = state(panel, 'translateY(-50%)');
-        track(lf.t[0], lf.t[1], 'inout', function (k) {
-          ps.ty = lf.from * (1 - k);
-          ps.sc = lf.scale + (1 - lf.scale) * k;
-          panel.style.borderRadius = (lf.radius * k).toFixed(3) + 'cqw';
-          panel.style.setProperty('--hiw-lifted', k.toFixed(3));
-        });
-        resets.push(function () { panel.style.borderRadius = ''; panel.style.removeProperty('--hiw-lifted'); });
-        /* the button alone, a copy of the panel's own pixels clipped to a circle a little wider than
-           the button, so the pressed (smaller) copy still covers the one underneath */
-        var source = panel.querySelector('img');
-        var button = new Image();
-        button.className = 'hiw-panel-button';
-        button.alt = '';
-        button.setAttribute('aria-hidden', 'true');
-        button.decoding = 'sync';
-        button.src = source.currentSrc || source.src;
-        button.style.clipPath = 'ellipse(' + lf.button[0] + '% ' + lf.button[1] + '% at ' + lf.button[2] + '% ' + lf.button[3] + '%)';
-        button.style.transformOrigin = lf.button[2] + '% ' + lf.button[3] + '%';
-        panel.insertBefore(button, halo);
-        added.push(button);
-        var bs = state(button), hs = halo ? state(halo, 'translate(-50%, -50%)') : null;
-        var g0 = lf.glow[0], span = spec.duration - g0;
-        track(g0, spec.duration, 'lin', function (k) {
-          var t = g0 + k * span;
-          var pk = clamp((t - lf.press[0]) / (lf.press[1] - lf.press[0]));
-          var sc = pk <= 0 || pk >= 1 ? 1 : pk < 0.35 ? 1 - 0.1 * EASE.out(pk / 0.35) : 0.9 + 0.1 * EASE.back((pk - 0.35) / 0.65);
-          bs.sc = sc;
-          button.style.filter = sc < 1 ? 'brightness(' + (1 - (1 - sc) * 1.2).toFixed(3) + ')' : '';
-          if (!hs) return;
-          var breath = t <= g0 ? 0 : t >= lf.glow[1] ? 1 : 0.5 - 0.5 * Math.cos(2 * Math.PI * lf.breaths * (t - g0) / (lf.glow[1] - g0));
-          var settle = clamp((t - lf.press[1]) / (spec.duration - lf.press[1]));
-          hs.op = t <= g0 ? 0 : Math.min(0.999, (0.25 + 0.75 * breath) * (1 - (1 - lf.rest) * settle));
-          hs.sc = (1 + 0.07 * breath * (1 - settle)) * sc;
-        });
-      }
     }
 
     if (spec.meter) {
@@ -368,24 +318,6 @@
           setMask(el, feather(p.r, p.f) + (k >= 1 ? '' : ', conic-gradient(from 0deg at ' + p.c[0] + '% ' + p.c[1] + '%, #000 ' + angle + 'deg, transparent ' + angle + 'deg)'));
         });
       }
-      if (p.taken && spec.drag && spec.drag.taken && appleFont) {
-        /* The screenshot's own "3.5" waits until the drag ends; a live number counts up to it in the
-           app's half-ounce steps while the level drops, then hands over to the real pixels. */
-        var live = document.createElement('span');
-        live.className = 'hiw-taken';
-        live.setAttribute('aria-hidden', 'true');
-        figure.appendChild(live);
-        added.push(live);
-        var ls = state(live);
-        var amounts = spec.drag.taken, dt = spec.drag.t;
-        track(a, b, 'out', function (k) { ls.ty = 2.5 * (1 - k); ls.op = k; s.op = 0; });
-        track(dt[0], dt[1], 'inout', function (k) { live.textContent = String(Math.round((amounts[0] + (amounts[1] - amounts[0]) * k) * 2) / 2); });
-        track(dt[1] + 60, dt[1] + 300, 'lin', function (k) { ls.op *= 1 - k; s.op = k; });
-      }
-      if (p.ride && spec.drag) {
-        /* the real right-hand handle, moved with the drag: pixel-true */
-        track(spec.drag.t[0], spec.drag.t[1], 'inout', function (k) { s.ty = (spec.drag.from + (spec.drag.to - spec.drag.from) * k) - spec.drag.to; });
-      }
       if (p.press) {
         el.style.transformOrigin = p.origin[0] + '% ' + p.origin[1] + '%';
         track(p.press[0], p.press[1], 'lin', function (k) {
@@ -394,22 +326,6 @@
           el.style.filter = s.sc < 1 ? 'brightness(' + (1 - (1 - s.sc) * 2.2).toFixed(3) + ')' : '';
         });
       }
-    });
-
-    (spec.rings || (spec.ring ? [spec.ring] : [])).forEach(function (spot) {
-      var ring = document.createElement('span');
-      ring.className = 'hiw-ring';
-      ring.setAttribute('aria-hidden', 'true');
-      ring.style.left = spot.c[0] + '%';
-      ring.style.top = spot.c[1] + '%';
-      ring.style.width = spot.w + '%';
-      figure.appendChild(ring);
-      added.push(ring);
-      var rs = state(ring, 'translate(-50%, -50%)');
-      track(spot.t[0], spot.t[1], 'out', function (k) {
-        rs.sc = 1 + 0.45 * k;
-        rs.op = k <= 0 || k >= 1 ? 0 : 0.95 * (1 - k);
-      });
     });
 
     if (spec.glow) {
@@ -433,45 +349,10 @@
       added.push(node);
       return node;
     }
-    if (spec.drag) {
-      var d = spec.drag, t0 = d.t[0], t1 = d.t[1];
-      var level = function (k) { return d.from + (d.to - d.from) * k; };
-      var fadeOut = function (s) { track(t1, t1 + 220, 'lin', function (k) { s.op *= 1 - k; }); };
-      /* The "2 oz left" marker travels with the handle in the app; here it is held back behind a patch of
-         the bottle's own interior until the drag ends, then it appears. */
-      var tip = drawn('hiw-tipcover', figure, 3);
-      var ts = state(tip);
-      track(d.show[0], d.show[1], 'out', function (k) { ts.op = k; });
-      fadeOut(ts);
-      var band = drawn('hiw-band', figure, 3);
-      band.style.left = d.band[0] + '%'; band.style.width = (d.band[1] - d.band[0]) + '%';
-      band.style.top = d.band[2] + '%'; band.style.height = (d.band[3] - d.band[2]) + '%';
-      var bs = state(band);
-      track(d.show[0], d.show[1], 'out', function (k) { bs.op = k; });
-      track(t0, t1, 'inout', function (k) {
-        band.style.clipPath = 'inset(' + ((level(k) - d.band[2]) / (d.band[3] - d.band[2]) * 100).toFixed(3) + '% 0 0 0)';
-      });
-      fadeOut(bs);
-      d.hx.slice(0, 1).forEach(function (x) {
-        var handle = drawn('hiw-handle', figure, 4);
-        handle.style.left = x + '%';
-        var hs = state(handle, 'translate(-50%, -50%)');
-        track(d.show[0] + 200, d.show[1], 'out', function (k) { hs.op = k; });
-        track(t0, t1, 'inout', function (k) { handle.style.top = level(k) + '%'; });
-        fadeOut(hs);
-      });
-      var finger = drawn('hiw-finger', figure, 5);
-      finger.style.left = d.hx[1] + '%';
-      var fs = state(finger, 'translate(-50%, -50%)');
-      track(t0 - 300, t0, 'out', function (k) { fs.op = k * 0.9; fs.sc = 1.5 - 0.5 * k; });
-      track(t0, t1, 'inout', function (k) { finger.style.top = level(k) + '%'; });
-      track(t1, t1 + 260, 'lin', function (k) { fs.op *= 1 - k; });
-      var callout = device.querySelector('.hiw-callout');
-      if (callout) {
-        var cs = state(callout);
-        var line = callout.querySelector('.hiw-callout-line');
-        track(t1 - 250, t1 + 350, 'out', function (k) { cs.op = k; if (line) line.style.transform = 'scaleX(' + k.toFixed(3) + ')'; });
-      }
+    var callout = device.querySelector('.hiw-callout');
+    if (spec.callout && callout) {
+      var cs = state(callout, 'translateX(-50%)');
+      track(spec.callout[0], spec.callout[1], 'out', function (k) { cs.op = k; cs.ty = 40 * (1 - k); });
     }
 
     if (spec.sparks) {
@@ -511,13 +392,14 @@
       }
       var ms = state(pill || meter);
       track(spec.count.show[0], spec.count.show[1], 'out', function (k) { ms.op = k; ms.ty = 30 * (1 - k); });
-      /* half-ounce steps, the app's own */
-      track(spec.count.t[0], spec.count.t[1], 'quart', function (k) { count.textContent = String(Math.round((origin + (target - origin) * k) * 2) / 2); });
+      /* in the app's own steps: half an ounce, or data-step (5 ml) */
+      var step = Number(count.getAttribute('data-step')) || 0.5;
+      track(spec.count.t[0], spec.count.t[1], 'quart', function (k) { count.textContent = String(Math.round((origin + (target - origin) * k) / step) * step); });
     }
 
     return {
       duration: spec.duration / rate, tracks: tracks, elements: elements,
-      cleanup: function () { added.forEach(function (el) { el.remove(); }); resets.forEach(function (reset) { reset(); }); figure.style.background = ''; shot.style.position = ''; shot.style.zIndex = ''; shot.style.filter = ''; shot.style.clipPath = ''; }
+      cleanup: function () { added.forEach(function (el) { el.remove(); }); figure.style.background = ''; shot.style.position = ''; shot.style.zIndex = ''; shot.style.filter = ''; shot.style.clipPath = ''; }
     };
   }
 
