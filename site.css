@@ -560,6 +560,18 @@ html[data-theme="dark"] .form-status.error { background: #40231f; color: #ffb8aa
 .doc .card p, .doc .highlight p { color: var(--ink); font-weight: 500; }
 .doc .card .email { display: inline-block; margin-top: 8px; font-size: 18px; font-weight: 700; }
 .doc .foot { margin-top: 48px; font-size: 14px; color: var(--ink-2); line-height: 1.7; }
+/* Help articles (/help/*): numbered checks, each saying what to look at, what it should say, and what to do if not. */
+.doc .toc { margin: 0 0 8px; }
+.doc .toc ol { margin-top: 6px; }
+.doc .toc li { margin-bottom: 2px; }
+.doc .help-step h2 { scroll-margin-top: 84px; }
+.doc .help-step .num { color: var(--accent); margin-right: 4px; }
+.doc .tag-out { display: inline-block; vertical-align: 3px; margin-left: 6px; font-size: 12px; font-weight: 700; letter-spacing: .02em; padding: 3px 9px; border-radius: 999px; background: var(--note-bg); border: 1px solid var(--border); color: var(--ink-2); white-space: nowrap; }
+.doc .check { margin: 16px 0 20px; display: grid; gap: 12px; }
+.doc .check > div { border-left: 3px solid var(--border); padding: 2px 0 2px 14px; }
+.doc .check dt { font-size: 14px; font-weight: 700; color: var(--ink); text-transform: none; }
+.doc .check dd { margin: 2px 0 0; font-size: 16px; line-height: 1.7; color: var(--ink-2); max-width: 68ch; }
+.doc .check dd + dd { margin-top: 8px; }
 
 @media (min-width: 861px) {
   .ft-col:last-child ul { columns: 2; column-gap: 16px; }

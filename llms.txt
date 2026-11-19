@@ -133,6 +133,8 @@ The app is fully translated, including Norwegian (bokmål), Swedish, Danish, Fin
 - FAQ: https://tryfeedflow.app/faq
 - Privacy: https://tryfeedflow.app/privacy
 - Support: https://tryfeedflow.app/support
+- Shared baby not syncing between phones, how to fix it (help article): https://tryfeedflow.app/help/sharing-sync
+- Delt baby synkroniseres ikke, slik løser du det (hjelpeartikkel, norsk): https://tryfeedflow.app/no/hjelp/deling-synkronisering
 - LinkedIn: https://www.linkedin.com/company/feedflow-babyfeedingapp/
 - Instagram: https://www.instagram.com/feedflow_babyfeedingapp
 - TikTok: https://www.tiktok.com/@feedflow_babyfeedingapp

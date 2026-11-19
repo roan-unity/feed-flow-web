@@ -340,7 +340,7 @@ MENU_GROUPS = [
     ("Feeding", [("/formula-feeding", "Formula feeding"), ("/breastfeeding-pumping", "Breast & pumping"), ("/solids-allergens", "Solids & allergens"), ("/combo-feeding", "Combo feeding"), ("/bottle-countdown", "Bottle countdown"), ("/flowcast", "FlowCast")]),
     ("Growth & health", [("/growth-development", "Growth & development"), ("/baby-health", "Baby health"), ("/vitamin-d-tracker", "Vitamin D tracker"), ("/baby-report", "Baby Reports"), ("/share-feeding-log", "Shared feeding log")]),
     ("Guides", [("/resources", "All guides"), ("/compare", "Compare apps"), ("/printable-feeding-log", "Printable feeding log"), ("/free-baby-feeding-tracker", "Free tracker")]),
-    ("About & support", [("/faq", "FAQ"), ("/support", "Support"), ("/ambassador", "Ambassadors"), ("/mom-creator-affiliate-program", "Earn as a creator"), ("/privacy", "Privacy"), ("/terms", "Terms")]),
+    ("About & support", [("/faq", "FAQ"), ("/support", "Support"), ("/help/sharing-sync", "Sync help"), ("/ambassador", "Ambassadors"), ("/mom-creator-affiliate-program", "Earn as a creator"), ("/privacy", "Privacy"), ("/terms", "Terms")]),
 ]
 
 
@@ -351,7 +351,7 @@ MENU_GROUPS_NB = [
     ("Mating", [("/no/matingslogg", "Matingslogg for amming og flaske"), ("/formula-feeding", "Flaske og morsmelkerstatning"), ("/breastfeeding-pumping", "Amming og pumping"), ("/solids-allergens", "Fast føde og allergener"), ("/combo-feeding", "Delamming"), ("/bottle-countdown", "Nedtelling for flasken"), ("/flowcast", "FlowCast")]),
     ("Vekst og helse", [("/growth-development", "Vekst og utvikling"), ("/baby-health", "Babyens helse"), ("/vitamin-d-tracker", "D-vitamin"), ("/baby-report", "Babyrapport"), ("/share-feeding-log", "Delt matingslogg")]),
     ("Guider", [("/resources", "Alle guider"), ("/compare", "Sammenlign apper"), ("/printable-feeding-log", "Matingslogg til utskrift"), ("/free-baby-feeding-tracker", "Gratis matingslogg")]),
-    ("Om oss og hjelp", [("/faq", "Vanlige spørsmål"), ("/support", "Hjelp"), ("/ambassador", "Ambassadører"), ("/mom-creator-affiliate-program", "Tjen som skaper"), ("/privacy", "Personvern"), ("/terms", "Vilkår")]),
+    ("Om oss og hjelp", [("/faq", "Vanlige spørsmål"), ("/support", "Hjelp"), ("/no/hjelp/deling-synkronisering", "Hjelp med synkronisering"), ("/ambassador", "Ambassadører"), ("/mom-creator-affiliate-program", "Tjen som skaper"), ("/privacy", "Personvern"), ("/terms", "Vilkår")]),
 ]
 
 
@@ -546,10 +546,11 @@ def sync_static_pages():
     block = lambda name, html: f"<!--ff:{name}-->{html}<!--/ff:{name}-->"
     # (file, active nav key for the header's aria-current)
     pages = [("index.html", ""), ("no.html", ""), ("ambassador.html", "ambassador"), ("founding-families.html", ""), ("mom-creator-affiliate-program.html", ""),
-             ("faq.html", ""), ("support.html", ""), ("privacy.html", ""), ("terms.html", "")]
+             ("faq.html", ""), ("support.html", ""), ("privacy.html", ""), ("terms.html", ""),
+             ("help/sharing-sync.html", ""), ("no/hjelp/deling-synkronisering.html", "")]
     for name, active in pages:
         path = ROOT / name
-        ui = "nb" if name == "no.html" else "en"
+        ui = "nb" if name == "no.html" or name.startswith("no/") else "en"
         text = path.read_text(encoding="utf-8")
         if "<!--ff:header-->" not in text:
             text = _re.sub(r'<header class="nav">.*?</header>', lambda m: block("header", m.group(0)), text, count=1, flags=_re.S)

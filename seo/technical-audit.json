@@ -1,8 +1,8 @@
 {
   "workflow": "OpenSEO seo-audit local technical checks",
   "liveKeywordData": "Not connected; no volume, ranking or traffic claims are included",
-  "sitemapUrls": 66,
-  "pagesChecked": 66,
+  "sitemapUrls": 68,
+  "pagesChecked": 68,
   "errors": [],
   "warnings": [
     "founding-families.html: title is 70 characters"
@@ -213,6 +213,12 @@
       "descriptionLength": 169
     },
     {
+      "url": "https://tryfeedflow.app/help/sharing-sync",
+      "file": "help/sharing-sync.html",
+      "titleLength": 53,
+      "descriptionLength": 156
+    },
+    {
       "url": "https://tryfeedflow.app/founding-families",
       "file": "founding-families.html",
       "titleLength": 70,
@@ -277,6 +283,12 @@
       "file": "no/matingslogg.html",
       "titleLength": 62,
       "descriptionLength": 148
+    },
+    {
+      "url": "https://tryfeedflow.app/no/hjelp/deling-synkronisering",
+      "file": "no/hjelp/deling-synkronisering.html",
+      "titleLength": 59,
+      "descriptionLength": 142
     },
     {
       "url": "https://tryfeedflow.app/sv",
