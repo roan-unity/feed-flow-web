@@ -30,7 +30,7 @@ INCLUDE_CHAT = False
 # captures). The Forest, Lavender and Midnight themes have no Norwegian capture yet and stay the English ones.
 IMAGE_MAP = {f"/screens/how/{name}": f"/screens/no/how/{name}" for name in (
     "pick-poster", "fill-poster", "before", "log", "finish", "flowcast", "hero-report", "report-scroll", "report-detail", "growth", "health",
-    "family", "vitamin-d", "theme-ocean", "flow-pick", "flow-fill")}
+    "family", "vitamin-d", "theme-ocean", "theme-forest", "theme-lavender", "theme-midnight", "flow-pick", "flow-fill")}
 
 # On-page callouts that carry amounts, read from the Norwegian captures (bottle 45 ml tatt / 75 ml igjen, Erstatning 45 ml,
 # the day bar 125 ml before and 170 ml after). On the English page: "2.5 oz left in the bottle", "+1.5 oz formula", 4.5 to 6 oz.
