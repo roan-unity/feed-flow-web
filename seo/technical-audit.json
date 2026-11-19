@@ -4,7 +4,9 @@
   "sitemapUrls": 65,
   "pagesChecked": 65,
   "errors": [],
-  "warnings": [],
+  "warnings": [
+    "founding-families.html: title is 70 characters"
+  ],
   "checked": [
     {
       "url": "https://tryfeedflow.app/",
@@ -213,8 +215,8 @@
     {
       "url": "https://tryfeedflow.app/founding-families",
       "file": "founding-families.html",
-      "titleLength": 63,
-      "descriptionLength": 157
+      "titleLength": 70,
+      "descriptionLength": 147
     },
     {
       "url": "https://tryfeedflow.app/gift",

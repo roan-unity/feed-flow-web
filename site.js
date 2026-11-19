@@ -33,9 +33,6 @@
         menuButton.focus();
       }
     });
-    window.addEventListener('resize', function () {
-      if (window.innerWidth > 900) setMenu(false);
-    });
   }
 
   var data = window.FF_REVIEWS;

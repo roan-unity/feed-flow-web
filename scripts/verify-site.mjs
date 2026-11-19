@@ -91,10 +91,10 @@ try {
 
   // Desktop navigation and theme.
   await page.setViewportSize({ width: 1440, height: 900 });
-  for (const item of [{ text: "Feeding", hash: "#feeding" }, { text: "Growth", hash: "#growth" }, { text: "Health", hash: "#health" }]) {
+  for (const item of [{ text: "Feeding", path: "/formula-feeding" }, { text: "Growth", path: "/growth-development" }, { text: "Health", path: "/baby-health" }]) {
     await page.goto(origin, { waitUntil: "domcontentloaded" });
     await page.locator(".desktop-nav").getByRole("link", { name: item.text, exact: true }).click();
-    check(new URL(page.url()).hash === item.hash, `Desktop ${item.text} navigation`);
+    check(new URL(page.url()).pathname === item.path, `Desktop ${item.text} navigation`);
   }
   await page.goto(origin, { waitUntil: "networkidle" });
   const oldTheme = await page.locator("html").getAttribute("data-theme");
@@ -109,7 +109,7 @@ try {
   await page.locator("#menuToggle").click();
   check(await page.locator("#menuToggle").getAttribute("aria-expanded") === "true" && await page.locator("#mobileNav").isVisible(), "Mobile menu opens");
   await page.locator("#mobileNav").getByRole("link", { name: /Growth & development/ }).click();
-  check(new URL(page.url()).hash === "#growth" && await page.locator("#mobileNav").isHidden(), "Mobile menu navigates and closes");
+  check(new URL(page.url()).pathname === "/growth-development" && await page.locator("#mobileNav").isHidden(), "Mobile menu navigates and closes");
   await page.locator("#menuToggle").click();
   await page.keyboard.press("Escape");
   check(await page.locator("#mobileNav").isHidden(), "Escape closes mobile menu");

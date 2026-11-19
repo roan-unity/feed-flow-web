@@ -78,7 +78,7 @@ for (const url of urls) {
 }
 
 const home = await readFile(path.join(root, "index.html"), "utf8");
-for (const id of ["feeding", "growth", "health", "resources", "reviews"]) {
+for (const id of ["how-it-works", "reviews", "download"]) {
   if (!new RegExp(`id="${id}"`).test(home)) errors.push(`Homepage is missing required #${id} section`);
 }
 if (/linkedin-bottom/.test(home)) errors.push("Homepage still contains the oversized LinkedIn banner");

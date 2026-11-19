@@ -334,13 +334,28 @@ def wordmark():
     return f'<a href="/" class="wordmark" aria-label="Feed Flow"><span>Feed</span><span class="flow">Flow</span><span class="bottle" aria-hidden="true"><svg><use href="/assets/icons.svg#bottle"/></svg></span></a>'
 
 
+# English header. The desktop bar stays short; the hamburger menu is the one complete, grouped list.
+# Every English page (generated or hand-edited, see sync_static_pages) gets this same header from here.
+DESKTOP_NAV = [("feeding", "/formula-feeding", "Feeding"), ("growth", "/growth-development", "Growth"), ("health", "/baby-health", "Health"), ("resources", "/resources", "Guides"), ("ambassador", "/ambassador", "Ambassadors")]
+MENU_GROUPS = [
+    ("Feeding", [("/formula-feeding", "Formula feeding"), ("/breastfeeding-pumping", "Breast & pumping"), ("/solids-allergens", "Solids & allergens"), ("/combo-feeding", "Combo feeding"), ("/bottle-countdown", "Bottle countdown"), ("/flowcast", "FlowCast")]),
+    ("Growth & health", [("/growth-development", "Growth & development"), ("/baby-health", "Baby health"), ("/vitamin-d-tracker", "Vitamin D tracker"), ("/baby-report", "Baby Reports"), ("/share-feeding-log", "Shared feeding log")]),
+    ("Guides", [("/resources", "All guides"), ("/compare", "Compare apps"), ("/printable-feeding-log", "Printable feeding log"), ("/free-baby-feeding-tracker", "Free tracker")]),
+    ("About & support", [("/faq", "FAQ"), ("/support", "Support"), ("/ambassador", "Ambassadors"), ("/mom-creator-affiliate-program", "Earn as a creator"), ("/privacy", "Privacy"), ("/terms", "Terms")]),
+]
+
+
 def header(active, lang="en"):
     t = L[lang]
     store = APP_STORE if lang == "en" else APP_STORE.replace("ct=website_content", f"ct=website_{lang}")
-    items = NAV[lang] if lang in NAV else [("feeding", "/#feeding", "Feeding"), ("growth", "/#growth", "Growth"), ("health", "/#health", "Health"), ("resources", "/resources", "Guides"), ("ambassador", "/ambassador", "Ambassadors")]
+    items = NAV[lang] if lang in NAV else DESKTOP_NAV
     desktop = "".join(f'<a href="{url}"{(" aria-current=\"page\"" if key == active else "")}>{label}</a>' for key, url, label in items)
-    mobile = "".join(f'<a href="{url}">{label}<span aria-hidden="true">→</span></a>' for _, url, label in items)
-    return f'''<header class="nav"><div class="wrap nav-inner">{wordmark()}<nav class="desktop-nav" aria-label="Primary navigation">{desktop}</nav><div class="nav-right"><button class="theme-toggle" id="themeToggle" type="button" aria-label="Use dark theme">{icon('sun','sun')}{icon('moon','moon')}</button><a href="{store.replace('website_content','website_header')}" class="btn btn-primary btn-sm nav-download">{icon('apple','apple')}{t['download_sm']}</a><button class="menu-toggle" id="menuToggle" type="button" aria-label="{t['menu']}" aria-expanded="false" aria-controls="mobileNav">{icon('menu')}</button></div></div><nav class="mobile-nav" id="mobileNav" aria-label="Mobile navigation" hidden>{mobile}<a href="{store.replace('website_content','website_mobile_menu')}">{t['download']}<span aria-hidden="true">→</span></a></nav></header>'''
+    if lang in NAV:
+        mobile = "".join(f'<a href="{url}">{label}<span aria-hidden="true">→</span></a>' for _, url, label in items)
+    else:
+        groups = "".join(f'<div class="menu-group"><p class="menu-h">{title}</p>' + "".join(f'<a href="{url}">{label.replace("&", "&amp;")}</a>' for url, label in links) + "</div>" for title, links in MENU_GROUPS)
+        mobile = f'<div class="menu-groups">{groups}</div>'
+    return f'''<header class="nav"><div class="wrap nav-inner">{wordmark()}<nav class="desktop-nav" aria-label="Primary navigation">{desktop}</nav><div class="nav-right"><button class="theme-toggle" id="themeToggle" type="button" aria-label="Use dark theme">{icon('sun','sun')}{icon('moon','moon')}</button><a href="{store.replace('website_content','website_header')}" class="btn btn-primary btn-sm nav-download">{icon('apple','apple')}{t['download_sm']}</a><button class="menu-toggle" id="menuToggle" type="button" aria-label="{t['menu']}" aria-expanded="false" aria-controls="mobileNav">{icon('menu')}</button></div></div><nav class="mobile-nav" id="mobileNav" aria-label="Mobile navigation" hidden>{mobile}<a class="menu-download" href="{store.replace('website_content','website_mobile_menu')}">{t['download']}<span aria-hidden="true">→</span></a></nav></header>'''
 
 
 FT_HEADINGS = {"product": "Product", "learn": "Learn", "company": "Feed Flow", "languages": "Languages"}
@@ -496,19 +511,19 @@ import re as _re
 
 
 def sync_static_pages():
-    """index.html and the four legacy pages are hand-edited, but their footer (and the legacy header) come from here."""
+    """Hand-edited pages keep their body, but their header and footer come from here (between ff: markers)."""
     block = lambda name, html: f"<!--ff:{name}-->{html}<!--/ff:{name}-->"
-    index = ROOT / "index.html"
-    text = index.read_text(encoding="utf-8")
-    if "<!--ff:footer-->" in text:
-        text = _re.sub(r"<!--ff:footer-->.*?<!--/ff:footer-->", lambda m: block("footer", footer("en")), text, flags=_re.S)
-    else:
-        text = _re.sub(r'<footer class="ft".*?</footer>', lambda m: block("footer", footer("en")), text, count=1, flags=_re.S)
-    index.write_text(text, encoding="utf-8")
-    for name in ("faq", "support", "privacy", "terms"):
-        path = ROOT / f"{name}.html"
+    # (file, active nav key for the header's aria-current)
+    pages = [("index.html", ""), ("ambassador.html", "ambassador"), ("founding-families.html", ""), ("mom-creator-affiliate-program.html", ""),
+             ("faq.html", ""), ("support.html", ""), ("privacy.html", ""), ("terms.html", "")]
+    for name, active in pages:
+        path = ROOT / name
         text = path.read_text(encoding="utf-8")
-        for part, html in (("header", header("", "en")), ("footer", footer("en"))):
+        if "<!--ff:header-->" not in text:
+            text = _re.sub(r'<header class="nav">.*?</header>', lambda m: block("header", m.group(0)), text, count=1, flags=_re.S)
+        if "<!--ff:footer-->" not in text:
+            text = _re.sub(r'<footer class="ft".*?</footer>', lambda m: block("footer", m.group(0)), text, count=1, flags=_re.S)
+        for part, html in (("header", header(active, "en")), ("footer", footer("en"))):
             text = _re.sub(rf"<!--ff:{part}-->.*?<!--/ff:{part}-->", lambda m: block(part, html), text, flags=_re.S)
         path.write_text(text, encoding="utf-8")
         print(f"Synced {path.relative_to(ROOT)}")
