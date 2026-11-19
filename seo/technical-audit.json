@@ -1,8 +1,8 @@
 {
   "workflow": "OpenSEO seo-audit local technical checks",
   "liveKeywordData": "Not connected; no volume, ranking or traffic claims are included",
-  "sitemapUrls": 65,
-  "pagesChecked": 65,
+  "sitemapUrls": 66,
+  "pagesChecked": 66,
   "errors": [],
   "warnings": [
     "founding-families.html: title is 70 characters"
@@ -269,6 +269,12 @@
     {
       "url": "https://tryfeedflow.app/no",
       "file": "no.html",
+      "titleLength": 52,
+      "descriptionLength": 146
+    },
+    {
+      "url": "https://tryfeedflow.app/no/matingslogg",
+      "file": "no/matingslogg.html",
       "titleLength": 62,
       "descriptionLength": 148
     },

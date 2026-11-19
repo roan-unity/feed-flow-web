@@ -1,4 +1,7 @@
-"""Norwegian and Swedish landing pages (2026-11-16): /no and /sv.
+"""Norwegian and Swedish landing pages (2026-11-16): /no/matingslogg and /sv.
+
+Since 2026-11-19 /no itself is the Norwegian twin of the English homepage (no.html, see scripts/make-no-home.py);
+the Norwegian article that used to live there moved to /no/matingslogg.
 
 Most of Feed Flow's ratings come from Norway and Sweden, and the app is fully translated, so these pages target
 local searches (amming app, matingslogg, bebisapp, amning app). Facts must match llms.txt. Health wording:
@@ -11,7 +14,7 @@ from intl_pages import HREFLANG  # all localized pages
 
 NORDIC = [
     {
-        "slug": "no", "file": "no.html", "lang": "nb", "active": "feeding", "date": "2026-11-16", "hreflang": HREFLANG,
+        "slug": "no/matingslogg", "file": "no/matingslogg.html", "lang": "nb", "active": "feeding", "date": "2026-11-19", "hreflang": [("nb", "https://tryfeedflow.app/no/matingslogg")],
         "title": "Feed Flow: Babyapp for amming, flaske og MME på norsk | iPhone",
         "description": "Feed Flow er en babyapp for iPhone, helt på norsk. Logg amming, pumping, flaske og morsmelkerstatning på én tidslinje. Gratis å logge, uten reklame.",
         "eyebrow": "Babyapp på norsk", "h1": "Matingslogg for amming, pumping og flaske, laget i Norge",
@@ -34,7 +37,7 @@ NORDIC = [
             ("Finnes Feed Flow til Android?", "Nei, Feed Flow er foreløpig bare for iPhone."),
             ("Reklamerer Feed Flow for morsmelkerstatning?", "Nei. Det finnes ikke promotert innhold i appen: ingen reklame, ingen sponsede plasseringer og ingen betalt rangering av produkter. Per i dag har vi ingen sponsoravtale eller kommersiell avtale med noen produsent av morsmelkerstatning, flasker eller flaskesmokker. Produktlisten finnes av to grunner: så du kan notere hvilket produkt ditt eget barn får og se hva som fungerer for akkurat det barnet, og så appen kan regne næringsstoffer som vitamin D fra nettopp det produktet. Amming, pumpet melk, morsmelkerstatning og fast føde behandles likt. Appen fører loggen og gir deg oversikten. Den gir ingen råd om mating og foreslår aldri at du skal bytte måte å mate på. Feed Flow lager og selger ikke morsmelkerstatning, flasker eller smokker, så WHO-koden for markedsføring av morsmelkerstatninger gjelder formelt ikke for appen. Vi bryr oss likevel om det koden er til for: foreldre skal få informasjon, ikke markedsføring."),
         ],
-        "related": [("/printables/feeding-log-nb-a4.pdf", "Matingslogg til utskrift (PDF)"), ("/sv", "På svenska"), ("/", "In English")],
+        "related": [("/printables/feeding-log-nb-a4.pdf", "Matingslogg til utskrift (PDF)"), ("/no", "Til forsiden"), ("/", "In English")],
     },
     {
         "slug": "sv", "file": "sv.html", "lang": "sv", "active": "feeding", "date": "2026-11-16", "hreflang": HREFLANG,
@@ -64,6 +67,6 @@ NORDIC = [
 ]
 
 NORDIC_QUERIES = {
-    "no": ["app for amming", "matingslogg baby", "babyapp norsk", "app for flaskemating og MME", "ammeapp iPhone", "matingslogg til utskrift"],
+    "no/matingslogg": ["app for amming", "matingslogg baby", "babyapp norsk", "app for flaskemating og MME", "ammeapp iPhone", "matingslogg til utskrift"],
     "sv": ["amningsapp", "bebisapp svenska", "matningslogg bebis", "app för flaskmatning och ersättning", "amning app iPhone", "matningsschema att skriva ut"],
 }

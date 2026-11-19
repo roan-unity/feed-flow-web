@@ -317,11 +317,10 @@ PAGES = [
 
 L = {
     "en": {"skip": "Skip to content", "download": "Download on the App Store", "download_sm": "Download", "meta": "Free to log · iPhone · Your baby’s data stays in your own iCloud", "faq": "Common questions", "explore": "Explore", "aside1": "Keep the whole picture", "aside1p": "Feeding, growth and health records stay together in Feed Flow.", "aside2": "A record, not medical advice", "aside2p": "Feed Flow does not diagnose conditions, recommend medicine doses or replace your pediatrician, midwife, health nurse or lactation professional.", "more": "Continue exploring", "lead": "One calm record for feeding, growth and health.", "tiers": "Download Feed Flow and start logging today. Logging is free, forever.", "locale": "en_US", "menu": "Open menu", "home": "Feed Flow home"},
-    "nb": {"skip": "Gå til innholdet", "download": "Last ned i App Store", "download_sm": "Last ned", "meta": "Gratis å logge · iPhone · Dataene ligger i din egen iCloud", "faq": "Vanlige spørsmål", "explore": "Se mer", "aside1": "Alt på ett sted", "aside1p": "Mating, vekst og helse samlet i én rolig app, helt på norsk.", "aside2": "En logg, ikke medisinske råd", "aside2p": "Feed Flow stiller ingen diagnoser, anbefaler ikke doser og erstatter ikke helsestasjonen, jordmor eller legen.", "more": "Les mer", "lead": "Én rolig logg for mating, vekst og helse.", "tiers": "Last ned Feed Flow og begynn å logge i dag. Det er gratis å logge.", "locale": "nb_NO", "menu": "Åpne meny", "home": "Feed Flow forsiden"},
+    "nb": {"skip": "Gå til innholdet", "download": "Last ned i App Store", "download_sm": "Last ned", "meta": "Gratis å logge · iPhone · Dataene ligger i din egen iCloud", "faq": "Vanlige spørsmål", "explore": "Se mer", "aside1": "Alt på ett sted", "aside1p": "Mating, vekst og helse samlet i én rolig app, helt på norsk.", "aside2": "En logg, ikke medisinske råd", "aside2p": "Feed Flow stiller ingen diagnoser, anbefaler ikke doser og erstatter ikke helsestasjonen, jordmor eller legen.", "more": "Les mer", "lead": "Én rolig logg for mating, vekst og helse.", "tiers": "Last ned Feed Flow og begynn å logge i dag. Det er gratis å logge.", "locale": "nb_NO", "menu": "Åpne menyen", "home": "Feed Flow forsiden"},
     "sv": {"skip": "Till innehållet", "download": "Hämta i App Store", "download_sm": "Hämta", "meta": "Gratis att logga · iPhone · Datan ligger i ditt eget iCloud", "faq": "Vanliga frågor", "explore": "Läs mer", "aside1": "Allt på ett ställe", "aside1p": "Matning, tillväxt och hälsa samlat i en lugn app, helt på svenska.", "aside2": "En logg, inte medicinska råd", "aside2p": "Feed Flow ställer inga diagnoser, rekommenderar inga doser och ersätter inte BVC, barnmorskan eller läkaren.", "more": "Läs vidare", "lead": "En lugn logg för matning, tillväxt och hälsa.", "tiers": "Hämta Feed Flow och börja logga i dag. Det är gratis att logga.", "locale": "sv_SE", "menu": "Öppna menyn", "home": "Feed Flow startsida"},
 }
 NAV = {
-    "nb": [("feeding", "/no#mating", "Mating"), ("countdown", "/no#nedtelling", "Nedtelling"), ("print", "/no#utskrift", "Utskrift"), ("faq", "/no#faq", "Spørsmål"), ("sv", "/sv", "Svenska"), ("en", "/", "English")],
     "sv": [("feeding", "/sv#matning", "Matning"), ("countdown", "/sv#nedrakning", "Nedräkning"), ("print", "/sv#utskrift", "Utskrift"), ("faq", "/sv#faq", "Frågor"), ("nb", "/no", "Norsk"), ("en", "/", "English")],
 }
 
@@ -345,25 +344,49 @@ MENU_GROUPS = [
 ]
 
 
+# Norwegian variant of the same header: same links, Norwegian labels, one quiet line because the sub-pages are English.
+NB_NOTE = "Undersidene er foreløpig på engelsk."
+DESKTOP_NAV_NB = [("feeding", "/formula-feeding", "Mating"), ("growth", "/growth-development", "Vekst"), ("health", "/baby-health", "Helse"), ("resources", "/resources", "Guider"), ("ambassador", "/ambassador", "Ambassadører")]
+MENU_GROUPS_NB = [
+    ("Mating", [("/no/matingslogg", "Matingslogg for amming og flaske"), ("/formula-feeding", "Flaske og morsmelkerstatning"), ("/breastfeeding-pumping", "Amming og pumping"), ("/solids-allergens", "Fast føde og allergener"), ("/combo-feeding", "Delamming"), ("/bottle-countdown", "Nedtelling for flasken"), ("/flowcast", "FlowCast")]),
+    ("Vekst og helse", [("/growth-development", "Vekst og utvikling"), ("/baby-health", "Babyens helse"), ("/vitamin-d-tracker", "D-vitamin"), ("/baby-report", "Babyrapport"), ("/share-feeding-log", "Delt matingslogg")]),
+    ("Guider", [("/resources", "Alle guider"), ("/compare", "Sammenlign apper"), ("/printable-feeding-log", "Matingslogg til utskrift"), ("/free-baby-feeding-tracker", "Gratis matingslogg")]),
+    ("Om oss og hjelp", [("/faq", "Vanlige spørsmål"), ("/support", "Hjelp"), ("/ambassador", "Ambassadører"), ("/mom-creator-affiliate-program", "Tjen som skaper"), ("/privacy", "Personvern"), ("/terms", "Vilkår")]),
+]
+
+
 def header(active, lang="en"):
     t = L[lang]
+    nb = lang == "nb"
     store = APP_STORE if lang == "en" else APP_STORE.replace("ct=website_content", f"ct=website_{lang}")
-    items = NAV[lang] if lang in NAV else DESKTOP_NAV
+    items = DESKTOP_NAV_NB if nb else NAV[lang] if lang in NAV else DESKTOP_NAV
     desktop = "".join(f'<a href="{url}"{(" aria-current=\"page\"" if key == active else "")}>{label}</a>' for key, url, label in items)
-    if lang in NAV:
+    if lang in NAV and not nb:
         mobile = "".join(f'<a href="{url}">{label}<span aria-hidden="true">→</span></a>' for _, url, label in items)
     else:
-        groups = "".join(f'<div class="menu-group"><p class="menu-h">{title}</p>' + "".join(f'<a href="{url}">{label.replace("&", "&amp;")}</a>' for url, label in links) + "</div>" for title, links in MENU_GROUPS)
-        mobile = f'<div class="menu-groups">{groups}</div>'
-    return f'''<header class="nav"><div class="wrap nav-inner">{wordmark()}<nav class="desktop-nav" aria-label="Primary navigation">{desktop}</nav><div class="nav-right"><button class="theme-toggle" id="themeToggle" type="button" aria-label="Use dark theme">{icon('sun','sun')}{icon('moon','moon')}</button><a href="{store.replace('website_content','website_header')}" class="btn btn-primary btn-sm nav-download">{icon('apple','apple')}{t['download_sm']}</a><button class="menu-toggle" id="menuToggle" type="button" aria-label="{t['menu']}" aria-expanded="false" aria-controls="mobileNav">{icon('menu')}</button></div></div><nav class="mobile-nav" id="mobileNav" aria-label="Mobile navigation" hidden>{mobile}<a class="menu-download" href="{store.replace('website_content','website_mobile_menu')}">{t['download']}<span aria-hidden="true">→</span></a></nav></header>'''
+        menu_groups = MENU_GROUPS_NB if nb else MENU_GROUPS
+        groups = "".join(f'<div class="menu-group"><p class="menu-h">{title}</p>' + "".join(f'<a href="{url}">{label.replace("&", "&amp;")}</a>' for url, label in links) + "</div>" for title, links in menu_groups)
+        note = f'<p class="menu-note">{NB_NOTE}</p>' if nb else ""
+        mobile = f'<div class="menu-groups">{groups}</div>{note}'
+    if nb:
+        store_header, store_menu = (APP_STORE.replace("ct=website_content", f"ct=website_no_{slot}") for slot in ("header", "mobile_menu"))
+    else:
+        store_header, store_menu = store.replace("website_content", "website_header"), store.replace("website_content", "website_mobile_menu")
+    nav_label, mobile_label, theme_label = ("Hovednavigasjon", "Mobilmeny", "Bruk mørkt tema") if nb else ("Primary navigation", "Mobile navigation", "Use dark theme")
+    return f'''<header class="nav"><div class="wrap nav-inner">{wordmark()}<nav class="desktop-nav" aria-label="{nav_label}">{desktop}</nav><div class="nav-right"><button class="theme-toggle" id="themeToggle" type="button" aria-label="{theme_label}">{icon('sun','sun')}{icon('moon','moon')}</button><a href="{store_header}" class="btn btn-primary btn-sm nav-download">{icon('apple','apple')}{t['download_sm']}</a><button class="menu-toggle" id="menuToggle" type="button" aria-label="{t['menu']}" aria-expanded="false" aria-controls="mobileNav">{icon('menu')}</button></div></div><nav class="mobile-nav" id="mobileNav" aria-label="{mobile_label}" hidden>{mobile}<a class="menu-download" href="{store_menu}">{t['download']}<span aria-hidden="true">→</span></a></nav></header>'''
 
 
 FT_HEADINGS = {"product": "Product", "learn": "Learn", "company": "Feed Flow", "languages": "Languages"}
 # Where a translation already existed on the old language footers it is kept; everything else stays English.
 FT_NORDIC = {
-    "nb": {"privacy": "Personvern (engelsk)", "terms": "Vilkår (engelsk)", "pdf": ("/printables/feeding-log-nb-a4.pdf", "Matingslogg (PDF)"), "blurb": "Feed Flow! er appen for mating og MME på iPhone, laget i Norge av Zeolite. Mating, vekst og babyens helse i én rolig app med personvern først."},
     "sv": {"privacy": "Integritet (engelska)", "terms": "Villkor (engelska)", "pdf": ("/printables/feeding-log-sv-a4.pdf", "Matningslogg (PDF)"), "blurb": "Feed Flow! är appen för matning och ersättning på iPhone, byggd i Norge av Zeolite. Matning, tillväxt och bebisens hälsa i en lugn app med integriteten först."},
 }
+
+
+# Norwegian footer: same links as the English one, labels from scripts/no-home-strings.json (kept in step by hand).
+FT_NB_HEADINGS = {"product": "Produkt", "learn": "Lær mer", "company": "Feed Flow", "languages": "Språk"}
+FT_NB_LABELS = {"Formula feeding": "Flaske og morsmelkerstatning", "Breast &amp; pumping": "Amming og pumping", "Solids &amp; allergens": "Fast føde og allergener", "Growth &amp; development": "Vekst og utvikling", "Baby health": "Babyens helse", "Baby Reports": "Babyrapport", "Shared feeding log": "Delt matingslogg", "Guides": "Guider", "Vitamin D tracker": "D-vitamin", "Bottle countdown": "Nedtelling for flasken", "Combo feeding": "Delamming", "Printable feeding log": "Matingslogg til utskrift", "Compare apps": "Sammenlign apper", "Free tracker": "Gratis matingslogg", "FAQ": "Vanlige spørsmål", "Support": "Hjelp", "Ambassadors": "Ambassadører", "Earn as a creator": "Tjen som skaper", "Leave a review": "Skriv en anmeldelse", "Privacy": "Personvern", "Terms": "Vilkår"}
+FT_NB_BLURB = "Feed Flow! er matingsloggen for iPhone, laget i Norge av Zeolite. Mating, vekst og babyens helse i én rolig app som tar personvern på alvor."
 
 
 def footer(lang="en"):
@@ -379,6 +402,8 @@ def footer(lang="en"):
         u = L[lang]
         blurb, privacy, terms, pdf = u["blurb"], u["privacy"], u["terms"], (u["footer_links"][1][0], u["footer_links"][1][1])
     learn = [("/resources", "Guides"), ("/vitamin-d-tracker", "Vitamin D tracker"), ("/bottle-countdown", "Bottle countdown"), ("/combo-feeding", "Combo feeding"), ("/printable-feeding-log", "Printable feeding log"), ("/compare", "Compare apps"), ("/free-baby-feeding-tracker", "Free tracker"), ("/faq", "FAQ")]
+    if lang == "nb":
+        learn.insert(0, ("/no/matingslogg", "Matingslogg for amming og flaske"))
     if pdf:
         learn.insert(5, pdf)
     if lang == "es" and ES_INDEX:
@@ -388,10 +413,16 @@ def footer(lang="en"):
         ("learn", learn),
         ("company", [("/support", "Support"), ("/ambassador", "Ambassadors"), ("/mom-creator-affiliate-program", "Earn as a creator"), ("https://apps.apple.com/app/id6782075454?action=write-review", "Leave a review"), ("/privacy", privacy), ("/terms", terms)]),
     ]
-    cols = "".join(f'<nav class="ft-col" aria-labelledby="ft-h-{key}"><h2 class="ft-h" id="ft-h-{key}">{FT_HEADINGS[key]}</h2><ul>' + "".join(f'<li><a href="{url}">{label}</a></li>' for url, label in items) + '</ul></nav>' for key, items in columns)
+    nb = lang == "nb"
+    headings = FT_NB_HEADINGS if nb else FT_HEADINGS
+    if nb:
+        blurb = FT_NB_BLURB
+        columns = [(key, [(url, FT_NB_LABELS.get(label, label)) for url, label in items]) for key, items in columns]
+        icons = icons.replace("aria-label=\"Feed Flow on ", "aria-label=\"Feed Flow på ").replace("Feed Flow Parents on Reddit", "Feed Flow Parents på Reddit")
+    cols = "".join(f'<nav class="ft-col" aria-labelledby="ft-h-{key}"><h2 class="ft-h" id="ft-h-{key}">{headings[key]}</h2><ul>' + "".join(f'<li><a href="{url}">{label}</a></li>' for url, label in items) + '</ul></nav>' for key, items in columns)
     lang_items = "".join(f'<li><a href="{path}" hreflang="{code}" lang="{code}">{name}</a></li>' for path, name, code, _ in LANGS)
-    cols += f'<nav class="ft-col" aria-labelledby="ft-h-languages"><h2 class="ft-h" id="ft-h-languages">{FT_HEADINGS["languages"]}</h2><ul>{lang_items}</ul></nav>'
-    return f'''<footer class="ft" id="support"><div class="wrap"><div class="ft-inner"><div class="ft-left">{wordmark()}<p>{blurb}</p><a class="ft-mail" href="mailto:support@tryfeedflow.app">support@tryfeedflow.app</a><nav class="social-list" aria-label="Feed Flow on social media">{icons}</nav></div><div class="ft-cols">{cols}</div></div><div class="ft-bottom">&copy; 2026 Feed Flow!</div></div></footer>'''
+    cols += f'<nav class="ft-col" aria-labelledby="ft-h-languages"><h2 class="ft-h" id="ft-h-languages">{headings["languages"]}</h2><ul>{lang_items}</ul></nav>'
+    return f'''<footer class="ft" id="support"><div class="wrap"><div class="ft-inner"><div class="ft-left">{wordmark()}<p>{blurb}</p><a class="ft-mail" href="mailto:support@tryfeedflow.app">support@tryfeedflow.app</a><nav class="social-list" aria-label="{"Feed Flow i sosiale medier" if nb else "Feed Flow on social media"}">{icons}</nav></div><div class="ft-cols">{cols}</div></div>{f'<p class="ft-note">{NB_NOTE}</p>' if nb else ""}<div class="ft-bottom">&copy; 2026 Feed Flow!</div></div></footer>'''
 
 
 def schema(page):
@@ -448,7 +479,7 @@ def render(page):
         guide_crumb = '<a href="/es/guias">Guías</a><span>/</span>' if page.get("guide") else ""
         home_url = "/es"
     else:
-        home_url = "/"
+        home_url = "/no" if html_lang == "nb" else "/"
     hero = page.get("hero")
     og_image, og_height = ("https://tryfeedflow.app" + hero, 670) if hero else ("https://tryfeedflow.app/og.png", 630)
     og_alt = escape(page.get("hero_alt", ""), quote=True) if hero else ("Cuatro pantallas reales de Feed Flow: cuenta regresiva del biberón, FlowCast, vitamina D y un informe de alimentación y crecimiento" if html_lang == "es" else "Four real Feed Flow screens: bottle countdown, FlowCast, vitamin D tracking and a feeding and growth report")
@@ -514,16 +545,17 @@ def sync_static_pages():
     """Hand-edited pages keep their body, but their header and footer come from here (between ff: markers)."""
     block = lambda name, html: f"<!--ff:{name}-->{html}<!--/ff:{name}-->"
     # (file, active nav key for the header's aria-current)
-    pages = [("index.html", ""), ("ambassador.html", "ambassador"), ("founding-families.html", ""), ("mom-creator-affiliate-program.html", ""),
+    pages = [("index.html", ""), ("no.html", ""), ("ambassador.html", "ambassador"), ("founding-families.html", ""), ("mom-creator-affiliate-program.html", ""),
              ("faq.html", ""), ("support.html", ""), ("privacy.html", ""), ("terms.html", "")]
     for name, active in pages:
         path = ROOT / name
+        ui = "nb" if name == "no.html" else "en"
         text = path.read_text(encoding="utf-8")
         if "<!--ff:header-->" not in text:
             text = _re.sub(r'<header class="nav">.*?</header>', lambda m: block("header", m.group(0)), text, count=1, flags=_re.S)
         if "<!--ff:footer-->" not in text:
             text = _re.sub(r'<footer class="ft".*?</footer>', lambda m: block("footer", m.group(0)), text, count=1, flags=_re.S)
-        for part, html in (("header", header(active, "en")), ("footer", footer("en"))):
+        for part, html in (("header", header(active, ui)), ("footer", footer(ui))):
             text = _re.sub(rf"<!--ff:{part}-->.*?<!--/ff:{part}-->", lambda m: block(part, html), text, flags=_re.S)
         path.write_text(text, encoding="utf-8")
         print(f"Synced {path.relative_to(ROOT)}")

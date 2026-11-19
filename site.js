@@ -68,11 +68,16 @@
     } catch (e) { return 'auto'; }
   }
 
-  var auto = automaticLanguage();
+  /* On the Norwegian page (lang="nb") the reviews default to Norwegian and the controls speak Norwegian. */
+  var nbPage = normalize(document.documentElement.getAttribute('lang')) === 'nb';
+  var text = nbPage
+    ? { auto: 'Automatisk', original: 'Vis original', translation: 'Vis oversettelse', originalOf: 'Vis original av anmeldelse ', translationOf: 'Vis oversettelse av anmeldelse ' }
+    : { auto: 'Automatic', original: 'View original', translation: 'View translation', originalOf: 'View original review ', translationOf: 'View translation of review ' };
+  var auto = nbPage ? 'nb' : automaticLanguage();
   var choice = storedLanguage();
   if (select) {
     var autoOption = select.querySelector('option[value="auto"]');
-    if (autoOption) autoOption.textContent = 'Automatic (' + names[auto] + ')';
+    if (autoOption) autoOption.textContent = text.auto + ' (' + (nbPage ? names[auto].replace(/ \(.*\)/, '') : names[auto]) + ')';
     select.value = choice;
   }
 
@@ -94,9 +99,9 @@
         quote.setAttribute('lang', useOriginal ? original.language : language);
         note.classList.toggle('visible', !useOriginal && hasTranslation);
         button.hidden = !hasTranslation;
-        button.textContent = showingOriginal ? 'View translation' : 'View original';
+        button.textContent = showingOriginal ? text.translation : text.original;
         button.setAttribute('aria-pressed', showingOriginal ? 'true' : 'false');
-        button.setAttribute('aria-label', (showingOriginal ? 'View translation of' : 'View original') + ' review ' + (index + 1));
+        button.setAttribute('aria-label', nbPage ? (showingOriginal ? text.translationOf : text.originalOf) + (index + 1) : (showingOriginal ? 'View translation of' : 'View original') + ' review ' + (index + 1));
       }
       button.onclick = function () {
         showingOriginal = !showingOriginal;
@@ -105,7 +110,9 @@
       renderCard();
     });
     if (status) {
-      status.textContent = (choice === 'auto' ? 'Automatically showing ' : 'Showing ') + names[language] +
+      status.textContent = nbPage
+        ? (choice === 'auto' ? 'Automatisk valgt: anmeldelsene vises på ' : 'Anmeldelsene vises på ') + names[language] + ' der det finnes en oversettelse. Originalen er alltid ett trykk unna.'
+        : (choice === 'auto' ? 'Automatically showing ' : 'Showing ') + names[language] +
         ' where a translation is available. Every original review remains one tap away.';
     }
   }

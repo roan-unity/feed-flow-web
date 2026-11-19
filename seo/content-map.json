@@ -402,7 +402,7 @@
       ]
     },
     {
-      "url": "https://tryfeedflow.app/no",
+      "url": "https://tryfeedflow.app/no/matingslogg",
       "title": "Feed Flow: Babyapp for amming, flaske og MME på norsk | iPhone",
       "intent": "Babyapp på norsk",
       "role": "hub",
@@ -416,7 +416,7 @@
       ],
       "relatedLinks": [
         "/printables/feeding-log-nb-a4.pdf",
-        "/sv",
+        "/no",
         "/"
       ]
     },

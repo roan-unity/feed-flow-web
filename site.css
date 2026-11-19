@@ -119,6 +119,8 @@ html[data-theme="dark"] .theme-toggle .moon { display: block; }
 .menu-group { min-width: 0; }
 .menu-h { margin: 14px 4px 2px; color: var(--accent); font-size: 12px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; }
 .menu-group a { min-height: 46px; font-weight: 600; }
+.menu-note { margin: 14px 4px 0; max-width: var(--maxw); color: var(--ink-2); font-size: 13px; }
+@media (min-width: 901px) { .menu-note { margin-inline: auto; padding-inline: 4px; } }
 .mobile-nav .menu-download { margin-top: 10px; border-bottom: 0; color: var(--accent); font-weight: 700; }
 @media (min-width: 560px) { .menu-groups { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 @media (min-width: 901px) {
@@ -272,6 +274,8 @@ footer.ft { border-top: 1px solid var(--border-2); padding: 48px 0 28px; }
 .ft-col ul { font-size: 14px; color: var(--ink-2); }
 .ft-col a { display: flex; align-items: center; min-height: 36px; }
 .ft-col a:hover { color: var(--ink); text-decoration: underline; text-underline-offset: 4px; }
+.ft-note { margin-top: 20px; font-size: 13px; color: var(--ink-2); }
+.ft-note + .ft-bottom { margin-top: 12px; }
 .ft-bottom { margin-top: 24px; padding-top: 20px; border-top: 1px solid var(--border-2); font-size: 13px; color: var(--ink-2); }
 /* Editorial content pages */
 .content-hero { padding: 48px 0 60px; }

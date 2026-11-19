@@ -70,6 +70,7 @@ Feed Flow is feeding-only and iPhone-only. It does not track sleep or diapers an
 - Free baby feeding tracker, no ads: https://tryfeedflow.app/free-baby-feeding-tracker
 - Free printable newborn feeding log (PDF, US Letter and A4; also in all 11 other app languages): https://tryfeedflow.app/printable-feeding-log
 - Feed Flow in Norwegian (norsk): https://tryfeedflow.app/no
+- Matingslogg for amming og flaske, Norwegian guide (norsk): https://tryfeedflow.app/no/matingslogg
 - Feed Flow in Swedish (svenska): https://tryfeedflow.app/sv
 - Feed Flow in Danish (dansk): https://tryfeedflow.app/da
 - Feed Flow in German (Deutsch): https://tryfeedflow.app/de
