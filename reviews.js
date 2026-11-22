@@ -1,5 +1,7 @@
 /* Real App Store reviews. Translations were produced with Google Translate on
  * 2026-11-09 and stored locally so no visitor text or credentials leave the site.
+ * Reviews 4 and 5 were added 2026-11-22 with English and Spanish translations only (not Google Translate);
+ * other languages show the original.
  * FlowCast terminology is preserved. Original text remains available on every card. */
 window.FF_REVIEWS = {
   originals: [
@@ -18,6 +20,14 @@ window.FF_REVIEWS = {
     {
       text: "Love it! Super easy to use, and the FlowCast function actually helps saving formula.",
       name: "Lokal-bruker", country: "Norway", language: "en"
+    },
+    {
+      text: "Godt utviklet app og gode funksjoner når man vil ha kontroll på hvor mye babyen spiser. Kan lett gå i surr om ikke😅",
+      name: "Birger", country: "Norway", language: "nb"
+    },
+    {
+      text: "Suveränt, erbjuder full koll, riktigt bra detta",
+      name: "Farsa", country: "Sweden", language: "sv"
     }
   ],
   translations: {
@@ -25,7 +35,9 @@ window.FF_REVIEWS = {
       null,
       null,
       "Super simple app—it’s helped me keep track of my breastfeeding. I don’t have to worry about my baby going hungry! Great! ⭐️",
-      null
+      null,
+      "A well-made app with good features for when you want to keep track of how much your baby eats. It is easy to lose count otherwise 😅",
+      "Superb. It gives you the full picture, this one is really good"
     ],
     da: [
       "Meget nyttig app! Den sparer mig for både tid og mental energi, samtidig med at den giver et klart og enkelt overblik. Helt klart værd at downloade!",
@@ -85,7 +97,9 @@ window.FF_REVIEWS = {
       "¡Una aplicación muy útil! Me ahorra tiempo y esfuerzo mental, además de ofrecerme una visión general clara y sencilla. ¡Sin duda, vale la pena descargarla!",
       "Me gusta mucho; empecé a usarla hace solo unos días. Es de gran ayuda para organizar y registrar las tomas, así que siempre tenemos todo bien controlado.",
       "Una aplicación súper sencilla que me ha ayudado a llevar un buen control de la lactancia. ¡Ya no tengo que preocuparme de que mi bebé pase hambre! ¡Genial! ⭐️",
-      "¡Me encanta! Es facilísima de usar, y la función FlowCast realmente ayuda a ahorrar leche de fórmula."
+      "¡Me encanta! Es facilísima de usar, y la función FlowCast realmente ayuda a ahorrar leche de fórmula.",
+      "Una app bien hecha y con buenas funciones para llevar el control de cuánto come el bebé. Si no, es fácil hacerse un lío 😅",
+      "Excelente. Te da el control completo, es realmente buena"
     ],
     sv: [
       "Mycket användbar app! Den sparar både tid och mental energi, samtidigt som den ger en tydlig och enkel överblick. Helt klart värd att ladda ner!",
