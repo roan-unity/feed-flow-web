@@ -1,0 +1,48 @@
+{
+ "answered": 155,
+ "total": 20,
+ "average": 5.0,
+ "countries": [
+  {
+   "code": "no",
+   "count": 8,
+   "average": 5.0
+  },
+  {
+   "code": "se",
+   "count": 5,
+   "average": 5.0
+  },
+  {
+   "code": "us",
+   "count": 2,
+   "average": 5.0
+  },
+  {
+   "code": "co",
+   "count": 1,
+   "average": 5.0
+  },
+  {
+   "code": "fi",
+   "count": 1,
+   "average": 5.0
+  },
+  {
+   "code": "fr",
+   "count": 1,
+   "average": 5.0
+  },
+  {
+   "code": "gb",
+   "count": 1,
+   "average": 5.0
+  },
+  {
+   "code": "mx",
+   "count": 1,
+   "average": 5.0
+  }
+ ],
+ "counted": "2026-11-22"
+}

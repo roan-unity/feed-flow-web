@@ -170,6 +170,14 @@ html[data-theme="dark"] .theme-toggle .moon { display: block; }
 .proof-note { margin-top: 10px; color: var(--ink-2); font-size: 15px; }
 .review-language { display: flex; flex-direction: column; gap: 6px; flex: 0 0 auto; color: var(--ink-2); font-size: 12px; font-weight: 700; }
 .review-language select { min-height: 44px; max-width: 220px; padding: 8px 34px 8px 12px; border: 1px solid var(--border); border-radius: 12px; background: var(--surface); color: var(--ink); cursor: pointer; }
+.rating-summary { display: flex; flex-wrap: wrap; align-items: center; gap: 14px 28px; margin-bottom: 22px; padding: 18px 20px; border: 1px solid var(--border); border-radius: 16px; background: var(--surface); }
+.rating-score { display: flex; align-items: center; gap: 14px; }
+.rating-score strong { font-size: 44px; line-height: 1; font-weight: 800; color: var(--ink); }
+.rating-score p { margin-top: 2px; color: var(--ink-2); font-size: 15px; }
+.rating-countries { display: flex; flex-wrap: wrap; gap: 8px; list-style: none; margin: 0; padding: 0; flex: 1 1 320px; }
+.rating-countries li { display: inline-flex; align-items: center; gap: 7px; padding: 6px 12px; border: 1px solid var(--border); border-radius: 999px; font-size: 14px; color: var(--ink); }
+.rating-countries b { font-weight: 800; }
+.rating-date { flex-basis: 100%; color: var(--ink-2); font-size: 13px; }
 .review-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px; }
 .review { margin: 0; padding: 20px; background: var(--surface); border: 1px solid var(--border); border-radius: var(--r-md); box-shadow: var(--shadow-sm); display: flex; flex-direction: column; min-width: 0; }
 .stars { color: #a65b00; letter-spacing: .08em; font-size: 17px; }
