@@ -46,7 +46,7 @@ Everyday logging is free. Premium adds the next-feed time, the day-ahead view, t
 
 ## Compared with other baby trackers
 
-Feed Flow is feeding-only and iPhone-only. It does not track sleep or diapers and has no Android or Apple Watch app. Huckleberry is built around sleep; Baby Tracker by Nighp, Nara Baby and Baby Daybook are all-in-one trackers with Android apps. Feed Flow's free version includes logging, the Lock Screen bottle countdown, family sharing, the allergen journey and vitamin D tracking, with no ads.
+Feed Flow is built around feeding first and is iPhone-only. Next to feeding it tracks health (allergen introductions, reactions and symptoms, medicines, vaccines, vitamin D), growth and milestones, and gathers it all in a Baby Report. Parents choose what to track during setup and can change it in Settings. It does not track sleep or diapers and has no Android or Apple Watch app. Huckleberry is built around sleep; Baby Tracker by Nighp, Nara Baby and Baby Daybook are all-in-one trackers with Android apps. Feed Flow's free version includes logging, the Lock Screen bottle countdown, family sharing, the allergen journey and vitamin D tracking, with no ads.
 
 - How to choose a baby tracker (core differences): https://tryfeedflow.app/compare
 - Feed Flow and Huckleberry: https://tryfeedflow.app/compare/huckleberry
