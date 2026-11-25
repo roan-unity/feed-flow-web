@@ -1,6 +1,6 @@
 {
  "answered": 155,
- "total": 21,
+ "total": 22,
  "average": 4.95,
  "countries": [
   {
@@ -42,7 +42,12 @@
    "code": "mx",
    "count": 1,
    "average": 5.0
+  },
+  {
+   "code": "za",
+   "count": 1,
+   "average": 5.0
   }
  ],
- "counted": "2026-11-23"
+ "counted": "2026-11-25"
 }
