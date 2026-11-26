@@ -1,7 +1,7 @@
 {
  "answered": 155,
- "total": 22,
- "average": 4.95,
+ "total": 24,
+ "average": 4.96,
  "countries": [
   {
    "code": "no",
@@ -15,8 +15,8 @@
   },
   {
    "code": "us",
-   "count": 3,
-   "average": 4.67
+   "count": 5,
+   "average": 4.8
   },
   {
    "code": "co",
@@ -49,5 +49,5 @@
    "average": 5.0
   }
  ],
- "counted": "2026-11-25"
+ "counted": "2026-11-26"
 }
