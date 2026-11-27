@@ -678,3 +678,5 @@ html[data-theme="dark"] .form-status.error { background: #40231f; color: #ffb8aa
 .hiw-medlist span { display: grid; gap: 2px; text-align: left; line-height: 1.2; }
 .hiw-medlist strong { font-size: 15px; color: #12262d; }
 .hiw-medlist em { font-style: normal; font-size: 13px; color: #4d646b; }
+.hiw-beat .hiw-copy .hiw-soon { margin-top: 12px; font-size: 14px; color: var(--ink-2); }
+.hiw-medlist { gap: 10px; }
