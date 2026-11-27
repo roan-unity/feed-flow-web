@@ -670,3 +670,11 @@ html[data-theme="dark"] .form-status.error { background: #40231f; color: #ffb8aa
 .hiw-foods img:nth-child(odd) { transform: translateY(-5px) rotate(-6deg); }
 .hiw-foods img:nth-child(even) { transform: translateY(5px) rotate(5deg); }
 @media (max-width: 820px) { .hiw-foods { justify-content: center; margin-left: 0; } }
+.hiw-medlist { list-style: none; margin: 6px auto 10px; padding: 0; display: grid; gap: 12px; width: min(100%, 250px); }
+.hiw-medlist li { display: flex; align-items: center; gap: 12px; padding: 9px 16px 9px 9px; background: #fff; border-radius: 18px; box-shadow: 0 10px 24px rgba(12, 40, 48, .16); }
+.hiw-medlist li:nth-child(odd) { transform: translateX(-8px) rotate(-1.5deg); }
+.hiw-medlist li:nth-child(even) { transform: translateX(8px) rotate(1.5deg); }
+.hiw-medlist img { width: 54px; height: 54px; border-radius: 50%; flex: none; }
+.hiw-medlist span { display: grid; gap: 2px; text-align: left; line-height: 1.2; }
+.hiw-medlist strong { font-size: 15px; color: #12262d; }
+.hiw-medlist em { font-style: normal; font-size: 13px; color: #4d646b; }
