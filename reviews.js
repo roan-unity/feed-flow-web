@@ -87,7 +87,7 @@ window.FF_REVIEWS = {
    null,
    null,
    "The app is very useful and easy to use! It's an excellent tool for keeping track of your baby's feeding and growth.",
-   "Super simple app,it’s helped me keep track of my breastfeeding. I don’t have to worry about my baby going hungry! Great! ⭐️",
+   "Super simple app, it’s helped me keep track of my breastfeeding. I don’t have to worry about my baby going hungry! Great! ⭐️",
    null,
    null,
    null,
