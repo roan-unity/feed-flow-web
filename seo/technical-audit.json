@@ -1,8 +1,8 @@
 {
   "workflow": "OpenSEO seo-audit local technical checks",
   "liveKeywordData": "Not connected; no volume, ranking or traffic claims are included",
-  "sitemapUrls": 68,
-  "pagesChecked": 68,
+  "sitemapUrls": 81,
+  "pagesChecked": 81,
   "errors": [],
   "warnings": [
     "founding-families.html: title is 70 characters"
@@ -93,6 +93,12 @@
       "descriptionLength": 159
     },
     {
+      "url": "https://tryfeedflow.app/guides/how-accurate-is-flowcast",
+      "file": "guides/how-accurate-is-flowcast.html",
+      "titleLength": 63,
+      "descriptionLength": 156
+    },
+    {
       "url": "https://tryfeedflow.app/guides/should-you-use-a-feeding-tracker",
       "file": "guides/should-you-use-a-feeding-tracker.html",
       "titleLength": 55,
@@ -180,25 +186,25 @@
       "url": "https://tryfeedflow.app/compare/huckleberry",
       "file": "compare/huckleberry.html",
       "titleLength": 42,
-      "descriptionLength": 123
+      "descriptionLength": 118
     },
     {
       "url": "https://tryfeedflow.app/compare/baby-tracker-nighp",
       "file": "compare/baby-tracker-nighp.html",
       "titleLength": 51,
-      "descriptionLength": 111
+      "descriptionLength": 112
     },
     {
       "url": "https://tryfeedflow.app/compare/nara-baby",
       "file": "compare/nara-baby.html",
       "titleLength": 40,
-      "descriptionLength": 101
+      "descriptionLength": 102
     },
     {
       "url": "https://tryfeedflow.app/compare/baby-daybook",
       "file": "compare/baby-daybook.html",
       "titleLength": 43,
-      "descriptionLength": 121
+      "descriptionLength": 122
     },
     {
       "url": "https://tryfeedflow.app/faq",
@@ -379,6 +385,78 @@
       "file": "es/guias/mi-bebe-come-lo-suficiente.html",
       "titleLength": 59,
       "descriptionLength": 154
+    },
+    {
+      "url": "https://tryfeedflow.app/es/alimentacion-con-formula",
+      "file": "es/alimentacion-con-formula.html",
+      "titleLength": 45,
+      "descriptionLength": 155
+    },
+    {
+      "url": "https://tryfeedflow.app/es/comparar",
+      "file": "es/comparar.html",
+      "titleLength": 49,
+      "descriptionLength": 159
+    },
+    {
+      "url": "https://tryfeedflow.app/es/comparar/baby-daybook",
+      "file": "es/comparar/baby-daybook.html",
+      "titleLength": 50,
+      "descriptionLength": 153
+    },
+    {
+      "url": "https://tryfeedflow.app/es/comparar/baby-tracker-nighp",
+      "file": "es/comparar/baby-tracker-nighp.html",
+      "titleLength": 46,
+      "descriptionLength": 158
+    },
+    {
+      "url": "https://tryfeedflow.app/es/comparar/huckleberry",
+      "file": "es/comparar/huckleberry.html",
+      "titleLength": 49,
+      "descriptionLength": 150
+    },
+    {
+      "url": "https://tryfeedflow.app/es/comparar/nara-baby",
+      "file": "es/comparar/nara-baby.html",
+      "titleLength": 47,
+      "descriptionLength": 135
+    },
+    {
+      "url": "https://tryfeedflow.app/es/crecimiento-y-desarrollo",
+      "file": "es/crecimiento-y-desarrollo.html",
+      "titleLength": 51,
+      "descriptionLength": 156
+    },
+    {
+      "url": "https://tryfeedflow.app/es/informe-del-bebe",
+      "file": "es/informe-del-bebe.html",
+      "titleLength": 44,
+      "descriptionLength": 164
+    },
+    {
+      "url": "https://tryfeedflow.app/es/lactancia-y-extraccion",
+      "file": "es/lactancia-y-extraccion.html",
+      "titleLength": 51,
+      "descriptionLength": 160
+    },
+    {
+      "url": "https://tryfeedflow.app/es/preguntas-frecuentes",
+      "file": "es/preguntas-frecuentes.html",
+      "titleLength": 62,
+      "descriptionLength": 160
+    },
+    {
+      "url": "https://tryfeedflow.app/es/salud-del-bebe",
+      "file": "es/salud-del-bebe.html",
+      "titleLength": 50,
+      "descriptionLength": 160
+    },
+    {
+      "url": "https://tryfeedflow.app/es/solidos-y-alergenos",
+      "file": "es/solidos-y-alergenos.html",
+      "titleLength": 52,
+      "descriptionLength": 164
     },
     {
       "url": "https://tryfeedflow.app/fi",

@@ -1,0 +1,39 @@
+{
+  "translation_of": "compare/huckleberry",
+  "slug": "es/comparar/huckleberry",
+  "title": "¿Feed Flow o Huckleberry? Diferencias principales",
+  "description": "¿Feed Flow o Huckleberry? Huckleberry está hecha en torno al sueño, Feed Flow en torno a la alimentación. Las diferencias principales, con honestidad.",
+  "eyebrow": "Feed Flow y Huckleberry",
+  "h1": "¿Feed Flow o Huckleberry?",
+  "intro": "Huckleberry es una app muy querida, conocida por el sueño. Feed Flow hace una sola cosa: la alimentación.",
+  "alt": "Una pantalla bloqueada real de iPhone con la cuenta regresiva del biberón de Feed Flow.",
+  "faqs": [
+    [
+      "¿Feed Flow es una alternativa a Huckleberry?",
+      "Para la alimentación, puede serlo. Feed Flow se centra solo en la alimentación. No registra el sueño, así que si usas Huckleberry por el sueño, quédate con Huckleberry."
+    ],
+    [
+      "¿Puedo usar Feed Flow y Huckleberry a la vez?",
+      "Sí. Algunos padres usan Huckleberry para el sueño y Feed Flow para los biberones y la alimentación."
+    ]
+  ],
+  "related": [
+    [
+      "/compare",
+      "Cómo elegir una app de registro para bebés"
+    ],
+    [
+      "/formula-feeding",
+      "Fórmula y biberones"
+    ],
+    [
+      "/breastfeeding-pumping",
+      "Lactancia y extracción"
+    ]
+  ],
+  "queries": [
+    "alternativa a Huckleberry",
+    "Feed Flow vs Huckleberry",
+    "Huckleberry o app de registro para bebés"
+  ]
+}

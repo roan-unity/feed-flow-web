@@ -1,0 +1,48 @@
+{
+  "translation_of": "formula-feeding",
+  "slug": "es/alimentacion-con-formula",
+  "title": "Registro de fórmula y temporizador de biberón",
+  "description": "Registra biberones de fórmula, marcas, horas de preparación, cantidades y vitamina D. Compara etiquetas y usa la cuenta regresiva del biberón de Feed Flow.",
+  "eyebrow": "Fórmula y biberón",
+  "h1": "Alimentar con fórmula, sin hacer cuentas de cabeza.",
+  "intro": "Guarda cada biberón, marca de fórmula, cantidad y hora de preparación en un solo registro tranquilo. Feed Flow te ayuda con cuentas regresivas, totales diarios y planificación, mientras que la etiqueta y tu profesional de salud siguen siendo la fuente de los consejos de alimentación.",
+  "alt": "La pantalla real del biberón de fórmula de Feed Flow, con un anillo de cuenta regresiva y las cantidades tomadas y restantes.",
+  "faqs": [
+    [
+      "¿Puedo registrar distintas marcas de fórmula en Feed Flow?",
+      "Sí. Puedes guardar los datos del producto de fórmula junto con las tomas y comparar la nutrición que indica la etiqueta. Feed Flow no recomienda ni clasifica marcas."
+    ],
+    [
+      "¿El temporizador del biberón garantiza que la fórmula es segura?",
+      "No. Es una cuenta regresiva basada en el tiempo, no un sensor de seguridad. Sigue la etiqueta del producto y las indicaciones de salud de tu zona para la preparación, la conservación y el desecho."
+    ],
+    [
+      "¿Feed Flow puede incluir la vitamina D de la fórmula?",
+      "Sí. Anota la información de vitamina D de la etiqueta de la fórmula y registra aparte las gotas de vitamina D. La app guarda registros; no recomienda dosis de suplementos."
+    ],
+    [
+      "¿Se puede combinar fórmula y lactancia?",
+      "Sí. La lactancia, la extracción, la leche materna extraída y la fórmula aparecen juntas en el mismo panorama de alimentación, sin juicios."
+    ]
+  ],
+  "related": [
+    [
+      "/guides/formula-safety",
+      "Preparación y conservación de la fórmula"
+    ],
+    [
+      "/guides/vitamin-d-for-babies",
+      "Registro de vitamina D"
+    ],
+    [
+      "/breastfeeding-pumping",
+      "Lactancia y lactancia mixta"
+    ]
+  ],
+  "queries": [
+    "registro de biberones de fórmula",
+    "app temporizador de biberón",
+    "comparar marcas de fórmula para bebé",
+    "app para registrar tomas de fórmula"
+  ]
+}

@@ -1,0 +1,48 @@
+{
+  "translation_of": "growth-development",
+  "slug": "es/crecimiento-y-desarrollo",
+  "title": "Crecimiento del bebé: percentiles de peso de la OMS",
+  "description": "Sigue el peso, la talla y el perímetro cefálico de tu bebé con las referencias de la OMS. Mira los percentiles, anota los hitos y comparte un informe claro.",
+  "eyebrow": "Crecimiento y desarrollo",
+  "h1": "Convierte el peso, la talla y el perímetro cefálico en una historia que puedes seguir.",
+  "intro": "Mira las medidas de tu bebé frente a las referencias de crecimiento de la OMS, sigue el patrón con el tiempo y guarda los hitos del desarrollo en el mismo registro que las tomas y la salud.",
+  "alt": "Un informe real de Feed Flow que muestra el peso en el percentil 49 y la talla en el percentil 50.",
+  "faqs": [
+    [
+      "¿Feed Flow usa las curvas de crecimiento de la OMS?",
+      "Sí. Sitúa las medidas de peso, talla y perímetro cefálico en el contexto de las referencias de crecimiento de la OMS. Tu médico también puede usar referencias locales y su valoración clínica."
+    ],
+    [
+      "¿Qué significa el percentil 49 de peso?",
+      "En la población de referencia, alrededor del 49 por ciento de los niños de la misma edad y sexo pesan menos y alrededor del 51 por ciento pesan más. No es una nota ni una meta."
+    ],
+    [
+      "¿Puedo registrar el perímetro cefálico además del peso y la talla?",
+      "Sí. El perímetro cefálico, el peso y la talla pueden guardarse en el mismo registro de crecimiento, con el contexto de referencia de la OMS."
+    ],
+    [
+      "¿Las curvas de crecimiento son gratis?",
+      "Registrar los hitos del desarrollo del día a día es gratis. Premium incluye las curvas de crecimiento completas, historial ilimitado y análisis más amplios; el App Store muestra las opciones actuales."
+    ]
+  ],
+  "related": [
+    [
+      "/guides/who-growth-percentiles",
+      "Guía de percentiles de la OMS"
+    ],
+    [
+      "/baby-health",
+      "Registros de salud del bebé"
+    ],
+    [
+      "/solids-allergens",
+      "Alimentos sólidos y alérgenos"
+    ]
+  ],
+  "queries": [
+    "seguimiento del crecimiento del bebé",
+    "app de curvas de crecimiento OMS",
+    "percentil de peso del bebé",
+    "app de talla y perímetro cefálico"
+  ]
+}

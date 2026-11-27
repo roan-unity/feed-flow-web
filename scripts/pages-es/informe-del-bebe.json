@@ -1,0 +1,48 @@
+{
+  "translation_of": "baby-report",
+  "slug": "es/informe-del-bebe",
+  "title": "Informe del bebé en PDF: tomas y crecimiento",
+  "description": "Crea un informe del bebé con totales de tomas, patrones semanales, curvas de la OMS, percentiles de peso, talla y perímetro cefálico, e hitos. Privado en tu iCloud.",
+  "eyebrow": "Informes del bebé",
+  "h1": "Un informe completo con todos tus datos de alimentación y crecimiento.",
+  "intro": "Convierte los registros del día a día en un PDF claro para un profesional de salud, el pediatra o una consulta de lactancia. Las tomas, el crecimiento y los hitos del desarrollo se quedan en tu propio iCloud hasta que decidas compartirlos.",
+  "alt": "Un Informe del bebé real de Feed Flow con totales de tomas, crecimiento desde el nacimiento, promedios diarios y percentiles.",
+  "faqs": [
+    [
+      "¿Qué incluye el Informe del bebé?",
+      "Totales y patrones de tomas, tendencias semanales, curvas de crecimiento de la OMS y percentiles de peso, talla y perímetro cefálico, y los hitos del desarrollo a partir de tus propios registros."
+    ],
+    [
+      "¿Puedo compartir el informe con mi pediatra o con una IBCLC?",
+      "Sí. Puedes imprimir o compartir el PDF antes o durante una cita. Es una ayuda para la conversación, no un diagnóstico."
+    ],
+    [
+      "¿El informe de mi bebé se guarda en los servidores de Feed Flow?",
+      "No. Los datos del bebé se quedan en tu dispositivo y en tu propio iCloud. Tú decides cuándo exportar o compartir un informe."
+    ],
+    [
+      "¿Necesito Premium completo para los informes?",
+      "Los informes están incluidos con Premium, y hay también un Pase de informes aparte. El App Store muestra las opciones y los precios actuales."
+    ]
+  ],
+  "related": [
+    [
+      "/growth-development",
+      "Crecimiento y desarrollo según la OMS"
+    ],
+    [
+      "/baby-health",
+      "Registros de salud del bebé"
+    ],
+    [
+      "/flowcast",
+      "Predicciones de FlowCast"
+    ]
+  ],
+  "queries": [
+    "informe de tomas del bebé en PDF",
+    "app de informe de alimentación y crecimiento",
+    "informe del bebé para el pediatra",
+    "informe de crecimiento OMS para bebés"
+  ]
+}

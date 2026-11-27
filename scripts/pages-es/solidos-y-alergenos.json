@@ -1,0 +1,48 @@
+{
+  "translation_of": "solids-allergens",
+  "slug": "es/solidos-y-alergenos",
+  "title": "Registro de sólidos, alérgenos y reacciones del bebé",
+  "description": "Registra sólidos, alérgenos y reacciones posteriores en una sola línea de tiempo. Ten listos los registros de huevo, maní, leche y más para tu profesional de salud.",
+  "eyebrow": "Alimentos sólidos y alérgenos",
+  "h1": "Una historia clara de lo que comió, aunque la reacción llegue después.",
+  "intro": "Registra las comidas y los alérgenos introducidos cuando ocurren. Añade una reacción observada minutos, horas o días después sin perder el alimento original ni su hora.",
+  "alt": "El recorrido real de alérgenos de Feed Flow, con seis de nueve alérgenos principales introducidos y una marca de reacción leve en el huevo.",
+  "faqs": [
+    [
+      "¿Puedo registrar una reacción después de haber anotado el alimento?",
+      "Sí. Es una parte central de la línea de tiempo de salud: conserva el registro original del alimento y añade una reacción observada cuando ocurra, incluso más tarde."
+    ],
+    [
+      "¿Feed Flow diagnostica una alergia alimentaria?",
+      "No. Registra alimentos, horas y observaciones. Un profesional de salud calificado debe evaluar los síntomas y diagnosticar una alergia."
+    ],
+    [
+      "¿Qué alérgenos puedo registrar?",
+      "El recorrido de alérgenos cubre nueve grupos principales: huevo, maní, nueces de árbol, leche de vaca, soya, trigo, pescado, mariscos y sésamo."
+    ],
+    [
+      "¿También puedo registrar los alimentos sólidos de todos los días?",
+      "Sí. Los sólidos están junto a las tomas de leche en el registro diario, y los alérgenos introducidos también aparecen en el recorrido de alérgenos."
+    ]
+  ],
+  "related": [
+    [
+      "/guides/allergen-reaction-diary",
+      "Guía del diario de reacciones a alérgenos"
+    ],
+    [
+      "/baby-health",
+      "Medicamentos, vacunas y salud"
+    ],
+    [
+      "/growth-development",
+      "Crecimiento y desarrollo"
+    ]
+  ],
+  "queries": [
+    "app para registrar alérgenos del bebé",
+    "registro de alimentos sólidos para bebés",
+    "diario de reacciones alimentarias del bebé",
+    "registro de alergia al huevo en bebés"
+  ]
+}

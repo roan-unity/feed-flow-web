@@ -489,8 +489,8 @@
       ],
       "relatedLinks": [
         "/printables/feeding-log-es-letter.pdf",
-        "/",
-        "/printable-feeding-log"
+        "/es/guias",
+        "/"
       ]
     },
     {
@@ -973,6 +973,189 @@
       ],
       "relatedLinks": [
         "/es"
+      ]
+    },
+    {
+      "url": "https://tryfeedflow.app/es/alimentacion-con-formula",
+      "title": "Registro de fórmula y temporizador de biberón",
+      "intent": "Fórmula y biberón",
+      "role": "hub",
+      "primaryQueries": [
+        "registro de biberones de fórmula",
+        "app temporizador de biberón",
+        "comparar marcas de fórmula para bebé",
+        "app para registrar tomas de fórmula"
+      ],
+      "relatedLinks": [
+        "/guides/formula-safety",
+        "/guides/vitamin-d-for-babies",
+        "/es/lactancia-y-extraccion"
+      ]
+    },
+    {
+      "url": "https://tryfeedflow.app/es/comparar/baby-daybook",
+      "title": "¿Feed Flow o Baby Daybook? Diferencias principales",
+      "intent": "Feed Flow y Baby Daybook",
+      "role": "hub",
+      "primaryQueries": [
+        "alternativa a Baby Daybook",
+        "Baby Daybook vs Feed Flow",
+        "Baby Daybook o Feed Flow"
+      ],
+      "relatedLinks": [
+        "/es/comparar",
+        "/es/alimentacion-con-formula",
+        "/es/lactancia-y-extraccion"
+      ]
+    },
+    {
+      "url": "https://tryfeedflow.app/es/comparar/baby-tracker-nighp",
+      "title": "¿Feed Flow o Baby Tracker (Nighp)? Diferencias",
+      "intent": "Feed Flow y Baby Tracker (Nighp)",
+      "role": "hub",
+      "primaryQueries": [
+        "alternativa a Baby Tracker Nighp",
+        "app de registro para bebés sin anuncios",
+        "Baby Tracker o Feed Flow"
+      ],
+      "relatedLinks": [
+        "/es/comparar",
+        "/es/alimentacion-con-formula",
+        "/es/lactancia-y-extraccion"
+      ]
+    },
+    {
+      "url": "https://tryfeedflow.app/es/comparar/huckleberry",
+      "title": "¿Feed Flow o Huckleberry? Diferencias principales",
+      "intent": "Feed Flow y Huckleberry",
+      "role": "hub",
+      "primaryQueries": [
+        "alternativa a Huckleberry",
+        "Feed Flow vs Huckleberry",
+        "Huckleberry o app de registro para bebés"
+      ],
+      "relatedLinks": [
+        "/es/comparar",
+        "/es/alimentacion-con-formula",
+        "/es/lactancia-y-extraccion"
+      ]
+    },
+    {
+      "url": "https://tryfeedflow.app/es/comparar/nara-baby",
+      "title": "¿Feed Flow o Nara Baby? Diferencias principales",
+      "intent": "Feed Flow y Nara Baby",
+      "role": "hub",
+      "primaryQueries": [
+        "alternativa a Nara Baby",
+        "Nara vs Feed Flow",
+        "Nara Baby o Feed Flow"
+      ],
+      "relatedLinks": [
+        "/es/comparar",
+        "/es/alimentacion-con-formula",
+        "/es/lactancia-y-extraccion"
+      ]
+    },
+    {
+      "url": "https://tryfeedflow.app/es/comparar",
+      "title": "Cómo elegir una app para registrar tomas del bebé",
+      "intent": "Cómo elegir una app de registro para bebés",
+      "role": "hub",
+      "primaryQueries": [
+        "mejor app para registrar tomas del bebé",
+        "mejor app de registro para bebés 2026",
+        "comparar apps de registro para bebés",
+        "app para lactancia mixta"
+      ],
+      "relatedLinks": [
+        "/es/comparar/huckleberry",
+        "/es/alimentacion-con-formula",
+        "/es/lactancia-y-extraccion"
+      ]
+    },
+    {
+      "url": "https://tryfeedflow.app/es/crecimiento-y-desarrollo",
+      "title": "Crecimiento del bebé: percentiles de peso de la OMS",
+      "intent": "Crecimiento y desarrollo",
+      "role": "hub",
+      "primaryQueries": [
+        "seguimiento del crecimiento del bebé",
+        "app de curvas de crecimiento OMS",
+        "percentil de peso del bebé",
+        "app de talla y perímetro cefálico"
+      ],
+      "relatedLinks": [
+        "/guides/who-growth-percentiles",
+        "/es/salud-del-bebe",
+        "/es/solidos-y-alergenos"
+      ]
+    },
+    {
+      "url": "https://tryfeedflow.app/es/informe-del-bebe",
+      "title": "Informe del bebé en PDF: tomas y crecimiento",
+      "intent": "Informes del bebé",
+      "role": "hub",
+      "primaryQueries": [
+        "informe de tomas del bebé en PDF",
+        "app de informe de alimentación y crecimiento",
+        "informe del bebé para el pediatra",
+        "informe de crecimiento OMS para bebés"
+      ],
+      "relatedLinks": [
+        "/es/crecimiento-y-desarrollo",
+        "/es/salud-del-bebe",
+        "/flowcast"
+      ]
+    },
+    {
+      "url": "https://tryfeedflow.app/es/lactancia-y-extraccion",
+      "title": "Registro de lactancia, extracción y lactancia mixta",
+      "intent": "Lactancia, extracción y lactancia mixta",
+      "role": "hub",
+      "primaryQueries": [
+        "app para registrar lactancia materna",
+        "registro de extracción de leche",
+        "app lactancia mixta",
+        "app para lactancia y fórmula"
+      ],
+      "relatedLinks": [
+        "/es/alimentacion-con-formula",
+        "/es/crecimiento-y-desarrollo",
+        "/ambassador"
+      ]
+    },
+    {
+      "url": "https://tryfeedflow.app/es/salud-del-bebe",
+      "title": "Salud del bebé: medicamentos, vacunas y reacciones",
+      "intent": "Registros de salud del bebé",
+      "role": "hub",
+      "primaryQueries": [
+        "registro de medicamentos del bebé",
+        "app para registrar vacunas del bebé",
+        "app de salud del bebé",
+        "registro de reacciones y síntomas del bebé"
+      ],
+      "relatedLinks": [
+        "/guides/vitamin-d-for-babies",
+        "/guides/allergen-reaction-diary",
+        "/es/crecimiento-y-desarrollo"
+      ]
+    },
+    {
+      "url": "https://tryfeedflow.app/es/solidos-y-alergenos",
+      "title": "Registro de sólidos, alérgenos y reacciones del bebé",
+      "intent": "Alimentos sólidos y alérgenos",
+      "role": "hub",
+      "primaryQueries": [
+        "app para registrar alérgenos del bebé",
+        "registro de alimentos sólidos para bebés",
+        "diario de reacciones alimentarias del bebé",
+        "registro de alergia al huevo en bebés"
+      ],
+      "relatedLinks": [
+        "/guides/allergen-reaction-diary",
+        "/es/salud-del-bebe",
+        "/es/crecimiento-y-desarrollo"
       ]
     }
   ]

@@ -10,3 +10,7 @@
 /beta.html / 301
 /founding /founding-families 301
 /founders /founding-families 301
+
+# Spanish pages: English-style paths lead to the Spanish slugs.
+/es/faq /es/preguntas-frecuentes 301
+/es/compare /es/comparar 301

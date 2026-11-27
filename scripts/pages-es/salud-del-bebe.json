@@ -1,0 +1,48 @@
+{
+  "translation_of": "baby-health",
+  "slug": "es/salud-del-bebe",
+  "title": "Salud del bebé: medicamentos, vacunas y reacciones",
+  "description": "Registra medicamentos, vacunas, vitamina D, alérgenos, reacciones y notas de salud en una línea de tiempo. Lleva registros más claros a tu pediatra o enfermera.",
+  "eyebrow": "Registros de salud del bebé",
+  "h1": "Los datos de salud que no quieres reconstruir de memoria.",
+  "intro": "Guarda medicamentos, fechas de vacunas, reacciones, alérgenos, suplementos y notas junto a las tomas y el crecimiento. Feed Flow guarda el registro; el consejo médico lo da tu profesional de salud.",
+  "alt": "La pantalla real de salud y alérgenos de Feed Flow, con las veces que probó cada alimento y estado de las reacciones.",
+  "faqs": [
+    [
+      "¿Feed Flow me recuerda qué dosis de medicamento dar?",
+      "No. Guarda un registro de los medicamentos y las horas, pero no recomienda ni calcula dosis. Sigue la etiqueta y las indicaciones de tu médico o farmacéutico."
+    ],
+    [
+      "¿Puedo registrar las vacunas de mi programa nacional?",
+      "Sí. Anota la vacuna y la fecha en el historial de salud de tu hijo. Feed Flow no crea ni sustituye un calendario oficial de vacunación."
+    ],
+    [
+      "¿La app registra la vitamina D de las gotas y de la fórmula?",
+      "Sí. Puede registrar las gotas de suplemento y conservar la información de vitamina D de la etiqueta de la fórmula, para que ambas aparezcan en tus registros."
+    ],
+    [
+      "¿Feed Flow puede diagnosticar una reacción?",
+      "No. Registra observaciones y horas para comentarlas con un profesional. Busca atención médica urgente si los síntomas son graves o empeoran rápidamente."
+    ]
+  ],
+  "related": [
+    [
+      "/guides/vitamin-d-for-babies",
+      "Registro de vitamina D"
+    ],
+    [
+      "/guides/allergen-reaction-diary",
+      "Guía del diario de reacciones"
+    ],
+    [
+      "/growth-development",
+      "Crecimiento según la OMS"
+    ]
+  ],
+  "queries": [
+    "registro de medicamentos del bebé",
+    "app para registrar vacunas del bebé",
+    "app de salud del bebé",
+    "registro de reacciones y síntomas del bebé"
+  ]
+}

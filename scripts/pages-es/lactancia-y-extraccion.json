@@ -1,0 +1,48 @@
+{
+  "translation_of": "breastfeeding-pumping",
+  "slug": "es/lactancia-y-extraccion",
+  "title": "Registro de lactancia, extracción y lactancia mixta",
+  "description": "Registra lactancia, extracción, leche materna extraída y fórmula en un solo lugar. Un historial claro y sin juicios para madres, padres y asesoras de lactancia.",
+  "eyebrow": "Lactancia, extracción y lactancia mixta",
+  "h1": "Tu rutina de alimentación no necesita apps separadas.",
+  "intro": "Dar el pecho, extraer leche, ofrecer leche materna extraída, usar fórmula o combinarlo todo. Feed Flow reúne todo el panorama de la alimentación y lo convierte en un historial útil para ti y para los profesionales que te acompañan.",
+  "alt": "La pantalla Hoy de Feed Flow con los totales de alimentación y las últimas tomas.",
+  "faqs": [
+    [
+      "¿Puedo dar el pecho y usar fórmula en la misma app?",
+      "Sí. La lactancia mixta es una parte central de Feed Flow. La lactancia, la extracción, la leche materna extraída y la fórmula están en una sola línea de tiempo y en un solo resumen diario."
+    ],
+    [
+      "¿Feed Flow evalúa la producción de leche?",
+      "No. Registra el historial de tomas y de extracción, pero no diagnostica una producción baja, no evalúa la calidad de la toma ni reemplaza el apoyo de una asesora de lactancia."
+    ],
+    [
+      "¿Una asesora de lactancia puede usar el historial conmigo?",
+      "Sí. Puedes compartir tus propios registros o un informe durante una consulta. La información sirve para conversar, no es una evaluación clínica."
+    ],
+    [
+      "¿FlowCast me dice cuándo tengo que dar de comer?",
+      "No. Calcula una ventana probable a partir del ritmo que registras de tu bebé. Las señales de tu bebé y la guía de un profesional van primero."
+    ]
+  ],
+  "related": [
+    [
+      "/formula-feeding",
+      "Registro de fórmula y biberón"
+    ],
+    [
+      "/growth-development",
+      "Crecimiento y desarrollo"
+    ],
+    [
+      "/ambassador",
+      "Embajadoras IBCLC y profesionales"
+    ]
+  ],
+  "queries": [
+    "app para registrar lactancia materna",
+    "registro de extracción de leche",
+    "app lactancia mixta",
+    "app para lactancia y fórmula"
+  ]
+}
