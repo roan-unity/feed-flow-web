@@ -637,3 +637,22 @@ html[data-theme="dark"] .form-status.error { background: #40231f; color: #ffb8aa
   .article-body .guide-shot { float: none; width: min(200px, 62%); margin: 20px auto 6px; }
   .guide-meta { font-size: 12.5px; }
 }
+
+/* Complete-tracker pass (Nov 2026): category label on each card, a second heading inside the section, a cropped card shot, the vision section. */
+.hiw-more { margin-top: 84px; margin-bottom: 0; }
+.hiw-more + .hiw-beats { margin-top: 32px; }
+.hiw-beat .hiw-copy .eyebrow { margin-bottom: 8px; font-size: 12px; color: var(--accent); }
+.hiw-card-shot { margin: 0; border-radius: 18px; overflow: hidden; border: 1px solid var(--border); box-shadow: var(--shadow-sm); }
+.hiw-card-shot img { display: block; width: 100%; height: auto; }
+.vision-grid { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, .9fr); gap: 48px; align-items: start; }
+.vision-copy h2 { margin-top: 10px; font-size: clamp(30px, 4vw, 44px); font-weight: 720; }
+.vision-copy p:not(.eyebrow) { margin-top: 16px; color: var(--ink-2); font-size: 18px; max-width: 56ch; }
+.vision-copy .vision-note { font-size: 15px; }
+.vision-card { padding: 28px; border: 1px solid var(--border); border-radius: var(--r-lg); background: var(--bg-soft); }
+.vision-card h3 { font-size: 20px; }
+.vision-card ul { margin: 16px 0 0; padding: 0; list-style: none; display: grid; gap: 14px; }
+.vision-card li { color: var(--ink-2); }
+.vision-card li strong { color: var(--ink); }
+.vision-plans, .vision-pro { margin-top: 18px; font-size: 14px; color: var(--ink-2); }
+.vision-pro a { color: var(--accent); }
+@media (max-width: 820px) { .vision-grid { grid-template-columns: 1fr; gap: 28px; } .hiw-more { margin-top: 56px; } }
