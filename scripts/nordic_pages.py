@@ -10,7 +10,17 @@ the countdown is a memory aid; follow the label and helsestasjonen/BVC. No compe
 
 ARROW = '<svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#arrow"/></svg>'
 IMG = 'style="max-width:100%;height:auto;border-radius:14px;border:1px solid var(--border);margin:8px 0 4px"'
-from intl_pages import HREFLANG  # all localized pages
+from intl_pages import HREFLANG, complete_section  # all localized pages
+
+SV_COMPLETE = complete_section(
+    "Allt om din bebis, på ett ställe", "Matning, tillväxt, hälsa och det medicinska ligger i samma tidslinje. Använd de delar du behöver och låt resten vara.",
+    [("Tillväxt och utveckling", "lägg in vikt, längd eller huvudomfång och se mätningen på WHO:s kurva. Spara det första leendet och de första stegen, med bilder."),
+     ("Fast föda och allergener", "lägg till livsmedlen i en måltid så fylls allergenlistan i av sig själv. Blöjbyten loggas bredvid."),
+     ("Sjukdom, symtom, reaktioner, mediciner och vaccin", "logga det när det händer. Välj symtomen du ser, lägg till en anteckning, så har varje post sitt datum till nästa besök."),
+     ("D-vitamin", "ett tryck när dropparna är givna. Dagens mängd, ersättningen inräknad, visas mot gränsen."),
+     ("Rapporten", "matning, tillväxt, hälsa och dina egna kommentarer i en rapport. Dela den före besöket eller ta med den.")],
+    "Vi arbetar med sömn, fler kosttillskott och en fylligare medicinsk översikt. Det är planer, inte funktioner i appen än.",
+    "Feed Flow loggar, visar och jämför med publicerade referenser som WHO:s tillväxtstandarder. Appen ställer inga diagnoser och ger inga medicinska råd.")
 
 NORDIC = [
     {
@@ -41,16 +51,17 @@ NORDIC = [
     },
     {
         "slug": "sv", "file": "sv.html", "lang": "sv", "active": "feeding", "date": "2026-11-16", "hreflang": HREFLANG,
-        "title": "Feed Flow: Bebisapp för amning, flaska och ersättning | iPhone",
-        "description": "Feed Flow är en bebisapp för iPhone, helt på svenska. Logga amning, pumpning, flaska och modersmjölksersättning i en tidslinje. Gratis att logga, utan reklam.",
-        "eyebrow": "Bebisapp på svenska", "h1": "Matningslogg för amning, pumpning och flaska",
-        "intro": "Feed Flow är appen för allt din bebis äter: amning, pumpning, bröstmjölk på flaska, ersättning och fast föda, i en och samma tidslinje. Appen finns helt på svenska, är byggd i Norge och det är gratis att logga. Ingen reklam, och datan ligger i ditt eget iCloud.",
+        "title": "Feed Flow: Bebisapp för matning, tillväxt och hälsa | iPhone",
+        "description": "Den kompletta bebisappen för iPhone, helt på svenska: amning, flaska, blöjor, tillväxt, allergener, mediciner och vaccin. Gratis att logga, utan reklam.",
+        "eyebrow": "Matning · Tillväxt · Hälsa", "h1": "Den kompletta bebisappen som aldrig blir för mycket",
+        "intro": "Logga varje måltid, varje blöja och varje dos med ett tryck. Följ tillväxten på WHO:s kurvor. Samla allergener, sjukdagar, mediciner och vaccin på ett ställe, och ta med allt till BVC i en rapport. Appen finns helt på svenska, är byggd i Norge och det är gratis att logga. Ingen reklam, och datan ligger i ditt eget iCloud.",
         "image": "/screens/nordic/sv-03-360.webp", "srcset": "/screens/nordic/sv-03-360.webp 1x, /screens/nordic/sv-03-720.webp 2x", "width": 360, "height": 780,
         "alt": "Feed Flow på svenska: Idag-skärmen med senaste måltid, nästa måltid och dagens flaskor.",
         "body": f"""
 <section id="matning"><h2>Allt din bebis äter, i en tidslinje</h2><p>Många börjar med anteckningar i mobilen, en lapp på kylskåpet och en separat app för pumpning. Feed Flow samlar allt på samma dag.</p><ul><li><strong>Amning:</strong> logga en amning med några få tryck.</li><li><strong>Pumpning:</strong> logga hur mycket du pumpade, bredvid det bebisen faktiskt drack.</li><li><strong>Flaska:</strong> bröstmjölk eller ersättning, gjord och drucken mängd i ml.</li><li><strong>Fast föda och vatten:</strong> i samma tidslinje, utanför mjölksumman.</li></ul><p>Dagens mjölksumma räknar ersättning, pumpad mjölk och amning (amning som en uppskattning, eftersom ingen kan se hur mycket bebisen dricker vid bröstet). Du får en siffra för dygnet i stället för att lägga ihop listor på kvällen.</p></section>
 <section id="nedrakning"><h2>Nedräkning från att flaskan gjordes</h2><p>När du loggar en flaska startar en nedräkning från tiden den gjordes, och den syns på låsskärmen. Då ser du hur länge flaskan har stått utan att låsa upp telefonen. Standard är en timme för ersättning och två timmar för pumpad bröstmjölk, och du kan ändra båda i Inställningar.</p><img src="/screens/nordic/sv-01-360.webp" srcset="/screens/nordic/sv-01-360.webp 1x, /screens/nordic/sv-01-720.webp 2x" width="300" height="650" loading="lazy" decoding="async" alt="Feed Flow visar nedräkning för en flaska med ersättning." {IMG}><div class="note"><strong>Ett minnesstöd, inte en säkerhetssensor</strong><p>Nedräkningen mäter bara tid. Den vet inte hur flaskan har förvarats eller hur varmt det är i rummet. Följ det som står på förpackningen och BVC:s råd, och gör en ny flaska om du är osäker.</p></div></section>
 <section id="dela"><h2>Hela familjen i samma logg</h2><p>Bjud in din partner, mor- och farföräldrar eller barnvakten. Alla loggar från sin egen iPhone via sitt eget iCloud, utan gemensamt lösenord och utan gräns för hur många ni är. Då slipper ni frågan ”när åt hon senast?” vid varje överlämning. Delning är gratis.</p></section>
+{SV_COMPLETE}
 <section id="premium"><h2>Gratis, och Premium om du vill ha mer</h2><p>Loggning av alla måltider, nedräkningen för flaskan och delning med familjen är gratis, utan reklam. Premium lägger till:</p><ul><li><strong>FlowCast:</strong> ett troligt tidsfönster för nästa måltid, baserat på bebisens egen historik efter ungefär fyra dagars loggning. Ett planeringsstöd, inte ett schema.</li><li><strong>Tillväxtkurvor</strong> mot WHO:s referenser och full historik.</li><li><strong>Bebisrapport</strong> med matning och tillväxt som du kan ta med till BVC.</li></ul></section>
 <section id="utskrift"><h2>Gratis matningslogg att skriva ut</h2><p>Föredrar du papper de första dagarna, eller behöver barnvakten en lapp på kylskåpet? Här är en gratis matningslogg på svenska: en sida per dygn med tid, amning, flaska, pumpning och blöjor.</p><img src="/printables/feeding-log-sv-480.webp" srcset="/printables/feeding-log-sv-480.webp 1x, /printables/feeding-log-sv-960.webp 2x" width="360" height="509" loading="lazy" decoding="async" alt="Matningslogg för nyfödd att skriva ut, en sida per dygn." {IMG}><p><a class="text-link" href="/printables/feeding-log-sv-a4.pdf" download>Ladda ner matningsloggen (PDF, A4) {ARROW}</a></p></section>
 <section id="tryggt"><h2>En logg, inte medicinska råd</h2><p>Feed Flow ställer inga diagnoser och säger inte hur mycket din bebis borde äta. Är du orolig för måltider, blöta blöjor eller hur bebisen mår, kontakta BVC eller läkare.</p></section>

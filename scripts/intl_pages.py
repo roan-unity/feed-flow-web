@@ -270,14 +270,77 @@ C["pt"] = dict(
                foot="Grátis em {url} &middot; Um registro, não um conselho médico. Em caso de dúvida sobre as mamadas, as fraldas ou como o bebê está, fale com o pediatra."),
 )
 
+# ---------- "Complete baby tracker" positioning (2026-11-27) ----------
+# es, fr and de carry the new home page framing: hero wording plus one section that names growth, solids and allergens,
+# health entries, vitamin D and the report, with the food photo strip from the English home page. sv gets the same
+# section from nordic_pages.py. The other languages keep the earlier wording until they are done too.
+FOODS = '<div class="hiw-foods" aria-hidden="true" style="margin:18px 0 22px 10px;justify-content:flex-start">' + "".join(
+    f'<img src="/screens/how/food-{n}.webp" width="62" height="62" loading="lazy" decoding="async" alt="">' for n in ("strawberry", "avocado", "banana", "egg", "broccoli")) + "</div>"
+
+
+def complete_section(h, p, li, plans, note):
+    items = "".join(f"<li><strong>{a}:</strong> {b}</li>" for a, b in li)
+    return f'<section id="complete"><h2>{h}</h2><p>{p}</p><ul>{items}</ul>{FOODS}<p>{plans}</p><p>{note}</p></section>'
+
+
+C["es"].update(
+    title="Feed Flow: app para bebés, alimentación, crecimiento y salud | iPhone",
+    description="La app completa para tu bebé en iPhone, totalmente en español: lactancia, biberones y fórmula, pañales, crecimiento, alérgenos, medicinas y vacunas. Sin anuncios.",
+    eyebrow="Alimentación · Crecimiento · Salud", h1="La app completa para tu bebé que nunca resulta demasiado",
+    intro="Registra cada toma, cada pañal y cada dosis con un toque. Sigue el crecimiento en las curvas de la OMS. Guarda alérgenos, días de enfermedad, medicinas y vacunas en un solo registro, y lleva todo a la consulta en un informe. La app está totalmente en español, se creó en Noruega y registrar es gratis. Sin anuncios, y los datos se guardan en tu propio iCloud.",
+    complete=("Todo sobre tu bebé, en un solo lugar", "Alimentación, crecimiento, salud y lo médico están en la misma línea de tiempo. Usa las partes que necesites y deja el resto.",
+        [("Crecimiento y desarrollo", "anota peso, talla o perímetro de la cabeza y míralo en la curva de la OMS. Guarda la primera sonrisa y los primeros pasos, con fotos."),
+         ("Sólidos y alérgenos", "agrega los alimentos a una comida y la lista de alérgenos se llena sola. Los cambios de pañal se registran al lado."),
+         ("Enfermedad, síntomas, reacciones, medicinas y vacunas", "regístralo cuando pasa. Elige los síntomas que ves, agrega una nota, y cada entrada guarda su fecha para la próxima consulta."),
+         ("Vitamina D", "un toque cuando das las gotas. La cantidad del día, con la fórmula incluida, se muestra frente al límite."),
+         ("El informe", "alimentación, crecimiento, salud y tus propios comentarios en un informe. Compártelo antes de la consulta o llévalo contigo.")],
+        "Estamos trabajando en el sueño, más suplementos y un registro médico más completo. Son planes, todavía no están en la app.",
+        "Feed Flow registra, muestra y compara con referencias publicadas, como los estándares de crecimiento de la OMS. No hace diagnósticos ni da consejos médicos."),
+)
+C["es"]["ui"]["blurb"] = "Feed Flow! es la app completa para tu bebé en iPhone, creada en Noruega por Zeolite. Alimentación, crecimiento y salud en una app tranquila, con la privacidad primero."
+
+C["fr"].update(
+    title="Feed Flow : appli bébé, alimentation, croissance, santé | iPhone",
+    description="L'appli bébé complète pour iPhone, entièrement en français : allaitement, biberons, couches, croissance, allergènes, médicaments et vaccins. Sans publicité.",
+    eyebrow="Alimentation · Croissance · Santé", h1="L'appli bébé complète, sans jamais en faire trop",
+    intro="Notez chaque tétée, chaque biberon, chaque couche et chaque dose d'un geste. Suivez la croissance sur les courbes de l'OMS. Gardez allergènes, jours de maladie, médicaments et vaccins dans un seul suivi, et apportez le tout au rendez-vous dans un rapport. L'appli est entièrement en français, conçue en Norvège, et la saisie est gratuite. Pas de publicité, et les données restent dans votre propre iCloud.",
+    complete=("Tout sur votre bébé, au même endroit", "Alimentation, croissance, santé et suivi médical partagent la même chronologie. Utilisez ce dont vous avez besoin et laissez le reste.",
+        [("Croissance et développement", "ajoutez un poids, une taille ou un périmètre crânien et voyez-le sur la courbe de l'OMS. Gardez le premier sourire et les premiers pas, avec des photos."),
+         ("Diversification et allergènes", "ajoutez les aliments à un repas et la liste des allergènes se remplit toute seule. Les changes de couche se notent juste à côté."),
+         ("Maladie, symptômes, réactions, médicaments et vaccins", "notez-le au moment où ça arrive. Choisissez les symptômes que vous voyez, ajoutez une note, et chaque entrée garde sa date pour le prochain rendez-vous."),
+         ("Vitamine D", "un geste quand les gouttes sont données. La quantité du jour, lait infantile compris, s'affiche par rapport à la limite."),
+         ("Le rapport", "alimentation, croissance, santé et vos propres commentaires dans un seul rapport. Partagez-le avant le rendez-vous ou apportez-le.")],
+        "Nous travaillons sur le sommeil, d'autres compléments et un dossier médical plus complet. Ce sont des projets, pas encore des fonctions de l'appli.",
+        "Feed Flow enregistre, montre et compare avec des références publiées, comme les normes de croissance de l'OMS. L'appli ne pose pas de diagnostic et ne donne pas de conseil médical."),
+)
+C["fr"]["ui"]["blurb"] = "Feed Flow! est l'appli bébé complète pour iPhone, conçue en Norvège par Zeolite. Alimentation, croissance et santé dans une appli apaisante, respectueuse de la vie privée."
+
+C["de"].update(
+    title="Feed Flow: Baby-App für Ernährung, Wachstum und Gesundheit | iPhone",
+    description="Die komplette Baby-App fürs iPhone, ganz auf Deutsch: Stillen, Fläschchen, Windeln, Wachstum, Allergene, Medikamente und Impfungen. Ohne Werbung.",
+    eyebrow="Ernährung · Wachstum · Gesundheit", h1="Die komplette Baby-App, die nie zu viel wird",
+    intro="Protokolliere jede Mahlzeit, jede Windel und jede Dosis mit einem Tipp. Verfolge das Wachstum auf den WHO-Kurven. Halte Allergene, Krankheitstage, Medikamente und Impfungen an einem Ort fest und nimm alles als einen Bericht mit zur Vorsorge. Die App ist komplett auf Deutsch, wurde in Norwegen entwickelt, und das Protokollieren ist kostenlos. Keine Werbung, und die Daten liegen in deiner eigenen iCloud.",
+    complete=("Alles über dein Baby an einem Ort", "Ernährung, Wachstum, Gesundheit und Medizinisches liegen in derselben Zeitleiste. Nutze die Teile, die du brauchst, und lass den Rest einfach liegen.",
+        [("Wachstum und Entwicklung", "trage Gewicht, Länge oder Kopfumfang ein und sieh den Wert auf der WHO-Kurve. Halte das erste Lächeln und die ersten Schritte fest, mit Fotos."),
+         ("Beikost und Allergene", "füge die Lebensmittel zu einer Mahlzeit hinzu, und die Allergenliste füllt sich von selbst. Windelwechsel werden gleich daneben protokolliert."),
+         ("Krankheit, Symptome, Reaktionen, Medikamente und Impfungen", "trag es ein, wenn es passiert. Wähle die Symptome, die du siehst, füge eine Notiz hinzu, und jeder Eintrag behält sein Datum für den nächsten Termin."),
+         ("Vitamin D", "ein Tipp, wenn die Tropfen gegeben sind. Die Tagesmenge, Säuglingsnahrung eingerechnet, wird neben der Obergrenze angezeigt."),
+         ("Der Bericht", "Ernährung, Wachstum, Gesundheit und deine eigenen Anmerkungen in einem Bericht. Teile ihn vor dem Termin oder nimm ihn mit.")],
+        "Wir arbeiten an Schlaf, weiteren Nahrungsergänzungen und einer ausführlicheren medizinischen Übersicht. Das sind Pläne, noch keine Funktionen der App.",
+        "Feed Flow hält fest, zeigt an und vergleicht mit veröffentlichten Referenzen wie den WHO-Wachstumsstandards. Die App stellt keine Diagnosen und gibt keinen medizinischen Rat."),
+)
+C["de"]["ui"]["blurb"] = "Feed Flow! ist die komplette Baby-App fürs iPhone, entwickelt in Norwegen von Zeolite. Ernährung, Wachstum und Gesundheit in einer ruhigen App, Datenschutz zuerst."
+
 
 def _body(slug, c):
     li = "".join(f"<li><strong>{a}:</strong> {b}</li>" for a, b in c["li"])
     li4 = "".join(f"<li><strong>{a}:</strong> {b}</li>" for a, b in c["li4"])
+    complete = complete_section(*c["complete"]) if "complete" in c else ""
     return f"""
 <section id="feeding"><h2>{c['s1h']}</h2><p>{c['s1p']}</p><ul>{li}</ul><p>{c['s1p2']}</p></section>
 <section id="countdown"><h2>{c['s2h']}</h2><p>{c['s2p']}</p><img src="/screens/nordic/{slug}-01-360.webp" srcset="/screens/nordic/{slug}-01-360.webp 1x, /screens/nordic/{slug}-01-720.webp 2x" width="300" height="650" loading="lazy" decoding="async" alt="{c['alt2']}" {IMG}><div class="note"><strong>{c['noteh']}</strong><p>{c['notep']}</p></div></section>
 <section id="sharing"><h2>{c['s3h']}</h2><p>{c['s3p']}</p></section>
+{complete}
 <section id="premium"><h2>{c['s4h']}</h2><p>{c['s4p']}</p><ul>{li4}</ul></section>
 <section id="printable"><h2>{c['s5h']}</h2><p>{c['s5p']}</p><img src="/printables/feeding-log-{slug}-480.webp" srcset="/printables/feeding-log-{slug}-480.webp 1x, /printables/feeding-log-{slug}-960.webp 2x" width="360" height="509" loading="lazy" decoding="async" alt="{c['alt3']}" {IMG}><p><a class="text-link" href="{pdf_path(slug)}" download>{c['dl']} {ARROW}</a></p></section>
 """

@@ -380,14 +380,14 @@ def header(active, lang="en", en_twin="/"):
 FT_HEADINGS = {"product": "Product", "learn": "Learn", "company": "Feed Flow", "languages": "Languages"}
 # Where a translation already existed on the old language footers it is kept; everything else stays English.
 FT_NORDIC = {
-    "sv": {"privacy": "Integritet (engelska)", "terms": "Villkor (engelska)", "pdf": ("/printables/feeding-log-sv-a4.pdf", "Matningslogg (PDF)"), "blurb": "Feed Flow! är appen för matning och ersättning på iPhone, byggd i Norge av Zeolite. Matning, tillväxt och bebisens hälsa i en lugn app med integriteten först."},
+    "sv": {"privacy": "Integritet (engelska)", "terms": "Villkor (engelska)", "pdf": ("/printables/feeding-log-sv-a4.pdf", "Matningslogg (PDF)"), "blurb": "Feed Flow! är den kompletta bebisappen för iPhone, byggd i Norge av Zeolite. Matning, tillväxt och hälsa i en lugn app med integriteten först."},
 }
 
 
 # Norwegian footer: same links as the English one, labels from scripts/no-home-strings.json (kept in step by hand).
 FT_NB_HEADINGS = {"product": "Produkt", "learn": "Lær mer", "company": "Feed Flow", "languages": "Språk"}
 FT_NB_LABELS = {"Formula feeding": "Flaske og morsmelkerstatning", "Breast &amp; pumping": "Amming og pumping", "Solids &amp; allergens": "Fast føde og allergener", "Growth &amp; development": "Vekst og utvikling", "Baby health": "Babyens helse", "Baby Reports": "Babyrapport", "Shared feeding log": "Delt matingslogg", "Guides": "Guider", "Vitamin D tracker": "D-vitamin", "Bottle countdown": "Nedtelling for flasken", "Combo feeding": "Delamming", "Printable feeding log": "Matingslogg til utskrift", "Compare apps": "Sammenlign apper", "Free tracker": "Gratis matingslogg", "FAQ": "Vanlige spørsmål", "Support": "Hjelp", "Ambassadors": "Ambassadører", "Earn as a creator": "Tjen som skaper", "Leave a review": "Skriv en anmeldelse", "Privacy": "Personvern", "Terms": "Vilkår"}
-FT_NB_BLURB = "Feed Flow! er matingsloggen for iPhone, laget i Norge av Zeolite. Mating, vekst og babyens helse i én rolig app som tar personvern på alvor."
+FT_NB_BLURB = "Feed Flow! er den komplette babyappen for iPhone, laget i Norge av Zeolite. Mating, vekst og helse i én rolig app som tar personvern på alvor."
 
 
 def footer(lang="en", twins=None):

@@ -49,6 +49,10 @@ ALT = {
  "The real Feed Flow growth card showing Theo at the 63rd percentile at the latest weigh-in, along his own curve inside the WHO range since birth.": "Det ekte vekstkortet i Feed Flow som viser Theo på 63. persentil ved siste veiing, langs sin egen kurve innenfor WHOs område siden fødselen.",
  "The real Feed Flow health page: Theo is well, with 6 of 9 major allergens introduced, each with its meals and last attempt.": "Den ekte helsesiden i Feed Flow: Theo er frisk, med 6 av 9 viktige allergener introdusert, hver med måltider og siste forsøk.",
  "The real Feed Flow activity feed showing feeds logged by You, Anna and Alex, each with the amount and time.": "Den ekte aktivitetsstrømmen i Feed Flow med måltider logget av deg, Anna og Alex, hver med mengde og klokkeslett.",
+ "Illustration photo of a smiling baby, saved as a milestone.": "Illustrasjonsbilde av en smilende baby, lagret som en milepæl.",
+ "The real Feed Flow Family screen: Theo shared with Alex and Anna, feeds logged by each this week, and the Invite someone else button.": "Den ekte aktivitetsstrømmen i Feed Flow med måltider logget av deg, Anna og Alex, hver med mengde og klokkeslett.",
+ "The real Feed Flow vitamin D card: about 400 IU today from drops, shown on a meter against the day’s limit.": "Det ekte D-vitamin-kortet i Feed Flow: omtrent 10 µg fra dråper i dag, vist mot dagens grense på 35 µg.",
+ "The real FlowCast screen showing Theo's next feed, a bottle of about 5 oz at about 5:30 PM, and the feeds predicted after it.": "Den ekte FlowCast-skjermen med Theos neste måltid, en flaske på omtrent 190 ml rundt 17:30, og måltidene som er forventet etterpå.",
  "The same bottle screen in the Ocean theme, teal.": "Samme flaskeskjerm i temaet Ocean, blågrønn.",
  "The same bottle screen in the Forest theme, green.": "Samme flaskeskjerm i temaet Forest, grønn.",
  "The same bottle screen in the Lavender theme, purple.": "Samme flaskeskjerm i temaet Lavender, lilla.",
@@ -56,6 +60,7 @@ ALT = {
 }
 ARIA = {
  "Skip to content": "Gå til innholdet",
+ "Examples of health entries: unwell, reaction, symptoms, medicine, vaccine": "Eksempler på helseoppføringer: syk, reaksjon, symptomer, medisin, vaksine",
  "Real Feed Flow app screens": "Ekte skjermbilder fra Feed Flow",
  "Product highlights": "Hovedpunkter",
  "App Store reviews": "Anmeldelser i App Store",
@@ -64,15 +69,15 @@ ARIA = {
  "A real recording of Feed Flow: the amount is chosen, the bottle fills, and the big round button is pressed, which opens the bottle screen.": "Et ekte opptak fra Feed Flow: mengden velges, flasken fylles, og den store runde knappen trykkes, som åpner flaskeskjermen.",
 }
 HEAD = {
- "title": "Feed Flow: Matingslogg for amming og flaske | iPhone",
- "description": "Matingslogg for iPhone: amming, flaske, pumping og fast føde, nedtelling for flasken på låseskjermen, neste måltid, WHOs vekstkurver og D-vitamin.",
- "og_description": "Matingsloggen for iPhone: hvert måltid, nedtelling for flasken på låseskjermen, FlowCast, WHOs vekstkurver og D-vitamin. Gratis å logge.",
- "tw_description": "Matingsloggen for iPhone: hvert måltid, FlowCast, WHOs vekstkurver og babyens helse. Gratis å logge.",
+ "title": "Feed Flow: Babyapp for mating, vekst og helse | iPhone",
+ "description": "Den komplette babyappen for iPhone: mating, bleier, vekst på WHO-kurvene, allergener, sykdom, medisiner og vaksiner, og én rapport til kontrollen.",
+ "og_description": "Den komplette babyappen for iPhone: hvert måltid, bleier, WHOs vekstkurver, allergener, medisiner og vaksiner. Gratis å logge.",
+ "tw_description": "Den komplette babyappen for iPhone: mating, vekst og helse i én oversikt. Gratis å logge.",
  "og_image_alt": "Fire ekte skjermbilder fra Feed Flow: nedtelling for flasken, FlowCast, D-vitamin og en rapport om mating og vekst",
 }
 SCREENSHOT_CAPTIONS = [
  "Flaskeskjermen med nedtellingsring, 45 ml tatt og 75 ml igjen",
- "FlowCast med neste måltid ved omtrent 11:45 og måltidene som er forventet senere i dag",
+ "FlowCast med neste måltid, en flaske rundt 17:30, og måltidene som er forventet etterpå",
  "D-vitamin-kortet som viser omtrent 10 µg fra dråper i dag mot dagens grense på 35 µg",
  "En ekte babyrapport som viser vekt og lengde på 49. persentil",
  "En detaljside i rapporten med flaskestørrelser og vekstkurver fra WHO",
@@ -95,8 +100,8 @@ LD = {
  "app_description": "Feed Flow! er en matingslogg for iPhone: en babyapp for flaske, amming, morsmelkerstatning, pumping og fast føde, med forslag til og varsler om neste måltid, WHOs persentiler for vekt, lengde og hodeomkrets, allergener, reaksjoner, medisiner, vaksiner og D-vitamin. Appen kombinerer næringsinnholdet på etiketten til morsmelkerstatningen med loggede dråper og lager private rapporter om mating og vekst.",
  "offer": "Gratis å laste ned. Logging er gratis, for alltid. Valgfrie kjøp finnes i App Store.",
  "org_description": "Feed Flow! er en app for mating, vekst og babyens helse på iPhone, laget i Norge av Zeolite, med personvern først.",
- "org_slogan": "Matingslogg for amming og flaske",
- "page_name": "Feed Flow: Matingslogg for amming og flaske",
+ "org_slogan": "Den komplette babyappen",
+ "page_name": "Feed Flow: Babyapp for mating, vekst og helse",
  "howto_name": "Slik logger du et måltid i Feed Flow",
  "howto_description": "Velg hva du vil logge, trykk på knappen, logg mengden og se måltidet på tidslinjen for dagen i Feed Flow for iPhone.",
 }
@@ -120,6 +125,8 @@ def fail(msg):
 def nb_reviews():
     js = (ROOT / "reviews.js").read_text(encoding="utf-8")
     m = re.search(r"\n    nb: \[\n(.*?)\n    \]", js, re.S)
+    if not m:
+        return []          # reviews.js is generated by the weekly reviews job now; the reviews section is carried over from no.html below
     return [json.loads(line.strip().rstrip(",")) for line in m.group(1).split("\n")]
 
 
@@ -130,9 +137,18 @@ main_start, main_end = rest.index("<main"), rest.index("</main>") + len("</main>
 footer_a, footer_b = rest.index("<!--ff:footer-->"), rest.index("<!--/ff:footer-->") + len("<!--/ff:footer-->")
 skip_and_header, main, between, footer_block, tail = rest[:header_end], rest[main_start:main_end], rest[main_end:footer_a], rest[footer_a:footer_b], rest[footer_b:]
 
+# The reviews section is written into index.html and no.html by the weekly reviews job, so it is carried over from the
+# current no.html untouched instead of being translated here.
+REVIEWS_RE = re.compile(r'<section class="proof" id="reviews".*?</section>', re.S)
+_no_now = (ROOT / "no.html").read_text(encoding="utf-8")
+_rev_no, _rev_en = REVIEWS_RE.search(_no_now), REVIEWS_RE.search(main)
+if not _rev_no or not _rev_en:
+    sys.exit("make-no-home: reviews section not found in index.html or no.html")
+main = main.replace(_rev_en.group(0), "<!--REVIEWS-->")
+
 # ---------- main: text nodes ----------
 missing = []
-KEEP = {"Dansk", "Nederlands", "Suomi", "Français", "Deutsch", "Italiano", "Norsk (bokmål)", "Polski", "Português", "Español", "Svenska", "English", "Lokal-bruker", "Irene", "Alec", "FlowCast"}
+KEEP = {"support@tryfeedflow.app", "Dansk", "Nederlands", "Suomi", "Français", "Deutsch", "Italiano", "Norsk (bokmål)", "Polski", "Português", "Español", "Svenska", "English", "Lokal-bruker", "Irene", "Alec", "FlowCast"}
 
 
 nb = nb_reviews()
@@ -199,6 +215,8 @@ if missing:
 main = main.replace("og D-vitamin i den samme oversikten.", 'og <span style="white-space:nowrap">D-vitamin</span> i den samme oversikten.')   # no line break inside "D-vitamin"
 main = main.replace("ct=website_hero", "ct=website_no_hero").replace("ct=website_closing", "ct=website_no_closing")
 # Norwegian text still contains the English words only where they are product names; the check at the end verifies it.
+
+main = main.replace("<!--REVIEWS-->", _rev_no.group(0))
 
 # image swaps
 def swap_images(text):

@@ -422,8 +422,8 @@
     },
     {
       "url": "https://tryfeedflow.app/sv",
-      "title": "Feed Flow: Bebisapp för amning, flaska och ersättning | iPhone",
-      "intent": "Bebisapp på svenska",
+      "title": "Feed Flow: Bebisapp för matning, tillväxt och hälsa | iPhone",
+      "intent": "Matning · Tillväxt · Hälsa",
       "role": "hub",
       "primaryQueries": [
         "amningsapp",
@@ -459,8 +459,8 @@
     },
     {
       "url": "https://tryfeedflow.app/de",
-      "title": "Feed Flow: Still-App und Stillprotokoll für Babys | iPhone",
-      "intent": "Baby-App auf Deutsch",
+      "title": "Feed Flow: Baby-App für Ernährung, Wachstum und Gesundheit | iPhone",
+      "intent": "Ernährung · Wachstum · Gesundheit",
       "role": "hub",
       "primaryQueries": [
         "Still-App",
@@ -477,8 +477,8 @@
     },
     {
       "url": "https://tryfeedflow.app/es",
-      "title": "Feed Flow: app de lactancia y biberones para bebés | iPhone",
-      "intent": "App para bebés en español",
+      "title": "Feed Flow: app para bebés, alimentación, crecimiento y salud | iPhone",
+      "intent": "Alimentación · Crecimiento · Salud",
       "role": "hub",
       "primaryQueries": [
         "app de lactancia",
@@ -513,8 +513,8 @@
     },
     {
       "url": "https://tryfeedflow.app/fr",
-      "title": "Feed Flow : appli d'allaitement et de biberons | iPhone",
-      "intent": "Appli bébé en français",
+      "title": "Feed Flow : appli bébé, alimentation, croissance, santé | iPhone",
+      "intent": "Alimentation · Croissance · Santé",
       "role": "hub",
       "primaryQueries": [
         "application allaitement",
