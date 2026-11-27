@@ -1,6 +1,6 @@
 {
  "source": "App Store Connect",
- "updated": "2026-11-27T08:26:36+01:00",
+ "updated": "2026-11-27T20:12:29+01:00",
  "average": 4.94,
  "count": 16,
  "reviews": [
@@ -21,12 +21,28 @@
    "text": "I think this the most in-depth and detailed app I’ve used for feeding - and I have now used three different apps over the course of my baby’s life. The developer really has thought of everything, and I appreciate that they are so open to suggestions and feedback as well. I am only one day into using the app so far, but I’m especially excited to see what it comes up with in terms of trends and prediction soon!"
   },
   {
+   "id": "00000194-3e42-3e03-73be-922100000000",
+   "rating": 5,
+   "nickname": "Zippyy42",
+   "country": "USA",
+   "date": "2026-11-23",
+   "text": "This is one the best feeding apps I have tried. The layout is better than Talli or any of the others I have tried thus far. Highly recommend. The dev is super cool too!"
+  },
+  {
    "id": "00000194-3e42-3e03-609e-e11f00000000",
    "rating": 5,
    "nickname": "IreneOpheim1",
    "country": "NOR",
    "date": "2026-09-03",
    "text": "Very useful app! It saves me both time and mental effort, while giving me a clear and easy overview. Definitely worth downloading!"
+  },
+  {
+   "id": "00000194-3e42-3e03-6060-28d400000000",
+   "rating": 5,
+   "nickname": "Lokal-bruker",
+   "country": "NOR",
+   "date": "2026-09-02",
+   "text": "Love it! Super easy to use, and the flowcast function actually helps saving formula. Will you get Norwegian language as well?"
   },
   {
    "id": "00000194-3e42-3e03-7275-bdc900000000",
@@ -45,20 +61,12 @@
    "text": "Super enkel app och har hjälpt mig att få koll på min amning. Slipper oroa mig att mitt barn går hungrig! Super ⭐️"
   },
   {
-   "id": "00000194-3e42-3e03-6060-28d400000000",
+   "id": "00000194-3e42-3e03-72c0-9f1400000000",
    "rating": 5,
-   "nickname": "Lokal-bruker",
-   "country": "NOR",
-   "date": "2026-09-02",
-   "text": "Love it! Super easy to use, and the flowcast function actually helps saving formula. Will you get Norwegian language as well?"
-  },
-  {
-   "id": "00000194-3e42-3e03-73be-922100000000",
-   "rating": 5,
-   "nickname": "Zippyy42",
-   "country": "USA",
-   "date": "2026-11-23",
-   "text": "This is one the best feeding apps I have tried. The layout is better than Talli or any of the others I have tried thus far. Highly recommend. The dev is super cool too!"
+   "nickname": "So Axell",
+   "country": "COL",
+   "date": "2026-11-19",
+   "text": "Muy buena, la aplicación me ha ayudado mucho tener orden con la alimentación de mi bebé súper útil ya no ando perdida"
   },
   {
    "id": "00000194-3e42-3e03-7344-09ae00000000",
@@ -69,28 +77,20 @@
    "text": "This app has such amazing potential!! There are so many thoughtful additions including milestone tracking, solid foods/reactions, breast/bottle feeds and pumping. I would love to see a diaper tracker added in as well. Overall this is a great app for logging feeds, milestones, and growth!"
   },
   {
-   "id": "00000194-3e42-3e03-72c0-9f1400000000",
-   "rating": 5,
-   "nickname": "So Axell",
-   "country": "COL",
-   "date": "2026-11-19",
-   "text": "Muy buena, la aplicación me ha ayudado mucho tener orden con la alimentación de mi bebé súper útil ya no ando perdida"
-  },
-  {
-   "id": "00000194-3e42-3e03-7027-13ff00000000",
-   "rating": 5,
-   "nickname": "Hansu87",
-   "country": "FIN",
-   "date": "2026-11-08",
-   "text": "Really useful and easy to use! 💯"
-  },
-  {
    "id": "00000194-3e42-3e03-6669-74f800000000",
    "rating": 5,
    "nickname": "Birger 81",
    "country": "NOR",
    "date": "2026-09-28",
    "text": "Godt utviklet app og gode funksjoner når man vil ha kontroll på hvor mye babyen spiser. Kan lett gå i surr om ikke😅"
+  },
+  {
+   "id": "00000194-3e42-3e03-6191-50c500000000",
+   "rating": 5,
+   "nickname": "Aleks86",
+   "country": "NOR",
+   "date": "2026-09-07",
+   "text": "Really enjoy this, startet using it just a few days ago. It really helps structuring and mapping feeding, so we’re always in fair control"
   },
   {
    "id": "00000194-3e42-3e03-6250-670c00000000",
@@ -101,12 +101,12 @@
    "text": "Suveränt, erbjuder full koll, riktigt bra detta"
   },
   {
-   "id": "00000194-3e42-3e03-6191-50c500000000",
+   "id": "00000194-3e42-3e03-7027-13ff00000000",
    "rating": 5,
-   "nickname": "Aleks86",
-   "country": "NOR",
-   "date": "2026-09-07",
-   "text": "Really enjoy this, startet using it just a few days ago. It really helps structuring and mapping feeding, so we’re always in fair control"
+   "nickname": "Hansu87",
+   "country": "FIN",
+   "date": "2026-11-08",
+   "text": "Really useful and easy to use! 💯"
   }
  ]
 }

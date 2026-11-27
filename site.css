@@ -680,3 +680,51 @@ html[data-theme="dark"] .form-status.error { background: #40231f; color: #ffb8aa
 .hiw-medlist em { font-style: normal; font-size: 13px; color: #4d646b; }
 .hiw-beat .hiw-copy .hiw-soon { margin-top: 12px; font-size: 14px; color: var(--ink-2); }
 .hiw-medlist { gap: 10px; }
+
+/* Reviews banner right under the hero (Nov 2026): one scroll row, best review first; then the app areas, then the logging steps. */
+.proof { padding: 30px 0 36px; }
+.proof-heading { margin-bottom: 14px; align-items: center; }
+.proof-heading h2 { margin-top: 4px; font-size: clamp(22px, 2.4vw, 28px); }
+.proof-tools { display: flex; align-items: flex-end; gap: 12px; flex: 0 0 auto; }
+.rail-nav { display: flex; gap: 8px; }
+.rail-nav button { appearance: none; width: 44px; height: 44px; border: 1px solid var(--border); border-radius: 50%; background: var(--surface); color: var(--ink); font: 600 24px/1 var(--sf); cursor: pointer; padding: 0 0 3px; }
+.rail-nav button:hover { border-color: var(--accent); color: var(--accent); }
+.rail-nav button:disabled { opacity: .35; cursor: default; border-color: var(--border); color: var(--ink); }
+.proof .rating-summary { margin-bottom: 14px; padding: 10px 16px; gap: 8px 20px; }
+.proof .rating-score strong { font-size: 30px; }
+.proof .rating-score { gap: 10px; }
+.proof .rating-countries li { padding: 3px 10px; font-size: 13px; }
+.review-rail { display: flex; gap: 14px; overflow-x: auto; scroll-snap-type: x proximity; overscroll-behavior-x: contain; padding: 2px 2px 14px; margin: 0; scrollbar-width: thin; }
+.review-rail .review { flex: 0 0 320px; padding: 18px; scroll-snap-align: start; }
+.review-rail .review-long { flex-basis: 470px; }
+.review-rail .review blockquote { margin: 10px 0 14px; font-size: 15px; line-height: 1.52; }
+.review-rail .review-footer { min-height: 0; margin-top: 10px; padding-top: 4px; }
+.review-rail .review-footer:not(:has(.visible)):not(:has(.review-toggle:not([hidden]))) { display: none; }
+.proof .review-source-bar { margin: 10px 0 0; }
+.proof .review-summary { font-size: 14px; }
+.proof .review-summary strong { font-size: 15px; }
+.proof .review-status, .proof .review-disclosure, .proof .proof-note { margin-top: 6px; font-size: 12.5px; }
+.hiw .trust-row { margin-bottom: 44px; }
+.hiw .section-heading + .hiw-beats { margin-top: 0; }
+.hiw-more + .hiw-steps { padding-bottom: 0; }
+@media (max-width: 820px) {
+  .proof { padding: 26px 0 30px; }
+  .proof-tools { width: 100%; }
+  .rail-nav { display: none; }
+  .review-rail { padding-right: 20px; margin-right: -20px; scroll-snap-type: x mandatory; }
+  .review-rail .review, .review-rail .review-long { flex-basis: 84%; }
+  .proof .rating-countries { flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; flex: 1 1 100%; }
+  .proof .rating-countries li { flex: 0 0 auto; }
+  .hiw .trust-row { margin-bottom: 32px; }
+}
+.proof .rating-date { flex-basis: auto; font-size: 12.5px; }
+.proof .review-status, .proof .review-disclosure, .proof .proof-note { display: inline; margin-right: 8px; line-height: 1.7; }
+.proof .review-source-bar { margin-bottom: 4px; }
+@media (max-width: 820px) {
+  .proof > .wrap { display: flex; flex-direction: column; }
+  .proof-heading { display: contents; }
+  .proof-heading > div:first-child { margin-bottom: 14px; }
+  .proof-tools { order: 2; margin-top: 6px; }
+  .proof .review-source-bar, .proof .review-status, .proof .review-disclosure, .proof .proof-note { order: 3; display: block; line-height: 1.5; margin-right: 0; }
+  .proof .review-source-bar { display: flex; margin-top: 14px; }
+}

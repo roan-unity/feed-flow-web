@@ -15,8 +15,20 @@ window.FF_REVIEWS = {
    "language": "en"
   },
   {
+   "text": "This is one the best feeding apps I have tried. The layout is better than Talli or any of the others I have tried thus far. Highly recommend. The dev is super cool too!",
+   "name": "Zippyy42",
+   "country": "United States",
+   "language": "en"
+  },
+  {
    "text": "Very useful app! It saves me both time and mental effort, while giving me a clear and easy overview. Definitely worth downloading!",
    "name": "IreneOpheim1",
+   "country": "Norway",
+   "language": "en"
+  },
+  {
+   "text": "Love it! Super easy to use, and the flowcast function actually helps saving formula. Will you get Norwegian language as well?",
+   "name": "Lokal-bruker",
    "country": "Norway",
    "language": "en"
   },
@@ -33,33 +45,15 @@ window.FF_REVIEWS = {
    "language": "sv"
   },
   {
-   "text": "Love it! Super easy to use, and the flowcast function actually helps saving formula. Will you get Norwegian language as well?",
-   "name": "Lokal-bruker",
-   "country": "Norway",
-   "language": "en"
-  },
-  {
-   "text": "This is one the best feeding apps I have tried. The layout is better than Talli or any of the others I have tried thus far. Highly recommend. The dev is super cool too!",
-   "name": "Zippyy42",
-   "country": "United States",
-   "language": "en"
-  },
-  {
-   "text": "This app has such amazing potential!! There are so many thoughtful additions including milestone tracking, solid foods/reactions, breast/bottle feeds and pumping. I would love to see a diaper tracker added in as well. Overall this is a great app for logging feeds, milestones, and growth!",
-   "name": "YASSS JAMIE LYNN",
-   "country": "United States",
-   "language": "en"
-  },
-  {
    "text": "Muy buena, la aplicación me ha ayudado mucho tener orden con la alimentación de mi bebé súper útil ya no ando perdida",
    "name": "So Axell",
    "country": "Colombia",
    "language": "es"
   },
   {
-   "text": "Really useful and easy to use! 💯",
-   "name": "Hansu87",
-   "country": "Finland",
+   "text": "This app has such amazing potential!! There are so many thoughtful additions including milestone tracking, solid foods/reactions, breast/bottle feeds and pumping. I would love to see a diaper tracker added in as well. Overall this is a great app for logging feeds, milestones, and growth!",
+   "name": "YASSS JAMIE LYNN",
+   "country": "United States",
    "language": "en"
   },
   {
@@ -69,15 +63,21 @@ window.FF_REVIEWS = {
    "language": "nb"
   },
   {
+   "text": "Really enjoy this, startet using it just a few days ago. It really helps structuring and mapping feeding, so we’re always in fair control",
+   "name": "Aleks86",
+   "country": "Norway",
+   "language": "en"
+  },
+  {
    "text": "Suveränt, erbjuder full koll, riktigt bra detta",
    "name": "Naucedemus",
    "country": "Sweden",
    "language": "sv"
   },
   {
-   "text": "Really enjoy this, startet using it just a few days ago. It really helps structuring and mapping feeding, so we’re always in fair control",
-   "name": "Aleks86",
-   "country": "Norway",
+   "text": "Really useful and easy to use! 💯",
+   "name": "Hansu87",
+   "country": "Finland",
    "language": "en"
   }
  ],
@@ -86,181 +86,181 @@ window.FF_REVIEWS = {
    null,
    null,
    null,
+   null,
+   null,
    "The app is very useful and easy to use! It's an excellent tool for keeping track of your baby's feeding and growth.",
    "Super simple app, it’s helped me keep track of my breastfeeding. I don’t have to worry about my baby going hungry! Great! ⭐️",
-   null,
-   null,
-   null,
    "Very good, the app has helped me a lot to keep my baby's feeding in order. Super useful, I'm no longer lost.",
    null,
    "A well-made app with good features for when you want to keep track of how much your baby eats. It is easy to lose count otherwise 😅",
+   null,
    "Superb. It gives you the full picture, this one is really good",
    null
   ],
   "da": [
    null,
    null,
-   "Meget nyttig app! Den sparer mig for både tid og mental energi, samtidig med at den giver et klart og enkelt overblik. Helt klart værd at downloade!",
    null,
-   "Superenkel app, der har hjulpet mig med at få styr på amningen. Jeg behøver ikke længere at bekymre mig om, hvorvidt mit barn går sultent rundt! Super ⭐️",
+   "Meget nyttig app! Den sparer mig for både tid og mental energi, samtidig med at den giver et klart og enkelt overblik. Helt klart værd at downloade!",
    "Jeg er vild med den! Den er supernem at bruge, og FlowCast-funktionen hjælper faktisk med at spare på modermælkserstatningen.",
    null,
+   "Superenkel app, der har hjulpet mig med at få styr på amningen. Jeg behøver ikke længere at bekymre mig om, hvorvidt mit barn går sultent rundt! Super ⭐️",
    null,
    null,
    null,
+   "Jeg er virkelig glad for den – jeg begyndte at bruge den for bare et par dage siden. Den er en stor hjælp til at strukturere og holde styr på madningerne, så vi altid har godt styr på det.",
    null,
-   null,
-   "Jeg er virkelig glad for den – jeg begyndte at bruge den for bare et par dage siden. Den er en stor hjælp til at strukturere og holde styr på madningerne, så vi altid har godt styr på det."
+   null
   ],
   "nl": [
    null,
    null,
-   "Erg handige app! Het bespaart me zowel tijd als mentale inspanning, en biedt bovendien een helder en overzichtelijk beeld. Absoluut de moeite waard om te downloaden!",
    null,
-   "Een super eenvoudige app die me heeft geholpen om grip te krijgen op het voeden (borstvoeding). Zo hoef ik me geen zorgen te maken dat mijn kind honger lijdt! Geweldig ⭐️",
+   "Erg handige app! Het bespaart me zowel tijd als mentale inspanning, en biedt bovendien een helder en overzichtelijk beeld. Absoluut de moeite waard om te downloaden!",
    "Ik ben er dol op! Super makkelijk in gebruik, en de FlowCast-functie helpt zelfs om flesvoeding te besparen.",
    null,
+   "Een super eenvoudige app die me heeft geholpen om grip te krijgen op het voeden (borstvoeding). Zo hoef ik me geen zorgen te maken dat mijn kind honger lijdt! Geweldig ⭐️",
    null,
    null,
    null,
+   "Ik ben er erg blij mee; ik gebruik het pas een paar dagen. Het helpt enorm bij het structureren en in kaart brengen van de voedingen, waardoor we altijd goed overzicht houden.",
    null,
-   null,
-   "Ik ben er erg blij mee; ik gebruik het pas een paar dagen. Het helpt enorm bij het structureren en in kaart brengen van de voedingen, waardoor we altijd goed overzicht houden."
+   null
   ],
   "fi": [
    null,
    null,
-   "Todella hyödyllinen sovellus! Se säästää sekä aikaa että henkistä vaivaa ja tarjoaa samalla selkeän ja helpon yleiskuvan. Ehdottomasti lataamisen arvoinen!",
    null,
-   "Todella yksinkertainen sovellus, joka on auttanut minua pysymään kärryillä imetyksestä. Ei tarvitse enää murehtia, että lapsi jäisi nälkäiseksi! Mahtava ⭐️",
+   "Todella hyödyllinen sovellus! Se säästää sekä aikaa että henkistä vaivaa ja tarjoaa samalla selkeän ja helpon yleiskuvan. Ehdottomasti lataamisen arvoinen!",
    "Tykkään tästä todella paljon! Erittäin helppokäyttöinen, ja FlowCast-toiminto auttaa jopa säästämään korviketta.",
    null,
+   "Todella yksinkertainen sovellus, joka on auttanut minua pysymään kärryillä imetyksestä. Ei tarvitse enää murehtia, että lapsi jäisi nälkäiseksi! Mahtava ⭐️",
    null,
    null,
    null,
+   "Pidän tästä todella paljon; aloitin käytön vasta muutama päivä sitten. Se auttaa erinomaisesti ruokailujen jäsentämisessä ja seurannassa, joten tilanne pysyy hyvin hallinnassa.",
    null,
-   null,
-   "Pidän tästä todella paljon; aloitin käytön vasta muutama päivä sitten. Se auttaa erinomaisesti ruokailujen jäsentämisessä ja seurannassa, joten tilanne pysyy hyvin hallinnassa."
+   null
   ],
   "fr": [
    null,
    null,
-   "Une application très utile ! Elle me fait gagner du temps et m’épargne un effort mental, tout en offrant une vue d’ensemble claire et simple. À télécharger sans hésiter !",
    null,
-   "Une application très simple qui m’a aidée à mieux gérer l’allaitement. Fini l’inquiétude de laisser mon bébé avoir faim ! Génial ⭐️",
+   "Une application très utile ! Elle me fait gagner du temps et m’épargne un effort mental, tout en offrant une vue d’ensemble claire et simple. À télécharger sans hésiter !",
    "J’adore ! Très facile à utiliser, et la fonction « FlowCast » permet même d’économiser du lait infantile.",
    null,
+   "Une application très simple qui m’a aidée à mieux gérer l’allaitement. Fini l’inquiétude de laisser mon bébé avoir faim ! Génial ⭐️",
    null,
    null,
    null,
+   "J’adore ! Je l’utilise depuis quelques jours seulement. Elle aide vraiment à structurer et à suivre les repas, ce qui nous permet de garder une bonne maîtrise de la situation.",
    null,
-   null,
-   "J’adore ! Je l’utilise depuis quelques jours seulement. Elle aide vraiment à structurer et à suivre les repas, ce qui nous permet de garder une bonne maîtrise de la situation."
+   null
   ],
   "de": [
    null,
    null,
-   "Sehr nützliche App! Sie spart mir Zeit und geistige Anstrengung und bietet gleichzeitig einen klaren, einfachen Überblick. Ein Download lohnt sich definitiv!",
    null,
-   "Eine super einfache App, die mir geholfen hat, den Überblick über das Stillen zu behalten. So muss ich mir keine Sorgen machen, dass mein Kind hungrig bleibt! Super ⭐️",
+   "Sehr nützliche App! Sie spart mir Zeit und geistige Anstrengung und bietet gleichzeitig einen klaren, einfachen Überblick. Ein Download lohnt sich definitiv!",
    "Ich liebe sie! Sie ist kinderleicht zu bedienen, und die „FlowCast“-Funktion hilft tatsächlich dabei, Babynahrung zu sparen.",
    null,
+   "Eine super einfache App, die mir geholfen hat, den Überblick über das Stillen zu behalten. So muss ich mir keine Sorgen machen, dass mein Kind hungrig bleibt! Super ⭐️",
    null,
    null,
    null,
+   "Ich bin wirklich begeistert; ich nutze sie erst seit ein paar Tagen. Sie hilft sehr dabei, die Fütterungen zu strukturieren und zu erfassen, sodass wir immer einen guten Überblick haben.",
    null,
-   null,
-   "Ich bin wirklich begeistert; ich nutze sie erst seit ein paar Tagen. Sie hilft sehr dabei, die Fütterungen zu strukturieren und zu erfassen, sodass wir immer einen guten Überblick haben."
+   null
   ],
   "it": [
    null,
    null,
-   "App utilissima! Mi fa risparmiare tempo e fatica mentale, offrendomi al contempo una panoramica chiara e semplice. Vale davvero la pena scaricarla!",
    null,
-   "Un'app semplicissima che mi ha aiutato a tenere sotto controllo l'allattamento. Non devo più preoccuparmi che il mio bambino resti affamato! Fantastica ⭐️",
+   "App utilissima! Mi fa risparmiare tempo e fatica mentale, offrendomi al contempo una panoramica chiara e semplice. Vale davvero la pena scaricarla!",
    "La adoro! È facilissima da usare e la funzione FlowCast aiuta concretamente a risparmiare latte artificiale.",
    null,
+   "Un'app semplicissima che mi ha aiutato a tenere sotto controllo l'allattamento. Non devo più preoccuparmi che il mio bambino resti affamato! Fantastica ⭐️",
    null,
    null,
    null,
+   "Mi piace moltissimo; ho iniziato a usarla solo pochi giorni fa. È davvero utile per organizzare e monitorare le poppate, così abbiamo sempre tutto sotto controllo.",
    null,
-   null,
-   "Mi piace moltissimo; ho iniziato a usarla solo pochi giorni fa. È davvero utile per organizzare e monitorare le poppate, così abbiamo sempre tutto sotto controllo."
+   null
   ],
   "nb": [
    "Jeg har fulgt matingen i en annen app i to måneder. Så byttet jeg til denne, og jeg er så glad for det! Grafene er helt fantastiske. Du kan følge opp på mange forskjellige måter, og appen er brukervennlig. Jeg elsker at du kan eksportere en PDF med all viktig informasjon til legebesøk. Jeg får også varsler når mannen min er ferdig med en mating! Anbefales!",
    "Jeg tror dette er den mest grundige og detaljerte appen jeg har brukt til mating, og jeg har nå brukt tre ulike apper i løpet av babyens liv. Utvikleren har virkelig tenkt på alt, og jeg setter pris på at de er så åpne for forslag og tilbakemeldinger. Jeg har bare brukt appen i én dag så langt, men gleder meg spesielt til å se hva den kommer opp med av trender og prediksjoner snart!",
+   "Dette er en av de beste matappene jeg har prøvd. Oppsettet er bedre enn Talli og alle de andre jeg har prøvd så langt. Anbefales på det varmeste. Utvikleren er veldig grei også!",
    "Veldig nyttig app! Den sparer meg for både tid og mental energi, samtidig som den gir en oversiktlig og enkel fremstilling. Absolutt verdt å laste ned!",
+   "Elsker den! Veldig enkel å bruke, og FlowCast-funksjonen hjelper faktisk med å spare på morsmelkerstatningen.",
    "Appen er veldig nyttig og enkel å bruke! Et utmerket verktøy for å holde oversikt over babyens mating og vekst.",
    "En kjempeenkel app som har hjulpet meg med å få kontroll på ammingen. Jeg slipper å bekymre meg for at babyen skal gå sulten! Super ⭐️",
-   "Elsker den! Veldig enkel å bruke, og FlowCast-funksjonen hjelper faktisk med å spare på morsmelkerstatningen.",
-   "Dette er en av de beste matappene jeg har prøvd. Oppsettet er bedre enn Talli og alle de andre jeg har prøvd så langt. Anbefales på det varmeste. Utvikleren er veldig grei også!",
-   "Denne appen har et så stort potensial!! Det er så mange gjennomtenkte tillegg, blant annet oppfølging av milepæler, fast føde og reaksjoner, mating med bryst og flaske og utpumping. Jeg skulle gjerne sett at en bleiesporing ble lagt til også. Alt i alt en flott app for å logge måltider, milepæler og vekst!",
    "Veldig bra, appen har hjulpet meg mye med å holde orden på babyens mating. Supernyttig, jeg føler meg ikke lenger fortapt.",
-   "Veldig nyttig og enkel å bruke! 💯",
+   "Denne appen har et så stort potensial!! Det er så mange gjennomtenkte tillegg, blant annet oppfølging av milepæler, fast føde og reaksjoner, mating med bryst og flaske og utpumping. Jeg skulle gjerne sett at en bleiesporing ble lagt til også. Alt i alt en flott app for å logge måltider, milepæler og vekst!",
    null,
+   "Jeg liker den veldig godt – begynte å bruke den for bare noen dager siden. Den er til stor hjelp for å strukturere og holde oversikt over matingen, slik at vi alltid har god kontroll.",
    null,
-   "Jeg liker den veldig godt – begynte å bruke den for bare noen dager siden. Den er til stor hjelp for å strukturere og holde oversikt over matingen, slik at vi alltid har god kontroll."
+   "Veldig nyttig og enkel å bruke! 💯"
   ],
   "pl": [
    null,
    null,
-   "Bardzo przydatna aplikacja! Oszczędza mój czas i wysiłek umysłowy, zapewniając jednocześnie przejrzysty i łatwy w odbiorze wgląd w sytuację. Zdecydowanie warto ją pobrać!",
    null,
-   "Bardzo prosta aplikacja, która pomogła mi zapanować nad karmieniem piersią. Nie muszę się już martwić, że moje dziecko będzie głodne! Super ⭐️",
+   "Bardzo przydatna aplikacja! Oszczędza mój czas i wysiłek umysłowy, zapewniając jednocześnie przejrzysty i łatwy w odbiorze wgląd w sytuację. Zdecydowanie warto ją pobrać!",
    "Uwielbiam ją! Jest niezwykle łatwa w obsłudze, a funkcja FlowCast faktycznie pomaga oszczędzać mieszankę mleczną.",
    null,
+   "Bardzo prosta aplikacja, która pomogła mi zapanować nad karmieniem piersią. Nie muszę się już martwić, że moje dziecko będzie głodne! Super ⭐️",
    null,
    null,
    null,
+   "Jestem bardzo zadowolona – zaczęłam z niej korzystać zaledwie kilka dni temu. Naprawdę pomaga uporządkować i zaplanować karmienia, dzięki czemu zawsze mamy pełną kontrolę nad sytuacją.",
    null,
-   null,
-   "Jestem bardzo zadowolona – zaczęłam z niej korzystać zaledwie kilka dni temu. Naprawdę pomaga uporządkować i zaplanować karmienia, dzięki czemu zawsze mamy pełną kontrolę nad sytuacją."
+   null
   ],
   "pt": [
    null,
    null,
-   "Aplicativo muito útil! Ele me poupa tempo e esforço mental, além de oferecer uma visão geral clara e simples. Vale muito a pena baixar!",
    null,
-   "Um aplicativo super simples que me ajudou a acompanhar a amamentação. Não preciso mais me preocupar com a possibilidade de meu bebê ficar com fome! Nota 10! ⭐️",
+   "Aplicativo muito útil! Ele me poupa tempo e esforço mental, além de oferecer uma visão geral clara e simples. Vale muito a pena baixar!",
    "Adorei! É super fácil de usar, e a função FlowCast realmente ajuda a economizar fórmula.",
    null,
+   "Um aplicativo super simples que me ajudou a acompanhar a amamentação. Não preciso mais me preocupar com a possibilidade de meu bebê ficar com fome! Nota 10! ⭐️",
    null,
    null,
    null,
+   "Gosto muito; comecei a usar há poucos dias. Ele ajuda bastante a organizar e registrar as mamadas, assim mantemos tudo sob controle.",
    null,
-   null,
-   "Gosto muito; comecei a usar há poucos dias. Ele ajuda bastante a organizar e registrar as mamadas, assim mantemos tudo sob controle."
+   null
   ],
   "es": [
    null,
    null,
-   "¡Una aplicación muy útil! Me ahorra tiempo y esfuerzo mental, además de ofrecerme una visión general clara y sencilla. ¡Sin duda, vale la pena descargarla!",
    null,
-   "Una aplicación súper sencilla que me ha ayudado a llevar un buen control de la lactancia. ¡Ya no tengo que preocuparme de que mi bebé pase hambre! ¡Genial! ⭐️",
+   "¡Una aplicación muy útil! Me ahorra tiempo y esfuerzo mental, además de ofrecerme una visión general clara y sencilla. ¡Sin duda, vale la pena descargarla!",
    "¡Me encanta! Es facilísima de usar, y la función FlowCast realmente ayuda a ahorrar leche de fórmula.",
    null,
-   null,
+   "Una aplicación súper sencilla que me ha ayudado a llevar un buen control de la lactancia. ¡Ya no tengo que preocuparme de que mi bebé pase hambre! ¡Genial! ⭐️",
    null,
    null,
    "Una app bien hecha y con buenas funciones para llevar el control de cuánto come el bebé. Si no, es fácil hacerse un lío 😅",
+   "Me gusta mucho; empecé a usarla hace solo unos días. Es de gran ayuda para organizar y registrar las tomas, así que siempre tenemos todo bien controlado.",
    "Excelente. Te da el control completo, es realmente buena",
-   "Me gusta mucho; empecé a usarla hace solo unos días. Es de gran ayuda para organizar y registrar las tomas, así que siempre tenemos todo bien controlado."
+   null
   ],
   "sv": [
    null,
    null,
+   null,
    "Mycket användbar app! Den sparar både tid och mental energi, samtidigt som den ger en tydlig och enkel överblick. Helt klart värd att ladda ner!",
-   null,
-   null,
    "Älskar den! Superenkel att använda, och FlowCast-funktionen hjälper faktiskt till att spara ersättning.",
    null,
    null,
    null,
    null,
    null,
+   "Gillar den verkligen – började använda den för bara några dagar sedan. Den är till stor hjälp för att strukturera och hålla koll på matningarna, så att vi alltid har bra kontroll.",
    null,
-   "Gillar den verkligen – började använda den för bara några dagar sedan. Den är till stor hjälp för att strukturera och hålla koll på matningarna, så att vi alltid har bra kontroll."
+   null
   ]
  }
 };
