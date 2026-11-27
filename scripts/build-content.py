@@ -394,7 +394,7 @@ def footer(lang="en", twins=None):
     """The one footer: four labelled columns, used on every page (generated pages, index and the four legacy pages)."""
     social = [("linkedin", "https://www.linkedin.com/company/feedflow-babyfeedingapp/", "LinkedIn", "Feed Flow on LinkedIn"), ("instagram", "https://www.instagram.com/feedflow_babyfeedingapp", "Instagram", "Feed Flow on Instagram"), ("tiktok", "https://www.tiktok.com/@feedflow_babyfeedingapp", "TikTok", "Feed Flow on TikTok"), ("youtube", "https://www.youtube.com/@FeedFlow-BabyFeedingApp", "YouTube", "Feed Flow on YouTube"), ("facebook", "https://www.facebook.com/feedflowapp", "Facebook", "Feed Flow on Facebook"), ("reddit", "https://www.reddit.com/r/FeedFlowParents/", "Reddit", "Feed Flow Parents on Reddit")]
     icons = "".join(f'<a class="social-link" href="{url}" target="_blank" rel="noopener noreferrer" aria-label="{label}" title="{name}">{icon(key)}</a>' for key, url, name, label in social)
-    blurb = "Feed Flow! is the formula &amp; feeding tracker for iPhone, built in Norway by Zeolite. Feeding, growth and baby health in one calm, privacy-first app."
+    blurb = "Feed Flow! is the complete baby tracker for iPhone, built in Norway by Zeolite. Feeding, growth and health in one calm, privacy-first app."
     privacy, terms, pdf = "Privacy", "Terms", None
     if lang in FT_NORDIC:
         n = FT_NORDIC[lang]
